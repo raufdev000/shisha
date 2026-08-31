@@ -3654,6 +3654,6 @@ opacity: 30%;
     }
     .desserts__cta:hover { transform: translateY(-3px); box-shadow: 0 14px 28px -10px var(--glow-soft); letter-spacing: 0.2em; }
 .home-hero__title {
-  -webkit-text-stroke: 1px #000;
+  -webkit-text-stroke: 2px #fcfafd;
   color: transparent; /* agar fill bhi chahiye to yellow color rakho niche wali line use karo */
 }

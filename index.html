@@ -21,9 +21,17 @@
     --accent-dark: #4515f3;
     --accent-glow: rgba(93, 43, 232, 0.55);
     --line: rgba(46, 43, 232, 0.9);
-    --golden: rgba(223, 190, 6, 0.938);
-  }
 
+  }
+  :root {
+  --golden: rgba(110, 102, 102, 0.863);
+  --golden-shine: linear-gradient(
+    90deg,
+    rgba(110, 102, 102, 0.863) 0%,
+    rgba(200, 195, 190, 0.95) 50%,
+    rgba(110, 102, 102, 0.863) 100%
+  );
+}
   *{margin:0;padding:0;box-sizing:border-box;}
 
   body{
@@ -1366,8 +1374,8 @@
                                
                             </div>
                           <h1 class="home-hero__title t-uppercase t-130 t-130--m-50 c-yellow t-center t-regular font-2">
-    <div class="home-hero__title-top lines-split words-split chars-split hero-accent">above the <span class="hero-accent">city,</span></div>
-    <div class="home-hero__title-bottom lines-split words-split"> <span class="hero-accent">inside moishi</span></div>
+    <div class="home-hero__title-top lines-split words-split chars-split hero-accent">Cafe <span class="hero-accent"></span></div>
+    <div class="home-hero__title-bottom lines-split words-split"> <span class="hero-accent"> moishi</span></div>
 </h1>
                             <div class="home-hero__moon-initial">
                                 <div class="home-hero__moon">
@@ -1527,9 +1535,9 @@
                             </div>
                         </div>
                         <div class="home-hero__bottom">
-                            <div class="home-hero__description t-uppercase t-50 t-50--m-35 c-white t-regular font-2">Cafe Moishi is the city&rsquo;s rooftop hideaway
-&mdash; cocktails, shisha
-and skyline views.</div>
+                 <div class="home-hero__description t-uppercase t-50 t-50--m-35 c-white t-regular font-2">
+  Rooftop vibes — cocktails, shisha &amp; skyline views.
+</div>
                             <div class="home-hero__image">
                                 <div class="home-hero__moon-final"></div>
                                 <div class="home-hero__drink">
@@ -1549,7 +1557,7 @@ and skyline views.</div>
 
   <!-- Section background — replace this src with your own image.
        object-fit: cover makes it fully responsive at any screen size. -->
-  <img class="moishi-carousel__bg" src="c6a45907-1bfc-4963-bce3-02bca2f47511.png" alt="" aria-hidden="true" loading="lazy">
+
   <div class="moishi-carousel__bg-scrim" aria-hidden="true"></div>
 
   <div class="moishi-smoke" aria-hidden="true">
@@ -1559,7 +1567,7 @@ and skyline views.</div>
   </div>
 
   <header class="moishi-carousel__header">
-    <p class="moishi-carousel__eyebrow">Shisha Bar</p>
+  
     <h2 class="moishi-carousel__title">Welcome to the Home of MOISHI</h2>
   </header>
 
@@ -1695,47 +1703,7 @@ and skyline views.</div>
             the cocktail list is written to match the hour.
         </p>
 
-        <div class="about-mun__features about-mun__reveal">
-            <div class="about-mun__feature">
-                <span class="about-mun__feature-icon">
-                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7-10-7-10-7Z" stroke="currentColor" stroke-width="1.3"/>
-                        <circle cx="12" cy="12" r="3.2" stroke="currentColor" stroke-width="1.3"/>
-                    </svg>
-                </span>
-             
-                <span class="about-mun__feature-value">180° Roman Skyline</span>
-            </div>
-            <div class="about-mun__feature">
-                <span class="about-mun__feature-icon">
-                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.3"/>
-                        <path d="M12 7v5l3.5 2" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
-                    </svg>
-                </span>
-          
-                <span class="about-mun__feature-value">Golden Hour to Midnight</span>
-            </div>
-            <div class="about-mun__feature">
-                <span class="about-mun__feature-icon">
-                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M5 4h14l-6.2 7.2V18l3 1.5v.5H8.2v-.5l3-1.5v-6.8L5 4Z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/>
-                    </svg>
-                </span>
-                
-                <span class="about-mun__feature-value">A Seasonal Cocktail List</span>
-            </div>
-            <div class="about-mun__feature">
-                <span class="about-mun__feature-icon">
-                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <rect x="3.5" y="5" width="17" height="15" rx="2" stroke="currentColor" stroke-width="1.3"/>
-                        <path d="M3.5 9.5h17M8 3v3.5M16 3v3.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
-                    </svg>
-                </span>
-              
-                <span class="about-mun__feature-value">Recommended After 7PM</span>
-            </div>
-        </div>
+     
 
         <div class="about-mun__actions about-mun__reveal">
             <a href="#reserve" class="about-mun__cta">Reserve a Table</a>
@@ -1966,32 +1934,6 @@ and skyline views.</div>
             </ul>
         </div>
 
-        <!-- Mayfair Cookies banner -->
-        <div class="desserts__tile desserts__tile--cookies">
-            <div class="desserts__cookie-copy">
-                <span class="desserts__tile-label">Mayfair Cookies · From Miss Bundangerie, London</span>
-                <h3 class="desserts__tile-title">Now Baking at Cafe Moishi</h3>
-                <span class="desserts__cookie-price">3 Cookies from £10.00</span>
-            </div>
-            <div class="desserts__cookie-chips">
-                <span class="desserts__chip">Queen of Cookie</span>
-                <span class="desserts__chip">Red Velvet Bliss</span>
-                <span class="desserts__chip">Nutella Stuffed</span>
-                <span class="desserts__chip">Reese's Joy</span>
-                <span class="desserts__chip">Loaded Biscoff</span>
-            </div>
-        </div>
-
-        <!-- Extra / seasonal specials (not on the printed menu) -->
-        <div class="desserts__tile desserts__tile--extra">
-            <span class="desserts__badge" style="position:static; align-self:flex-start; margin-bottom:0.8rem;">New</span>
-            <span class="desserts__tile-label">Seasonal Specials</span>
-            <h3 class="desserts__tile-title">Ask Your Server</h3>
-            <ul class="desserts__items">
-                <li>Pistachio Baklava Cheesecake <span>£7</span></li>
-                <li>Salted Caramel Waffle Stack <span>£6</span></li>
-            </ul>
-        </div>
 
     </div>
 
