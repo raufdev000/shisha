@@ -21,6 +21,7 @@
     --accent-dark: #4515f3;
     --accent-glow: rgba(93, 43, 232, 0.55);
     --line: rgba(46, 43, 232, 0.9);
+    --golden: rgba(223, 190, 6, 0.938);
   }
 
   *{margin:0;padding:0;box-sizing:border-box;}
@@ -43,7 +44,7 @@
     align-items:center;
     justify-content:space-between;
     padding:18px 48px;
-    background: linear-gradient(180deg, rgba(5,8,6,0.88) 0%, rgba(5,8,6,0.6) 100%);
+    background: linear-gradient(180deg, rgba(7, 5, 8, 0.88) 0%, rgba(5,8,6,0.6) 100%);
     backdrop-filter: blur(14px) saturate(120%);
     -webkit-backdrop-filter: blur(14px) saturate(120%);
     border-bottom: 1px solid rgba(43,232,124,0.16);
@@ -54,7 +55,7 @@
     position:absolute;
     inset:0;
     background:
-      radial-gradient(ellipse 320px 70px at 12% 40%, rgba(43,232,124,0.08), transparent 70%),
+      radial-gradient(ellipse 320px 70px at 12% 40%, rgba(156, 43, 232, 0.08), transparent 70%),
       radial-gradient(ellipse 260px 60px at 65% 60%, rgba(43,232,124,0.06), transparent 70%);
     animation: driftSmoke 15s ease-in-out infinite alternate;
     pointer-events:none;
@@ -144,7 +145,7 @@
     align-items:center;
     gap:6px;
     cursor:pointer;
-    color: var(--cream-dim);
+    color: var(--cream);
     font-size:12px;
     letter-spacing:0.18em;
     text-transform:uppercase;
@@ -161,7 +162,7 @@
     width:236px;
     padding:10px;
     background: linear-gradient(165deg, rgba(9,14,11,0.98), rgba(5,8,6,0.98));
-    border:1px solid rgba(43,232,124,0.22);
+    border:1px solid rgba(232, 43, 232, 0.22);
     border-radius:8px;
     box-shadow: 0 20px 50px -12px rgba(0,0,0,0.65);
     opacity:0;
@@ -220,7 +221,7 @@
     font-size:12px;
     letter-spacing:0.2em;
     text-transform:uppercase;
-    color: var(--void);
+    color: var(--cream);
     background: linear-gradient(135deg, var(--accent), var(--accent-light));
     border:none;
     border-radius:3px;
@@ -1057,7 +1058,7 @@
     margin: 0 0 clamp(1.6rem, 4vw, 2.2rem);
     font-family: 'Cormorant Garamond', serif;
     font-weight: 500;
-    font-size: clamp(2.1rem, 5.2vw, 3.6rem);
+    font-size: clamp(1.6rem, 5vw, 3.2rem);
     line-height: 1.16;
     letter-spacing: 0.01em;
     color: var(--cream);
@@ -1200,8 +1201,8 @@
     font-size: 0.75rem;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: var(--void);
-    background: linear-gradient(135deg, var(--accent-bright), #a9e6c2);
+    color: var(--cream);
+    background: linear-gradient(135deg, var(--accent-bright), #2701ad);
     border: none;
     border-radius: 3px;
     text-decoration: none;
@@ -1269,10 +1270,7 @@
 <nav class="site-nav">
   <a href="#" class="site-logo">
     <span class="mark">
-      <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M20 4C20 4 13 12 13 19a7 7 0 0 0 14 0c0-7-7-15-7-15Z" stroke="#2be87c" stroke-width="1.3" fill="rgba(43,232,124,0.12)"/>
-        <path d="M20 19c0 4 3 6 3 10a3 3 0 0 1-6 0c0-2 1-3 1-3" stroke="#2be87c" stroke-width="1" opacity="0.6"/>
-      </svg>
+    
     </span>
     <span class="wordmark">Cafe Moishi</span>
   </a>
@@ -1286,10 +1284,7 @@
 
   <div class="nav-right">
     <div class="nav-location" id="locationTrigger">
-      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M12 22s7-7.16 7-12.5A7 7 0 0 0 5 9.5C5 14.84 12 22 12 22Z" stroke="#2be87c" stroke-width="1.3"/>
-        <circle cx="12" cy="9.5" r="2.4" stroke="#2be87c" stroke-width="1.3"/>
-      </svg>
+     
       <span>Find Us</span>
 
       <div class="location-popover">
@@ -1366,13 +1361,13 @@
                         <div class="home-hero__top">
                             <div class="home-hero__stars">
                                 <div class="home-hero__star home-hero__star--background">
-                                    <img src="White smoke, and  clouds_.jfif">
+                                    <img src="banner.webp">
                                 </div>
                                
                             </div>
                           <h1 class="home-hero__title t-uppercase t-130 t-130--m-50 c-yellow t-center t-regular font-2">
     <div class="home-hero__title-top lines-split words-split chars-split hero-accent">above the <span class="hero-accent">city,</span></div>
-    <div class="home-hero__title-bottom lines-split words-split"> <span class="hero-accent">inside</span><span class=""> moishi</span></div>
+    <div class="home-hero__title-bottom lines-split words-split"> <span class="hero-accent">inside moishi</span></div>
 </h1>
                             <div class="home-hero__moon-initial">
                                 <div class="home-hero__moon">
@@ -1581,7 +1576,7 @@ and skyline views.</div>
     <ul class="moishi-carousel__track" data-moishi-track>
 
       <li class="moishi-slide">
-        <img class="moishi-slide__img" src="c6a45907-1bfc-4963-bce3-02bca2f47511.png" alt="Moishi Burgers">
+        <img class="moishi-slide__img" src="burgers.webp" alt="Moishi Burgers">
         <div class="moishi-slide__overlay"></div>
         <span class="moishi-slide__index">i.</span>
         <div class="moishi-slide__text">
@@ -1591,7 +1586,7 @@ and skyline views.</div>
       </li>
 
       <li class="moishi-slide">
-        <img class="moishi-slide__img" src="https://placehold.co/480x640/0a0f0c/3ddc84?text=Grill+%26+Chill" alt="Moishi Grill and Chill">
+        <img class="moishi-slide__img" src="grill&chill.webp" alt="Moishi Grill and Chill">
         <div class="moishi-slide__overlay"></div>
         <span class="moishi-slide__index">ii.</span>
         <div class="moishi-slide__text">
@@ -1601,7 +1596,7 @@ and skyline views.</div>
       </li>
 
       <li class="moishi-slide">
-        <img class="moishi-slide__img" src="https://placehold.co/480x640/0a0f0c/3ddc84?text=Steak%27s+Corner" alt="Moishi Steak's Corner">
+        <img class="moishi-slide__img" src="steaks.webp" alt="Moishi Steak's Corner">
         <div class="moishi-slide__overlay"></div>
         <span class="moishi-slide__index">iii.</span>
         <div class="moishi-slide__text">
@@ -1611,7 +1606,7 @@ and skyline views.</div>
       </li>
 
       <li class="moishi-slide">
-        <img class="moishi-slide__img" src="https://placehold.co/480x640/0a0f0c/3ddc84?text=Mocktails" alt="Moishi Mocktails">
+        <img class="moishi-slide__img" src="mocktails.webp" alt="Moishi Mocktails">
         <div class="moishi-slide__overlay"></div>
         <span class="moishi-slide__index">iv.</span>
         <div class="moishi-slide__text">
@@ -1621,7 +1616,7 @@ and skyline views.</div>
       </li>
 
       <li class="moishi-slide">
-        <img class="moishi-slide__img" src="https://placehold.co/480x640/0a0f0c/3ddc84?text=Shisha+Flavours" alt="Moishi Shisha Flavours">
+        <img class="moishi-slide__img" src="shisha.webp" alt="Moishi Shisha Flavours">
         <div class="moishi-slide__overlay"></div>
         <span class="moishi-slide__index">v.</span>
         <div class="moishi-slide__text">
@@ -1631,7 +1626,7 @@ and skyline views.</div>
       </li>
 
       <li class="moishi-slide">
-        <img class="moishi-slide__img" src="https://placehold.co/480x640/0a0f0c/3ddc84?text=Waffle+%2F+Cookie+Dough" alt="Waffle / Cookie Dough">
+        <img class="moishi-slide__img" src="waffle-cookie.webp" alt="Waffle / Cookie Dough">
         <div class="moishi-slide__overlay"></div>
         <span class="moishi-slide__index">vi.</span>
         <div class="moishi-slide__text">
@@ -1641,7 +1636,7 @@ and skyline views.</div>
       </li>
 
       <li class="moishi-slide">
-        <img class="moishi-slide__img" src="https://placehold.co/480x640/0a0f0c/3ddc84?text=Mayfair+Cookies" alt="Mayfair Cookies">
+        <img class="moishi-slide__img" src="mayfair.webp" alt="Mayfair Cookies">
         <div class="moishi-slide__overlay"></div>
         <span class="moishi-slide__index">vii.</span>
         <div class="moishi-slide__text">
@@ -1708,7 +1703,7 @@ and skyline views.</div>
                         <circle cx="12" cy="12" r="3.2" stroke="currentColor" stroke-width="1.3"/>
                     </svg>
                 </span>
-                <span class="about-mun__feature-label">Vista</span>
+             
                 <span class="about-mun__feature-value">180° Roman Skyline</span>
             </div>
             <div class="about-mun__feature">
@@ -1718,7 +1713,7 @@ and skyline views.</div>
                         <path d="M12 7v5l3.5 2" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
                     </svg>
                 </span>
-                <span class="about-mun__feature-label">Hours</span>
+          
                 <span class="about-mun__feature-value">Golden Hour to Midnight</span>
             </div>
             <div class="about-mun__feature">
@@ -1727,7 +1722,7 @@ and skyline views.</div>
                         <path d="M5 4h14l-6.2 7.2V18l3 1.5v.5H8.2v-.5l3-1.5v-6.8L5 4Z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/>
                     </svg>
                 </span>
-                <span class="about-mun__feature-label">Craft</span>
+                
                 <span class="about-mun__feature-value">A Seasonal Cocktail List</span>
             </div>
             <div class="about-mun__feature">
@@ -1737,7 +1732,7 @@ and skyline views.</div>
                         <path d="M3.5 9.5h17M8 3v3.5M16 3v3.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
                     </svg>
                 </span>
-                <span class="about-mun__feature-label">Reservations</span>
+              
                 <span class="about-mun__feature-value">Recommended After 7PM</span>
             </div>
         </div>
@@ -3061,7 +3056,7 @@ and skyline views.</div>
         border-radius: 16px;
         padding: clamp(1.6rem, 4vw, 2.2rem) clamp(1.6rem, 4vw, 2.4rem);
         background: rgba(241,250,243,0.04);
-        border: 1px solid rgba(241,250,243,0.1);
+        border: 1px solid rgba(3, 50, 206, 0.1);
         display: flex;
         align-items: center;
         justify-content: space-between;

@@ -3125,7 +3125,7 @@ opacity: 30%;
     height: auto
 }
 .hero-accent {
-    color: var(--accent, #173a25);
+    color: var(--golden, #e4c61a);
 }
 
     .drinks {
@@ -3653,3 +3653,7 @@ opacity: 30%;
         transition: transform .3s cubic-bezier(.2,.7,.2,1), box-shadow .3s ease, letter-spacing .3s ease;
     }
     .desserts__cta:hover { transform: translateY(-3px); box-shadow: 0 14px 28px -10px var(--glow-soft); letter-spacing: 0.2em; }
+.home-hero__title {
+  -webkit-text-stroke: 1px #000;
+  color: transparent; /* agar fill bhi chahiye to yellow color rakho niche wali line use karo */
+}
