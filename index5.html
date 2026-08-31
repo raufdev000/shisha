@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cafe Moishi — Food</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Fredoka:wght@500;600;700&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: #040705; }
+
+    .food {
+        --void: #040705;
+        --cream: #f1faf3;
+        --cream-dim: rgba(241,250,243,0.62);
+        --cream-faint: rgba(241,250,243,0.36);
+        --accent: #1e4730;
+        --accent-bright: #3c8a5c;
+        --glow: #3ddc84;
+        --glow-soft: rgba(61,220,132,0.5);
+        --line: rgba(241,250,243,0.14);
+
+        position: relative;
+        overflow: hidden;
+        background: var(--void);
+        color: var(--cream);
+        padding: clamp(3.5rem, 7vw, 5.5rem) clamp(1.25rem, 5vw, 3rem);
+
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 1s cubic-bezier(.2,.7,.2,1), transform 1s cubic-bezier(.2,.7,.2,1);
+    }
+    .food.in-view { opacity: 1; transform: translateY(0); }
+    .food * { box-sizing: border-box; }
+
+    /* background photo */
+    .food__bg {
+        position: absolute; inset: 0; z-index: -2;
+        width: 100%; height: 100%;
+        object-fit: cover; object-position: center 35%;
+    }
+    .food__scrim {
+        position: absolute; inset: 0; z-index: -2;
+        background:
+            radial-gradient(ellipse 800px 460px at 50% -5%, rgba(61,220,132,0.1), transparent 60%),
+            linear-gradient(180deg, rgba(4,7,5,0.92) 0%, rgba(4,7,5,0.96) 55%, var(--void) 100%);
+    }
+
+    /* ---------- Header ---------- */
+    .food__header {
+        position: relative; z-index: 1;
+        text-align: center;
+        max-width: 620px;
+        margin: 0 auto clamp(2.5rem, 6vw, 3.5rem);
+    }
+    .food__eyebrow {
+        display: block;
+        font-family: 'Alex Brush', cursive;
+        font-size: clamp(1.9rem, 4vw, 2.6rem);
+        color: var(--glow);
+        margin-bottom: 0.2rem;
+    }
+    .food__title {
+        margin: 0 0 0.7rem;
+        font-family: 'Fredoka', sans-serif;
+        font-weight: 700;
+        font-size: clamp(1.9rem, 4.2vw, 2.8rem);
+        color: var(--cream);
+    }
+    .food__subtitle {
+        margin: 0;
+        font-family: 'Jost', sans-serif;
+        font-size: 0.92rem;
+        line-height: 1.7;
+        color: var(--cream-dim);
+    }
+
+    /* =========================================================
+       ZIGZAG ROWS — the distinct layout: alternating photo/text
+       instead of a grid, tabs, or carousel.
+       ========================================================= */
+
+    .food__rows {
+        position: relative; z-index: 1;
+        max-width: 940px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: clamp(1.5rem, 4vw, 2.2rem);
+    }
+
+    .food__row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: clamp(1.5rem, 4vw, 3rem);
+        align-items: center;
+
+        opacity: 0;
+        transform: translateY(36px);
+        transition: opacity .8s cubic-bezier(.2,.7,.2,1), transform .8s cubic-bezier(.2,.7,.2,1);
+    }
+    .food__row.food-in { opacity: 1; transform: translateY(0); }
+    .food__rows.in-view .food__row:nth-child(1) { transition-delay: 0s; }
+    .food__rows.in-view .food__row:nth-child(2) { transition-delay: .1s; }
+    .food__rows.in-view .food__row:nth-child(3) { transition-delay: .2s; }
+
+    .food__row--reverse .food__photo { order: 2; }
+    .food__row--reverse .food__copy { order: 1; }
+
+    .food__photo {
+        position: relative;
+        border-radius: 16px;
+        overflow: hidden;
+        aspect-ratio: 4 / 3;
+        border: 1px solid var(--line);
+    }
+    .food__photo img {
+        position: absolute; inset: 0;
+        width: 100%; height: 100%;
+        object-fit: cover;
+        filter: saturate(0.9) brightness(0.85);
+        transition: transform .6s cubic-bezier(.2,.7,.2,1), filter .4s ease;
+    }
+    .food__row:hover .food__photo img {
+        transform: scale(1.06);
+        filter: saturate(1) brightness(0.95);
+    }
+
+    .food__tag {
+        display: inline-block;
+        font-family: 'Jost', sans-serif;
+        font-weight: 500;
+        font-size: 0.62rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--glow);
+        margin-bottom: 0.5rem;
+    }
+
+    .food__name {
+        margin: 0 0 0.6rem;
+        font-family: 'Fredoka', sans-serif;
+        font-weight: 600;
+        font-size: clamp(1.15rem, 2.2vw, 1.5rem);
+        color: var(--cream);
+    }
+
+    .food__desc {
+        margin: 0;
+        max-width: 40ch;
+        font-family: 'Jost', sans-serif;
+        font-weight: 400;
+        font-size: 0.88rem;
+        line-height: 1.7;
+        color: var(--cream-dim);
+    }
+
+    @media (max-width: 640px) {
+        .food__row,
+        .food__row--reverse { grid-template-columns: 1fr; }
+        .food__row--reverse .food__photo,
+        .food__row--reverse .food__copy { order: initial; }
+        .food__photo { aspect-ratio: 16 / 10; }
+    }
+
+    /* ---------- Closing strip: rest of the menu, no detail, just a nod ---------- */
+    .food__more {
+        position: relative; z-index: 1;
+        max-width: 940px;
+        margin: clamp(2.2rem, 5vw, 3rem) auto 0;
+        padding-top: clamp(1.5rem, 3vw, 2rem);
+        border-top: 1px solid var(--line);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 0.6rem;
+    }
+    .food__more-label {
+        font-family: 'Jost', sans-serif;
+        font-weight: 400;
+        font-style: italic;
+        font-size: 0.82rem;
+        color: var(--cream-faint);
+        margin-right: 0.3rem;
+    }
+    .food__chip {
+        font-family: 'Jost', sans-serif;
+        font-weight: 500;
+        font-size: 0.72rem;
+        color: var(--cream-dim);
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 0.4em 0.9em;
+        transition: border-color .3s ease, color .3s ease;
+    }
+    .food__chip:hover { border-color: var(--glow); color: var(--cream); }
+
+    /* ---------- CTA ---------- */
+    .food__actions {
+        position: relative; z-index: 1;
+        display: flex;
+        justify-content: center;
+        margin-top: clamp(1.8rem, 4vw, 2.4rem);
+    }
+    .food__cta {
+        display: inline-flex; align-items: center; gap: 0.6em;
+        font-family: 'Jost', sans-serif;
+        font-weight: 500; font-size: 0.75rem;
+        letter-spacing: 0.16em; text-transform: uppercase;
+        color: var(--void);
+        background: linear-gradient(135deg, var(--accent), var(--glow));
+        border: none; border-radius: 3px;
+        padding: 0.9em 2em;
+        text-decoration: none;
+        cursor: pointer;
+        transition: transform .3s cubic-bezier(.2,.7,.2,1), box-shadow .3s ease, letter-spacing .3s ease;
+    }
+    .food__cta:hover { transform: translateY(-3px); box-shadow: 0 14px 28px -10px var(--glow-soft); letter-spacing: 0.2em; }
+</style>
+</head>
+<body>
+
+<section class="food" id="food">
+
+    <!-- Swap this src for your own food photo -->
+    <img class="food__bg" src="cafe-moishi-food-bg.jpg" alt="" loading="lazy">
+    <div class="food__scrim"></div>
+
+    <div class="food__header">
+        <span class="food__eyebrow">From The Grill</span>
+        <h2 class="food__title">Food, Done Right</h2>
+        <p class="food__subtitle">A quick look at what's coming off the grill tonight.</p>
+    </div>
+
+    <div class="food__rows" id="foodRows">
+
+        <div class="food__row">
+            <div class="food__photo">
+                <img src="moishi-zinger-burger.jpg" alt="Moishi Zinger Burger">
+            </div>
+            <div class="food__copy">
+                <span class="food__tag">Moishi Burgers</span>
+                <h3 class="food__name">Moishi Zinger Burger</h3>
+                <p class="food__desc">Crispy spicy chicken fillet, soft buttery brioche, fresh lettuce, and a creamy mayo finish.</p>
+            </div>
+        </div>
+
+        <div class="food__row food__row--reverse">
+            <div class="food__photo">
+                <img src="dynamite-king-prawns.jpg" alt="Dynamite King Prawns">
+            </div>
+            <div class="food__copy">
+                <span class="food__tag">Grill &amp; Chill</span>
+                <h3 class="food__name">Dynamite King Prawns</h3>
+                <p class="food__desc">Succulent king prawns tossed in a fiery, creamy dynamite sauce — heat and flavour, perfectly balanced.</p>
+            </div>
+        </div>
+
+        <div class="food__row">
+            <div class="food__photo">
+                <img src="beef-steak.jpg" alt="Beef Steak">
+            </div>
+            <div class="food__copy">
+                <span class="food__tag">Steak's Corner</span>
+                <h3 class="food__name">Beef Steak</h3>
+                <p class="food__desc">Tender, seasoned, and grilled to your preferred doneness — juicy and flavour-packed.</p>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="food__more">
+        <span class="food__more-label">Also on the menu:</span>
+        <span class="food__chip">Peri Peri Grill Burger</span>
+        <span class="food__chip">Moishi Mix Grill</span>
+        <span class="food__chip">Chicken Steak</span>
+        <span class="food__chip">Loaded Fries</span>
+        <span class="food__chip">Peri Peri Rice</span>
+    </div>
+
+    <div class="food__actions">
+        <a href="#menu-full" class="food__cta">See Full Menu</a>
+    </div>
+
+</section>
+
+<script>
+    (function () {
+        var section = document.getElementById('food');
+        var rows = document.getElementById('foodRows');
+        if (!section || !rows) return;
+
+        var items = rows.querySelectorAll('.food__row');
+
+        if (!('IntersectionObserver' in window)) {
+            section.classList.add('in-view');
+            rows.classList.add('in-view');
+            items.forEach(function (r) { r.classList.add('food-in'); });
+            return;
+        }
+
+        var sectionObserver = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    section.classList.add('in-view');
+                    rows.classList.add('in-view');
+                    sectionObserver.disconnect();
+                }
+            });
+        }, { threshold: 0.1 });
+        sectionObserver.observe(section);
+
+        var rowObserver = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('food-in');
+                    rowObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.2 });
+        items.forEach(function (row) { rowObserver.observe(row); });
+    })();
+</script>
+
+</body>
+</html>

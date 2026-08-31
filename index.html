@@ -1,0 +1,3747 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <title>Mùn Rooftop Cocktail Bar Rome</title>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="main.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Fredoka:wght@500;600;700&family=Cormorant+Garamond:wght@400;500;600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+        <style>
+  :root{
+    --void:#040705;
+    --smoke:#0b110d;
+    --cream:#f1faf3;
+    --cream-dim: rgba(241,250,243,0.62);
+    --accent: #a78bfa;
+    --accent-light: #8612e6;
+    --accent-dark: #4515f3;
+    --accent-glow: rgba(93, 43, 232, 0.55);
+    --line: rgba(46, 43, 232, 0.9);
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  body{
+    min-height:100vh;
+    background:
+      radial-gradient(ellipse 700px 500px at 10% -5%, rgba(30,150,90,0.32), transparent 60%),
+      radial-gradient(ellipse 500px 400px at 90% 20%, rgba(20,120,75,0.22), transparent 55%),
+      var(--void);
+    font-family:'Poppins', sans-serif;
+  }
+
+  /* ===== NAVBAR (classic / desktop-first) ===== */
+  .site-nav{
+    position:sticky;
+    top:0;
+    z-index:100;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:18px 48px;
+    background: linear-gradient(180deg, rgba(5,8,6,0.88) 0%, rgba(5,8,6,0.6) 100%);
+    backdrop-filter: blur(14px) saturate(120%);
+    -webkit-backdrop-filter: blur(14px) saturate(120%);
+    border-bottom: 1px solid rgba(43,232,124,0.16);
+  }
+
+  .site-nav::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+      radial-gradient(ellipse 320px 70px at 12% 40%, rgba(43,232,124,0.08), transparent 70%),
+      radial-gradient(ellipse 260px 60px at 65% 60%, rgba(43,232,124,0.06), transparent 70%);
+    animation: driftSmoke 15s ease-in-out infinite alternate;
+    pointer-events:none;
+  }
+  @keyframes driftSmoke{
+    0%{ transform: translateX(-18px); }
+    100%{ transform: translateX(18px); }
+  }
+
+  .site-nav::after{
+    content:"";
+    position:absolute;
+    left:0; right:0; bottom:-1px;
+    height:1px;
+    background: linear-gradient(90deg, transparent, var(--accent-glow), transparent);
+    filter: blur(0.5px);
+  }
+
+  /* ---- Logo ---- */
+  .site-logo{
+    display:flex;
+    align-items:center;
+    gap:11px;
+    z-index:2;
+    cursor:pointer;
+    text-decoration:none;
+    transition: transform 0.35s cubic-bezier(.2,.9,.3,1);
+  }
+  .site-logo:hover{ transform: translateY(-1px); }
+  .site-logo .mark{
+    position:relative; width:26px; height:26px; flex-shrink:0;
+    transition: transform 0.45s cubic-bezier(.2,.9,.3,1), filter 0.35s ease;
+  }
+  .site-logo .mark svg{ width:100%; height:100%; display:block; }
+  .site-logo:hover .mark{ transform: scale(1.12) rotate(-4deg); filter: drop-shadow(0 0 8px var(--accent-glow)); }
+  .site-logo .wordmark{
+    font-family:'Poppins', sans-serif;
+    font-weight:700;
+    font-size:21px;
+    letter-spacing:0.12em;
+    color: var(--cream);
+    text-transform:uppercase;
+    transition: text-shadow 0.35s ease;
+  }
+  .site-logo:hover .wordmark{ text-shadow: 0 0 14px var(--accent-glow); }
+  .site-logo .wordmark span{ color: var(--accent); font-weight:600; }
+
+  /* ---- Classic inline links (desktop) ---- */
+  .nav-links{
+    display:flex;
+    align-items:center;
+    gap:40px;
+    list-style:none;
+    z-index:2;
+  }
+  .nav-links li a{
+    position:relative;
+    display:inline-block;
+    text-decoration:none;
+    color: var(--cream-dim);
+    font-size:14px;
+    font-weight:500;
+    letter-spacing:0.2em;
+    text-transform:uppercase;
+    padding-bottom:8px;
+    transition: color 0.35s ease, transform 0.35s cubic-bezier(.2,.9,.3,1), text-shadow 0.35s ease;
+  }
+  .nav-links li a::after{
+    content:"";
+    position:absolute;
+    left:0; bottom:0;
+    width:100%; height:1px;
+    background: linear-gradient(90deg, transparent, var(--line), transparent);
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.4s cubic-bezier(.2,.9,.3,1);
+  }
+  .nav-links li a:hover{ color: var(--cream); text-shadow: 0 0 12px var(--accent-glow); transform: translateY(-2px); }
+  .nav-links li a:hover::after{ transform: scaleX(1); }
+  .nav-links li a.active{ color: var(--moishi-glow); }
+  .nav-links li a.active::after{ transform: scaleX(1); }
+
+  /* ---- Find Us (small map popover) ---- */
+  .nav-location{
+    position:relative;
+    display:flex;
+    align-items:center;
+    gap:6px;
+    cursor:pointer;
+    color: var(--cream-dim);
+    font-size:12px;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    transition: color 0.3s ease;
+  }
+  .nav-location svg{ width:14px; height:14px; opacity:0.85; flex-shrink:0; transition: transform 0.35s cubic-bezier(.2,.9,.3,1), filter 0.35s ease; }
+  .nav-location:hover, .nav-location.open{ color: var(--cream); }
+  .nav-location:hover svg, .nav-location.open svg{ filter: drop-shadow(0 0 6px var(--accent-glow)); transform: scale(1.15) translateY(-1px); }
+
+  .location-popover{
+    position:absolute;
+    top:calc(100% + 20px);
+    left:50%;
+    width:236px;
+    padding:10px;
+    background: linear-gradient(165deg, rgba(9,14,11,0.98), rgba(5,8,6,0.98));
+    border:1px solid rgba(43,232,124,0.22);
+    border-radius:8px;
+    box-shadow: 0 20px 50px -12px rgba(0,0,0,0.65);
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+    transform: translateX(-50%) translateY(-8px) scale(0.96);
+    transform-origin: top center;
+    transition: opacity 0.35s ease, transform 0.35s cubic-bezier(.2,.9,.3,1), visibility 0s linear 0.35s;
+    z-index:50;
+  }
+  .location-popover::before{
+    content:"";
+    position:absolute;
+    top:-6px; left:50%;
+    width:12px; height:12px;
+    transform: translateX(-50%) rotate(45deg);
+    background: rgba(9,14,11,0.98);
+    border-left:1px solid rgba(43,232,124,0.22);
+    border-top:1px solid rgba(43,232,124,0.22);
+  }
+  .nav-location:hover .location-popover,
+  .nav-location.open .location-popover{
+    opacity:1; visibility:visible; pointer-events:auto;
+    transform: translateX(-50%) translateY(0) scale(1);
+    transition: opacity 0.35s ease, transform 0.35s cubic-bezier(.2,.9,.3,1), visibility 0s linear 0s;
+  }
+  .location-popover iframe{
+    width:100%; height:128px; border:0; border-radius:5px; display:block;
+    filter: grayscale(25%) contrast(1.05) brightness(0.9);
+  }
+  .location-popover .location-address{
+    font-size:11px; line-height:1.5; letter-spacing:0.03em;
+    color: var(--cream-dim); text-transform:none; margin-top:9px;
+  }
+  .location-popover .location-link{
+    display:inline-block; margin-top:7px;
+    font-size:11px; letter-spacing:0.14em; text-transform:uppercase;
+    color: var(--accent); text-decoration:none; transition: text-shadow 0.3s ease;
+  }
+  .location-popover .location-link:hover{ text-shadow: 0 0 10px var(--accent-glow); }
+
+  /* ---- Right cluster (links + location + cta) ---- */
+  .nav-right{
+    display:flex;
+    align-items:center;
+    gap:38px;
+    z-index:2;
+  }
+
+  /* ---- CTA button ---- */
+  .nav-cta{
+    position:relative;
+    padding:11px 26px;
+    font-family:'Poppins', sans-serif;
+    font-weight:600;
+    font-size:12px;
+    letter-spacing:0.2em;
+    text-transform:uppercase;
+    color: var(--void);
+    background: linear-gradient(135deg, var(--accent), var(--accent-light));
+    border:none;
+    border-radius:3px;
+    cursor:pointer;
+    overflow:hidden;
+    transition: transform 0.3s cubic-bezier(.2,.9,.3,1), box-shadow 0.3s ease, letter-spacing 0.3s ease;
+  }
+  .nav-cta:hover{ transform: translateY(-3px) scale(1.03); box-shadow: 0 10px 28px -6px var(--accent-glow); letter-spacing: 0.24em; }
+  .nav-cta:active{ transform: translateY(-1px) scale(0.99); }
+  .nav-cta::before{
+    content:"";
+    position:absolute;
+    top:0; left:-60%; width:40%; height:100%;
+    background: linear-gradient(115deg, transparent, rgba(255,255,255,0.55), transparent);
+    transform: skewX(-20deg);
+    transition: left 0.6s ease;
+  }
+  .nav-cta:hover::before{ left:130%; }
+
+  /* ===== Mobile burger ===== */
+  .nav-burger{
+    display:none;
+    flex-direction:column;
+    justify-content:center;
+    gap:6px;
+    width:30px;
+    height:24px;
+    background:none;
+    border:none;
+    cursor:pointer;
+    z-index:210;
+    position:relative;
+  }
+  .nav-burger span{
+    width:100%; height:1px;
+    background: var(--cream);
+    transform-origin: center;
+    transition: transform 0.4s cubic-bezier(.2,.9,.3,1), opacity 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+  }
+  .nav-burger:hover span{ background: var(--accent); box-shadow: 0 0 8px var(--accent-glow); }
+  .nav-burger.open span:nth-child(1){ transform: translateY(7px) rotate(45deg); }
+  .nav-burger.open span:nth-child(2){ opacity:0; }
+  .nav-burger.open span:nth-child(3){ transform: translateY(-7px) rotate(-45deg); }
+
+  /* ===== Fullscreen mobile menu ===== */
+  .mobile-menu{
+    display:none;
+    list-style:none;
+  }
+
+  @media (max-width: 860px){
+    .site-nav{ padding:16px 22px; }
+    .nav-links{ display:none; }
+    .nav-location{ display:none; }
+    .nav-cta{ display:none; }
+    .nav-burger{ display:flex; }
+
+    .mobile-menu{
+      display:flex;
+      position:fixed;
+      inset:0;
+      width:100%;
+      height:100dvh;
+      flex-direction:column;
+      justify-content:center;
+      align-items:flex-start;
+      gap:24px;
+      padding:0 12vw;
+      background:
+        radial-gradient(ellipse 500px 400px at 90% -10%, rgba(43,232,124,0.12), transparent 60%),
+        linear-gradient(165deg, rgba(5,8,6,0.99), rgba(12,18,14,0.99));
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      z-index:200;
+      clip-path: circle(2.5% at calc(100% - 37px) 33px);
+      opacity:0;
+      visibility:hidden;
+      transition:
+        clip-path 0.7s cubic-bezier(.2,.9,.15,1),
+        opacity 0.35s ease,
+        visibility 0s linear 0.7s;
+    }
+    .mobile-menu.open{
+      clip-path: circle(150% at calc(100% - 37px) 33px);
+      opacity:1;
+      visibility:visible;
+      transition:
+        clip-path 0.7s cubic-bezier(.2,.9,.15,1),
+        opacity 0.3s ease,
+        visibility 0s linear 0s;
+    }
+
+    .mobile-menu li{ overflow:hidden; }
+    .mobile-menu li a{
+      position:relative;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      text-decoration:none;
+      font-size:26px;
+      letter-spacing:0.03em;
+      font-family:'Poppins', sans-serif;
+      font-weight:600;
+      color: var(--moishi-glow);
+      text-transform:uppercase;
+      opacity:0;
+      transform: translateY(28px);
+      transition: opacity 0.5s ease, transform 0.5s cubic-bezier(.2,.9,.3,1), color 0.3s ease, letter-spacing 0.3s ease;
+    }
+    .mobile-menu li a:hover{ color: var(--cream); letter-spacing: 0.08em; text-shadow: 0 0 14px var(--accent-glow); }
+    .mobile-menu li a.active{ color: var(--accent); }
+    .mobile-menu.open li a{ opacity:1; transform: translateY(0); }
+    .mobile-menu.open li:nth-child(1) a{ transition-delay:0.28s; }
+    .mobile-menu.open li:nth-child(2) a{ transition-delay:0.36s; }
+    .mobile-menu.open li:nth-child(3) a{ transition-delay:0.44s; }
+    .mobile-menu.open li:nth-child(4) a{ transition-delay:0.52s; }
+    .mobile-menu.open li:nth-child(5) a{ transition-delay:0.60s; }
+    .mobile-menu.open li:nth-child(6) a{ transition-delay:0.68s; }
+
+    .mobile-menu .mobile-location svg{ width:20px; height:20px; }
+
+    .mobile-menu .mobile-cta{
+      margin-top:8px;
+      padding:13px 30px;
+      font-size:12px;
+      font-weight:600;
+      font-family:'Poppins', sans-serif;
+      letter-spacing:0.2em;
+      text-transform:uppercase;
+      color: var(--void);
+      background: linear-gradient(135deg, var(--accent), var(--accent-light));
+      border-radius:3px;
+      display:inline-block;
+      transition: transform 0.3s cubic-bezier(.2,.9,.3,1), box-shadow 0.3s ease;
+    }
+    .mobile-menu .mobile-cta:hover{
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 10px 26px -6px var(--accent-glow);
+      letter-spacing: 0.24em;
+    }
+    .mobile-menu .mobile-location{
+      transition: opacity 0.5s ease, transform 0.5s cubic-bezier(.2,.9,.3,1), color 0.3s ease, gap 0.3s ease;
+    }
+    .mobile-menu .mobile-location:hover{ gap:14px; }
+    .mobile-menu .mobile-location svg{ transition: filter 0.3s ease, transform 0.3s ease; }
+    .mobile-menu .mobile-location:hover svg{ filter: drop-shadow(0 0 8px var(--accent-glow)); transform: scale(1.1); }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .mobile-menu, .mobile-menu li a, .location-popover{ transition-duration: 0.01ms !important; }
+  }
+
+  .demo-hint{
+    text-align:center;
+    color: var(--cream-dim);
+    font-size:12px;
+    letter-spacing:0.1em;
+    margin-top:60px;
+    font-family:'Jost', sans-serif;
+  }
+</style>
+<style>
+
+
+    .lounge {
+        --void: #0e0e12;
+        --panel: #17171d;
+        --gray: #2a2a33;
+        --gray-line: rgba(255,255,255,0.08);
+        --ink: #e9e8ee;
+        --ink-dim: rgba(233,232,238,0.62);
+        --ink-faint: rgba(233,232,238,0.4);
+        --purple: #a78bfa;
+        --purple-deep: #6d28d9;
+        --purple-glow: rgba(167,139,250,0.45);
+        --card-bg: rgba(233,232,238,0.04);
+        --card-border: rgba(233,232,238,0.1);
+
+        position: relative;
+        overflow: hidden;
+        background: var(--void);
+        color: var(--ink);
+        padding: clamp(3.5rem, 7vw, 5.5rem) 0;
+
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity .9s cubic-bezier(.2,.7,.2,1), transform .9s cubic-bezier(.2,.7,.2,1);
+    }
+    .lounge.in-view { opacity: 1; transform: translateY(0); }
+    .lounge * { box-sizing: border-box; }
+
+    /* background photo + purple/gray scrim */
+    .lounge__bg {
+        position: absolute; inset: 0; z-index: -2;
+        width: 100%; height: 100%;
+        object-fit: cover; object-position: center 40%;
+        filter: grayscale(35%);
+    }
+    .lounge__scrim {
+        position: absolute; inset: 0; z-index: -2;
+    }
+
+    /* soft floating glow blobs */
+    .lounge__glow { position: absolute; border-radius: 50%; filter: blur(80px); z-index: -1; pointer-events: none; }
+    .lounge__glow--a { width: 30vw; height: 30vw; top: -8vw; right: -6vw; background: var(--purple); opacity: 0.22; animation: loungeFloat 16s ease-in-out infinite; }
+    .lounge__glow--b { width: 22vw; height: 22vw; bottom: -6vw; left: -4vw; background: var(--gray); opacity: 0.35; animation: loungeFloat 20s ease-in-out infinite reverse; }
+    @keyframes loungeFloat { 0%,100% { transform: translate(0,0); } 50% { transform: translate(-2vw, 3vw); } }
+    @media (prefers-reduced-motion: reduce) { .lounge__glow { animation: none; } }
+
+    .lounge__wrap {
+        position: relative; z-index: 1;
+        max-width: 1150px; margin: 0 auto;
+        padding: 0 clamp(1.25rem, 5vw, 3rem);
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: clamp(2rem, 5vw, 3.5rem);
+        align-items: center;
+    }
+
+    /* ---------- Copy column ---------- */
+
+    .lounge__eyebrow {
+        display: block;
+        font-family: 'Alex Brush', cursive;
+        font-weight: 400;
+        font-size: clamp(1.9rem, 4vw, 2.5rem);
+        color: var(--purple);
+        margin-bottom: 0.2rem;
+    }
+
+    .lounge__title {
+        margin: 0 0 0.9rem;
+        font-family: 'Fredoka', sans-serif;
+        font-weight: 700;
+        font-size: clamp(2rem, 4.6vw, 3rem);
+        line-height: 1.18;
+        color: var(--ink);
+    }
+    .lounge__title span {
+        background: linear-gradient(120deg, var(--purple), #d4c7ff);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+    }
+
+    .lounge__text {
+        margin: 0 0 1.5rem;
+        max-width: 48ch;
+        font-family: 'Fredoka', sans-serif;
+        font-weight: 400;
+        font-size: 0.95rem;
+        line-height: 1.75;
+        color: var(--ink-dim);
+    }
+
+    /* feature row — small extra content, three quick facts with icons */
+    .lounge__features {
+        display: flex;
+        gap: 0.9rem;
+        flex-wrap: wrap;
+        margin-bottom: 1.6rem;
+    }
+    .lounge__feature {
+        display: flex;
+        align-items: center;
+        gap: 0.55em;
+        padding: 0.55em 1em;
+        border: 1px solid var(--card-border);
+        border-radius: 999px;
+        background: var(--card-bg);
+        font-family: 'Fredoka', sans-serif;
+        font-weight: 500;
+        font-size: 0.76rem;
+        color: var(--ink-dim);
+        transition: border-color .3s ease, color .3s ease, transform .3s cubic-bezier(.2,.7,.2,1);
+    }
+    .lounge__feature:hover { border-color: var(--purple); color: var(--ink); transform: translateY(-2px); }
+    .lounge__feature svg { width: 15px; height: 15px; color: var(--purple); flex-shrink: 0; }
+
+    /* flavour chips — the extra bit of content: a taste of the menu */
+    .lounge__flavours-label {
+        font-family: 'Fredoka', sans-serif;
+        font-weight: 600;
+        font-size: 0.64rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--purple);
+        margin-bottom: 0.6rem;
+        display: block;
+    }
+    .lounge__flavours {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-bottom: 1.8rem;
+        padding: 0;
+        list-style: none;
+    }
+    .lounge__flavours li {
+        font-family: 'Fredoka', sans-serif;
+        font-weight: 500;
+        font-size: 0.76rem;
+        color: var(--ink);
+        background: rgba(255,255,255,0.05);
+        border: 1px solid var(--gray-line);
+        border-radius: 8px;
+        padding: 0.4em 0.8em;
+    }
+
+    .lounge__cta-row {
+        display: flex;
+        align-items: center;
+        gap: 1.4rem;
+        flex-wrap: wrap;
+    }
+
+    .lounge__cta {
+        display: inline-flex; align-items: center; gap: 0.6em;
+        font-family: 'Fredoka', sans-serif;
+        font-weight: 600; font-size: 0.82rem;
+        letter-spacing: 0.02em;
+        color: var(--void);
+        background: linear-gradient(120deg, var(--purple), var(--purple-deep));
+        border: none; border-radius: 999px;
+        padding: 0.9em 1.9em;
+        text-decoration: none;
+        cursor: pointer;
+        transition: transform .3s cubic-bezier(.2,.7,.2,1), box-shadow .3s ease;
+    }
+    .lounge__cta:hover { transform: translateY(-3px); box-shadow: 0 14px 28px -10px var(--purple-glow); }
+
+    .lounge__note {
+        font-family: 'Fredoka', sans-serif;
+        font-weight: 400;
+        font-size: 0.78rem;
+        color: var(--ink-faint);
+    }
+
+    /* ---------- Image column ---------- */
+
+    .lounge__frame {
+        position: relative;
+        border-radius: 20px;
+        overflow: hidden;
+        aspect-ratio: 4 / 5;
+        border: 1px solid rgba(167,139,250,0.25);
+        box-shadow: 0 25px 60px -20px rgba(0,0,0,0.7), 0 0 0 1px var(--gray-line);
+    }
+    .lounge__frame img {
+        position: absolute; inset: 0;
+        width: 100%; height: 100%;
+        object-fit: cover;
+        filter: saturate(0.9) contrast(1.05);
+        transition: transform .6s cubic-bezier(.2,.7,.2,1);
+    }
+    .lounge__frame:hover img { transform: scale(1.05); }
+    .lounge__frame::after {
+        content: "";
+        position: absolute; inset: 0;
+        background: linear-gradient(0deg, rgba(14,14,18,0.85) 0%, transparent 45%);
+    }
+    .lounge__frame-tag {
+        position: absolute; left: 1rem; bottom: 1rem; z-index: 1;
+        font-family: 'Fredoka', sans-serif;
+        font-weight: 600; font-size: 0.7rem;
+        letter-spacing: 0.08em; text-transform: uppercase;
+        color: var(--ink);
+    }
+    .lounge__frame-badge {
+        position: absolute; top: 1rem; left: 1rem; z-index: 1;
+        font-family: 'Fredoka', sans-serif;
+        font-weight: 600; font-size: 0.62rem;
+        letter-spacing: 0.08em; text-transform: uppercase;
+        color: var(--purple);
+        background: rgba(14,14,18,0.6);
+        border: 1px solid rgba(167,139,250,0.35);
+        border-radius: 999px;
+        padding: 0.4em 0.8em;
+        backdrop-filter: blur(4px);
+    }
+
+    @media (max-width: 780px) {
+        .lounge__wrap { grid-template-columns: 1fr; text-align: center; }
+        .lounge__features { justify-content: center; }
+        .lounge__flavours { justify-content: center; }
+        .lounge__cta-row { justify-content: center; }
+        .lounge__text { margin-inline: auto; }
+        .lounge__frame { max-width: 420px; margin: 0 auto; }
+    }
+</style>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+<style>
+/* ================================================================
+   MOISHI CAROUSEL — STYLES
+   ----------------------------------------------------------------
+   Namespaced under .moishi-carousel / .moishi-* so this drops
+   into any page without leaking styles.
+
+   TOKENS
+   Background   #06090A
+   Panel        #0E1512
+   Deep green   #10261B
+   Mid green    #1F4D38
+   Glow green   #3DDC84
+   Cream        #F2ECD8
+   Muted        #8FA095
+   ================================================================ */
+
+.moishi-carousel {
+  --moishi-bg: #06090a;
+  --moishi-panel: #0e1512;
+  --moishi-deep: #10261b;
+  --moishi-mid: #421f4d;
+  --moishi-glow: #8f3ddc;
+  --moishi-cream: #f2ecd8;
+  --moishi-muted: #8fa095;
+
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  background: var(--moishi-bg);
+  padding: 4rem 0 4.5rem;
+  color: var(--moishi-cream);
+  font-family: 'Jost', sans-serif;
+}
+
+.moishi-carousel * { box-sizing: border-box; }
+
+/* ---------- Section background image ----------
+   Fully responsive (object-fit: cover keeps it filling the section
+   at any width/height, no stretching). The dark scrim on top keeps
+   the cards, text and smoke effect readable no matter what image
+   is dropped in — swap the <img src="..."> in the HTML below. */
+
+.moishi-carousel__bg {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.moishi-carousel__bg-scrim {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(180deg, rgba(6,9,8,0.88) 0%, rgba(6,9,8,0.72) 45%, rgba(6,9,8,0.88) 100%);
+}
+
+/* ---------- Ambient smoke ---------- */
+
+.moishi-smoke { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+.moishi-smoke .wisp { position: absolute; border-radius: 50%; filter: blur(60px); opacity: 0.35; mix-blend-mode: screen; }
+
+.wisp--a { width: 42vw; height: 42vw; left: -10vw; bottom: -20vw; background: radial-gradient(circle, var(--moishi-mid) 0%, transparent 70%); animation: moishi-drift-a 22s ease-in-out infinite; }
+.wisp--b { width: 36vw; height: 36vw; right: -8vw; top: -14vw; background: radial-gradient(circle, var(--moishi-glow) 0%, transparent 70%); opacity: 0.16; animation: moishi-drift-b 26s ease-in-out infinite; }
+.wisp--c { width: 28vw; height: 28vw; right: 20vw; bottom: -16vw; background: radial-gradient(circle, var(--moishi-mid) 0%, transparent 70%); opacity: 0.22; animation: moishi-drift-c 30s ease-in-out infinite; }
+
+@keyframes moishi-drift-a { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(4vw,-3vw) scale(1.1); } }
+@keyframes moishi-drift-b { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(-3vw,4vw) scale(1.05); } }
+@keyframes moishi-drift-c { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(-4vw,-2vw) scale(1.12); } }
+
+/* ---------- Header — set in your two reference fonts ---------- */
+
+.moishi-carousel__header {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  margin-bottom: 2.5rem;
+  padding: 0 1.25rem;
+}
+
+.moishi-carousel__eyebrow {
+  margin: 0;
+  font-family: 'Alex Brush', cursive;
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--moishi-glow);
+}
+
+.moishi-carousel__title {
+  margin: 0.5rem 0 0;
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 600;
+  font-size: 1.35rem;
+  line-height: 1.4;           /* generous — this is what stops lines colliding */
+  letter-spacing: 0.01em;
+  color: var(--moishi-cream);
+  overflow-wrap: break-word;   /* stops a long word like "MOISHI" forcing overflow */
+}
+
+/* Fixed breakpoints instead of vw units, so sizing stays sane no
+   matter how narrow the embedding container/widget is */
+@media (min-width: 420px) {
+  .moishi-carousel__eyebrow { font-size: 1.9rem; }
+  .moishi-carousel__title   { font-size: 1.55rem; }
+}
+
+@media (min-width: 640px) {
+  .moishi-carousel__eyebrow { font-size: 2.2rem; }
+  .moishi-carousel__title   { font-size: 1.9rem; line-height: 1.3; }
+}
+
+@media (min-width: 960px) {
+  .moishi-carousel__eyebrow { font-size: 2.6rem; }
+  .moishi-carousel__title   { font-size: 2.4rem; }
+}
+
+@media (min-width: 1280px) {
+  .moishi-carousel__title { font-size: 2.75rem; }
+}
+
+/* ---------- Viewport / track ---------- */
+
+.moishi-carousel__viewport {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 4.5rem; /* room for the floating side buttons */
+}
+
+.moishi-carousel__track {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  cursor: grab;
+
+  user-select: none;
+  touch-action: pan-y;
+}
+
+.moishi-carousel__track.is-dragging { cursor: grabbing; }
+
+/* ---------- Slide — edge-to-edge editorial frame ---------- */
+
+.moishi-slide {
+  position: relative;
+  flex: 0 0 auto;
+  width: 70%;
+  aspect-ratio: 2.5 / 4;
+  margin: 0 0.4rem;
+  border-radius: 6px;
+  overflow: hidden;
+  background: var(--moishi-panel);
+  border: 1px solid var(--moishi-deep);
+}
+
+@media (min-width: 640px)  { .moishi-slide { width: 35%; } }
+@media (min-width: 960px)  { .moishi-slide { width: 27%; } }
+@media (min-width: 1280px) { .moishi-slide { width: 24%; } }
+
+.moishi-slide__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0.85) brightness(0.85);
+  transition: transform 0.6s ease, filter 0.4s ease;
+  pointer-events: none;
+  -webkit-user-drag: none;
+}
+
+.moishi-slide:hover .moishi-slide__img {
+  transform: scale(1.06);
+  filter: saturate(1) brightness(0.95);
+}
+
+/* Bottom gradient so the overlay text stays legible on any image */
+.moishi-slide__overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(0deg, rgba(6,9,8,0.92) 0%, rgba(6,9,8,0.35) 42%, transparent 68%),
+    linear-gradient(180deg, rgba(6,9,8,0.55) 0%, transparent 30%);
+  pointer-events: none;
+}
+
+/* Roman-numeral index, top-left — matches your reference */
+.moishi-slide__index {
+  position: absolute;
+  top: 0.9rem;
+  left: 1rem;
+  z-index: 1;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 0.95rem;
+  color: rgba(242, 236, 216, 0.75);
+  letter-spacing: 0.04em;
+}
+
+.moishi-slide__text {
+  position: absolute;
+  left: 1.1rem;
+  right: 1.1rem;
+  bottom: 1.1rem;
+  z-index: 1;
+}
+
+.moishi-slide__title {
+  margin: 0;
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 500;
+  font-size: clamp(1.15rem, 1.9vw, 1.55rem);
+  line-height: 1.15;
+  color: var(--moishi-cream);
+}
+
+.moishi-slide__subtitle {
+  margin: 0.35rem 0 0;
+  font-family: 'Jost', sans-serif;
+  font-weight: 400;
+  font-size: 0.66rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--moishi-muted);
+}
+
+/* ---------- Floating circular nav buttons ---------- */
+
+.moishi-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 1px solid rgba(242, 236, 216, 0.25);
+  background: rgba(242, 236, 216, 0.06);
+  backdrop-filter: blur(6px);
+  color: var(--moishi-cream);
+  cursor: pointer;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, color 0.3s ease, background 0.3s ease;
+}
+
+.moishi-btn--prev { left: 0.5rem; }
+.moishi-btn--next { right: 0.5rem; }
+
+.moishi-btn svg { width: 19px; height: 19px; }
+
+.moishi-btn:hover,
+.moishi-btn:focus-visible {
+  border-color: var(--moishi-glow);
+  color: var(--moishi-glow);
+  background: rgba(61, 220, 132, 0.08);
+  box-shadow: 0 0 22px -4px rgba(61, 220, 132, 0.55);
+}
+
+.moishi-btn:focus-visible { outline: 2px solid var(--moishi-glow); outline-offset: 3px; }
+.moishi-btn:active { transform: translateY(-50%) scale(0.94); }
+
+@media (min-width: 960px) {
+  .moishi-btn { width: 58px; height: 58px; }
+  .moishi-btn--prev { left: 1.25rem; }
+  .moishi-btn--next { right: 1.25rem; }
+}
+
+/* ---------- Reduced motion ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .wisp { animation: none; }
+  .moishi-slide__img { transition: none; }
+}
+
+/* ================================================================
+   ABOUT SECTION — STYLES (Cafe Moishi)
+   ================================================================ */
+        .about-mun {
+    --void: #040705;
+    --smoke: #0b110d;
+    --cream: #f1faf3;
+    --cream-dim: rgba(241,250,243,0.62);
+    --cream-faint: rgba(241,250,243,0.38);
+    --accent: #6930b3;
+    --accent-bright: #421f4d;
+    --accent-line: rgba(33, 54, 243, 0.9);
+    --accent-glow: rgba(34, 47, 228, 0.5);
+    --card-bg: rgba(241,250,243,0.025);
+    --card-border: rgba(241,250,243,0.09);
+
+    position: relative;
+    overflow: hidden;
+    background: var(--void);
+    padding: clamp(2.75rem, 6vw, 4.5rem) clamp(1.5rem, 6vw, 6rem);
+    color: var(--cream);
+
+    opacity: 0;
+    transition: opacity 1.3s cubic-bezier(.2,.7,.2,1);
+}
+.about-mun.in-view { opacity: 1; }
+
+.about-mun * { box-sizing: border-box; }
+
+.about-mun__bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    z-index: 0;
+    opacity: 50%;
+}
+
+.about-mun__scrim {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background:
+        linear-gradient(180deg, rgba(4,7,5,0.65) 6%, rgba(4,7,5,0.55) 30%, rgba(4,7,5,0.7) 100%);
+}
+
+/* ambient embers drifting upward — echoes the rooftop-at-night setting */
+.about-mun__embers { position: absolute; inset: 0; z-index: 1; pointer-events: none; overflow: hidden; }
+.about-mun__ember {
+    position: absolute;
+    bottom: -4%;
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: var(--accent-bright);
+    box-shadow: 0 0 6px 1px var(--accent-glow);
+    opacity: 0;
+    animation: aboutMunRise linear infinite;
+}
+@keyframes aboutMunRise {
+    0%   { opacity: 0; transform: translateY(0) translateX(0); }
+    8%   { opacity: .8; }
+    92%  { opacity: .5; }
+    100% { opacity: 0; transform: translateY(-115vh) translateX(var(--drift, 30px)); }
+}
+
+.about-mun__skyline {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: clamp(90px, 16vw, 200px);
+    z-index: 2;
+    pointer-events: none;
+}
+
+.about-mun__skyline svg { width: 100%; height: 100%; display: block; }
+
+.about-mun__skyline-path {
+    fill: none;
+    stroke: var(--accent-line);
+    stroke-width: 1.4;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    transition: stroke-dashoffset 2.4s cubic-bezier(.2,.7,.2,1);
+}
+
+.about-mun__spire { stroke-dasharray: 100; stroke-dashoffset: 100; transition-delay: 1.6s; }
+
+.about-mun__skyline.in-view .about-mun__skyline-path { stroke-dashoffset: 0; }
+
+.about-mun__star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    border-radius: 50%;
+    background: var(--cream);
+    opacity: 0;
+}
+
+.about-mun__skyline.in-view .about-mun__star {
+    animation: aboutMunTwinkle 3.2s ease-in-out 1.8s infinite;
+}
+
+@keyframes aboutMunTwinkle {
+    0%, 100% { opacity: 0; transform: scale(1); }
+    50% { opacity: .9; transform: scale(1.8); }
+}
+
+.about-mun__inner {
+    position: relative;
+    z-index: 3;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* scroll-reveal (progressive enhancement — content is visible without JS) */
+.about-mun__reveal {
+    opacity: 0;
+    transform: translateY(22px);
+    transition: opacity .8s cubic-bezier(.2,.7,.2,1), transform .8s cubic-bezier(.2,.7,.2,1);
+}
+.about-mun__inner.in-view .about-mun__reveal { opacity: 1; transform: translateY(0); }
+.about-mun__inner.in-view .about-mun__reveal:nth-of-type(1) { transition-delay: .05s; }
+.about-mun__inner.in-view .about-mun__reveal:nth-of-type(2) { transition-delay: .16s; }
+.about-mun__inner.in-view .about-mun__reveal:nth-of-type(3) { transition-delay: .27s; }
+.about-mun__inner.in-view .about-mun__reveal:nth-of-type(4) { transition-delay: .38s; }
+.about-mun__inner.in-view .about-mun__reveal:nth-of-type(5) { transition-delay: .48s; }
+.about-mun__inner.in-view .about-mun__reveal:nth-of-type(6) { transition-delay: .58s; }
+
+.about-mun__eyebrow {
+    font-family: 'Jost', sans-serif;
+    font-weight: 600;
+    font-size: 0.90rem;
+    letter-spacing: 0.38em;
+    text-transform: uppercase;
+    color: var(--cream);
+    margin-bottom: clamp(1.2rem, 3vw, 1.8rem);
+    display: flex;
+    align-items: center;
+    gap: 0.7em;
+}
+.about-mun__eyebrow::before,
+.about-mun__eyebrow::after {
+    content: "";
+    width: 22px;
+    height: 1px;
+    background: var(--accent-line);
+}
+
+.about-mun__headline {
+    margin: 0 0 clamp(1.6rem, 4vw, 2.2rem);
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: clamp(2.1rem, 5.2vw, 3.6rem);
+    line-height: 1.16;
+    letter-spacing: 0.01em;
+    color: var(--cream);
+}
+
+.about-mun__headline em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--cream-dim);
+}
+
+.about-mun__body {
+    margin: 0 0 1.1rem;
+    max-width: 58ch;
+    font-family: 'Jost', sans-serif;
+    font-weight: 400;
+    font-size: clamp(0.95rem, 1.6vw, 1.05rem);
+    line-height: 1.85;
+    letter-spacing: 0.01em;
+    color: var(--cream-dim);
+}
+
+.about-mun__body--secondary {
+    margin-bottom: clamp(2rem, 5vw, 2.6rem);
+    max-width: 54ch;
+    color: var(--cream-faint);
+}
+
+/* amenity chips — small, factual, not decorative filler */
+.about-mun__chips {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    margin: 0 0 clamp(2.6rem, 6vw, 3.6rem);
+    padding: 0;
+    list-style: none;
+}
+.about-mun__chip {
+    display: flex;
+    align-items: center;
+    gap: 0.45em;
+    padding: 0.5em 0.95em;
+    border: 1px solid var(--card-border);
+    border-radius: 999px;
+    background: var(--card-bg);
+    font-family: 'Jost', sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--cream-dim);
+    transition: border-color .35s ease, color .35s ease, transform .35s cubic-bezier(.2,.7,.2,1);
+}
+.about-mun__chip:hover {
+    border-color: var(--accent-bright);
+    color: var(--cream);
+    transform: translateY(-2px);
+}
+.about-mun__chip-dot {
+    width: 5px; height: 5px; border-radius: 50%;
+    background: var(--accent-bright);
+    box-shadow: 0 0 6px var(--accent-glow);
+    flex-shrink: 0;
+}
+
+/* feature cards — replaces the plain label/value row with a modern grid */
+.about-mun__features {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    width: 100%;
+    max-width: 780px;
+    margin: 0 0 clamp(2.6rem, 6vw, 3.4rem);
+}
+
+.about-mun__feature {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.7rem;
+    padding: 1.5rem 1rem 1.4rem;
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    background: var(--card-bg);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    transition: transform .4s cubic-bezier(.2,.7,.2,1), border-color .4s ease, background .4s ease, box-shadow .4s ease;
+}
+.about-mun__feature:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-bright);
+    background: rgba(241,250,243,0.045);
+    box-shadow: 0 18px 40px -18px rgba(0,0,0,0.6), 0 0 0 1px var(--accent-glow) inset;
+}
+.about-mun__feature-icon {
+    width: 26px; height: 26px;
+    color: var(--moishi-glow);
+    transition: filter .4s ease;
+}
+.about-mun__feature:hover .about-mun__feature-icon {
+    filter: drop-shadow(0 0 7px var(--accent-glow));
+}
+.about-mun__feature-icon svg { width: 100%; height: 100%; display: block; }
+
+.about-mun__feature-label {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--accent-bright);
+}
+
+.about-mun__feature-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(0.95rem, 1.5vw, 1.08rem);
+    line-height: 1.3;
+    color: var(--cream);
+}
+
+/* CTA row */
+.about-mun__actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(1.2rem, 3vw, 1.8rem);
+    flex-wrap: wrap;
+}
+
+.about-mun__cta {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6em;
+    padding: 0.95em 2em;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--void);
+    background: linear-gradient(135deg, var(--accent-bright), #a9e6c2);
+    border: none;
+    border-radius: 3px;
+    text-decoration: none;
+    cursor: pointer;
+    overflow: hidden;
+    transition: transform .3s cubic-bezier(.2,.7,.2,1), box-shadow .3s ease, letter-spacing .3s ease;
+}
+.about-mun__cta:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 30px -10px var(--accent-glow);
+    letter-spacing: 0.22em;
+}
+.about-mun__cta::before {
+    content: "";
+    position: absolute;
+    top: 0; left: -60%; width: 40%; height: 100%;
+    background: linear-gradient(115deg, transparent, rgba(255,255,255,0.55), transparent);
+    transform: skewX(-20deg);
+    transition: left .6s ease;
+}
+.about-mun__cta:hover::before { left: 130%; }
+
+.about-mun__link {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--cream-dim);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5em;
+    transition: color .3s ease, gap .3s ease;
+}
+.about-mun__link svg { width: 13px; height: 13px; transition: transform .3s ease; }
+.about-mun__link:hover { color: var(--cream); gap: 0.75em; }
+.about-mun__link:hover svg { transform: translateX(3px); }
+
+@media (max-width: 780px) {
+    .about-mun__features { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 480px) {
+    .about-mun__features { grid-template-columns: 1fr; max-width: 320px; }
+    .about-mun__actions { flex-direction: column; gap: 1.1rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .about-mun { opacity: 1 !important; transition: none !important; }
+    .about-mun__skyline-path,
+    .about-mun__spire { transition: none; stroke-dashoffset: 0; }
+    .about-mun__star { animation: none !important; opacity: .6; }
+    .about-mun__ember { animation: none !important; display: none; }
+    .about-mun__reveal {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+    }
+}
+
+</style>
+    </head>
+    <body class="home wp-singular page-template page-template-page_HOME page-template-page_HOME-php page page-id-2 wp-theme-sim-base chrome">
+
+<nav class="site-nav">
+  <a href="#" class="site-logo">
+    <span class="mark">
+      <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M20 4C20 4 13 12 13 19a7 7 0 0 0 14 0c0-7-7-15-7-15Z" stroke="#2be87c" stroke-width="1.3" fill="rgba(43,232,124,0.12)"/>
+        <path d="M20 19c0 4 3 6 3 10a3 3 0 0 1-6 0c0-2 1-3 1-3" stroke="#2be87c" stroke-width="1" opacity="0.6"/>
+      </svg>
+    </span>
+    <span class="wordmark">Cafe Moishi</span>
+  </a>
+
+  <ul class="nav-links">
+    <li><a href="#" class="active">Home</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="#">Menu</a></li>
+    <li><a href="#">Contact</a></li>
+  </ul>
+
+  <div class="nav-right">
+    <div class="nav-location" id="locationTrigger">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 22s7-7.16 7-12.5A7 7 0 0 0 5 9.5C5 14.84 12 22 12 22Z" stroke="#2be87c" stroke-width="1.3"/>
+        <circle cx="12" cy="9.5" r="2.4" stroke="#2be87c" stroke-width="1.3"/>
+      </svg>
+      <span>Find Us</span>
+
+      <div class="location-popover">
+        <iframe
+          src="https://www.google.com/maps?q=Times+Square,New+York,NY&output=embed"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+        <p class="location-address">Noir Lounge — 123 Ember Street, Downtown</p>
+        <a class="location-link" href="https://maps.google.com/?q=Times+Square,New+York,NY" target="_blank" rel="noopener">Get Directions →</a>
+      </div>
+    </div>
+
+    <button class="nav-cta">Book a Table</button>
+  </div>
+
+  <button class="nav-burger" id="burgerBtn" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+
+  <ul class="mobile-menu" id="mobileMenu">
+    <li><a href="#" class="active">Home</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="#">Menu</a></li>
+    <li><a href="#">Contact</a></li>
+    <li>
+      <a href="https://maps.google.com/?q=Times+Square,New+York,NY" target="_blank" rel="noopener" class="mobile-location">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 22s7-7.16 7-12.5A7 7 0 0 0 5 9.5C5 14.84 12 22 12 22Z" stroke="#2be87c" stroke-width="1.3"/>
+          <circle cx="12" cy="9.5" r="2.4" stroke="#2be87c" stroke-width="1.3"/>
+        </svg>
+        Find Us
+      </a>
+    </li>
+    <li><a href="#" class="mobile-cta">Book a Table</a></li>
+  </ul>
+</nav>
+
+        <main id="main" data-barba="wrapper">
+            <div class="barbaLoader">
+                <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 79 107">
+                    <path d="M79 53.369c-30.693.507-37.983 5.382-39.505 53.391C37.962 58.751 30.681 53.876 0 53.369 30.429 52.629 37.884 46.454 39.495 0 41.093 46.454 48.56 52.619 79 53.369Z" fill="#F2F0DD"></path>
+                </svg>
+            </div>
+            <a href="#contacts" class="reserve-cta">
+                <div class="reserve-cta__landscape hidden-portrait">
+                    <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 130 130">
+                        <circle cx="64.5" cy="64.5" r="37.5" fill="#222944"></circle>
+                        <circle cx="64.5" cy="64.5" r="37.5" fill="url(#a)"></circle>
+                        <g clip-path="url(#b)" fill="#F2F0DD" class="reserve-cta__text">
+                            <path d="m87.092 12.513-.504-2.598-1.882-.755-1.342 3.47c-.027.063-.117.1-.171.072l-.963-.386a.143.143 0 0 1-.073-.18l1.828-4.351 1.603-4.153a.148.148 0 0 1 .18-.072l3.07 1.24c1.991.8 2.873 2.158 2.18 3.875-.567 1.402-1.71 1.897-3.143 1.645l.847 4.495c.009.045-.054.099-.1.072l-1.116-.45a.23.23 0 0 1-.144-.189l-.261-1.735h-.009Zm1.459-6.75-2.09-.846-1.404 3.317 2.17.872c1.153.468 2.152.297 2.63-.872.45-1.114-.064-1.968-1.297-2.472h-.01ZM91.495 16.45c-.054-.035-.081-.125-.045-.188l2.575-3.973 2.305-3.794c.037-.054.127-.08.19-.045l4.826 3.03c.054.036.081.125.045.188l-.396.63c-.036.054-.126.08-.189.045l-3.836-2.4-1.594 2.409 3.62 2.265c.054.036.08.126.045.189l-.396.629c-.036.054-.126.08-.19.045l-3.62-2.265-1.818 3.02 3.926 2.463c.054.036.08.126.045.189l-.396.63c-.036.053-.126.08-.19.044l-4.925-3.083.018-.027ZM101.591 24.011c-1.765-1.609-2.053-3.398-.676-5.043.045-.054.144-.054.189 0l.757.692c.054.045.063.135.018.198-.856 1.115-.937 2.211.423 3.443 1.036.944 2.125 1.232 2.963.315 1.764-1.933-4.08-4.657-1.666-7.309 1.161-1.276 2.845-1.079 4.385.315 1.603 1.447 1.981 3.02.837 4.584-.036.063-.135.063-.18.018l-.765-.7c-.054-.046-.063-.136-.018-.199.729-.962.549-1.941-.576-2.966-.964-.872-1.954-1.124-2.684-.324-1.639 1.798 4.178 4.54 1.693 7.273-1.306 1.438-3.098 1.141-4.691-.306l-.009.01ZM106.578 28.82c-.045-.053-.027-.152.027-.188l3.8-2.832 3.476-2.76c.054-.045.153-.027.189.027l3.476 4.513c.045.054.027.144-.027.189l-.585.45c-.054.044-.154.026-.19-.028l-2.764-3.578-2.332 1.708 2.602 3.38c.036.054.027.153-.027.19l-.585.449c-.054.045-.153.027-.189-.027l-2.603-3.38-2.755 2.202 2.827 3.668c.045.054.027.144-.027.189l-.585.45c-.054.044-.144.026-.189-.028l-3.548-4.594h.009ZM115.547 39.617l1.306-2.31-.937-1.798-3.277 1.77c-.063.028-.153 0-.18-.053l-.478-.917c-.036-.063 0-.153.054-.18l4.223-2.121 3.926-2.113c.064-.027.154 0 .181.054l1.53 2.93c.991 1.906.775 3.506-.864 4.36-1.342.702-2.539.333-3.458-.79l-2.287 3.973s-.099.036-.126-.01l-.558-1.06a.22.22 0 0 1 .018-.234l.927-1.483v-.018Zm5.511-4.19-1.045-1.995-3.223 1.618 1.08 2.068c.577 1.097 1.441 1.627 2.567 1.034 1.062-.558 1.233-1.538.621-2.724ZM117.574 48.993c-.072 0-.144-.054-.171-.135l-.396-1.276c-.027-.081 0-.153.063-.207l7.843-5.79c.045-.026.126-.008.144.055l.333 1.07c.027.08 0 .161-.072.206l-7.159 5.08 8.78.125c.081 0 .153.054.18.126l.288.926c.018.063-.036.126-.09.126l-9.743-.315v.009ZM118.915 54.998c0-.072.054-.144.117-.153l4.719-.512 4.403-.611c.063 0 .144.053.153.116l.693 5.655c0 .063-.054.144-.117.153l-.738.09c-.063 0-.144-.054-.153-.117l-.549-4.486-2.882.288.522 4.234c0 .063-.054.143-.117.152l-.738.09c-.072 0-.144-.054-.153-.116l-.522-4.235-3.494.495.567 4.594c0 .062-.054.143-.117.152l-.738.09c-.072 0-.144-.054-.153-.117l-.712-5.753.009-.009ZM123.534 70.577l-3.944-.566c-.072-.01-.127-.09-.118-.153l.136-.935c.009-.063.09-.126.153-.117l4.601.746 4.484.602c.063.01.126.09.117.153l-.171 1.187a.246.246 0 0 1-.135.189l-8.383 3.775.801.09 2.783.378 4.052.584c.063.009.126.09.117.153l-.135.935c-.009.063-.09.126-.153.117l-4.467-.728-4.619-.62c-.063-.01-.126-.09-.117-.154l.189-1.258a.247.247 0 0 1 .135-.189l8.266-3.722-.981-.117-2.611-.36v.01ZM116.088 83.558c.945-2.553 3.395-3.551 6.159-2.526 2.837 1.052 3.989 3.38 3.044 5.933-.946 2.553-3.332 3.587-6.186 2.526-2.774-1.025-3.953-3.39-3.008-5.933h-.009Zm.972.36c-.702 1.887.235 3.523 2.486 4.36 2.251.835 4.061.206 4.763-1.682.703-1.897-.252-3.515-2.521-4.36-2.242-.827-4.034-.197-4.728 1.672v.01ZM109.496 96.422c.045-.072.126-.099.198-.063l7.392 2.58-5.339-5.69a.154.154 0 0 1-.027-.207l.675-1.025c.045-.072.126-.099.198-.063l8.978 3.066c.063.026.09.107.054.161l-.559.845c-.045.072-.126.09-.198.063l-7.843-2.831 5.754 5.996a.154.154 0 0 1 .027.206l-.639.971c-.045.072-.126.09-.198.063l-7.807-2.876 5.709 6.067a.154.154 0 0 1 .027.207l-.504.764c-.036.054-.127.063-.163 0l-6.366-7.02c-.054-.072-.063-.153-.018-.225l.667-.998-.018.009ZM99.563 109.115l2.531.8 1.566-1.285-2.413-2.841a.14.14 0 0 1 .018-.189l.802-.656a.14.14 0 0 1 .189.018l2.953 3.686 2.891 3.389a.138.138 0 0 1-.018.188l-2.558 2.104c-1.656 1.366-3.268 1.483-4.448.063-.963-1.169-.846-2.409.054-3.542l-4.367-1.411c-.045-.018-.054-.09-.018-.126l.927-.764a.221.221 0 0 1 .234-.036l1.648.602h.01Zm5.25 4.504 1.738-1.429-2.251-2.814-1.801 1.483c-.964.791-1.288 1.744-.486 2.724.765.926 1.764.89 2.8.036ZM94.009 111.093c.054-.036.153 0 .18.054l2.269 4.153 2.242 3.83c.036.062 0 .152-.054.179l-4.961 2.796c-.063.036-.154 0-.18-.054l-.37-.647c-.036-.063 0-.153.054-.18l3.944-2.22-1.36-2.544-3.718 2.094c-.063.036-.153 0-.18-.054l-.37-.647c-.035-.063 0-.153.055-.18l3.718-2.094-1.791-3.03-4.035 2.275c-.054.035-.153 0-.18-.054l-.369-.648c-.036-.063 0-.153.054-.179l5.06-2.85h-.008ZM82.527 116.361c2.26-.782 3.971-.18 4.763 1.816.018.063-.018.152-.08.17l-.973.342a.161.161 0 0 1-.19-.081c-.575-1.285-1.494-1.879-3.232-1.276-1.323.458-2.098 1.276-1.693 2.445.865 2.472 6.043-1.358 7.222 2.022.567 1.627-.405 3.012-2.368 3.695-2.044.71-3.602.297-4.44-1.456-.035-.063 0-.144.073-.171l.981-.342a.161.161 0 0 1 .19.081c.495 1.097 1.449 1.412 2.89.908 1.224-.422 1.918-1.177 1.567-2.202-.802-2.293-5.998 1.501-7.213-1.987-.64-1.834.477-3.263 2.503-3.964ZM75.909 118.419c.063-.009.144.045.153.108l.666 4.684.757 4.369c.008.063-.046.144-.109.152l-5.627.881c-.063.009-.144-.044-.153-.107l-.118-.729c-.009-.062.045-.143.109-.152l4.466-.702-.379-2.858-4.214.656c-.063.009-.144-.045-.153-.108l-.117-.737c-.009-.063.045-.144.108-.153l4.215-.656-.613-3.47-4.574.719c-.063.009-.144-.045-.153-.108l-.117-.737c-.01-.063.045-.144.108-.153l5.736-.899h.009ZM62.113 121.107l1.405 2.257 2.026.036.018-3.722c0-.072.072-.135.135-.135l1.044.018c.063 0 .135.072.135.135l-.162 4.719-.018 4.45c0 .072-.072.135-.135.135l-3.304-.063c-2.143-.045-3.45-.998-3.413-2.841.027-1.51.927-2.382 2.35-2.652l-2.395-3.901s.018-.108.072-.108l1.197.027c.082 0 .163.045.199.126l.864 1.528-.018-.009Zm1.044 6.832 2.252.045.126-3.596-2.341-.045c-1.243-.027-2.117.486-2.144 1.753-.026 1.196.766 1.825 2.099 1.852l.008-.009ZM52.91 118.401a.183.183 0 0 1 .199-.081l1.314.261a.181.181 0 0 1 .145.153l1.35 9.646c0 .054-.054.117-.117.099l-1.098-.216c-.081-.018-.135-.081-.145-.171l-1.062-8.711-4.295 7.641c-.045.072-.117.117-.198.099l-.955-.189c-.063-.009-.09-.089-.072-.134l4.926-8.397h.009ZM46.994 116.72c.063.027.1.108.072.171l-1.8 4.378-1.567 4.153c-.027.063-.109.099-.172.072l-5.303-2.086c-.063-.026-.1-.107-.072-.179l.27-.693c.027-.062.108-.098.17-.071l4.215 1.654 1.126-2.661-3.971-1.564c-.064-.027-.1-.108-.073-.171l.27-.692c.028-.063.109-.099.172-.072l3.97 1.564 1.225-3.299-4.313-1.69c-.063-.027-.099-.108-.072-.171l.27-.692c.027-.063.108-.099.171-.072l5.403 2.121h.01ZM31.076 113.322l2.386-3.182c.045-.054.135-.072.19-.027l.755.566c.055.036.064.135.028.189l-2.864 3.677-2.683 3.641c-.036.054-.135.062-.19.027l-.963-.72a.231.231 0 0 1-.099-.206l.702-9.152-.468.665-1.666 2.257-2.458 3.272c-.036.054-.135.063-.189.027l-.756-.566c-.054-.036-.063-.135-.027-.189l2.782-3.569 2.764-3.749a.152.152 0 0 1 .19-.027l1.017.765a.231.231 0 0 1 .1.206l-.694 9.026.576-.8 1.567-2.113v-.018ZM23.232 100.584c1.792 2.05 1.504 4.666-.712 6.598-2.278 1.987-4.871 1.888-6.672-.161-1.8-2.05-1.567-4.639.72-6.635 2.224-1.941 4.872-1.852 6.664.189v.009Zm-.784.683c-1.323-1.51-3.214-1.474-5.024.108s-2.116 3.461-.793 4.971c1.333 1.52 3.215 1.457 5.034-.134 1.8-1.574 2.098-3.443.783-4.945ZM15.028 88.655a.167.167 0 0 1-.045.207l-5.798 5.25 7.554-1.97c.081-.026.153 0 .198.082l.577 1.078a.167.167 0 0 1-.045.207l-6.979 6.419c-.054.045-.135.027-.17-.027l-.478-.89a.167.167 0 0 1 .045-.207l6.231-5.528-8.023 2.193c-.081.027-.153 0-.198-.08l-.55-1.026a.167.167 0 0 1 .046-.207l6.258-5.483-8.06 2.121c-.08.027-.152 0-.197-.08l-.433-.81a.094.094 0 0 1 .072-.143l9.212-2.248a.176.176 0 0 1 .198.09l.568 1.06.018-.008ZM8.617 73.867l-1.918 1.834.378 1.987 3.656-.755c.063-.01.144.035.162.107l.198 1.016c.009.063-.045.144-.108.162l-4.656.818-4.367.908c-.063.009-.144-.045-.162-.108l-.621-3.245c-.405-2.104.261-3.578 2.08-3.928 1.486-.288 2.53.413 3.088 1.743L9.68 71.26s.108 0 .117.045l.225 1.178a.226.226 0 0 1-.08.224l-1.315 1.16h-.01Zm-6.484 2.436.424 2.212 3.556-.63-.44-2.292c-.235-1.222-.92-1.969-2.162-1.726-1.18.225-1.63 1.124-1.378 2.436ZM9.545 68.033a.138.138 0 0 1-.135.135H4.664l-4.439.153a.138.138 0 0 1-.135-.135L0 62.496c0-.073.063-.136.135-.136h.738a.124.124 0 0 1 .136.117l.072 4.513 2.89.018-.072-4.261c0-.072.063-.135.135-.135h.747c.063-.009.136.054.136.117l.072 4.261 3.52-.126-.072-4.62c0-.072.063-.135.135-.135h.739a.124.124 0 0 1 .135.117l.099 5.798v.009ZM10.4 55.465c-.387 2.356-1.738 3.57-3.872 3.318-.063-.01-.126-.09-.108-.153l.162-1.007a.156.156 0 0 1 .153-.126c1.405.108 2.369-.422 2.666-2.23.225-1.384-.117-2.453-1.342-2.651-2.584-.423-1.693 5.95-5.232 5.376-1.701-.28-2.458-1.798-2.116-3.848.352-2.13 1.46-3.3 3.404-3.2.072 0 .126.072.117.144l-.17 1.024a.156.156 0 0 1-.154.126c-1.207-.09-1.936.602-2.18 2.104-.206 1.276.127 2.247 1.19 2.418 2.395.396 1.54-5.978 5.195-5.376 1.918.315 2.648 1.978 2.296 4.09l-.009-.008ZM11.742 48.687c-.027.063-.108.108-.17.081l-4.44-1.645-4.205-1.42c-.063-.027-.108-.108-.081-.17l1.909-5.359c.027-.063.108-.108.171-.08l.702.251c.063.018.108.108.081.17l-1.512 4.253 2.701 1.025 1.432-4.01c.027-.063.108-.108.17-.08l.703.251c.063.018.108.108.081.171l-1.432 4.01 3.341 1.114 1.549-4.36c.027-.063.108-.108.171-.08l.702.25c.063.028.108.109.081.172l-1.945 5.465-.009-.009ZM15.973 35.293l-2.656.153-1 1.762 3.27 1.798c.053.036.08.126.053.188l-.513.9c-.036.062-.126.08-.18.053l-4.07-2.4L6.969 35.6c-.054-.036-.081-.126-.054-.18l1.639-2.868c1.062-1.86 2.53-2.553 4.133-1.636 1.315.746 1.657 1.95 1.207 3.326l4.583-.234c.045 0 .09.063.063.108l-.595 1.043a.228.228 0 0 1-.207.117l-1.755.027-.01-.01Zm-6.51-2.355-1.116 1.96 3.106 1.833 1.162-2.022c.612-1.08.585-2.086-.514-2.715-1.044-.593-1.963-.207-2.629.953l-.009-.01ZM22.772 28.524a.19.19 0 0 1-.018.215l-.856 1.025a.184.184 0 0 1-.207.054l-9.13-3.443c-.054-.027-.072-.099-.036-.152l.72-.854a.178.178 0 0 1 .216-.046l8.158 3.255-4.655-7.426c-.045-.072-.045-.161.009-.224l.621-.747c.045-.053.117-.036.153 0l5.016 8.343h.009ZM27.076 24.146a.14.14 0 0 1-.189-.018l-2.998-3.668-2.909-3.353a.14.14 0 0 1 .018-.189l4.367-3.658a.14.14 0 0 1 .19.018l.477.566a.14.14 0 0 1-.018.189l-3.467 2.903 1.81 2.257 3.268-2.742a.14.14 0 0 1 .19.018l.477.567a.139.139 0 0 1-.018.189l-3.269 2.742 2.314 2.652 3.548-2.976a.14.14 0 0 1 .19.018l.476.567a.14.14 0 0 1-.018.188l-4.448 3.73h.01ZM37.656 11.794l1.666 3.614c.027.063 0 .153-.063.18l-.864.395c-.063.027-.153 0-.18-.063l-1.873-4.26-1.927-4.09c-.027-.064 0-.154.063-.18l1.098-.495a.224.224 0 0 1 .225.018l7.726 4.98-.36-.728-1.188-2.544-1.711-3.713c-.027-.063 0-.153.063-.18l.864-.395c.063-.027.153 0 .18.063l1.82 4.144 1.98 4.216c.027.063 0 .153-.063.18l-1.152.521a.224.224 0 0 1-.226-.018l-7.617-4.908.432.881 1.116 2.382h-.009ZM52.632 11.003c-2.666.594-4.827-.917-5.466-3.793-.657-2.949.675-5.178 3.34-5.772 2.666-.593 4.827.854 5.484 3.812.64 2.886-.71 5.16-3.358 5.744v.01Zm-.225-1.016c1.963-.431 2.836-2.103 2.314-4.45-.522-2.346-2.026-3.514-3.99-3.083-1.98.44-2.827 2.122-2.295 4.477.522 2.328 2.017 3.488 3.97 3.056ZM67.058 9.565a.164.164 0 0 1-.162-.135l-1.783-7.605-1.945 7.551a.164.164 0 0 1-.162.135l-1.225-.018a.164.164 0 0 1-.162-.135L59.386.135c-.01-.072.045-.135.108-.135l1.008.018c.081 0 .144.054.162.135l1.81 8.117 1.99-8.054a.164.164 0 0 1 .162-.135l1.162.018c.081 0 .144.054.162.135l1.756 8.117L69.768.297a.164.164 0 0 1 .162-.135l.919.018c.072 0 .117.072.09.135l-2.513 9.133a.192.192 0 0 1-.18.135l-1.197-.018h.009Z"></path>
+                        </g>
+                        <defs>
+                            <lineargradient id="a" x1="87.26" y1="94.273" x2="47.747" y2="39.825" gradientunits="userSpaceOnUse">
+                                <stop stop-color="#92ABA0"></stop>
+                                <stop offset=".5" stop-color="#56666E"></stop>
+                                <stop offset="1" stop-color="#222944"></stop>
+                            </lineargradient>
+                            <clippath id="b">
+                                <path fill="#fff" d="M0 0h129v129H0z"></path>
+                            </clippath>
+                        </defs>
+                    </svg>
+                </div>
+                <div class="reserve-cta__portrait hidden-landscape">
+                    <div class="t-uppercase t-15">Reservation</div>
+                </div>
+            </a>
+            <div id="main_cont" class="page_HOME" data-barba="container" data-barba-namespace="page_HOME">
+
+                <section class="home-hero">
+                    <div class="home-hero__inner">
+                        <div class="home-hero__background"></div>
+                        <div class="home-hero__top">
+                            <div class="home-hero__stars">
+                                <div class="home-hero__star home-hero__star--background">
+                                    <img src="White smoke, and  clouds_.jfif">
+                                </div>
+                               
+                            </div>
+                          <h1 class="home-hero__title t-uppercase t-130 t-130--m-50 c-yellow t-center t-regular font-2">
+    <div class="home-hero__title-top lines-split words-split chars-split hero-accent">above the <span class="hero-accent">city,</span></div>
+    <div class="home-hero__title-bottom lines-split words-split"> <span class="hero-accent">inside</span><span class=""> moishi</span></div>
+</h1>
+                            <div class="home-hero__moon-initial">
+                                <div class="home-hero__moon">
+                                    <div class="home-hero__moon-inner">
+                                        <div class="home-hero__frame">
+                                            <img src="icecube.png">
+                                        </div>
+                                        <div class="home-hero__frame">
+                                            <img src="icecube.png">
+                                        </div>
+                                        <div class="home-hero__frame">
+                                            <img src="icecube.png">
+                                        </div>
+                                        <div class="home-hero__frame">
+                                            <img src="icecube.png">
+                                        </div>
+                                        <div class="home-hero__frame">
+                                            <img src="icecube.png">
+                                        </div>
+                                        <div class="home-hero__frame">
+                                            <img src="icecube.png">
+                                        </div>
+                                        <div class="home-hero__frame">
+                                            <img src="icecube.png">
+                                        </div>
+                                        <div class="home-hero__frame">
+                                            <img src="icecube.png">
+                                        </div>
+                                        <div class="home-hero__frame">
+                                            <img src="icecube.png">
+                                        </div>
+                                        <div class="home-hero__frame">
+                                            <img src="icecube.png">
+                                        </div>
+                                        <div class="home-hero__frame">
+                                            <img src="icecube.png">
+                                        </div>
+                                        <div class="home-hero__frame">
+                                            <img src="icecube.png">
+                                        </div>
+                                        <div class="home-hero__frame">
+                                            <img src="icecube.png">
+                                        </div>
+                                        <div class="home-hero__frame">
+                                            <img src="icecube.png">
+                                        </div>
+                                        <div class="home-hero__frame">
+                                            <img src="icecube.png">
+                                        </div>
+                                        <div class="home-hero__frame">
+                                            <img src="icecube.png">
+                                        </div>
+                                        <div class="home-hero__frame">
+                                            <img src="icecube.png">
+                                        </div>
+                                        <div class="home-hero__frame">
+                                            <img src="icecube.png">
+                                        </div>
+                                        <div class="home-hero__frame">
+                                            <img src="icecube.png">
+                                        </div>
+                                        <div class="home-hero__frame">
+                                            <img src="icecube.png">
+                                        </div>
+                                        <div class="home-hero__frame">
+                                            <img src="icecube.png">
+                                        </div>
+                                        <div class="home-hero__frame">
+                                            <img src="icecube.png">
+                                        </div>
+                                        <div class="home-hero__frame">
+                                            <img src="icecube.png">
+                                        </div>
+                                        <div class="home-hero__frame">
+                                            <img src="icecube.png">
+                                        </div>
+                                        <div class="home-hero__frame">
+                                            <img src="icecube.png">
+                                        </div>
+                                        <div class="home-hero__frame">
+                                            <img src="icecube.png">
+                                        </div>
+                                        <div class="home-hero__frame">
+                                            <img src="icecube.png">
+                                        </div>
+                                        <div class="home-hero__frame">
+                                            <img src="icecube.png">
+                                        </div>
+                                        <div class="home-hero__frame">
+                                            <img src="icecube.png">
+                                        </div>
+                                        <div class="home-hero__frame">
+                                            <img src="icecube.png">
+                                        </div>
+                                        <div class="home-hero__frame">
+                                            <img src="icecube.png">
+                                        </div>
+                                        <div class="home-hero__frame">
+                                            <img src="icecube.png">
+                                        </div>
+                                        <div class="home-hero__frame">
+                                            <img src="icecube.png">
+                                        </div>
+                                        <div class="home-hero__frame">
+                                            <img src="icecube.png">
+                                        </div>
+                                        <div class="home-hero__frame">
+                                            <img src="icecube.png">
+                                        </div>
+                                        <div class="home-hero__frame">
+                                            <img src="icecube.png">
+                                        </div>
+                                        <div class="home-hero__frame">
+                                            <img src="icecube.png">
+                                        </div>
+                                        <div class="home-hero__frame">
+                                            <img src="icecube.png">
+                                        </div>
+                                        <div class="home-hero__frame">
+                                            <img src="icecube.png">
+                                        </div>
+                                        <div class="home-hero__frame">
+                                            <img src="icecube.png">
+                                        </div>
+                                        <div class="home-hero__frame">
+                                            <img src="icecube.png">
+                                        </div>
+                                        <div class="home-hero__frame">
+                                            <img src="icecube.png">
+                                        </div>
+                                        <div class="home-hero__frame">
+                                            <img src="icecube.png">
+                                        </div>
+                                        <div class="home-hero__frame">
+                                            <img src="icecube.png">
+                                        </div>
+                                        <div class="home-hero__frame">
+                                            <img src="icecube.png">
+                                        </div>
+                                        <div class="home-hero__frame">
+                                            <img src="icecube.png">
+                                        </div>
+                                        <div class="home-hero__frame">
+                                            <img src="icecube.png">
+                                        </div>
+                                        <div class="home-hero__frame">
+                                            <img src="icecube.png">
+                                        </div>
+                                        <div class="home-hero__frame">
+                                            <img src="icecube.png">
+                                        </div>
+                                        <div class="home-hero__frame">
+                                            <img src="icecube.png">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="home-hero__bottom">
+                            <div class="home-hero__description t-uppercase t-50 t-50--m-35 c-white t-regular font-2">Cafe Moishi is the city&rsquo;s rooftop hideaway
+&mdash; cocktails, shisha
+and skyline views.</div>
+                            <div class="home-hero__image">
+                                <div class="home-hero__moon-final"></div>
+                                <div class="home-hero__drink">
+                                    <img src="5f647f72-f0a1-493f-a9b4-906fac167547-removebg-preview.png" alt="">
+                                </div>
+                            </div>
+                    </div>
+                </section>
+
+            </div>
+       
+
+</head>
+<body>
+
+<section class="moishi-carousel" aria-label="MOISHI menu categories">
+
+  <!-- Section background — replace this src with your own image.
+       object-fit: cover makes it fully responsive at any screen size. -->
+  <img class="moishi-carousel__bg" src="c6a45907-1bfc-4963-bce3-02bca2f47511.png" alt="" aria-hidden="true" loading="lazy">
+  <div class="moishi-carousel__bg-scrim" aria-hidden="true"></div>
+
+  <div class="moishi-smoke" aria-hidden="true">
+    <span class="wisp wisp--a"></span>
+    <span class="wisp wisp--b"></span>
+    <span class="wisp wisp--c"></span>
+  </div>
+
+  <header class="moishi-carousel__header">
+    <p class="moishi-carousel__eyebrow">Shisha Bar</p>
+    <h2 class="moishi-carousel__title">Welcome to the Home of MOISHI</h2>
+  </header>
+
+  <div class="moishi-carousel__viewport" data-moishi-viewport>
+
+    <button type="button" class="moishi-btn moishi-btn--prev" data-moishi-prev aria-label="Previous category">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M15 5L8 12L15 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+
+    <!-- JS triples this list into [clones][originals][clones] for the
+         seamless wrap, then drives position every frame — no jump. -->
+    <ul class="moishi-carousel__track" data-moishi-track>
+
+      <li class="moishi-slide">
+        <img class="moishi-slide__img" src="c6a45907-1bfc-4963-bce3-02bca2f47511.png" alt="Moishi Burgers">
+        <div class="moishi-slide__overlay"></div>
+        <span class="moishi-slide__index">i.</span>
+        <div class="moishi-slide__text">
+          <h3 class="moishi-slide__title">Moishi Burgers</h3>
+          <p class="moishi-slide__subtitle">Signature Grill</p>
+        </div>
+      </li>
+
+      <li class="moishi-slide">
+        <img class="moishi-slide__img" src="https://placehold.co/480x640/0a0f0c/3ddc84?text=Grill+%26+Chill" alt="Moishi Grill and Chill">
+        <div class="moishi-slide__overlay"></div>
+        <span class="moishi-slide__index">ii.</span>
+        <div class="moishi-slide__text">
+          <h3 class="moishi-slide__title">Moishi Grill &amp; Chill</h3>
+          <p class="moishi-slide__subtitle">Slow Smoked</p>
+        </div>
+      </li>
+
+      <li class="moishi-slide">
+        <img class="moishi-slide__img" src="https://placehold.co/480x640/0a0f0c/3ddc84?text=Steak%27s+Corner" alt="Moishi Steak's Corner">
+        <div class="moishi-slide__overlay"></div>
+        <span class="moishi-slide__index">iii.</span>
+        <div class="moishi-slide__text">
+          <h3 class="moishi-slide__title">Moishi Steak's Corner</h3>
+          <p class="moishi-slide__subtitle">Cut To Order</p>
+        </div>
+      </li>
+
+      <li class="moishi-slide">
+        <img class="moishi-slide__img" src="https://placehold.co/480x640/0a0f0c/3ddc84?text=Mocktails" alt="Moishi Mocktails">
+        <div class="moishi-slide__overlay"></div>
+        <span class="moishi-slide__index">iv.</span>
+        <div class="moishi-slide__text">
+          <h3 class="moishi-slide__title">Moishi Mocktails</h3>
+          <p class="moishi-slide__subtitle">Hand Shaken</p>
+        </div>
+      </li>
+
+      <li class="moishi-slide">
+        <img class="moishi-slide__img" src="https://placehold.co/480x640/0a0f0c/3ddc84?text=Shisha+Flavours" alt="Moishi Shisha Flavours">
+        <div class="moishi-slide__overlay"></div>
+        <span class="moishi-slide__index">v.</span>
+        <div class="moishi-slide__text">
+          <h3 class="moishi-slide__title">Moishi Shisha Flavours</h3>
+          <p class="moishi-slide__subtitle">House Blends</p>
+        </div>
+      </li>
+
+      <li class="moishi-slide">
+        <img class="moishi-slide__img" src="https://placehold.co/480x640/0a0f0c/3ddc84?text=Waffle+%2F+Cookie+Dough" alt="Waffle / Cookie Dough">
+        <div class="moishi-slide__overlay"></div>
+        <span class="moishi-slide__index">vi.</span>
+        <div class="moishi-slide__text">
+          <h3 class="moishi-slide__title">Waffle / Cookie Dough</h3>
+          <p class="moishi-slide__subtitle">Served Warm</p>
+        </div>
+      </li>
+
+      <li class="moishi-slide">
+        <img class="moishi-slide__img" src="https://placehold.co/480x640/0a0f0c/3ddc84?text=Mayfair+Cookies" alt="Mayfair Cookies">
+        <div class="moishi-slide__overlay"></div>
+        <span class="moishi-slide__index">vii.</span>
+        <div class="moishi-slide__text">
+          <h3 class="moishi-slide__title">Mayfair Cookies</h3>
+          <p class="moishi-slide__subtitle">Fresh Baked</p>
+        </div>
+      </li>
+
+    </ul>
+
+    <button type="button" class="moishi-btn moishi-btn--next" data-moishi-next aria-label="Next category">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M9 5L16 12L9 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+
+  </div>
+
+</section>
+
+    <section class="about-mun" id="about">
+    <img class="about-mun__bg" src="070fce27-a9de-4c9a-a9b5-1a6336295d66.webp" alt="" loading="lazy">
+    <div class="about-mun__scrim"></div>
+
+
+    <div class="about-mun__skyline" aria-hidden="true" id="aboutSkyline">
+        <svg viewBox="0 0 1200 220" preserveAspectRatio="none">
+            <path class="about-mun__skyline-path"
+                pathLength="1000"
+                d="M0,190 L50,190 L50,150 L80,150 L80,190 L120,190 L120,165
+                   C128,120 168,120 176,165 L176,190
+                   L230,190 L230,95 L245,80 L260,95 L260,190
+                   L320,190 L320,145 A70,70 0 0 1 460,145 L460,190
+                   L520,190 L520,155 L560,155 L560,175 L600,175 L600,140 L640,140 L640,190
+                   L700,190 L700,160 C708,120 748,120 756,160 L756,190
+                   L1200,190" />
+            <line class="about-mun__skyline-path about-mun__spire" pathLength="100" x1="390" y1="75" x2="390" y2="55" />
+            <line class="about-mun__skyline-path about-mun__spire" pathLength="100" x1="380" y1="63" x2="400" y2="63" />
+        </svg>
+        <span class="about-mun__star" style="top:18%;left:12%;animation-delay:.2s"></span>
+        <span class="about-mun__star" style="top:30%;left:28%;animation-delay:.9s"></span>
+        <span class="about-mun__star" style="top:14%;left:47%;animation-delay:1.6s"></span>
+        <span class="about-mun__star" style="top:35%;left:63%;animation-delay:.5s"></span>
+        <span class="about-mun__star" style="top:20%;left:80%;animation-delay:1.2s"></span>
+        <span class="about-mun__star" style="top:40%;left:91%;animation-delay:1.9s"></span>
+    </div>
+
+    <div class="about-mun__inner" id="aboutInner">
+        <span class="about-mun__eyebrow about-mun__reveal">About Cafe Moishi</span>
+
+        <h2 class="about-mun__headline about-mun__reveal">Where the city exhales,<br><em>and the night begins to glow.</em></h2>
+
+        <p class="about-mun__body about-mun__reveal">
+            Set above the rooftops of Rome, Cafe Moishi is a quiet departure from the street below —
+            a terrace built for slow evenings, where the skyline turns amber at dusk and
+            the cocktail list is written to match the hour.
+        </p>
+
+        <div class="about-mun__features about-mun__reveal">
+            <div class="about-mun__feature">
+                <span class="about-mun__feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7-10-7-10-7Z" stroke="currentColor" stroke-width="1.3"/>
+                        <circle cx="12" cy="12" r="3.2" stroke="currentColor" stroke-width="1.3"/>
+                    </svg>
+                </span>
+                <span class="about-mun__feature-label">Vista</span>
+                <span class="about-mun__feature-value">180° Roman Skyline</span>
+            </div>
+            <div class="about-mun__feature">
+                <span class="about-mun__feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.3"/>
+                        <path d="M12 7v5l3.5 2" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+                    </svg>
+                </span>
+                <span class="about-mun__feature-label">Hours</span>
+                <span class="about-mun__feature-value">Golden Hour to Midnight</span>
+            </div>
+            <div class="about-mun__feature">
+                <span class="about-mun__feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5 4h14l-6.2 7.2V18l3 1.5v.5H8.2v-.5l3-1.5v-6.8L5 4Z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/>
+                    </svg>
+                </span>
+                <span class="about-mun__feature-label">Craft</span>
+                <span class="about-mun__feature-value">A Seasonal Cocktail List</span>
+            </div>
+            <div class="about-mun__feature">
+                <span class="about-mun__feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="3.5" y="5" width="17" height="15" rx="2" stroke="currentColor" stroke-width="1.3"/>
+                        <path d="M3.5 9.5h17M8 3v3.5M16 3v3.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+                    </svg>
+                </span>
+                <span class="about-mun__feature-label">Reservations</span>
+                <span class="about-mun__feature-value">Recommended After 7PM</span>
+            </div>
+        </div>
+
+        <div class="about-mun__actions about-mun__reveal">
+            <a href="#reserve" class="about-mun__cta">Reserve a Table</a>
+            <a href="#menu" class="about-mun__link">
+                View the Cocktail List
+                <svg viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1 5h11.5M8 1l4.5 4L8 9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </a>
+        </div>
+    </div>
+</section>
+
+
+<section class="lounge" id="lounge">
+
+    <!-- Swap for your own lounge/coal photo -->
+    <img class="lounge__bg" src="mintbg.webp" alt="" loading="lazy">
+    <div class="lounge__scrim"></div>
+    <span class="lounge__glow lounge__glow--a" aria-hidden="true"></span>
+    <span class="lounge__glow lounge__glow--b" aria-hidden="true"></span>
+
+    <div class="lounge__wrap">
+        <div class="lounge__copy">
+            <span class="lounge__eyebrow">Shisha Bar</span>
+            <h2 class="lounge__title">Every Flavour,<br><span>Every Night</span></h2>
+            <p class="lounge__text">Deep seating, low light, and a hookah menu built for slow evenings — from smoky classics to house-made fruit blends, poured coal-side by hand.</p>
+
+            <div class="lounge__features">
+                <span class="lounge__feature">
+                    <svg viewBox="0 0 24 24" fill="none"><path d="M4 20v-6a8 8 0 0 1 16 0v6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><rect x="2" y="18" width="4" height="4" rx="1" stroke="currentColor" stroke-width="1.6"/><rect x="18" y="18" width="4" height="4" rx="1" stroke="currentColor" stroke-width="1.6"/></svg>
+                    Private Booths
+                </span>
+                <span class="lounge__feature">
+                    <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M12 7v5l3.5 2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+                    Late Til 2AM
+                </span>
+                <span class="lounge__feature">
+                    <svg viewBox="0 0 24 24" fill="none"><path d="M9 18V5l12-2v13" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="6" cy="18" r="3" stroke="currentColor" stroke-width="1.6"/><circle cx="18" cy="16" r="3" stroke="currentColor" stroke-width="1.6"/></svg>
+                    Live DJ Fri–Sat
+                </span>
+            </div>
+
+            <span class="lounge__flavours-label">A Taste of the Menu</span>
+            <ul class="lounge__flavours">
+                <li>Double Apple</li>
+                <li>Blue Mist</li>
+                <li>Rose Mint</li>
+                <li>Mango Tango</li>
+                <li>Grape Chill</li>
+                <li>+30 more</li>
+            </ul>
+
+            <div class="lounge__cta-row">
+                <a href="#book" class="lounge__cta">Book the Lounge</a>
+                <span class="lounge__note">Walk-ins welcome after 9PM</span>
+            </div>
+        </div>
+
+        <div class="lounge__frame">
+            <img src="image.webp" alt="Shisha pipe close-up">
+            <span class="lounge__frame-badge">Est. London</span>
+            <span class="lounge__frame-tag">The Lounge, After Dark</span>
+        </div>
+    </div>
+
+</section>
+
+
+<section class="drinks" id="drinks">
+
+    <!-- Swap this src for your own bar / drinks photo -->
+    <img class="drinks__bg" src="drinkssss.webp" alt="" loading="lazy">
+    <div class="drinks__scrim"></div>
+
+    <div class="drinks__bubbles" aria-hidden="true">
+        <span class="drinks__bubble" style="left:10%; width:5px; height:5px;  --drift:16px;  animation-duration:9s;  animation-delay:0s;"></span>
+        <span class="drinks__bubble" style="left:22%; width:3px; height:3px;  --drift:-12px; animation-duration:11s; animation-delay:2s;"></span>
+        <span class="drinks__bubble" style="left:38%; width:6px; height:6px;  --drift:20px;  animation-duration:8s;  animation-delay:4s;"></span>
+        <span class="drinks__bubble" style="left:55%; width:4px; height:4px;  --drift:-18px; animation-duration:10s; animation-delay:1s;"></span>
+        <span class="drinks__bubble" style="left:70%; width:3px; height:3px;  --drift:14px;  animation-duration:12s; animation-delay:5s;"></span>
+        <span class="drinks__bubble" style="left:85%; width:5px; height:5px;  --drift:-16px; animation-duration:9.5s; animation-delay:3s;"></span>
+        <span class="drinks__bubble" style="left:94%; width:4px; height:4px;  --drift:18px;  animation-duration:10.5s; animation-delay:6s;"></span>
+    </div>
+
+    <div class="drinks__header">
+        <span class="drinks__eyebrow">Sip Something</span>
+       
+       
+    </div>
+
+    <div class="drinks__tabs" role="tablist" aria-label="Drinks categories">
+        <button class="drinks__tab is-active" data-tab="mocktails">Mocktails</button>
+        <button class="drinks__tab" data-tab="starbuzz">Starbuzz</button>
+        <button class="drinks__tab" data-tab="savacco">Savacco</button>
+        <button class="drinks__tab" data-tab="soft">Soft Drinks</button>
+        <button class="drinks__tab" data-tab="hot">Hot &amp; Tea</button>
+    </div>
+
+    <div class="drinks__panel">
+
+        <div class="drinks__panel-head">
+            <span class="drinks__panel-title" id="drinksPanelTitle">Moishi Mocktails</span>
+            <span class="drinks__panel-price" id="drinksPanelPrice">From £5.00</span>
+        </div>
+
+        <ul class="drinks__list is-active" data-list="mocktails">
+            <li class="drinks__item"><span class="drinks__item-name">Virgin Mojito</span><span class="drinks__item-fill"></span><span class="drinks__item-price">£5.00</span></li>
+            <li class="drinks__item"><span class="drinks__item-name">Mango Mojito</span><span class="drinks__item-fill"></span><span class="drinks__item-price">£5.00</span></li>
+            <li class="drinks__item"><span class="drinks__item-name">Strawberry Mojito</span><span class="drinks__item-fill"></span><span class="drinks__item-price">£6.00</span></li>
+            <li class="drinks__item"><span class="drinks__item-name">Passionova Mojito</span><span class="drinks__item-fill"></span><span class="drinks__item-price">£6.00</span></li>
+            <li class="drinks__item"><span class="drinks__item-name">Pina Colada</span><span class="drinks__item-fill"></span><span class="drinks__item-price">£6.00</span></li>
+            <li class="drinks__item"><span class="drinks__item-name">Moishi Special</span><span class="drinks__item-fill"></span><span class="drinks__item-price">£6.50</span></li>
+        </ul>
+
+        <ul class="drinks__list" data-list="starbuzz">
+            <li class="drinks__item"><span class="drinks__item-name">African Queen</span><span class="drinks__item-fill"></span><span class="drinks__item-price">£16</span></li>
+            <li class="drinks__item"><span class="drinks__item-name">Dragon Breeze</span><span class="drinks__item-fill"></span><span class="drinks__item-price">£16</span></li>
+            <li class="drinks__item"><span class="drinks__item-name">Mango Tango</span><span class="drinks__item-fill"></span><span class="drinks__item-price">£16</span></li>
+            <li class="drinks__item"><span class="drinks__item-name">Skittles</span><span class="drinks__item-fill"></span><span class="drinks__item-price">£16</span></li>
+            <li class="drinks__item"><span class="drinks__item-name">Cuban Mojito</span><span class="drinks__item-fill"></span><span class="drinks__item-price">£16</span></li>
+            <li class="drinks__item"><span class="drinks__item-name">Moonlight Berry</span><span class="drinks__item-fill"></span><span class="drinks__item-price">£16</span></li>
+        </ul>
+
+        <ul class="drinks__list" data-list="savacco">
+            <li class="drinks__item"><span class="drinks__item-name">Purple Rain</span><span class="drinks__item-fill"></span><span class="drinks__item-price">£20</span></li>
+            <li class="drinks__item"><span class="drinks__item-name">Frozen SMF</span><span class="drinks__item-fill"></span><span class="drinks__item-price">£20</span></li>
+            <li class="drinks__item"><span class="drinks__item-name">Manga Carta</span><span class="drinks__item-fill"></span><span class="drinks__item-price">£20</span></li>
+            <li class="drinks__item"><span class="drinks__item-name">Picasso</span><span class="drinks__item-fill"></span><span class="drinks__item-price">£20</span></li>
+            <li class="drinks__item"><span class="drinks__item-name">Black Mamba</span><span class="drinks__item-fill"></span><span class="drinks__item-price">£20</span></li>
+            <li class="drinks__item"><span class="drinks__item-name">G6 on the Rocks</span><span class="drinks__item-fill"></span><span class="drinks__item-price">£20</span></li>
+        </ul>
+
+        <ul class="drinks__list" data-list="soft">
+            <li class="drinks__item"><span class="drinks__item-name">Coke</span><span class="drinks__item-fill"></span><span class="drinks__item-price">£2.00</span></li>
+            <li class="drinks__item"><span class="drinks__item-name">Sprite</span><span class="drinks__item-fill"></span><span class="drinks__item-price">£2.00</span></li>
+            <li class="drinks__item"><span class="drinks__item-name">Fanta</span><span class="drinks__item-fill"></span><span class="drinks__item-price">£2.00</span></li>
+            <li class="drinks__item"><span class="drinks__item-name">Irn Bru</span><span class="drinks__item-fill"></span><span class="drinks__item-price">£2.00</span></li>
+            <li class="drinks__item"><span class="drinks__item-name">J2O</span><span class="drinks__item-fill"></span><span class="drinks__item-price">£2.50</span></li>
+            <li class="drinks__item"><span class="drinks__item-name">Mango Lussi</span><span class="drinks__item-fill"></span><span class="drinks__item-price">£2.00</span></li>
+            <li class="drinks__item"><span class="drinks__item-name">Rubicon Range</span><span class="drinks__item-fill"></span><span class="drinks__item-price">£1.50</span></li>
+            <li class="drinks__item"><span class="drinks__item-name">Mineral Water</span><span class="drinks__item-fill"></span><span class="drinks__item-price">£1.50</span></li>
+        </ul>
+
+        <ul class="drinks__list" data-list="hot">
+            <li class="drinks__item"><span class="drinks__item-name">Americano</span><span class="drinks__item-fill"></span><span class="drinks__item-price">£2.75</span></li>
+            <li class="drinks__item"><span class="drinks__item-name">Cappuccino</span><span class="drinks__item-fill"></span><span class="drinks__item-price">£2.75</span></li>
+            <li class="drinks__item"><span class="drinks__item-name">Caramel Macchiato</span><span class="drinks__item-fill"></span><span class="drinks__item-price">£2.75</span></li>
+            <li class="drinks__item"><span class="drinks__item-name">Hot Chocolate</span><span class="drinks__item-fill"></span><span class="drinks__item-price">£2.75</span></li>
+            <li class="drinks__item"><span class="drinks__item-name">English Tea</span><span class="drinks__item-fill"></span><span class="drinks__item-price">£2.50</span></li>
+            <li class="drinks__item"><span class="drinks__item-name">Mint Tea</span><span class="drinks__item-fill"></span><span class="drinks__item-price">£2.50</span></li>
+            <li class="drinks__item"><span class="drinks__item-name">Desi Tea (Pot)</span><span class="drinks__item-fill"></span><span class="drinks__item-price">£7.50</span></li>
+            <li class="drinks__item"><span class="drinks__item-name">Green Tea</span><span class="drinks__item-fill"></span><span class="drinks__item-price">£2.50</span></li>
+        </ul>
+
+        <p class="drinks__more" id="drinksMoreNote">6 more mocktail flavours available in-store.</p>
+    </div>
+
+    <div class="drinks__actions">
+        <a href="#menu-full" class="drinks__cta">See Full Menu</a>
+    </div>
+
+</section>
+
+
+<section class="desserts" id="desserts">
+
+    <!-- Swap this src for your own desserts / bakery photo -->
+    <img class="desserts__bg" src="dessertsbg.webp" alt="" loading="lazy">
+    <div class="desserts__scrim"></div>
+
+    <div class="desserts__header">
+        <span class="desserts__eyebrow">Something Sweet</span>
+
+     
+    </div>
+
+    <div class="desserts__grid" id="dessertsGrid">
+
+        <!-- Featured: Waffle / Cookie Dough -->
+        <div class="desserts__tile desserts__tile--waffles desserts__tile--photo">
+            <img class="desserts__tile-img" src="Waffle · Cookie Dough.webp" alt="Warm waffle with ice cream">
+            <span class="desserts__badge">Best Seller</span>
+            <span class="desserts__tile-label">Waffle · Cookie Dough</span>
+            <h3 class="desserts__tile-title">Warm & Gooey, Your Way</h3>
+            <p class="desserts__tile-blurb">Fresh-baked waffle or cookie dough, a scoop of ice cream, and a syrup of your choice drizzled on top.</p>
+            <ul class="desserts__items">
+                <li>Lotus Biscoff <span>£5</span></li>
+                <li>Chocolate <span>£5</span></li>
+                <li>Peanut Butter <span>£5</span></li>
+                <li>Strawberry <span>£5</span></li>
+                <li>Oreo <span>£5</span></li>
+                <li>Ferrero Rocher <span>£5</span></li>
+            </ul>
+        </div>
+
+        <!-- Cheesecakes -->
+        <div class="desserts__tile desserts__tile--cheesecake">
+            <span class="desserts__tile-label">Cheesecakes</span>
+            <h3 class="desserts__tile-title">Baked Daily, Sliced Thick</h3>
+            <ul class="desserts__items">
+                <li>San Sebastian <span>£6</span></li>
+                <li>Lotus Biscoff <span>£6</span></li>
+                <li>Cookies &amp; Cream <span>£6</span></li>
+                <li>Milk Chocolate <span>£6</span></li>
+            </ul>
+        </div>
+
+        <!-- Luxury Cakes -->
+        <div class="desserts__tile desserts__tile--cakes">
+            <span class="desserts__tile-label">Luxury Cakes</span>
+            <h3 class="desserts__tile-title">Rich &amp; Indulgent</h3>
+            <ul class="desserts__items">
+                <li>Peanut Butter Stack <span>£6</span></li>
+                <li>Lava Chocolate Cake <span>£6</span></li>
+                <li>Brownie Special <span>£6</span></li>
+            </ul>
+        </div>
+
+        <!-- Desi Traditional Desserts -->
+        <div class="desserts__tile desserts__tile--desi">
+            <span class="desserts__tile-label">Desi Classics</span>
+            <h3 class="desserts__tile-title">From Home</h3>
+            <ul class="desserts__items">
+                <li>Gulab Jamun &amp; Ice Cream <span>£6</span></li>
+                <li>Milkcakes <span>£6</span></li>
+                <li>Gajrela <span>£6</span></li>
+            </ul>
+        </div>
+
+        <!-- Mayfair Cookies banner -->
+        <div class="desserts__tile desserts__tile--cookies">
+            <div class="desserts__cookie-copy">
+                <span class="desserts__tile-label">Mayfair Cookies · From Miss Bundangerie, London</span>
+                <h3 class="desserts__tile-title">Now Baking at Cafe Moishi</h3>
+                <span class="desserts__cookie-price">3 Cookies from £10.00</span>
+            </div>
+            <div class="desserts__cookie-chips">
+                <span class="desserts__chip">Queen of Cookie</span>
+                <span class="desserts__chip">Red Velvet Bliss</span>
+                <span class="desserts__chip">Nutella Stuffed</span>
+                <span class="desserts__chip">Reese's Joy</span>
+                <span class="desserts__chip">Loaded Biscoff</span>
+            </div>
+        </div>
+
+        <!-- Extra / seasonal specials (not on the printed menu) -->
+        <div class="desserts__tile desserts__tile--extra">
+            <span class="desserts__badge" style="position:static; align-self:flex-start; margin-bottom:0.8rem;">New</span>
+            <span class="desserts__tile-label">Seasonal Specials</span>
+            <h3 class="desserts__tile-title">Ask Your Server</h3>
+            <ul class="desserts__items">
+                <li>Pistachio Baklava Cheesecake <span>£7</span></li>
+                <li>Salted Caramel Waffle Stack <span>£6</span></li>
+            </ul>
+        </div>
+
+    </div>
+
+    <div class="desserts__actions">
+        <a href="#menu-full" class="desserts__cta">See Full Menu</a>
+    </div>
+
+</section>
+
+        </main>
+
+        <script type="module" src="main.js"></script>
+        <link rel="modulepreload" href="vendor.js">
+        
+<script>
+  /* ===== Lenis — smooth scroll (whole site) ===== */
+  const lenis = new Lenis({
+    duration: 1.15,
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    smoothWheel: true,
+    touchMultiplier: 1.5,
+  });
+
+  function raf(time) {
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+  }
+  requestAnimationFrame(raf);
+
+  // Respect users who've asked for reduced motion — jump to native scroll
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    lenis.destroy();
+  }
+</script>
+<script>
+  const burger = document.getElementById('burgerBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+
+  burger.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.toggle('open');
+    burger.classList.toggle('open', isOpen);
+    burger.setAttribute('aria-expanded', isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  });
+
+  mobileMenu.querySelectorAll('a:not(.mobile-location)').forEach(a => {
+    a.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      burger.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+
+  const locationTrigger = document.getElementById('locationTrigger');
+  locationTrigger.addEventListener('click', (e) => {
+    e.stopPropagation();
+    locationTrigger.classList.toggle('open');
+  });
+  document.addEventListener('click', () => locationTrigger.classList.remove('open'));
+</script>
+<script>
+/* ================================================================
+   MOISHI CAROUSEL — BEHAVIOUR
+   ----------------------------------------------------------------
+   CONTINUOUS auto-scroll (no stop-start ticking) + MANUAL control,
+   at the same time:
+
+     - Every animation frame nudges the track a tiny fraction of a
+       pixel to the left, so motion reads as a smooth, unbroken
+       crawl rather than "slide, pause, slide, pause".
+     - The user can grab the track (mouse or touch) and drag it
+       left/right at any time — dragging simply overrides the
+       per-frame auto offset for as long as the pointer is down.
+     - The Prev/Next buttons animate a one-slide "nudge" on top of
+       the same offset, with easing, then the continuous crawl
+       picks back up automatically.
+     - Hovering the carousel (or holding a drag) pauses the crawl;
+       moving away resumes it — nothing ever "resets".
+
+   LOOP TECHNIQUE
+   The track is tripled — [clones][originals][clones] — and the
+   offset is wrapped with modulo arithmetic every frame. Because
+   every copy is visually identical, the wrap is invisible in
+   either scroll direction.
+   ================================================================ */
+
+(function () {
+  'use strict';
+
+  const AUTO_SPEED = 0.035; // px per ms — tune for a faster/slower crawl
+
+  document.querySelectorAll('.moishi-carousel').forEach(initMoishiCarousel);
+
+  function initMoishiCarousel(root) {
+    const viewport = root.querySelector('[data-moishi-viewport]');
+    const track = root.querySelector('[data-moishi-track]');
+    const prevBtn = root.querySelector('[data-moishi-prev]');
+    const nextBtn = root.querySelector('[data-moishi-next]');
+
+    if (!viewport || !track) return;
+
+    // --- Build [clones][originals][clones] ---
+    const originalSlides = Array.from(track.children);
+    if (originalSlides.length === 0) return;
+
+    const cloneSet = () =>
+      originalSlides.map((slide) => {
+        const clone = slide.cloneNode(true);
+        clone.setAttribute('aria-hidden', 'true');
+        clone.querySelectorAll('[id]').forEach((el) => el.removeAttribute('id'));
+        return clone;
+      });
+
+    const frontClones = cloneSet();
+    const backClones = cloneSet();
+
+    track.innerHTML = '';
+    [...frontClones, ...originalSlides, ...backClones].forEach((node) => track.appendChild(node));
+
+    // --- State ---
+    let setWidth = 0;   // width of ONE full set (originals only)
+    let offset = 0;     // current translateX, always negative-ish
+    let isPaused = false;
+    let isDragging = false;
+    let isNudging = false;
+    let dragStartX = 0;
+    let dragStartOffset = 0;
+    let lastTimestamp = null;
+
+    function measure() {
+      // Sum the width of just the original-set slides (middle third)
+      const start = originalSlides.length;
+      const mid = Array.from(track.children).slice(start, start * 2);
+      setWidth = mid.reduce((sum, el) => sum + el.getBoundingClientRect().width, 0);
+    }
+
+    function wrap() {
+      if (setWidth <= 0) return;
+      while (offset <= -2 * setWidth) offset += setWidth;
+      while (offset > -setWidth) offset -= setWidth;
+    }
+
+    function render() {
+      track.style.transform = `translateX(${offset}px)`;
+    }
+
+    // --- Main loop: continuous crawl ---
+    function tick(timestamp) {
+      if (lastTimestamp === null) lastTimestamp = timestamp;
+      const dt = timestamp - lastTimestamp;
+      lastTimestamp = timestamp;
+
+      if (!isPaused && !isDragging && !isNudging) {
+        offset -= AUTO_SPEED * dt;
+      }
+
+      wrap();
+      render();
+      requestAnimationFrame(tick);
+    }
+
+    // --- Manual button nudge: eased one-slide hop, then crawl resumes ---
+    function nudge(direction) {
+      if (isNudging || setWidth <= 0) return;
+      const slideStep = track.children[0].getBoundingClientRect().width;
+      const start = offset;
+      const target = offset - direction * slideStep;
+      const duration = 420;
+      const startTime = performance.now();
+      isNudging = true;
+
+      function step(now) {
+        const t = Math.min((now - startTime) / duration, 1);
+        const eased = 1 - Math.pow(1 - t, 3); // ease-out cubic
+        offset = start + (target - start) * eased;
+        wrap();
+        render();
+        if (t < 1) {
+          requestAnimationFrame(step);
+        } else {
+          isNudging = false;
+        }
+      }
+      requestAnimationFrame(step);
+    }
+
+    if (nextBtn) nextBtn.addEventListener('click', () => nudge(1));
+    if (prevBtn) prevBtn.addEventListener('click', () => nudge(-1));
+
+    // --- Pause on hover — scoped to the viewport (cards + arrows) only,
+    //     so hovering the header/background of the section does NOT pause ---
+    viewport.addEventListener('mouseenter', () => { isPaused = true; });
+    viewport.addEventListener('mouseleave', () => { isPaused = false; });
+    viewport.addEventListener('focusin', () => { isPaused = true; });
+    viewport.addEventListener('focusout', () => { isPaused = false; });
+
+    // --- Manual drag / swipe (mouse + touch via Pointer Events) ---
+    track.addEventListener('pointerdown', (e) => {
+      isDragging = true;
+      isNudging = false;
+      track.classList.add('is-dragging');
+      dragStartX = e.clientX;
+      dragStartOffset = offset;
+      track.setPointerCapture(e.pointerId);
+    });
+
+    track.addEventListener('pointermove', (e) => {
+      if (!isDragging) return;
+      offset = dragStartOffset + (e.clientX - dragStartX);
+      wrap();
+      render();
+    });
+
+    function endDrag(e) {
+      if (!isDragging) return;
+      isDragging = false;
+      track.classList.remove('is-dragging');
+      try { track.releasePointerCapture(e.pointerId); } catch (err) { /* no-op */ }
+    }
+
+    track.addEventListener('pointerup', endDrag);
+    track.addEventListener('pointercancel', endDrag);
+    track.addEventListener('pointerleave', (e) => {
+      // Only end the drag, not the hover-pause — the mouseleave on
+      // root already handles resuming the crawl.
+      if (isDragging) endDrag(e);
+    });
+
+    // Prevent the browser's native "ghost drag" on the images
+    track.addEventListener('dragstart', (e) => e.preventDefault());
+
+    // --- Keep measurements correct across breakpoints ---
+    let resizeRAF = null;
+    window.addEventListener('resize', () => {
+      if (resizeRAF) window.cancelAnimationFrame(resizeRAF);
+      resizeRAF = window.requestAnimationFrame(() => {
+        const before = setWidth;
+        measure();
+        // Preserve relative scroll position through the resize
+        if (before > 0) offset = (offset / before) * setWidth;
+        wrap();
+        render();
+      });
+    });
+
+    // --- Boot ---
+    measure();
+    offset = -setWidth; // start on the first real (original) slide
+    render();
+    requestAnimationFrame(tick);
+  }
+})();
+
+  /* ===== ABOUT SECTION — behaviour ===== */
+    (function () {
+        var section = document.getElementById('about');
+        var skyline = document.getElementById('aboutSkyline');
+        var inner = document.getElementById('aboutInner');
+
+        if (section) {
+            var sectionObserver = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        section.classList.add('in-view');
+                        sectionObserver.disconnect();
+                    }
+                });
+            }, { threshold: 0.1 });
+            sectionObserver.observe(section);
+        }
+
+        if (skyline) {
+            var skylineObserver = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        skyline.classList.add('in-view');
+                        skylineObserver.disconnect();
+                    }
+                });
+            }, { threshold: 0.35 });
+            skylineObserver.observe(skyline);
+        }
+
+        if (inner) {
+            var innerObserver = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        inner.classList.add('in-view');
+                        innerObserver.disconnect();
+                    }
+                });
+            }, { threshold: 0.2 });
+            innerObserver.observe(inner);
+        }
+    })();
+
+</script>
+
+<style>
+    .qawali-night {
+        --void: #040705;
+        --cream: #f1faf3;
+        --cream-dim: rgba(241,250,243,0.62);
+        --cream-faint: rgba(241,250,243,0.38);
+        --accent: #3202e0;
+        --accent-bright: #881a9e;
+        --glow: #f8f6f8;
+        --glow-soft: rgba(72, 2, 236, 0.5);
+        --card-bg: rgba(241,250,243,0.03);
+        --card-border: rgba(241,250,243,0.1);
+
+        position: relative;
+        background: var(--void);
+        color: var(--cream);
+        padding: 0 0 clamp(3rem, 6vw, 4.5rem);
+
+        opacity: 0;
+        transform: translateY(18px);
+        transition: opacity 1s cubic-bezier(.2,.7,.2,1), transform 1s cubic-bezier(.2,.7,.2,1);
+    }
+    .qawali-night.in-view { opacity: 1; transform: translateY(0); }
+
+    .qawali-night * { box-sizing: border-box; }
+
+    /* ---------- Sticky stage (background image + scrim + notes) ---------- */
+    /* This block stays pinned to the top of the viewport while everything
+       below scrolls over it, then unpins naturally once the section ends
+       (because the negative margin cancels its own height, so the section's
+       total height = the content's height). No JS needed for the pin/unpin. */
+
+    .qawali-night__stage {
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        margin-bottom: -100vh;
+        z-index: 0;
+        overflow: hidden;
+    }
+
+    .qawali-night__bg {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center 30%;
+    }
+
+    .qawali-night__scrim {
+        position: absolute;
+        inset: 0;
+        background:
+            radial-gradient(ellipse 900px 500px at 50% 0%, rgba(61,220,132,0.14), transparent 60%),
+            linear-gradient(180deg, rgba(4,7,5,0.18) 0%, rgba(4,7,5,0.4) 42%, var(--void) 74%);
+    }
+
+    /* ---------- Floating musical notes (ambient, CSS only) ---------- */
+
+    .qawali-night__notes { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+    .qawali-night__note {
+        position: absolute;
+        bottom: -8%;
+        color: var(--glow);
+        opacity: 0;
+        font-size: 1.1rem;
+        filter: drop-shadow(0 0 6px var(--glow-soft));
+        animation: qawaliRise linear infinite;
+    }
+    .qawali-night__note svg { width: 1em; height: 1em; display: block; }
+    @keyframes qawaliRise {
+        0%   { opacity: 0; transform: translateY(0) translateX(0) rotate(0deg); }
+        10%  { opacity: .85; }
+        90%  { opacity: .4; }
+        100% { opacity: 0; transform: translateY(-620px) translateX(var(--drift, 24px)) rotate(18deg); }
+    }
+
+    /* ---------- Content that scrolls over the sticky stage ---------- */
+
+    .qawali-night__content {
+        position: relative;
+        z-index: 2;
+    }
+
+    /* ---------- Scrolling marquee ribbon ---------- */
+
+    .qawali-night__marquee {
+        position: relative;
+        overflow: hidden;
+        white-space: nowrap;
+        border-top: 1px solid var(--card-border);
+        border-bottom: 1px solid var(--card-border);
+        background: rgba(4,7,5,0.55);
+        backdrop-filter: blur(2px);
+        padding: 0.85rem 0;
+        margin-bottom: clamp(2.5rem, 6vw, 4rem);
+    }
+
+    .qawali-night__marquee-track {
+        display: inline-flex;
+        align-items: center;
+        gap: 2.5rem;
+        width: max-content;
+        animation: qawaliMarquee 36s linear infinite;
+        will-change: transform;
+        backface-visibility: hidden;
+        transform: translateZ(0);
+    }
+
+    .qawali-night__marquee-track span {
+        font-family: 'Fredoka', sans-serif;
+        font-weight: 600;
+        font-size: clamp(0.95rem, 1.6vw, 1.15rem);
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--glow);
+        display: inline-flex;
+        align-items: center;
+        gap: 0.6rem;
+        flex-shrink: 0;
+    }
+    .qawali-night__marquee-track span::after { content: "✦"; color: var(--cream-faint); font-size: 0.7em; }
+
+    @keyframes qawaliMarquee {
+        from { transform: translateX(0); }
+        to   { transform: translateX(-33.3334%); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .qawali-night__marquee-track { animation: none; }
+        .qawali-night__note { animation: none; display: none; }
+        .qawali-night__frame { opacity: 1 !important; transform: none !important; transition: none !important; }
+    }
+
+    /* ---------- Header ---------- */
+
+    .qawali-night__header {
+        max-width: 780px;
+        margin: 0 auto clamp(2.5rem, 6vw, 3.5rem);
+        padding: 0 clamp(1.5rem, 6vw, 3rem);
+        text-align: center;
+    }
+
+    .qawali-night__eyebrow {
+        display: block;
+        font-family: 'Alex Brush', cursive;
+        font-weight: 400;
+        font-size: clamp(2rem, 4.5vw, 2.8rem);
+        color: var(--glow);
+        margin-bottom: 0.4rem;
+    }
+
+    .qawali-night__headline {
+        margin: 0 0 1rem;
+        font-family: 'Cormorant Garamond', serif;
+        font-weight: 500;
+        font-size: clamp(2.2rem, 5.5vw, 3.8rem);
+        line-height: 1.15;
+        color: var(--cream);
+    }
+    .qawali-night__headline em {
+        font-style: italic;
+        font-weight: 400;
+        color: var(--cream-dim);
+    }
+
+    .qawali-night__body {
+        margin: 0 auto;
+        max-width: 56ch;
+        font-family: 'Jost', sans-serif;
+        font-weight: 400;
+        font-size: clamp(0.95rem, 1.6vw, 1.05rem);
+        line-height: 1.85;
+        color: var(--cream-dim);
+    }
+
+    .qawali-night__meta {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 0.6rem;
+        margin-top: clamp(1.5rem, 3vw, 2rem);
+    }
+
+    .qawali-night__chip {
+        display: flex;
+        align-items: center;
+        gap: 0.5em;
+        padding: 0.5em 1em;
+        border: 1px solid var(--card-border);
+        border-radius: 999px;
+        background: var(--card-bg);
+        font-family: 'Jost', sans-serif;
+        font-size: 0.72rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--cream-dim);
+    }
+    .qawali-night__chip-dot {
+        width: 5px; height: 5px; border-radius: 50%;
+        background: var(--glow);
+        box-shadow: 0 0 6px var(--glow-soft);
+        flex-shrink: 0;
+    }
+
+    /* ---------- Image gallery ---------- */
+
+    .qawali-night__gallery {
+        max-width: 1100px;
+        margin: 0 auto clamp(2.5rem, 5vw, 3.5rem);
+        padding: 0 clamp(1.5rem, 6vw, 3rem);
+        display: grid;
+        grid-template-columns: 1.3fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        gap: 1rem;
+        height: clamp(420px, 55vw, 520px);
+    }
+
+    .qawali-night__frame {
+        position: relative;
+        border-radius: 14px;
+        overflow: hidden;
+        border: 1px solid var(--card-border);
+        background: var(--card-bg);
+
+        /* scroll-triggered pop-in, base state */
+        opacity: 0;
+        transform: translateY(55px) scale(0.93);
+        transition: opacity 0.9s cubic-bezier(.2,.7,.2,1), transform 0.9s cubic-bezier(.2,.7,.2,1);
+        will-change: opacity, transform;
+    }
+    .qawali-night__frame.qawali-in {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+
+    /* Different duration/delay per box so they don't move in lockstep — feels more alive */
+    .qawali-night__frame:nth-child(1) { transition-duration: 1.05s; transition-delay: 0s; }
+    .qawali-night__frame:nth-child(2) { transition-duration: 0.7s;  transition-delay: 0.08s; }
+    .qawali-night__frame:nth-child(3) { transition-duration: 0.95s; transition-delay: 0.16s; }
+    .qawali-night__frame:nth-child(4) { transition-duration: 0.8s;  transition-delay: 0.22s; }
+    .qawali-night__frame:nth-child(5) { transition-duration: 1.15s; transition-delay: 0.1s; }
+
+    .qawali-night__frame--tall { grid-row: 1 / 3; }
+
+    .qawali-night__frame img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: saturate(0.9) brightness(0.88);
+        transition: transform 0.7s cubic-bezier(.2,.7,.2,1), filter 0.5s ease;
+    }
+    .qawali-night__frame:hover img {
+        transform: scale(1.07);
+        filter: saturate(1) brightness(1);
+    }
+
+    .qawali-night__frame::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(0deg, rgba(4,7,5,0.75) 0%, transparent 45%);
+        pointer-events: none;
+    }
+
+    .qawali-night__frame-caption {
+        position: absolute;
+        left: 0.9rem;
+        right: 0.9rem;
+        bottom: 0.8rem;
+        z-index: 1;
+        font-family: 'Jost', sans-serif;
+        font-weight: 500;
+        font-size: 0.68rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--cream);
+    }
+
+    @media (max-width: 780px) {
+        .qawali-night__gallery {
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: repeat(3, 160px);
+            height: auto;
+        }
+        .qawali-night__frame--tall { grid-row: auto; grid-column: 1 / 3; }
+    }
+
+    @media (max-width: 480px) {
+        .qawali-night__gallery { grid-template-columns: 1fr; grid-template-rows: repeat(3, 200px); }
+        .qawali-night__frame--tall { grid-column: 1; }
+    }
+
+    /* ---------- CTA ---------- */
+
+    .qawali-night__actions {
+        display: flex;
+        justify-content: center;
+    }
+
+    .qawali-night__cta {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.6em;
+        padding: 0.95em 2.1em;
+        font-family: 'Jost', sans-serif;
+        font-size: 0.75rem;
+        font-weight: 500;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--void);
+        background: linear-gradient(135deg, var(--accent-bright), #a9e6c2);
+        border: none;
+        border-radius: 3px;
+        text-decoration: none;
+        cursor: pointer;
+        overflow: hidden;
+        transition: transform .3s cubic-bezier(.2,.7,.2,1), box-shadow .3s ease, letter-spacing .3s ease;
+    }
+    .qawali-night__cta:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 14px 30px -10px var(--glow-soft);
+        letter-spacing: 0.22em;
+    }
+    .qawali-night__cta::before {
+        content: "";
+        position: absolute;
+        top: 0; left: -60%; width: 40%; height: 100%;
+        background: linear-gradient(115deg, transparent, rgba(255,255,255,0.55), transparent);
+        transform: skewX(-20deg);
+        transition: left .6s ease;
+    }
+    .qawali-night__cta:hover::before { left: 130%; }
+</style>
+
+<section class="qawali-night" id="qawali">
+
+    <!-- Sticky stage: bg image + scrim + notes stay pinned while content scrolls over them -->
+    <div class="qawali-night__stage">
+        <!-- Swap this src for your own qawwali-night photo -->
+        <img class="qawali-night__bg" src="afab5c83-8999-4b85-86a8-037f7b9a126b (1).webp" alt="" loading="lazy">
+        <div class="qawali-night__scrim"></div>
+
+    
+    </div>
+
+    <!-- Content: scrolls over the sticky stage, then moves away with it once the section ends -->
+    <div class="qawali-night__content">
+
+        <div class="qawali-night__marquee" aria-hidden="true">
+            <div class="qawali-night__marquee-track">
+                <span>Live Qawwali</span><span>Sufi Nights</span><span>Rooftop Sessions</span><span>Every Friday</span>
+                <span>Live Qawwali</span><span>Sufi Nights</span><span>Rooftop Sessions</span><span>Every Friday</span>
+            </div>
+        </div>
+
+        <div class="qawali-night__header">
+            <span class="qawali-night__eyebrow">Every Friday Night</span>
+            <h2 class="qawali-night__headline">Qawwali on the terrace,<br><em>under the Roman sky.</em></h2>
+            <p class="qawali-night__body">
+                Once a week, the rooftop slows down and the harmonium takes over. Live qawwals, hand drums and
+                voices that climb into the night — cushions out, drinks flowing, the whole terrace singing along
+                by the last verse.
+            </p>
+          
+        </div>
+
+        <div class="qawali-night__gallery">
+            <div class="qawali-night__frame qawali-night__frame--tall">
+                <img src="qawwali night.jpg" alt="Qawwali night on the Mùn terrace">
+                <span class="qawali-night__frame-caption">The harmonium takes the terrace</span>
+            </div>
+            <div class="qawali-night__frame">
+                <img src="lorde aesthetic.jfif" alt="Live qawwali vocals">
+                <span class="qawali-night__frame-caption">Voices that fill the sky</span>
+            </div>
+            <div class="qawali-night__frame">
+                <img src="cushions.webp" alt="Guests enjoying qawwali night">
+                <span class="qawali-night__frame-caption">Cushions out, hands clapping</span>
+            </div>
+            <div class="qawali-night__frame">
+                <img src="Soulful tabla vibes in warm candle glow_.jfif" alt="Tabla and hand drums">
+                <span class="qawali-night__frame-caption">Rhythm carried by hand</span>
+            </div>
+            <div class="qawali-night__frame">
+                <img src="download (2).webp" alt="Golden hour on the terrace">
+                <span class="qawali-night__frame-caption">Golden hour, front row</span>
+            </div>
+        </div>
+
+        <div class="qawali-night__actions">
+            <a href="#reserve" class="qawali-night__cta">Reserve Friday Night</a>
+        </div>
+
+    </div>
+
+</section>
+
+<script>
+    (function () {
+        var qawaliSection = document.getElementById('qawali');
+        if (!qawaliSection) return;
+
+        // Fade the whole section in once first
+        if (!('IntersectionObserver' in window)) {
+            qawaliSection.classList.add('in-view');
+            qawaliSection.querySelectorAll('.qawali-night__frame').forEach(function (f) {
+                f.classList.add('qawali-in');
+            });
+        } else {
+            var sectionObserver = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        qawaliSection.classList.add('in-view');
+                        sectionObserver.disconnect();
+                    }
+                });
+            }, { threshold: 0.12 });
+            sectionObserver.observe(qawaliSection);
+
+            // Individual gallery boxes pop in as they cross into view, each at its own CSS-defined speed
+            var frames = qawaliSection.querySelectorAll('.qawali-night__frame');
+            var frameObserver = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('qawali-in');
+                        frameObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.2, rootMargin: '0px 0px -60px 0px' });
+
+            frames.forEach(function (frame) { frameObserver.observe(frame); });
+        }
+
+        // Seamless marquee: keep doubling the content until it's at least 2x the
+        // wrapper's width, so the loop always lines up exactly with no jump.
+        var wrap = qawaliSection.querySelector('.qawali-night__marquee');
+        var track = qawaliSection.querySelector('.qawali-night__marquee-track');
+        if (!wrap || !track) return;
+
+        var PIXELS_PER_SECOND = 55;
+
+        function setupMarquee() {
+            track.style.animation = 'none';
+            if (!track.dataset.original) track.dataset.original = track.innerHTML;
+            track.innerHTML = track.dataset.original;
+
+            var guard = 0;
+            while (track.scrollWidth < wrap.clientWidth * 2 && guard < 10) {
+                track.innerHTML += track.innerHTML;
+                guard++;
+            }
+
+            var halfWidth = track.scrollWidth / 2;
+            var duration = Math.max(halfWidth / PIXELS_PER_SECOND, 8);
+            track.style.animation = 'qawaliMarquee ' + duration + 's linear infinite';
+        }
+
+        setupMarquee();
+
+        var resizeTimer;
+        window.addEventListener('resize', function () {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(setupMarquee, 200);
+        });
+    })();
+</script>
+
+<style>
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: #040705; }
+
+    .faq-mun {
+        --void: #040705;
+        --smoke: #0b110d;
+        --cream: #f1faf3;
+        --cream-dim: rgba(241,250,243,0.62);
+        --accent: #421f4d;
+        --accent-line: rgba(15, 2, 197, 0.9);
+        --accent-glow: rgba(161, 10, 221, 0.55);
+
+        position: relative;
+        overflow: hidden;
+        background: var(--void);
+        padding: clamp(5rem, 12vw, 8rem) clamp(1.5rem, 6vw, 6rem);
+        color: var(--cream);
+        min-height: 100vh;
+    }
+
+    .faq-mun * { box-sizing: border-box; }
+
+    .faq-mun__bg {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        z-index: 0;
+       
+    }
+
+    .faq-mun__scrim {
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        background: linear-gradient(180deg, var(--void) 0%, rgba(4, 7, 5, 0.151) 18%, rgba(4,7,5,0.97) 100%);
+    }
+
+    .faq-mun__header {
+        position: relative;
+        z-index: 2;
+        text-align: center;
+        max-width: 700px;
+        margin: 0 auto clamp(3.5rem, 8vw, 5.5rem);
+    }
+
+    .faq-mun__eyebrow {
+        display: block;
+        font-family: 'Alex Brush', cursive;
+        font-weight: 400;
+        font-size: clamp(1.8rem, 4vw, 2.5rem);
+        color: var(--cream);
+        margin-bottom: clamp(0.4rem, 1.5vw, 0.8rem);
+    }
+
+    .faq-mun__headline {
+        margin: 0;
+        font-family: 'Fredoka', sans-serif;
+        font-weight: 700;
+        font-size: clamp(1.9rem, 4.6vw, 3rem);
+        line-height: 1.22;
+        color: var(--cream);
+    }
+
+    .faq-mun__headline em {
+        font-style: normal;
+        font-weight: 500;
+        color: var(--cream-dim);
+    }
+
+    /* ===== Two-column body ===== */
+
+    .faq-mun__body {
+        position: relative;
+        z-index: 2;
+        max-width: 1180px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: minmax(260px, 360px) 1fr;
+        gap: clamp(2rem, 5vw, 4rem);
+        align-items: start;
+    }
+
+    /* ---- Left column: image + quick facts ---- */
+
+    .faq-mun__visual {
+        position: sticky;
+        top: clamp(2rem, 6vw, 4rem);
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+    }
+
+    .faq-mun__image-card {
+        position: relative;
+        border-radius: 18px;
+        overflow: hidden;
+        aspect-ratio: 4 / 5;
+        border: 1px solid rgba(241,250,243,0.12);
+    }
+
+    .faq-mun__image-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.8s cubic-bezier(.2,.7,.2,1), filter 0.6s ease;
+        filter: saturate(0.9) brightness(0.92);
+    }
+
+    .faq-mun__image-card:hover img {
+        transform: scale(1.06);
+        filter: saturate(1) brightness(1);
+    }
+
+    .faq-mun__image-card::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, transparent 50%, rgba(4,7,5,0.9) 100%);
+        pointer-events: none;
+    }
+
+    .faq-mun__image-caption {
+        position: absolute;
+        left: 1.4rem;
+        right: 1.4rem;
+        bottom: 1.3rem;
+        z-index: 2;
+        font-family: 'Alex Brush', cursive;
+        font-weight: 400;
+        font-size: clamp(1.5rem, 2.6vw, 1.9rem);
+        color: var(--cream);
+    }
+
+    .faq-mun__facts {
+        border-radius: 14px;
+        padding: clamp(1.2rem, 2.5vw, 1.6rem);
+        background: rgba(241,250,243,0.045);
+        border: 1px solid rgba(241,250,243,0.1);
+        -webkit-backdrop-filter: blur(14px);
+        backdrop-filter: blur(14px);
+        display: flex;
+        flex-direction: column;
+        gap: 0.9rem;
+    }
+
+    .faq-mun__fact {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 1rem;
+        padding-bottom: 0.9rem;
+        border-bottom: 1px solid rgba(241,250,243,0.08);
+    }
+
+    .faq-mun__fact:last-child {
+        padding-bottom: 0;
+        border-bottom: none;
+    }
+
+    .faq-mun__fact-label {
+        font-family: 'Fredoka', sans-serif;
+        font-weight: 600;
+        font-size: 0.62rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--accent);
+        flex-shrink: 0;
+    }
+
+    .faq-mun__fact-value {
+        font-family: 'Fredoka', sans-serif;
+        font-weight: 500;
+        font-size: 0.88rem;
+        color: var(--cream-dim);
+        text-align: right;
+    }
+
+    /* ---- Right column: FAQ list ---- */
+
+    .faq-mun__list {
+        border-top: 1px solid rgba(241,250,243,0.14);
+    }
+
+    .faq-mun__item {
+        border-bottom: 1px solid rgba(241,250,243,0.14);
+        transition: background-color 0.4s ease;
+    }
+
+    .faq-mun__item:hover {
+        background: rgba(241,250,243,0.025);
+    }
+
+    .faq-mun__question {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        gap: clamp(0.9rem, 2.5vw, 1.3rem);
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: clamp(1.2rem, 2.8vw, 1.5rem) clamp(0.4rem, 1.5vw, 0.9rem);
+        text-align: left;
+        transition: padding-left 0.4s cubic-bezier(.2,.7,.2,1);
+        font-family: inherit;
+        color: inherit;
+    }
+
+    .faq-mun__question:hover {
+        padding-left: clamp(0.9rem, 2.2vw, 1.4rem);
+    }
+
+    .faq-mun__moon {
+        position: relative;
+        flex-shrink: 0;
+        width: 17px;
+        height: 17px;
+        border-radius: 50%;
+        background: var(--cream-dim);
+        overflow: hidden;
+        transition: box-shadow 0.5s ease, background 0.5s ease;
+    }
+
+    .faq-mun__moon::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 17px;
+        height: 17px;
+        border-radius: 50%;
+        background: var(--void);
+        transform: translateX(5px);
+        transition: transform 0.55s cubic-bezier(.2,.7,.2,1);
+    }
+
+    .faq-mun__item.is-open .faq-mun__moon {
+        background: var(--cream);
+        box-shadow: 0 0 12px 2px var(--accent-glow);
+    }
+
+    .faq-mun__item.is-open .faq-mun__moon::after {
+        transform: translateX(17px);
+    }
+
+    .faq-mun__question-text {
+        font-family: 'Fredoka', sans-serif;
+        font-weight: 600;
+        font-size: clamp(1rem, 1.9vw, 1.22rem);
+        color: var(--cream);
+        transition: color 0.35s ease;
+    }
+
+    .faq-mun__question:hover .faq-mun__question-text {
+        color: var(--cream-dim);
+    }
+
+    .faq-mun__answer-wrap {
+        display: grid;
+        grid-template-rows: 0fr;
+        transition: grid-template-rows 0.5s cubic-bezier(.2,.7,.2,1);
+    }
+
+    .faq-mun__item.is-open .faq-mun__answer-wrap {
+        grid-template-rows: 1fr;
+    }
+
+    .faq-mun__answer {
+        overflow: hidden;
+    }
+
+    .faq-mun__answer p {
+        margin: 0 0 clamp(1.2rem, 2.8vw, 1.5rem) calc(17px + clamp(0.9rem, 2.5vw, 1.3rem) + clamp(0.4rem, 1.5vw, 0.9rem));
+        max-width: 52ch;
+        font-family: 'Fredoka', sans-serif;
+        font-weight: 500;
+        font-size: clamp(0.88rem, 1.4vw, 0.98rem);
+        line-height: 1.75;
+        color: var(--cream-dim);
+    }
+
+    /* ---- Bottom CTA block ---- */
+
+    .faq-mun__cta {
+        grid-column: 2;
+        margin-top: clamp(2.5rem, 5vw, 3.5rem);
+        border-radius: 16px;
+        padding: clamp(1.6rem, 4vw, 2.2rem) clamp(1.6rem, 4vw, 2.4rem);
+        background: rgba(241,250,243,0.04);
+        border: 1px solid rgba(241,250,243,0.1);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+    }
+
+    .faq-mun__cta-text {
+        font-family: 'Alex Brush', cursive;
+        font-weight: 400;
+        font-size: clamp(1.5rem, 2.8vw, 1.9rem);
+        color: var(--cream);
+    }
+
+    .faq-mun__cta-btn {
+        flex-shrink: 0;
+        display: inline-flex;
+        align-items: center;
+        padding: 0.85rem 1.8rem;
+        border: 1px solid var(--accent);
+        border-radius: 100vh;
+        font-family: 'Fredoka', sans-serif;
+        font-weight: 600;
+        font-size: 0.72rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--cream);
+        text-decoration: none;
+        transition: background-color 0.4s ease, color 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .faq-mun__cta-btn:hover {
+        background-color: var(--accent);
+        box-shadow: 0 0 24px -6px var(--accent-glow);
+    }
+
+    @media (max-width: 860px) {
+        .faq-mun__body {
+            grid-template-columns: 1fr;
+        }
+        .faq-mun__cta {
+            grid-column: 1;
+        }
+        .faq-mun__visual {
+            position: relative;
+            top: 0;
+            flex-direction: row;
+            align-items: stretch;
+        }
+        .faq-mun__image-card {
+            aspect-ratio: 3 / 4;
+            flex: 1 1 55%;
+        }
+        .faq-mun__facts {
+            flex: 1 1 45%;
+        }
+    }
+
+    @media (max-width: 560px) {
+        .faq-mun__visual {
+            flex-direction: column;
+        }
+        .faq-mun__answer p {
+            margin-left: 0;
+        }
+        .faq-mun__cta {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .faq-mun__answer-wrap,
+        .faq-mun__moon,
+        .faq-mun__moon::after,
+        .faq-mun__question,
+        .faq-mun__image-card img {
+            transition: none;
+        }
+    }
+</style>
+
+<section class="faq-mun" id="faq">
+    <img class="faq-mun__bg" src="cb4a5dea-d1af-49a1-9fc6-b068b3211aff.png" alt="" loading="lazy">
+    <div class="faq-mun__scrim"></div>
+
+    <div class="faq-mun__header">
+        <span class="faq-mun__eyebrow">Good to Know</span>
+        <h2 class="faq-mun__headline">A few things<br><em>worth asking.</em></h2>
+    </div>
+
+    <div class="faq-mun__body">
+
+        <div class="faq-mun__visual">
+            <div class="faq-mun__image-card">
+                <img src="Home Bar - Shop Luxury Home Barware & Glassware Online in India.jpg" alt="The Mùn terrace at dusk">
+                <span class="faq-mun__image-caption">The terrace, just before dusk.</span>
+            </div>
+
+            <div class="faq-mun__facts">
+                <div class="faq-mun__fact">
+                    <span class="faq-mun__fact-label">Location</span>
+                    <span class="faq-mun__fact-value">Rooftop, Central Rome</span>
+                </div>
+                <div class="faq-mun__fact">
+                    <span class="faq-mun__fact-label">Hours</span>
+                    <span class="faq-mun__fact-value">Golden Hour – Midnight</span>
+                </div>
+                <div class="faq-mun__fact">
+                    <span class="faq-mun__fact-label">Seating</span>
+                    <span class="faq-mun__fact-value">Reserved &amp; Walk-in</span>
+                </div>
+                <div class="faq-mun__fact">
+                    <span class="faq-mun__fact-label">Contact</span>
+                    <span class="faq-mun__fact-value">reservations@mun.it</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="faq-mun__list">
+
+            <div class="faq-mun__item">
+                <button class="faq-mun__question" aria-expanded="false">
+                    <span class="faq-mun__moon"></span>
+                    <span class="faq-mun__question-text">Do I need a reservation?</span>
+                </button>
+                <div class="faq-mun__answer-wrap">
+                    <div class="faq-mun__answer">
+                        <p>We recommend booking ahead, particularly for sunset and weekend evenings, when the terrace fills quickly. Walk-ins are welcome whenever space allows.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-mun__item">
+                <button class="faq-mun__question" aria-expanded="false">
+                    <span class="faq-mun__moon"></span>
+                    <span class="faq-mun__question-text">Is there a dress code?</span>
+                </button>
+                <div class="faq-mun__answer-wrap">
+                    <div class="faq-mun__answer">
+                        <p>Smart casual is the general spirit of the evening. There's no strict list of rules — just come as you'd like to be seen against the skyline.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-mun__item">
+                <button class="faq-mun__question" aria-expanded="false">
+                    <span class="faq-mun__moon"></span>
+                    <span class="faq-mun__question-text">What are your terrace hours?</span>
+                </button>
+                <div class="faq-mun__answer-wrap">
+                    <div class="faq-mun__answer">
+                        <p>We open at golden hour and stay lit until midnight, seven days a week. Hours may extend slightly on weekends and during private events.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-mun__item">
+                <button class="faq-mun__question" aria-expanded="false">
+                    <span class="faq-mun__moon"></span>
+                    <span class="faq-mun__question-text">Can Mùn host private events?</span>
+                </button>
+                <div class="faq-mun__answer-wrap">
+                    <div class="faq-mun__answer">
+                        <p>Yes — the terrace can be reserved in part or in full for gatherings, celebrations, and gala evenings. Reach out and we'll tailor the setting to the occasion.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-mun__item">
+                <button class="faq-mun__question" aria-expanded="false">
+                    <span class="faq-mun__moon"></span>
+                    <span class="faq-mun__question-text">Do you accommodate dietary restrictions?</span>
+                </button>
+                <div class="faq-mun__answer-wrap">
+                    <div class="faq-mun__answer">
+                        <p>Absolutely. Our team is glad to adapt cocktails and small plates for allergies, intolerances, or preferences — just mention it when you arrive or reserve.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-mun__item">
+                <button class="faq-mun__question" aria-expanded="false">
+                    <span class="faq-mun__moon"></span>
+                    <span class="faq-mun__question-text">What happens if it rains?</span>
+                </button>
+                <div class="faq-mun__answer-wrap">
+                    <div class="faq-mun__answer">
+                        <p>The terrace transforms with covered seating on shorter notice evenings. In the rare case of closure, we'll reach out directly to reschedule your table.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-mun__item">
+                <button class="faq-mun__question" aria-expanded="false">
+                    <span class="faq-mun__moon"></span>
+                    <span class="faq-mun__question-text">Is parking available nearby?</span>
+                </button>
+                <div class="faq-mun__answer-wrap">
+                    <div class="faq-mun__answer">
+                        <p>There is limited street parking in the surrounding area, and a public garage a short walk from the entrance. We recommend arriving by taxi or rideshare where possible.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-mun__item">
+                <button class="faq-mun__question" aria-expanded="false">
+                    <span class="faq-mun__moon"></span>
+                    <span class="faq-mun__question-text">Can I bring children to the terrace?</span>
+                </button>
+                <div class="faq-mun__answer-wrap">
+                    <div class="faq-mun__answer">
+                        <p>Mùn is best suited to an adult evening atmosphere, especially after sundown. Families are welcome earlier in the day, before the terrace shifts into its night setting.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="faq-mun__cta">
+            <span class="faq-mun__cta-text">Still curious about something? Ask us directly.</span>
+            <a href="#contacts" class="faq-mun__cta-btn">Get in Touch</a>
+        </div>
+
+    </div>
+</section>
+
+<script>
+    (function () {
+        document.querySelectorAll('.faq-mun__item').forEach(function (item) {
+            var button = item.querySelector('.faq-mun__question');
+            button.addEventListener('click', function () {
+                var open = item.classList.toggle('is-open');
+                button.setAttribute('aria-expanded', open);
+            });
+        });
+    })();
+</script>
+
+<style>
+  
+    .mun-footer {
+        --void: #040705;
+        --cream: #f1faf3;
+        --cream-dim: rgba(241,250,243,0.62);
+        --cream-faint: rgba(241,250,243,0.38);
+        --accent-line: rgba(241,250,243,0.14);
+        --cta: #1206b6;
+        --cta-dim: rgba(228,255,91,0.5);
+    }
+
+    .mun-footer * { box-sizing: border-box; }
+
+    /* ================= TOP CTA BAR ================= */
+
+    .mun-footer__cta {
+        position: relative;
+        background: var(--cream);
+        padding: clamp(3rem, 7vw, 5.5rem) clamp(1.5rem, 6vw, 5rem);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 2rem;
+        flex-wrap: wrap;
+    }
+
+    .mun-footer__cta-eyebrow {
+        font-family: 'Jost', sans-serif;
+        font-weight: 500;
+        font-size: 0.72rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        line-height: 1.6;
+        color: var(--void);
+        flex: 0 0 auto;
+    }
+
+    .mun-footer__cta-eyebrow a {
+        color: inherit;
+        text-decoration: none;
+    }
+
+    .mun-footer__cta-heading {
+        flex: 1 1 auto;
+        min-width: 260px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .mun-footer__cta-heading h2 {
+        margin: 0;
+        font-family: 'Cormorant Garamond', serif;
+        font-weight: 500;
+        font-style: italic;
+        font-size: clamp(2.6rem, 7vw, 4.6rem);
+        line-height: 1;
+        color: var(--void);
+    }
+
+    .mun-footer__cta-underline {
+        margin-top: 0.5rem;
+        width: clamp(160px, 22vw, 320px);
+        height: 2px;
+        background: var(--cta);
+    }
+
+    .mun-footer__cta-arrow {
+        flex: 0 0 auto;
+        width: clamp(64px, 6vw, 88px);
+        height: clamp(64px, 6vw, 88px);
+        border-radius: 50%;
+        background: var(--cta);
+        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        text-decoration: none;
+        transition: transform 0.35s cubic-bezier(.2,.9,.3,1), box-shadow 0.35s ease;
+    }
+
+    .mun-footer__cta-arrow svg {
+        width: 34%;
+        height: 34%;
+    }
+
+    .mun-footer__cta-arrow:hover {
+        transform: scale(1.06);
+        box-shadow: 0 12px 30px -10px var(--cta-dim);
+    }
+
+    /* ================= BOTTOM FOOTER ================= */
+
+    .mun-footer__base {
+        background: var(--void);
+        color: var(--cream);
+        padding: clamp(2.5rem, 5vw, 4rem) clamp(1.5rem, 6vw, 5rem) clamp(1.75rem, 4vw, 2.5rem);
+        display: grid;
+        grid-template-columns: 1.3fr 1fr 1fr 1fr;
+        gap: clamp(2rem, 4vw, 3rem);
+    }
+
+    .mun-footer__logo {
+        width: 64px;
+        height: 64px;
+        border: 1px dashed var(--cream-faint);
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 0.9rem;
+        font-family: 'Jost', sans-serif;
+        font-size: 0.6rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--cream-faint);
+    }
+
+    .mun-footer__logo img {
+        max-width: 100%;
+        max-height: 100%;
+        display: block;
+    }
+
+    .mun-footer__brand-name {
+        margin: 0 0 0.4rem;
+        font-family: 'Fredoka', sans-serif;
+        font-weight: 600;
+        font-size: clamp(1.6rem, 3vw, 2rem);
+        letter-spacing: 0.01em;
+        line-height: 1.1;
+        color: var(--cream);
+    }
+
+    .mun-footer__brand-tag {
+        margin: 0;
+        font-family: 'Jost', sans-serif;
+        font-weight: 400;
+        font-size: 0.85rem;
+        line-height: 1.6;
+        letter-spacing: 0.02em;
+        color: var(--cream-dim);
+        max-width: 22ch;
+    }
+
+    .mun-footer__col-label {
+        margin: 0 0 1.1rem;
+        font-family: 'Jost', sans-serif;
+        font-weight: 600;
+        font-size: 0.68rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--cream);
+    }
+
+    .mun-footer__col a {
+        display: block;
+        font-family: 'Jost', sans-serif;
+        font-size: 0.86rem;
+        color: var(--cream);
+        text-decoration: none;
+        margin-bottom: 0.55rem;
+        transition: color 0.3s ease;
+    }
+
+    .mun-footer__col a:hover { color: var(--cta); }
+
+    .mun-footer__col p {
+        margin: 0 0 0.55rem;
+        font-family: 'Jost', sans-serif;
+        font-weight: 400;
+        font-size: 0.86rem;
+        line-height: 1.55;
+        color: var(--cream-dim);
+    }
+
+    .mun-footer__see-map {
+        display: inline-block;
+        margin-top: 0.35rem;
+        font-family: 'Jost', sans-serif;
+        font-weight: 500;
+        font-size: 0.72rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        text-decoration: underline;
+        text-underline-offset: 3px;
+        color: var(--cream) !important;
+    }
+
+    .mun-footer__see-map:hover { color: var(--cta) !important; }
+
+    .mun-footer__newsletter-link {
+        display: inline-block;
+        font-family: 'Jost', sans-serif;
+        font-weight: 500;
+        font-size: 0.76rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        text-decoration: underline;
+        text-underline-offset: 3px;
+        color: var(--cream);
+        margin-bottom: 1.9rem;
+    }
+
+    .mun-footer__newsletter-link:hover { color: var(--cta); }
+
+    .mun-footer__socials {
+        display: flex;
+        align-items: center;
+        gap: 1.1rem;
+    }
+
+    .mun-footer__socials a {
+        width: 30px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--cream);
+        border-radius: 50%;
+        transition: color 0.3s ease, background 0.3s ease;
+    }
+
+    .mun-footer__socials a:hover {
+        color: var(--void);
+        background: var(--cta);
+    }
+
+    .mun-footer__socials svg { width: 16px; height: 16px; }
+
+    .mun-footer__bottom-row {
+        grid-column: 1 / -1;
+        margin-top: clamp(2rem, 4vw, 3rem);
+        padding-top: 1.25rem;
+        border-top: 1px solid var(--accent-line);
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        font-family: 'Jost', sans-serif;
+        font-size: 0.72rem;
+        letter-spacing: 0.04em;
+        color: var(--cream-faint);
+    }
+
+    @media (max-width: 900px) {
+        .mun-footer__base { grid-template-columns: 1fr 1fr; }
+        .mun-footer__brand { grid-column: 1 / -1; margin-bottom: 0.5rem; }
+    }
+
+    @media (max-width: 560px) {
+        .mun-footer__cta { flex-direction: column; text-align: center; }
+        .mun-footer__cta-eyebrow { order: 2; }
+        .mun-footer__cta-arrow { order: 3; }
+        .mun-footer__base { grid-template-columns: 1fr; }
+    }
+</style>
+
+<footer class="mun-footer">
+
+    <div class="mun-footer__cta">
+        <span class="mun-footer__cta-eyebrow">STILL<br>DECIDING? <a href="#reserve">→</a></span>
+
+        <div class="mun-footer__cta-heading">
+            <h2>Reserve a table</h2>
+            <div class="mun-footer__cta-underline"></div>
+        </div>
+
+        <a class="mun-footer__cta-arrow" href="#reserve" aria-label="Reserve a table">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 12h14M13 6l6 6-6 6" stroke="#040705" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </a>
+    </div>
+
+    <div class="mun-footer__base">
+
+        <div class="mun-footer__brand">
+            <div class="mun-footer__logo">
+                <!-- Replace with: <img src="your-logo.png" alt="Cafe Moishi logo"> -->
+                LOGO
+            </div>
+            <p class="mun-footer__brand-name">Cafe Moishi</p>
+            <p class="mun-footer__brand-tag">A rooftop cocktail and shisha bar, made for slow evenings above Rome.</p>
+        </div>
+
+        <div class="mun-footer__col">
+            <p class="mun-footer__col-label">Rome</p>
+            <a href="mailto:reservations@cafemoishi.it">reservations@cafemoishi.it</a>
+            <a href="tel:+39061234567">+39 06 123 4567</a>
+            <p>Via del Corso 12,<br>00186 Rome</p>
+            <a class="mun-footer__see-map" href="https://maps.google.com" target="_blank" rel="noopener">See on map ↗</a>
+        </div>
+
+        <div class="mun-footer__col">
+            <p class="mun-footer__col-label">Hours</p>
+            <p>Golden Hour – Midnight<br>Seven days a week</p>
+            <p style="margin-top:1rem;">Reservations recommended<br>after 7PM</p>
+        </div>
+
+        <div class="mun-footer__col">
+            <p class="mun-footer__col-label">Want first access to<br>our evenings?</p>
+            <a class="mun-footer__newsletter-link" href="#newsletter">Sign up for our newsletter →</a>
+
+            <p class="mun-footer__col-label" style="margin-bottom:0.8rem;">Follow us</p>
+            <div class="mun-footer__socials">
+                <a href="#" aria-label="Instagram">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.5"/>
+                        <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.5"/>
+                        <circle cx="17.2" cy="6.8" r="1" fill="currentColor"/>
+                    </svg>
+                </a>
+                <a href="#" aria-label="Facebook">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M14 9h2.5V6h-2.5c-1.93 0-3.5 1.57-3.5 3.5V12H8.5v3H10.5v6h3v-6h2.3l.5-3H13.5v-2c0-.55.45-1 1-1Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+                    </svg>
+                </a>
+                <a href="#" aria-label="TikTok">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M15 4v9.4a2.8 2.8 0 1 1-2.2-2.74M15 4a4.2 4.2 0 0 0 4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+
+        <div class="mun-footer__bottom-row">
+            <span>© 2026 Cafe Moishi. All rights reserved.</span>
+            <span>Made in Uk</span>
+        </div>
+
+    </div>
+
+</footer>
+
+<script>
+    (function () {
+        var section = document.getElementById('lounge');
+        if (!section) return;
+        if (!('IntersectionObserver' in window)) { section.classList.add('in-view'); return; }
+        var observer = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    section.classList.add('in-view');
+                    observer.disconnect();
+                }
+            });
+        }, { threshold: 0.15 });
+        observer.observe(section);
+    })();
+</script>
+
+<script>
+    (function () {
+        var section = document.getElementById('drinks');
+        if (!section) return;
+
+        if ('IntersectionObserver' in window) {
+            var sectionObserver = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        section.classList.add('in-view');
+                        sectionObserver.disconnect();
+                    }
+                });
+            }, { threshold: 0.1 });
+            sectionObserver.observe(section);
+        } else {
+            section.classList.add('in-view');
+        }
+
+        var meta = {
+            mocktails: { title: 'Moishi Mocktails', price: 'From £5.00', more: '6 fresh mocktails, shaken to order.' },
+            starbuzz:  { title: 'Moishi Starbuzz', price: '£16 · +£2 per extra flavour', more: '6 more Starbuzz flavours available in-store.' },
+            savacco:   { title: 'Savacco', price: '£20', more: 'All 7 Savacco blends shown above.' },
+            soft:      { title: 'Soft Drinks', price: 'From £1.50', more: 'Full soft drinks range available at the counter.' },
+            hot:       { title: 'Hot Drinks & Tea', price: 'From £2.50', more: 'Ask about our pots of Green, Mint & Desi Tea.' }
+        };
+
+        var tabs = section.querySelectorAll('.drinks__tab');
+        var lists = section.querySelectorAll('.drinks__list');
+        var titleEl = document.getElementById('drinksPanelTitle');
+        var priceEl = document.getElementById('drinksPanelPrice');
+        var moreEl = document.getElementById('drinksMoreNote');
+
+        tabs.forEach(function (tab) {
+            tab.addEventListener('click', function () {
+                var key = tab.dataset.tab;
+
+                tabs.forEach(function (t) { t.classList.toggle('is-active', t === tab); });
+                lists.forEach(function (l) { l.classList.toggle('is-active', l.dataset.list === key); });
+
+                if (meta[key]) {
+                    titleEl.textContent = meta[key].title;
+                    priceEl.textContent = meta[key].price;
+                    moreEl.textContent = meta[key].more;
+                }
+            });
+        });
+    })();
+</script>
+
+<script>
+    (function () {
+        var section = document.getElementById('desserts');
+        var grid = document.getElementById('dessertsGrid');
+        if (!section || !grid) return;
+
+        var tiles = grid.querySelectorAll('.desserts__tile');
+
+        if (!('IntersectionObserver' in window)) {
+            section.classList.add('in-view');
+            grid.classList.add('in-view');
+            tiles.forEach(function (t) { t.classList.add('dessert-in'); });
+            return;
+        }
+
+        var sectionObserver = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    section.classList.add('in-view');
+                    grid.classList.add('in-view');
+                    sectionObserver.disconnect();
+                }
+            });
+        }, { threshold: 0.1 });
+        sectionObserver.observe(section);
+
+        var tileObserver = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('dessert-in');
+                    tileObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15 });
+        tiles.forEach(function (tile) { tileObserver.observe(tile); });
+    })();
+</script>
+</body>
+</html>

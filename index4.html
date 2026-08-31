@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cafe Moishi — Desserts</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Fredoka:wght@500;600;700&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: #040705; }
+
+    .desserts {
+        --void: #040705;
+        --cream: #f1faf3;
+        --cream-dim: rgba(241,250,243,0.62);
+        --cream-faint: rgba(241,250,243,0.36);
+        --accent: #a78bfa;
+        --glow: #a78bfa;
+        --glow-soft: rgba(6, 69, 241, 0.5);
+        --panel-bg: rgba(11,17,13,0.72);
+        --panel-border: rgba(250, 241, 249, 0.12);
+        --line: rgba(241,250,243,0.14);
+
+        position: relative;
+        overflow: hidden;
+        background: var(--void);
+        color: var(--cream);
+        padding: clamp(4rem, 8vw, 6rem) clamp(1.25rem, 5vw, 3rem);
+
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 1s cubic-bezier(.2,.7,.2,1), transform 1s cubic-bezier(.2,.7,.2,1);
+    }
+    .desserts.in-view { opacity: 1; transform: translateY(0); }
+    .desserts * { box-sizing: border-box; }
+
+    /* ---------- Background photo ---------- */
+    .desserts__bg {
+        position: absolute; inset: 0; z-index: -2;
+        width: 100%; height: 100%;
+        object-fit: cover; object-position: center 40%;
+    }
+    .desserts__scrim {
+        position: absolute; inset: 0; z-index: -2;
+        background:
+            radial-gradient(ellipse 800px 460px at 50% -5%, rgba(61,220,132,0.1), transparent 60%),
+            linear-gradient(180deg, rgba(0, 0, 0, 0.411) 0%, rgba(0, 0, 0, 0.527) 55%, var(--void) 100%);
+    }
+
+    /* ---------- Header ---------- */
+    .desserts__header {
+        position: relative; z-index: 1;
+        text-align: center;
+        max-width: 640px;
+        margin: 0 auto clamp(2.2rem, 5vw, 3rem);
+    }
+    .desserts__eyebrow {
+        display: block;
+        font-family: 'Alex Brush', cursive;
+        font-size: clamp(1.9rem, 4vw, 2.6rem);
+        color: var(--glow);
+        margin-bottom: 0.2rem;
+    }
+    .desserts__title {
+        margin: 0 0 0.7rem;
+        font-family: 'Fredoka', sans-serif;
+        font-weight: 700;
+        font-size: clamp(1.9rem, 4.2vw, 2.8rem);
+        color: var(--cream);
+    }
+    .desserts__subtitle {
+        margin: 0;
+        font-family: 'Jost', sans-serif;
+        font-size: 0.92rem;
+        line-height: 1.7;
+        color: var(--cream-dim);
+    }
+
+    /* =========================================================
+       BENTO GRID — the "different design" ask: uneven tile sizes
+       instead of a uniform card grid, so it reads as its own layout.
+       ========================================================= */
+
+    .desserts__grid {
+        position: relative; z-index: 1;
+        max-width: 1180px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-auto-rows: minmax(150px, auto);
+        gap: clamp(0.8rem, 2vw, 1.1rem);
+    }
+
+    .desserts__tile {
+        position: relative;
+        border-radius: 18px;
+        overflow: hidden;
+        border: 1px solid var(--tile-border);
+        background: var(--tile-bg);
+        padding: clamp(1.2rem, 2.5vw, 1.6rem);
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+
+        opacity: 0;
+        transform: translateY(40px) scale(0.96);
+        transition: opacity .8s cubic-bezier(.2,.7,.2,1), transform .8s cubic-bezier(.2,.7,.2,1), border-color .3s ease, box-shadow .3s ease;
+    }
+    .desserts__tile.dessert-in { opacity: 1; transform: translateY(0) scale(1); }
+    .desserts__grid.in-view .desserts__tile:nth-child(1) { transition-delay: 0s; }
+    .desserts__grid.in-view .desserts__tile:nth-child(2) { transition-delay: .08s; }
+    .desserts__grid.in-view .desserts__tile:nth-child(3) { transition-delay: .16s; }
+    .desserts__grid.in-view .desserts__tile:nth-child(4) { transition-delay: .24s; }
+    .desserts__grid.in-view .desserts__tile:nth-child(5) { transition-delay: .32s; }
+    .desserts__grid.in-view .desserts__tile:nth-child(6) { transition-delay: .4s; }
+
+    .desserts__tile:hover {
+        border-color: var(--accent-bright);
+        box-shadow: 0 18px 40px -20px rgba(0,0,0,0.6), 0 0 0 1px var(--glow-soft) inset;
+    }
+
+    /* tile sizing — this unevenness is the bento effect */
+    .desserts__tile--waffles { grid-column: span 2; grid-row: span 2; }
+    .desserts__tile--cheesecake { grid-column: span 2; grid-row: span 1; }
+    .desserts__tile--cakes { grid-column: span 1; grid-row: span 1; }
+    .desserts__tile--desi { grid-column: span 1; grid-row: span 1; }
+    .desserts__tile--cookies { grid-column: span 3; grid-row: span 1; }
+    .desserts__tile--extra { grid-column: span 1; grid-row: span 1; }
+
+    /* featured (image) tiles */
+    .desserts__tile-img {
+        position: absolute; inset: 0; z-index: -1;
+        width: 100%; height: 100%;
+        object-fit: cover;
+        filter: saturate(0.85) brightness(0.6);
+        transition: transform .7s cubic-bezier(.2,.7,.2,1);
+    }
+    .desserts__tile:hover .desserts__tile-img { transform: scale(1.06); }
+    .desserts__tile--photo::after {
+        content: "";
+        position: absolute; inset: 0; z-index: -1;
+        background: linear-gradient(0deg, rgba(4,7,5,0.92) 10%, rgba(4,7,5,0.25) 60%, rgba(4,7,5,0.5) 100%);
+    }
+
+    .desserts__badge {
+        position: absolute; top: 1rem; right: 1rem;
+        font-family: 'Jost', sans-serif;
+        font-weight: 500; font-size: 0.6rem;
+        letter-spacing: 0.1em; text-transform: uppercase;
+        color: var(--glow);
+        border: 1px solid rgba(61,220,132,0.4);
+        background: rgba(4,7,5,0.5);
+        border-radius: 999px;
+        padding: 0.35em 0.75em;
+    }
+
+    .desserts__tile-label {
+        display: block;
+        font-family: 'Jost', sans-serif;
+        font-weight: 500;
+        font-size: 0.6rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--glow);
+        margin-bottom: 0.4rem;
+    }
+
+    .desserts__tile-title {
+        margin: 0 0 0.6rem;
+        font-family: 'Fredoka', sans-serif;
+        font-weight: 600;
+        font-size: clamp(1rem, 1.8vw, 1.3rem);
+        color: var(--cream);
+    }
+
+    .desserts__tile-blurb {
+        margin: 0 0 0.9rem;
+        font-family: 'Jost', sans-serif;
+        font-weight: 400;
+        font-size: 0.82rem;
+        line-height: 1.55;
+        color: var(--cream-dim);
+        max-width: 42ch;
+    }
+
+    .desserts__items {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem 0.8rem;
+    }
+    .desserts__items li {
+        display: flex;
+        align-items: baseline;
+        gap: 0.35em;
+        font-family: 'Jost', sans-serif;
+        font-size: 0.8rem;
+        color: var(--cream-dim);
+        white-space: nowrap;
+    }
+    .desserts__items li span {
+        font-family: 'Fredoka', sans-serif;
+        font-weight: 500;
+        font-size: 0.78rem;
+        color: var(--glow);
+    }
+
+    /* cookies banner tile — chips instead of price list, since it's its own sub-brand */
+    .desserts__tile--cookies {
+        flex-direction: row;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1.2rem;
+        justify-content: space-between;
+    }
+    .desserts__cookie-copy { flex: 1 1 260px; }
+    .desserts__cookie-chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        flex: 1 1 260px;
+    }
+    .desserts__chip {
+        font-family: 'Jost', sans-serif;
+        font-weight: 500;
+        font-size: 0.72rem;
+        color: var(--cream-dim);
+        border: 1px solid var(--tile-border);
+        border-radius: 999px;
+        padding: 0.4em 0.85em;
+        transition: border-color .3s ease, color .3s ease;
+    }
+    .desserts__chip:hover { border-color: var(--glow); color: var(--cream); }
+    .desserts__cookie-price {
+        font-family: 'Fredoka', sans-serif;
+        font-weight: 600;
+        font-size: 0.85rem;
+        color: var(--glow);
+        display: block;
+        margin-top: 0.6rem;
+    }
+
+    /* extra / seasonal tile */
+    .desserts__tile--extra {
+        background: linear-gradient(150deg, rgba(61,220,132,0.08), rgba(241,250,243,0.02));
+    }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 900px) {
+        .desserts__grid { grid-template-columns: repeat(2, 1fr); }
+        .desserts__tile--waffles { grid-column: span 2; grid-row: span 2; }
+        .desserts__tile--cheesecake { grid-column: span 2; }
+        .desserts__tile--cakes,
+        .desserts__tile--desi,
+        .desserts__tile--extra { grid-column: span 1; }
+        .desserts__tile--cookies { grid-column: span 2; }
+    }
+
+    @media (max-width: 560px) {
+        .desserts__grid { grid-template-columns: 1fr; }
+        .desserts__tile,
+        .desserts__tile--waffles,
+        .desserts__tile--cheesecake,
+        .desserts__tile--cakes,
+        .desserts__tile--desi,
+        .desserts__tile--cookies,
+        .desserts__tile--extra {
+            grid-column: 1 / -1;
+            grid-row: auto;
+        }
+        .desserts__tile--waffles { min-height: 260px; }
+        .desserts__tile--cookies { flex-direction: column; align-items: flex-start; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .desserts__tile { opacity: 1 !important; transform: none !important; transition: none !important; }
+    }
+
+    /* ---------- CTA ---------- */
+    .desserts__actions {
+        position: relative; z-index: 1;
+        display: flex;
+        justify-content: center;
+        margin-top: clamp(2rem, 4vw, 2.6rem);
+    }
+    .desserts__cta {
+        display: inline-flex; align-items: center; gap: 0.6em;
+        font-family: 'Jost', sans-serif;
+        font-weight: 500; font-size: 0.75rem;
+        letter-spacing: 0.16em; text-transform: uppercase;
+        color: var(--void);
+        background: linear-gradient(135deg, var(--accent), var(--glow));
+        border: none; border-radius: 3px;
+        padding: 0.9em 2em;
+        text-decoration: none;
+        cursor: pointer;
+        transition: transform .3s cubic-bezier(.2,.7,.2,1), box-shadow .3s ease, letter-spacing .3s ease;
+    }
+    .desserts__cta:hover { transform: translateY(-3px); box-shadow: 0 14px 28px -10px var(--glow-soft); letter-spacing: 0.2em; }
+</style>
+</head>
+<body>
+
+<section class="desserts" id="desserts">
+
+    <!-- Swap this src for your own desserts / bakery photo -->
+    <img class="desserts__bg" src="dessertsbg.webp" alt="" loading="lazy">
+    <div class="desserts__scrim"></div>
+
+    <div class="desserts__header">
+        <span class="desserts__eyebrow">Something Sweet</span>
+        <h2 class="desserts__title">Desserts Worth Staying For</h2>
+        <p class="desserts__subtitle">Warm waffles, baked cheesecakes, and a few desi classics — everything on the dessert menu, in one place.</p>
+    </div>
+
+    <div class="desserts__grid" id="dessertsGrid">
+
+        <!-- Featured: Waffle / Cookie Dough -->
+        <div class="desserts__tile desserts__tile--waffles desserts__tile--photo">
+            <img class="desserts__tile-img" src="Waffle · Cookie Dough.webp" alt="Warm waffle with ice cream">
+            <span class="desserts__badge">Best Seller</span>
+            <span class="desserts__tile-label">Waffle · Cookie Dough</span>
+            <h3 class="desserts__tile-title">Warm & Gooey, Your Way</h3>
+            <p class="desserts__tile-blurb">Fresh-baked waffle or cookie dough, a scoop of ice cream, and a syrup of your choice drizzled on top.</p>
+            <ul class="desserts__items">
+                <li>Lotus Biscoff <span>£5</span></li>
+                <li>Chocolate <span>£5</span></li>
+                <li>Peanut Butter <span>£5</span></li>
+                <li>Strawberry <span>£5</span></li>
+                <li>Oreo <span>£5</span></li>
+                <li>Ferrero Rocher <span>£5</span></li>
+            </ul>
+        </div>
+
+        <!-- Cheesecakes -->
+        <div class="desserts__tile desserts__tile--cheesecake">
+            <span class="desserts__tile-label">Cheesecakes</span>
+            <h3 class="desserts__tile-title">Baked Daily, Sliced Thick</h3>
+            <ul class="desserts__items">
+                <li>San Sebastian <span>£6</span></li>
+                <li>Lotus Biscoff <span>£6</span></li>
+                <li>Cookies &amp; Cream <span>£6</span></li>
+                <li>Milk Chocolate <span>£6</span></li>
+            </ul>
+        </div>
+
+        <!-- Luxury Cakes -->
+        <div class="desserts__tile desserts__tile--cakes">
+            <span class="desserts__tile-label">Luxury Cakes</span>
+            <h3 class="desserts__tile-title">Rich &amp; Indulgent</h3>
+            <ul class="desserts__items">
+                <li>Peanut Butter Stack <span>£6</span></li>
+                <li>Lava Chocolate Cake <span>£6</span></li>
+                <li>Brownie Special <span>£6</span></li>
+            </ul>
+        </div>
+
+        <!-- Desi Traditional Desserts -->
+        <div class="desserts__tile desserts__tile--desi">
+            <span class="desserts__tile-label">Desi Classics</span>
+            <h3 class="desserts__tile-title">From Home</h3>
+            <ul class="desserts__items">
+                <li>Gulab Jamun &amp; Ice Cream <span>£6</span></li>
+                <li>Milkcakes <span>£6</span></li>
+                <li>Gajrela <span>£6</span></li>
+            </ul>
+        </div>
+
+        <!-- Mayfair Cookies banner -->
+        <div class="desserts__tile desserts__tile--cookies">
+            <div class="desserts__cookie-copy">
+                <span class="desserts__tile-label">Mayfair Cookies · From Miss Bundangerie, London</span>
+                <h3 class="desserts__tile-title">Now Baking at Cafe Moishi</h3>
+                <span class="desserts__cookie-price">3 Cookies from £10.00</span>
+            </div>
+            <div class="desserts__cookie-chips">
+                <span class="desserts__chip">Queen of Cookie</span>
+                <span class="desserts__chip">Red Velvet Bliss</span>
+                <span class="desserts__chip">Nutella Stuffed</span>
+                <span class="desserts__chip">Reese's Joy</span>
+                <span class="desserts__chip">Loaded Biscoff</span>
+            </div>
+        </div>
+
+        <!-- Extra / seasonal specials (not on the printed menu) -->
+        <div class="desserts__tile desserts__tile--extra">
+            <span class="desserts__badge" style="position:static; align-self:flex-start; margin-bottom:0.8rem;">New</span>
+            <span class="desserts__tile-label">Seasonal Specials</span>
+            <h3 class="desserts__tile-title">Ask Your Server</h3>
+            <ul class="desserts__items">
+                <li>Pistachio Baklava Cheesecake <span>£7</span></li>
+                <li>Salted Caramel Waffle Stack <span>£6</span></li>
+            </ul>
+        </div>
+
+    </div>
+
+    <div class="desserts__actions">
+        <a href="#menu-full" class="desserts__cta">See Full Menu</a>
+    </div>
+
+</section>
+
+<script>
+    (function () {
+        var section = document.getElementById('desserts');
+        var grid = document.getElementById('dessertsGrid');
+        if (!section || !grid) return;
+
+        var tiles = grid.querySelectorAll('.desserts__tile');
+
+        if (!('IntersectionObserver' in window)) {
+            section.classList.add('in-view');
+            grid.classList.add('in-view');
+            tiles.forEach(function (t) { t.classList.add('dessert-in'); });
+            return;
+        }
+
+        var sectionObserver = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    section.classList.add('in-view');
+                    grid.classList.add('in-view');
+                    sectionObserver.disconnect();
+                }
+            });
+        }, { threshold: 0.1 });
+        sectionObserver.observe(section);
+
+        var tileObserver = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('dessert-in');
+                    tileObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15 });
+        tiles.forEach(function (tile) { tileObserver.observe(tile); });
+    })();
+</script>
+
+</body>
+</html>
