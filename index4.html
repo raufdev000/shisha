@@ -1,115 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Gallery Section</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cafe Moishi</title>
 
-</head>
-<body>
-    
-<style>
-  :root{
-    --bg:#0a0a0a;
-    --green: rgba(100, 55, 224, 0.55);
-  }
+    <link rel="stylesheet" href="styles.css">
+    <style>
+* {
+    box-sizing: border-box;
+}
 
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #050509;
+}
 
-  html,body{
-    background:var(--bg);
-    font-family:'Poppins', sans-serif;
-    width:100%;
-    overflow-x:hidden;
-  }
+.hero-title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
-  .gallery-section{
-    width:100%;
-    margin-bottom: 15px;
-  }
+    font-family: Georgia, "Times New Roman", serif;
+    font-weight: 700;
+    font-size: 100px;
+    line-height: 0.9;
+    letter-spacing: -3px;
+    text-align: center;
 
-  .gallery-grid{
-    display:grid;
-    grid-template-columns:repeat(3, 1fr);
-    grid-template-rows:repeat(2, 1fr);
-    width:100%;
-  }
+    background: linear-gradient(
+        to bottom,
+        #ffffff 0%,
+        #eaf8ff 30%,
+        #8fcfff 65%,
+        #ffffff 100%
+    );
 
-  .gallery-item{
-    position:relative;
-    overflow:hidden;
-    aspect-ratio:4/3;
-  }
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
 
-  .gallery-item img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    display:block;
-    transition:transform 0.6s ease;
-  }
+    filter:
+        drop-shadow(0 0 4px #ffffff)
+        drop-shadow(0 0 12px #4da6ff)
+        drop-shadow(0 0 25px #7a4dff);
+}
 
-  .gallery-item::after{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:var(--green);
-    opacity:0;
-    transition:opacity 0.5s ease;
-  }
-
-  .gallery-item:hover::after{
-    opacity:1;
-  }
-
-  .gallery-item:hover img{
-    transform:scale(1.06);
-  }
-
-  @media (max-width:900px){
-    .gallery-grid{
-      grid-template-columns:repeat(2, 1fr);
-      grid-template-rows:repeat(3, 1fr);
-    }
-  }
-
-  @media (max-width:560px){
-    .gallery-grid{
-      grid-template-columns:1fr;
-      grid-template-rows:repeat(6, 1fr);
-    }
-  }
+.hero-title span:first-child {
+    margin-bottom: 8px;
+}
 </style>
-<section class="gallery-section">
-  <div class="gallery-grid">
+</head>
 
-    <div class="gallery-item">
-      <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=800&q=75" alt="Coffee at night">
+<body>
+
+    <div class="hero-title">
+        <span>CAFE</span>
+        <span>MOISHI</span>
     </div>
-
-    <div class="gallery-item">
-      <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=800&q=75" alt="Burger close up">
-    </div>
-
-    <div class="gallery-item">
-<img src="https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?auto=format&fit=crop&w=800&q=75" alt="Shisha lounge at night with red lights">
-    </div>
-
-    <div class="gallery-item">
-      <img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=800&q=75" alt="Fresh salad bowl">
-    </div>
-
-    <div class="gallery-item">
-<img src="https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=800&q=75" alt="Qawwali singer performing at night">
-    </div>
-
-    <div class="gallery-item">
-  <img src="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=800&q=75" alt="Refreshing drink">
-    </div>
-
-  </div>
-</section>
 
 </body>
 </html>
