@@ -568,6 +568,7 @@
         width: 100%; height: 100%;
         object-fit: cover; object-position: center 40%;
         filter: grayscale(35%);
+        opacity: 50%;
     }
     .lounge__scrim {
         position: absolute; inset: 0; z-index: -2;
@@ -1413,8 +1414,7 @@
 }
 
 </style>
-    </head>
-    <body class="home wp-singular page-template page-template-page_HOME page-template-page_HOME-php page page-id-2 wp-theme-sim-base chrome">
+    </head>    <body class="home wp-singular page-template page-template-page_HOME page-template-page_HOME-php page page-id-2 wp-theme-sim-base chrome">
 
 <nav class="site-nav">
   <a href="#" class="site-logo">
@@ -1427,7 +1427,7 @@
   <ul class="nav-links">
     <li><a href="#" class="active">Home</a></li>
     <li><a href="#">About</a></li>
-    <li><a href="#">Menu</a></li>
+    <li><a href="menu.html">Menu</a></li>
     <li><a href="#">Contact</a></li>
   </ul>
 
@@ -1668,9 +1668,6 @@
                                         <div class="home-hero__frame">
                                             <img src="icecube.png">
                                         </div>
-                                        <div class="home-hero__frame">
-                                            <img src="icecube.png">
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -1690,6 +1687,36 @@
 
             </div>
        
+
+<style>
+  /* ===== Scroll fade + blur reveal (JS-driven, repeats every scroll) =====
+     Added for: fade+blur animation on all sections except the hero,
+     the section right after the hero, and the footer.
+     Classes are applied/toggled by script.js — nothing else here changes. */
+  .scroll-fade-blur{
+    opacity:0;
+    filter:blur(16px);
+    transform:translateY(28px);
+    transition:
+      opacity 0.9s cubic-bezier(.22,.7,.25,1),
+      filter 0.9s cubic-bezier(.22,.7,.25,1),
+      transform 0.9s cubic-bezier(.22,.7,.25,1);
+    will-change:opacity, filter, transform;
+  }
+  .scroll-fade-blur.is-visible{
+    opacity:1;
+    filter:blur(0px);
+    transform:translateY(0);
+  }
+  @media (prefers-reduced-motion: reduce){
+    .scroll-fade-blur{
+      transition:none !important;
+      opacity:1 !important;
+      filter:none !important;
+      transform:none !important;
+    }
+  }
+</style>
 
 </head>
 <body>
@@ -1850,7 +1877,7 @@
 <section class="lounge" id="lounge">
 
     <!-- Swap for your own lounge/coal photo -->
-    <img class="lounge__bg" src="mintbg.webp" alt="" loading="lazy">
+    <img class="lounge__bg" src="shishabg.webp" alt="" loading="lazy">
     <div class="lounge__scrim"></div>
     <span class="lounge__glow lounge__glow--a" aria-hidden="true"></span>
     <span class="lounge__glow lounge__glow--b" aria-hidden="true"></span>
@@ -1859,8 +1886,7 @@
         <div class="lounge__copy">
             <span class="lounge__eyebrow">Shisha Bar</span>
             <h2 class="lounge__title">Every Flavour,<br><span>Every Night</span></h2>
-            <p class="lounge__text">Deep seating, low light, and a hookah menu built for slow evenings — from smoky classics to house-made fruit blends, poured coal-side by hand.</p>
-
+           
             <div class="lounge__features">
                 <span class="lounge__feature">
                     <svg viewBox="0 0 24 24" fill="none"><path d="M4 20v-6a8 8 0 0 1 16 0v6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><rect x="2" y="18" width="4" height="4" rx="1" stroke="currentColor" stroke-width="1.6"/><rect x="18" y="18" width="4" height="4" rx="1" stroke="currentColor" stroke-width="1.6"/></svg>
@@ -3872,6 +3898,231 @@
 </script>
 
 <style>
+    .testi-mun {
+        --void: #040705;
+        --cream: #f1faf3;
+        --cream-dim: rgba(241,250,243,0.62);
+        --cream-faint: rgba(241,250,243,0.38);
+        --accent: #881a9e;
+        --accent-glow: rgba(161, 10, 221, 0.55);
+        --card-bg: rgba(241,250,243,0.04);
+        --card-border: rgba(241,250,243,0.1);
+
+        position: relative;
+        overflow: hidden;
+        background: var(--void);
+        padding: clamp(4rem, 9vw, 6rem) clamp(1.5rem, 6vw, 6rem);
+        color: var(--cream);
+
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity .9s cubic-bezier(.2,.7,.2,1), transform .9s cubic-bezier(.2,.7,.2,1);
+    }
+    .testi-mun.in-view { opacity: 1; transform: translateY(0); }
+    .testi-mun * { box-sizing: border-box; }
+
+    .testi-mun__bg {
+        position: absolute; inset: 0; z-index: 0;
+        width: 100%; height: 100%;
+        object-fit: cover;
+        opacity: .28;
+        filter: saturate(0.9) brightness(0.8);
+    }
+    .testi-mun__scrim {
+        position: absolute; inset: 0; z-index: 0;
+        background: linear-gradient(180deg, var(--void) 0%, rgba(4,7,5,0.55) 30%, rgba(4,7,5,0.94) 100%);
+    }
+
+    .testi-mun__header {
+        position: relative; z-index: 1;
+        text-align: center;
+        max-width: 700px;
+        margin: 0 auto clamp(3rem, 6vw, 4rem);
+    }
+    .testi-mun__eyebrow {
+        display: block;
+        font-family: 'Alex Brush', cursive;
+        font-weight: 400;
+        font-size: clamp(1.8rem, 4vw, 2.5rem);
+        color: var(--accent);
+        margin-bottom: 0.3rem;
+    }
+    .testi-mun__headline {
+        margin: 0;
+        font-family: 'Cormorant Garamond', serif;
+        font-weight: 500;
+        font-size: clamp(1.9rem, 4.6vw, 3rem);
+        line-height: 1.2;
+        color: var(--cream);
+    }
+    .testi-mun__headline em {
+        font-style: italic;
+        font-weight: 400;
+        color: var(--cream-dim);
+    }
+
+    .testi-mun__grid {
+        position: relative; z-index: 1;
+        max-width: 1180px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: clamp(1.25rem, 3vw, 1.75rem);
+    }
+
+    .testi-mun__card {
+        position: relative;
+        background: rgba(20, 14, 22, 0.75);
+        border: 1px solid var(--card-border);
+        border-radius: 16px;
+        padding: 2.6rem 1.75rem 1.75rem;
+        text-align: center;
+        backdrop-filter: blur(6px);
+
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1), border-color .3s ease;
+    }
+    .testi-mun__card.testi-in { opacity: 1; transform: translateY(0); }
+    .testi-mun__card:nth-child(1) { transition-delay: 0s; }
+    .testi-mun__card:nth-child(2) { transition-delay: .12s; }
+    .testi-mun__card:nth-child(3) { transition-delay: .24s; }
+    .testi-mun__card:hover { border-color: rgba(136,26,158,0.45); }
+
+    .testi-mun__quote {
+        position: absolute;
+        font-family: 'Cormorant Garamond', serif;
+        font-style: italic;
+        font-size: 2.4rem;
+        line-height: 1;
+        color: var(--accent);
+    }
+    .testi-mun__quote--open { top: 1rem; left: 1.25rem; }
+    .testi-mun__quote--close { bottom: 1rem; right: 1.4rem; }
+
+    .testi-mun__avatar {
+        width: 62px; height: 62px;
+        border-radius: 50%;
+        margin: 0 auto 1.2rem;
+        overflow: hidden;
+        border: 2px solid rgba(241,250,243,0.18);
+        background: linear-gradient(135deg, var(--accent), #3202e0);
+        position: relative;
+    }
+    .testi-mun__avatar::before {
+        content: attr(data-initial);
+        position: absolute; inset: 0;
+        display: flex; align-items: center; justify-content: center;
+        font-family: 'Fredoka', sans-serif;
+        font-weight: 600;
+        font-size: 1.1rem;
+        color: var(--cream);
+    }
+    .testi-mun__avatar img {
+        width: 100%; height: 100%; object-fit: cover;
+        position: relative; z-index: 1;
+    }
+
+    .testi-mun__text {
+        font-family: 'Jost', sans-serif;
+        font-weight: 400;
+        font-size: 0.92rem;
+        line-height: 1.8;
+        color: var(--cream-dim);
+        margin: 0 0 1.4rem;
+    }
+    .testi-mun__name {
+        font-family: 'Fredoka', sans-serif;
+        font-weight: 600;
+        font-size: 0.95rem;
+        color: var(--accent);
+        margin: 0;
+    }
+
+    @media (max-width: 860px) {
+        .testi-mun__grid { grid-template-columns: 1fr; }
+    }
+</style>
+
+<section class="testi-mun" id="testimonials">
+    <img class="testi-mun__bg" src="testimonials-bg.webp" alt="" loading="lazy">
+    <div class="testi-mun__scrim"></div>
+
+    <div class="testi-mun__header">
+        <span class="testi-mun__eyebrow">What People Think</span>
+        <h2 class="testi-mun__headline">About <em>Us</em></h2>
+    </div>
+
+    <div class="testi-mun__grid" id="testiGrid">
+
+        <article class="testi-mun__card">
+            <span class="testi-mun__quote testi-mun__quote--open">&ldquo;</span>
+            <div class="testi-mun__avatar" data-initial="S">
+                <img src="https://i.pravatar.cc/150?img=47" alt="Sara K." onerror="this.style.display='none'">
+            </div>
+            <p class="testi-mun__text">Amazing atmosphere and the sheesha flavours are spot on. The peri peri grill burger was incredible too — we'll definitely be back.</p>
+            <p class="testi-mun__name">Sara K.</p>
+            <span class="testi-mun__quote testi-mun__quote--close">&rdquo;</span>
+        </article>
+
+        <article class="testi-mun__card">
+            <span class="testi-mun__quote testi-mun__quote--open">&ldquo;</span>
+            <div class="testi-mun__avatar" data-initial="U">
+                <img src="https://i.pravatar.cc/150?img=12" alt="Alex james" onerror="this.style.display='none'">
+            </div>
+            <p class="testi-mun__text">Best dessert waffle I've had in Huddersfield. Cosy vibe, chill music, and the staff genuinely make you feel at home.</p>
+            <p class="testi-mun__name">Alex james</p>
+            <span class="testi-mun__quote testi-mun__quote--close">&rdquo;</span>
+        </article>
+
+        <article class="testi-mun__card">
+            <span class="testi-mun__quote testi-mun__quote--open">&ldquo;</span>
+            <div class="testi-mun__avatar" data-initial="B">
+                <img src="https://i.pravatar.cc/150?img=33" alt="Mr George" onerror="this.style.display='none'">
+            </div>
+            <p class="testi-mun__text">Great date-night spot. The lounge seating is so comfortable and the cocktails hit different. Highly recommend the Savacco.</p>
+            <p class="testi-mun__name">Mr George</p>
+            <span class="testi-mun__quote testi-mun__quote--close">&rdquo;</span>
+        </article>
+
+    </div>
+</section>
+
+<script>
+    (function () {
+        var section = document.querySelector('.testi-mun');
+        if (!section) return;
+        var cards = section.querySelectorAll('.testi-mun__card');
+
+        if (!('IntersectionObserver' in window)) {
+            section.classList.add('in-view');
+            cards.forEach(function (c) { c.classList.add('testi-in'); });
+            return;
+        }
+
+        var sectionObserver = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    section.classList.add('in-view');
+                    sectionObserver.disconnect();
+                }
+            });
+        }, { threshold: 0.12 });
+        sectionObserver.observe(section);
+
+        var cardObserver = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('testi-in');
+                    cardObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.2 });
+        cards.forEach(function (c) { cardObserver.observe(c); });
+    })();
+</script>
+
+<style>
   
     .mun-footer {
         --void: #070607;
@@ -4314,7 +4565,7 @@
     })();
 </script>
 
-
+<script src="script.js"></script>
 
 </body>
 </html>

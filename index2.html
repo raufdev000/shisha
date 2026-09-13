@@ -1,315 +1,338 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Shisha Lounge</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<!-- Only these two fonts used across the whole section -->
-<link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
+
 <style>
+  
+    .mun-footer {
+        --void: #070607;
+        --cream: #f1faf3;
+        --cream-dim: rgba(241,250,243,0.62);
+        --cream-faint: rgba(241,250,243,0.38);
+        --accent-line: rgba(241,250,243,0.14);
+        --cta: #a8a5c7;
+        --cta-dim: rgba(228,255,91,0.5);
+    }
 
+    .mun-footer * { box-sizing: border-box; }
 
-    .lounge {
-        --void: #0e0e12;
-        --panel: #17171d;
-        --gray: #2a2a33;
-        --gray-line: rgba(255,255,255,0.08);
-        --ink: #e9e8ee;
-        --ink-dim: rgba(233,232,238,0.62);
-        --ink-faint: rgba(233,232,238,0.4);
-        --purple: #a78bfa;
-        --purple-deep: #6d28d9;
-        --purple-glow: rgba(167,139,250,0.45);
-        --card-bg: rgba(233,232,238,0.04);
-        --card-border: rgba(233,232,238,0.1);
+    /* ================= TOP CTA BAR ================= */
 
+    .mun-footer__cta {
         position: relative;
-        overflow: hidden;
-        background: var(--void);
-        color: var(--ink);
-        padding: clamp(3.5rem, 7vw, 5.5rem) 0;
-
-        opacity: 0;
-        transform: translateY(20px);
-        transition: opacity .9s cubic-bezier(.2,.7,.2,1), transform .9s cubic-bezier(.2,.7,.2,1);
-    }
-    .lounge.in-view { opacity: 1; transform: translateY(0); }
-    .lounge * { box-sizing: border-box; }
-
-    /* background photo + purple/gray scrim */
-    .lounge__bg {
-        position: absolute; inset: 0; z-index: -2;
-        width: 100%; height: 100%;
-        object-fit: cover; object-position: center 40%;
-        filter: grayscale(35%);
-    }
-    .lounge__scrim {
-        position: absolute; inset: 0; z-index: -2;
-    }
-
-    /* soft floating glow blobs */
-    .lounge__glow { position: absolute; border-radius: 50%; filter: blur(80px); z-index: -1; pointer-events: none; }
-    .lounge__glow--a { width: 30vw; height: 30vw; top: -8vw; right: -6vw; background: var(--purple); opacity: 0.22; animation: loungeFloat 16s ease-in-out infinite; }
-    .lounge__glow--b { width: 22vw; height: 22vw; bottom: -6vw; left: -4vw; background: var(--gray); opacity: 0.35; animation: loungeFloat 20s ease-in-out infinite reverse; }
-    @keyframes loungeFloat { 0%,100% { transform: translate(0,0); } 50% { transform: translate(-2vw, 3vw); } }
-    @media (prefers-reduced-motion: reduce) { .lounge__glow { animation: none; } }
-
-    .lounge__wrap {
-        position: relative; z-index: 1;
-        max-width: 1150px; margin: 0 auto;
-        padding: 0 clamp(1.25rem, 5vw, 3rem);
-        display: grid;
-        grid-template-columns: 1.1fr 0.9fr;
-        gap: clamp(2rem, 5vw, 3.5rem);
-        align-items: center;
-    }
-
-    /* ---------- Copy column ---------- */
-
-    .lounge__eyebrow {
-        display: block;
-        font-family: 'Alex Brush', cursive;
-        font-weight: 400;
-        font-size: clamp(1.9rem, 4vw, 2.5rem);
-        color: var(--purple);
-        margin-bottom: 0.2rem;
-    }
-
-    .lounge__title {
-        margin: 0 0 0.9rem;
-        font-family: 'Fredoka', sans-serif;
-        font-weight: 700;
-        font-size: clamp(2rem, 4.6vw, 3rem);
-        line-height: 1.18;
-        color: var(--ink);
-    }
-    .lounge__title span {
-        background: linear-gradient(120deg, var(--purple), #d4c7ff);
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
-    }
-
-    .lounge__text {
-        margin: 0 0 1.5rem;
-        max-width: 48ch;
-        font-family: 'Fredoka', sans-serif;
-        font-weight: 400;
-        font-size: 0.95rem;
-        line-height: 1.75;
-        color: var(--ink-dim);
-    }
-
-    /* feature row — small extra content, three quick facts with icons */
-    .lounge__features {
+        background: var(--cream);
+        padding: clamp(3rem, 7vw, 5.5rem) clamp(1.5rem, 6vw, 5rem);
         display: flex;
-        gap: 0.9rem;
+        align-items: center;
+        justify-content: space-between;
+        gap: 2rem;
         flex-wrap: wrap;
-        margin-bottom: 1.6rem;
     }
-    .lounge__feature {
+
+    .mun-footer__cta-eyebrow {
+        font-family: 'Jost', sans-serif;
+        font-weight: 500;
+        font-size: 0.72rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        line-height: 1.6;
+        color: var(--void);
+        flex: 0 0 auto;
+    }
+
+    .mun-footer__cta-eyebrow a {
+        color: inherit;
+        text-decoration: none;
+    }
+
+    .mun-footer__cta-heading {
+        flex: 1 1 auto;
+        min-width: 260px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .mun-footer__cta-heading h2 {
+        margin: 0;
+        font-family: 'Cormorant Garamond', serif;
+        font-weight: 500;
+        font-style: italic;
+        font-size: clamp(2.6rem, 7vw, 4.6rem);
+        line-height: 1;
+        color: var(--void);
+    }
+
+    .mun-footer__cta-underline {
+        margin-top: 0.5rem;
+        width: clamp(160px, 22vw, 320px);
+        height: 2px;
+        background: var(--cta);
+    }
+
+    .mun-footer__cta-arrow {
+        flex: 0 0 auto;
+        width: clamp(64px, 6vw, 88px);
+        height: clamp(64px, 6vw, 88px);
+        border-radius: 50%;
+        background: var(--cta);
+        border: none;
         display: flex;
         align-items: center;
-        gap: 0.55em;
-        padding: 0.55em 1em;
-        border: 1px solid var(--card-border);
-        border-radius: 999px;
-        background: var(--card-bg);
-        font-family: 'Fredoka', sans-serif;
-        font-weight: 500;
-        font-size: 0.76rem;
-        color: var(--ink-dim);
-        transition: border-color .3s ease, color .3s ease, transform .3s cubic-bezier(.2,.7,.2,1);
+        justify-content: center;
+        cursor: pointer;
+        text-decoration: none;
+        transition: transform 0.35s cubic-bezier(.2,.9,.3,1), box-shadow 0.35s ease;
     }
-    .lounge__feature:hover { border-color: var(--purple); color: var(--ink); transform: translateY(-2px); }
-    .lounge__feature svg { width: 15px; height: 15px; color: var(--purple); flex-shrink: 0; }
 
-    /* flavour chips — the extra bit of content: a taste of the menu */
-    .lounge__flavours-label {
+    .mun-footer__cta-arrow svg {
+        width: 34%;
+        height: 34%;
+    }
+
+    .mun-footer__cta-arrow:hover {
+        transform: scale(1.06);
+        box-shadow: 0 12px 30px -10px var(--cta-dim);
+    }
+
+    /* ================= BOTTOM FOOTER ================= */
+
+    .mun-footer__base {
+        background: var(--void);
+        color: var(--cream);
+        padding: clamp(2.5rem, 5vw, 4rem) clamp(1.5rem, 6vw, 5rem) clamp(1.75rem, 4vw, 2.5rem);
+        display: grid;
+        grid-template-columns: 1.3fr 1fr 1fr 1fr;
+        gap: clamp(2rem, 4vw, 3rem);
+    }
+
+    .mun-footer__logo {
+        width: 64px;
+        height: 64px;
+        border: 1px dashed var(--cream-faint);
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 0.9rem;
+        font-family: 'Jost', sans-serif;
+        font-size: 0.6rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--cream-faint);
+    }
+
+    .mun-footer__logo img {
+        max-width: 100%;
+        max-height: 100%;
+        display: block;
+    }
+
+    .mun-footer__brand-name {
+        margin: 0 0 0.4rem;
         font-family: 'Fredoka', sans-serif;
         font-weight: 600;
-        font-size: 0.64rem;
-        letter-spacing: 0.16em;
+        font-size: clamp(1.6rem, 3vw, 2rem);
+        letter-spacing: 0.01em;
+        line-height: 1.1;
+        color: var(--cream);
+    }
+
+    .mun-footer__brand-tag {
+        margin: 0;
+        font-family: 'Jost', sans-serif;
+        font-weight: 400;
+        font-size: 0.85rem;
+        line-height: 1.6;
+        letter-spacing: 0.02em;
+        color: var(--cream-dim);
+        max-width: 22ch;
+    }
+
+    .mun-footer__col-label {
+        margin: 0 0 1.1rem;
+        font-family: 'Jost', sans-serif;
+        font-weight: 600;
+        font-size: 0.68rem;
+        letter-spacing: 0.18em;
         text-transform: uppercase;
-        color: var(--purple);
-        margin-bottom: 0.6rem;
+        color: var(--cream);
+    }
+
+    .mun-footer__col a {
         display: block;
+        font-family: 'Jost', sans-serif;
+        font-size: 0.86rem;
+        color: var(--cream);
+        text-decoration: none;
+        margin-bottom: 0.55rem;
+        transition: color 0.3s ease;
     }
-    .lounge__flavours {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-        margin-bottom: 1.8rem;
-        padding: 0;
-        list-style: none;
+
+    .mun-footer__col a:hover { color: var(--cta); }
+
+    .mun-footer__col p {
+        margin: 0 0 0.55rem;
+        font-family: 'Jost', sans-serif;
+        font-weight: 400;
+        font-size: 0.86rem;
+        line-height: 1.55;
+        color: var(--cream-dim);
     }
-    .lounge__flavours li {
-        font-family: 'Fredoka', sans-serif;
+
+    .mun-footer__see-map {
+        display: inline-block;
+        margin-top: 0.35rem;
+        font-family: 'Jost', sans-serif;
+        font-weight: 500;
+        font-size: 0.72rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        text-decoration: underline;
+        text-underline-offset: 3px;
+        color: var(--cream) !important;
+    }
+
+    .mun-footer__see-map:hover { color: var(--cta) !important; }
+
+    .mun-footer__newsletter-link {
+        display: inline-block;
+        font-family: 'Jost', sans-serif;
         font-weight: 500;
         font-size: 0.76rem;
-        color: var(--ink);
-        background: rgba(255,255,255,0.05);
-        border: 1px solid var(--gray-line);
-        border-radius: 8px;
-        padding: 0.4em 0.8em;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        text-decoration: underline;
+        text-underline-offset: 3px;
+        color: var(--cream);
+        margin-bottom: 1.9rem;
     }
 
-    .lounge__cta-row {
+    .mun-footer__newsletter-link:hover { color: var(--cta); }
+
+    .mun-footer__socials {
         display: flex;
         align-items: center;
-        gap: 1.4rem;
-        flex-wrap: wrap;
+        gap: 1.1rem;
     }
 
-    .lounge__cta {
-        display: inline-flex; align-items: center; gap: 0.6em;
-        font-family: 'Fredoka', sans-serif;
-        font-weight: 600; font-size: 0.82rem;
-        letter-spacing: 0.02em;
+    .mun-footer__socials a {
+        width: 30px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--cream);
+        border-radius: 50%;
+        transition: color 0.3s ease, background 0.3s ease;
+    }
+
+    .mun-footer__socials a:hover {
         color: var(--void);
-        background: linear-gradient(120deg, var(--purple), var(--purple-deep));
-        border: none; border-radius: 999px;
-        padding: 0.9em 1.9em;
-        text-decoration: none;
-        cursor: pointer;
-        transition: transform .3s cubic-bezier(.2,.7,.2,1), box-shadow .3s ease;
-    }
-    .lounge__cta:hover { transform: translateY(-3px); box-shadow: 0 14px 28px -10px var(--purple-glow); }
-
-    .lounge__note {
-        font-family: 'Fredoka', sans-serif;
-        font-weight: 400;
-        font-size: 0.78rem;
-        color: var(--ink-faint);
+        background: var(--cta);
     }
 
-    /* ---------- Image column ---------- */
+    .mun-footer__socials svg { width: 16px; height: 16px; }
 
-    .lounge__frame {
-        position: relative;
-        border-radius: 20px;
-        overflow: hidden;
-        aspect-ratio: 4 / 5;
-        border: 1px solid rgba(167,139,250,0.25);
-        box-shadow: 0 25px 60px -20px rgba(0,0,0,0.7), 0 0 0 1px var(--gray-line);
-    }
-    .lounge__frame img {
-        position: absolute; inset: 0;
-        width: 100%; height: 100%;
-        object-fit: cover;
-        filter: saturate(0.9) contrast(1.05);
-        transition: transform .6s cubic-bezier(.2,.7,.2,1);
-    }
-    .lounge__frame:hover img { transform: scale(1.05); }
-    .lounge__frame::after {
-        content: "";
-        position: absolute; inset: 0;
-        background: linear-gradient(0deg, rgba(14,14,18,0.85) 0%, transparent 45%);
-    }
-    .lounge__frame-tag {
-        position: absolute; left: 1rem; bottom: 1rem; z-index: 1;
-        font-family: 'Fredoka', sans-serif;
-        font-weight: 600; font-size: 0.7rem;
-        letter-spacing: 0.08em; text-transform: uppercase;
-        color: var(--ink);
-    }
-    .lounge__frame-badge {
-        position: absolute; top: 1rem; left: 1rem; z-index: 1;
-        font-family: 'Fredoka', sans-serif;
-        font-weight: 600; font-size: 0.62rem;
-        letter-spacing: 0.08em; text-transform: uppercase;
-        color: var(--purple);
-        background: rgba(14,14,18,0.6);
-        border: 1px solid rgba(167,139,250,0.35);
-        border-radius: 999px;
-        padding: 0.4em 0.8em;
-        backdrop-filter: blur(4px);
+    .mun-footer__bottom-row {
+        grid-column: 1 / -1;
+        margin-top: clamp(2rem, 4vw, 3rem);
+        padding-top: 1.25rem;
+        border-top: 1px solid var(--accent-line);
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        font-family: 'Jost', sans-serif;
+        font-size: 0.72rem;
+        letter-spacing: 0.04em;
+        color: var(--cream-faint);
     }
 
-    @media (max-width: 780px) {
-        .lounge__wrap { grid-template-columns: 1fr; text-align: center; }
-        .lounge__features { justify-content: center; }
-        .lounge__flavours { justify-content: center; }
-        .lounge__cta-row { justify-content: center; }
-        .lounge__text { margin-inline: auto; }
-        .lounge__frame { max-width: 420px; margin: 0 auto; }
+    @media (max-width: 900px) {
+        .mun-footer__base { grid-template-columns: 1fr 1fr; }
+        .mun-footer__brand { grid-column: 1 / -1; margin-bottom: 0.5rem; }
+    }
+
+    @media (max-width: 560px) {
+        .mun-footer__cta { flex-direction: column; text-align: center; }
+        .mun-footer__cta-eyebrow { order: 2; }
+        .mun-footer__cta-arrow { order: 3; }
+        .mun-footer__base { grid-template-columns: 1fr; }
     }
 </style>
-</head>
-<body>
 
-<section class="lounge" id="lounge">
+<footer class="mun-footer">
 
-    <!-- Swap for your own lounge/coal photo -->
-    <img class="lounge__bg" src="mintbg.webp" alt="" loading="lazy">
-    <div class="lounge__scrim"></div>
-    <span class="lounge__glow lounge__glow--a" aria-hidden="true"></span>
-    <span class="lounge__glow lounge__glow--b" aria-hidden="true"></span>
+    <div class="mun-footer__cta">
+        <span class="mun-footer__cta-eyebrow">STILL<br>DECIDING? <a href="#reserve">→</a></span>
 
-    <div class="lounge__wrap">
-        <div class="lounge__copy">
-            <span class="lounge__eyebrow">Shisha Bar</span>
-            <h2 class="lounge__title">Every Flavour,<br><span>Every Night</span></h2>
-            <p class="lounge__text">Deep seating, low light, and a hookah menu built for slow evenings — from smoky classics to house-made fruit blends, poured coal-side by hand.</p>
-
-            <div class="lounge__features">
-                <span class="lounge__feature">
-                    <svg viewBox="0 0 24 24" fill="none"><path d="M4 20v-6a8 8 0 0 1 16 0v6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><rect x="2" y="18" width="4" height="4" rx="1" stroke="currentColor" stroke-width="1.6"/><rect x="18" y="18" width="4" height="4" rx="1" stroke="currentColor" stroke-width="1.6"/></svg>
-                    Private Booths
-                </span>
-                <span class="lounge__feature">
-                    <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M12 7v5l3.5 2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-                    Late Til 2AM
-                </span>
-                <span class="lounge__feature">
-                    <svg viewBox="0 0 24 24" fill="none"><path d="M9 18V5l12-2v13" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="6" cy="18" r="3" stroke="currentColor" stroke-width="1.6"/><circle cx="18" cy="16" r="3" stroke="currentColor" stroke-width="1.6"/></svg>
-                    Live DJ Fri–Sat
-                </span>
-            </div>
-
-            <span class="lounge__flavours-label">A Taste of the Menu</span>
-            <ul class="lounge__flavours">
-                <li>Double Apple</li>
-                <li>Blue Mist</li>
-                <li>Rose Mint</li>
-                <li>Mango Tango</li>
-                <li>Grape Chill</li>
-                <li>+30 more</li>
-            </ul>
-
-            <div class="lounge__cta-row">
-                <a href="#book" class="lounge__cta">Book the Lounge</a>
-                <span class="lounge__note">Walk-ins welcome after 9PM</span>
-            </div>
+        <div class="mun-footer__cta-heading">
+            <h2>Reserve a table</h2>
+            <div class="mun-footer__cta-underline"></div>
         </div>
 
-        <div class="lounge__frame">
-            <img src="image.webp" alt="Shisha pipe close-up">
-            <span class="lounge__frame-badge">Est. London</span>
-            <span class="lounge__frame-tag">The Lounge, After Dark</span>
-        </div>
+        <a class="mun-footer__cta-arrow" href="#reserve" aria-label="Reserve a table">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 12h14M13 6l6 6-6 6" stroke="#040705" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </a>
     </div>
 
-</section>
+    <div class="mun-footer__base">
 
-<script>
-    (function () {
-        var section = document.getElementById('lounge');
-        if (!section) return;
-        if (!('IntersectionObserver' in window)) { section.classList.add('in-view'); return; }
-        var observer = new IntersectionObserver(function (entries) {
-            entries.forEach(function (entry) {
-                if (entry.isIntersecting) {
-                    section.classList.add('in-view');
-                    observer.disconnect();
-                }
-            });
-        }, { threshold: 0.15 });
-        observer.observe(section);
-    })();
-</script>
+        <div class="mun-footer__brand">
+            <div class="mun-footer__logo">
+                <!-- Replace with: <img src="your-logo.png" alt="Cafe Moishi logo"> -->
+                LOGO
+            </div>
+            <p class="mun-footer__brand-name">Cafe Moishi</p>
+            <p class="mun-footer__brand-tag">A rooftop cocktail and shisha bar, made for slow evenings above Rome.</p>
+        </div>
 
-</body>
-</html>
+        <div class="mun-footer__col">
+            <p class="mun-footer__col-label">Rome</p>
+            <a href="mailto:reservations@cafemoishi.it">reservations@cafemoishi.it</a>
+            <a href="tel:+39061234567">+39 06 123 4567</a>
+            <p>Via del Corso 12,<br>00186 Rome</p>
+            <a class="mun-footer__see-map" href="https://maps.google.com" target="_blank" rel="noopener">See on map ↗</a>
+        </div>
+
+        <div class="mun-footer__col">
+            <p class="mun-footer__col-label">Hours</p>
+            <p>Golden Hour – Midnight<br>Seven days a week</p>
+            <p style="margin-top:1rem;">Reservations recommended<br>after 7PM</p>
+        </div>
+
+        <div class="mun-footer__col">
+            <p class="mun-footer__col-label">Want first access to<br>our evenings?</p>
+            <a class="mun-footer__newsletter-link" href="#newsletter">Sign up for our newsletter →</a>
+
+            <p class="mun-footer__col-label" style="margin-bottom:0.8rem;">Follow us</p>
+            <div class="mun-footer__socials">
+                <a href="#" aria-label="Instagram">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.5"/>
+                        <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.5"/>
+                        <circle cx="17.2" cy="6.8" r="1" fill="currentColor"/>
+                    </svg>
+                </a>
+                <a href="#" aria-label="Facebook">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M14 9h2.5V6h-2.5c-1.93 0-3.5 1.57-3.5 3.5V12H8.5v3H10.5v6h3v-6h2.3l.5-3H13.5v-2c0-.55.45-1 1-1Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+                    </svg>
+                </a>
+                <a href="#" aria-label="TikTok">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M15 4v9.4a2.8 2.8 0 1 1-2.2-2.74M15 4a4.2 4.2 0 0 0 4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+
+        <div class="mun-footer__bottom-row">
+            <span>© 2026 Cafe Moishi. All rights reserved.</span>
+            <span>Made in Uk</span>
+        </div>
+
+    </div>
+
+</footer>
