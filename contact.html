@@ -1,0 +1,1195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us — Moishi Cafe · Sheesha · Grill</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Yellowtail&family=Fredoka:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Bootstrap 5 -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+  :root{
+    --bg:#0a0612;
+    --bg-panel:#120a20;
+    --gray-line: rgba(255,255,255,0.08);
+    --ink: #e9e8ee;
+    --ink-dim: rgba(233,232,238,0.62);
+    --ink-faint: rgba(233,232,238,0.4);
+    --purple: #a78bfa;
+    --purple-deep: #4103a5;
+    --aroma: #0805b4;
+    --card-border: rgba(233,232,238,0.1);
+  }
+
+  *{box-sizing:border-box;}
+  html.lenis{ height:auto; }
+  html.lenis, html.lenis body{ height:auto; }
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Fredoka', 'Segoe UI', sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%; display:block;}
+  a{color:inherit; text-decoration:none;}
+  .wrap{max-width:1180px; margin:0 auto; padding:0 24px;}
+
+  /* ---------- glow orbs — same fun/decorative language as the menu page ---------- */
+  .glow-wrap{ position:absolute; inset:0; overflow:hidden; pointer-events:none; z-index:0; }
+  .glow-orb{ position:absolute; border-radius:50%; filter:blur(90px); opacity:.35; animation:orbPulse 7s ease-in-out infinite; }
+  .glow-orb.a{ width:380px; height:380px; background:var(--purple-deep); top:-120px; left:-100px; }
+  .glow-orb.b{ width:340px; height:340px; background:var(--aroma); bottom:-140px; right:-80px; animation-delay:2s; }
+  @keyframes orbPulse{ 0%,100%{ opacity:.18; transform:scale(1);} 50%{ opacity:.35; transform:scale(1.2);} }
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative; z-index:2;
+    padding:6.5rem 0 4rem;
+    text-align:center;
+    border-bottom:1px solid var(--gray-line);
+    overflow:hidden;
+  }
+  .hero__bg{ position:absolute; inset:0; z-index:0; }
+  .hero__bg img{ width:100%; height:100%; object-fit:cover; opacity:.4; }
+  .hero__bg::after{
+    content:"";
+    position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(10,6,18,.55) 0%, rgba(10,6,18,.35) 45%, rgba(10,6,18,.92) 100%);
+  }
+  .hero .wrap{ position:relative; z-index:1; }
+  .hero__brand{
+    font-family:'Yellowtail', cursive;
+    font-size:clamp(2.2rem, 5vw, 3rem);
+    line-height:1;
+    margin:0 0 .35rem;
+    background:linear-gradient(115deg,#cda0f7 0%,#5e05d3 20%,#ba8fc7 38%,#ffffff 48%,#6e37d4 55%,#ffffff 62%,#c5a3e6 78%,#969597 100%);
+    background-size:250% 100%;
+    -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;
+    filter:drop-shadow(0 0 4px rgba(197,163,230,.55)) drop-shadow(0 0 10px rgba(110,55,212,.35));
+    animation:glitterText 5s ease-in-out infinite;
+  }
+  @keyframes glitterText{ 0%{background-position:150% center;} 50%{background-position:50% center;} 100%{background-position:-150% center;} }
+  .hero__title{
+    font-weight:600;
+    font-size:clamp(1.9rem, 5vw, 3rem);
+    margin:0 0 .75rem;
+    color:#fff;
+  }
+  .hero__desc{
+    color:var(--ink-dim);
+    max-width:36rem;
+    margin:0 auto;
+    font-size:1rem;
+    line-height:1.7;
+  }
+
+  /* ---------- section shell ---------- */
+  .section{ position:relative; z-index:2; padding:4.5rem 0; border-bottom:1px solid var(--gray-line); }
+  .section:last-of-type{ border-bottom:none; }
+  .section__eyebrow{
+    display:inline-flex; align-items:center; gap:.7rem;
+    font-size:.72rem; font-weight:600; letter-spacing:.22em; text-transform:uppercase;
+    color:var(--purple); margin-bottom:.6rem;
+  }
+  .section__eyebrow i{ width:24px; height:1px; background:linear-gradient(90deg, var(--purple), var(--aroma)); display:inline-block; }
+  .section__title{ font-weight:600; font-size:clamp(1.6rem, 3vw, 2.1rem); color:#fff; margin:0; }
+  .section__note{ color:var(--ink-faint); font-size:.95rem; max-width:34rem; margin:.6rem auto 0; }
+
+  /* ---------- info cards ---------- */
+  .info-card{
+    background-color:var(--bg-panel);
+    border:1px solid var(--card-border);
+    border-radius:16px;
+    padding:1.9rem 1.6rem;
+    height:100%;
+    transition:transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+  }
+  .info-card:hover{
+    transform:translateY(-4px);
+    border-color:rgba(167,139,250,.4);
+    box-shadow:0 14px 30px rgba(65,3,165,.25);
+  }
+  .info-card__icon{
+    width:52px; height:52px;
+    display:flex; align-items:center; justify-content:center;
+    border-radius:14px;
+    background:linear-gradient(135deg, var(--purple-deep), var(--aroma));
+    font-size:1.4rem;
+    margin-bottom:1rem;
+  }
+  .info-card__title{ color:#fff; font-weight:600; font-size:1.05rem; margin:0 0 .4rem; }
+  .info-card__text{ color:var(--ink-faint); font-size:.9rem; line-height:1.6; margin:0; }
+  .info-card__text a:hover{ color:var(--purple); }
+
+  /* ---------- form + photo panel (photo side / form side, same split as the menu page) ---------- */
+  .contact-panel{
+    position:relative;
+    display:flex;
+    align-items:stretch;
+    background-color:var(--bg-panel);
+    border:1px solid var(--card-border);
+    border-radius:16px;
+    overflow:hidden;
+  }
+  .contact-panel__media{ flex:0 0 40%; position:relative; min-height:320px; }
+  .contact-panel__media img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .contact-panel__media::after{
+    content:"";
+    position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(10,6,18,0) 40%, rgba(10,6,18,.85) 100%);
+  }
+  .contact-panel__caption{
+    position:absolute; left:1.5rem; right:1.5rem; bottom:1.25rem; z-index:1;
+    font-family:'Yellowtail', cursive;
+    font-size:1.6rem;
+    color:#fff;
+  }
+  .contact-panel__body{ flex:1 1 auto; padding:2.25rem clamp(1.25rem, 4vw, 3rem); }
+
+  .form-label{ color:var(--ink-dim); font-size:.85rem; font-weight:500; margin-bottom:.4rem; }
+  .form-control, .form-select{
+    background:rgba(10,6,18,.55);
+    border:1px solid var(--card-border);
+    color:var(--ink);
+    border-radius:10px;
+    padding:.65rem .9rem;
+    font-family:'Fredoka', sans-serif;
+  }
+  .form-control::placeholder{ color:var(--ink-faint); }
+  .form-control:focus, .form-select:focus{
+    background:rgba(10,6,18,.7);
+    border-color:var(--purple);
+    color:var(--ink);
+    box-shadow:0 0 0 .2rem rgba(167,139,250,.18);
+  }
+  textarea.form-control{ resize:vertical; min-height:130px; }
+
+  .btn-send{
+    display:inline-flex; align-items:center; justify-content:center; gap:.5rem;
+    background:linear-gradient(90deg, var(--purple-deep), var(--aroma));
+    color:#fff;
+    border:none;
+    border-radius:999px;
+    padding:.75rem 1.9rem;
+    font-family:'Fredoka', sans-serif;
+    font-weight:600;
+    font-size:.95rem;
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .btn-send:hover{
+    color:#fff;
+    transform:translateY(-2px);
+    box-shadow:0 10px 24px rgba(65,3,165,.4);
+  }
+
+  /* ---------- location ---------- */
+  .location-panel{
+    border:1px solid var(--card-border);
+    border-radius:16px;
+    overflow:hidden;
+    background:var(--bg-panel);
+  }
+  .location-map{ width:100%; height:420px; border:0; filter:grayscale(.15) contrast(1.05) invert(0); display:block; }
+  .location-strip{
+    display:flex; flex-wrap:wrap; gap:1.25rem 2rem;
+    padding:1.5rem clamp(1.25rem, 4vw, 2rem);
+    border-top:1px solid var(--card-border);
+  }
+  .location-strip__item{ display:flex; align-items:flex-start; gap:.7rem; flex:1 1 220px; }
+  .location-strip__icon{
+    width:38px; height:38px; flex-shrink:0;
+    display:flex; align-items:center; justify-content:center;
+    border-radius:10px;
+    background:linear-gradient(135deg, var(--purple-deep), var(--aroma));
+    font-size:1rem;
+  }
+  .location-strip__label{ color:#fff; font-weight:600; font-size:.9rem; margin:0 0 .15rem; }
+  .location-strip__value{ color:var(--ink-faint); font-size:.85rem; margin:0; line-height:1.5; }
+
+  /* ---------- social row ---------- */
+  .social-row{ display:flex; justify-content:center; gap:.75rem; flex-wrap:wrap; }
+  .social-pill{
+    display:flex; align-items:center; justify-content:center;
+    width:46px; height:46px;
+    border-radius:50%;
+    border:1px solid var(--card-border);
+    background:rgba(10,6,18,.55);
+    color:var(--ink-dim);
+    font-size:1.1rem;
+    transition:.2s ease;
+  }
+  .social-pill:hover{
+    color:#fff;
+    border-color:transparent;
+    background:linear-gradient(90deg, var(--purple-deep), var(--aroma));
+    transform:translateY(-3px);
+  }
+
+  /* ---------- footer ---------- */
+  .site-footer{
+    position:relative; z-index:2;
+    text-align:center;
+    padding:3.5rem 0 4rem;
+    color:var(--ink-faint);
+    font-size:.85rem;
+  }
+  .site-footer strong{ color:var(--ink); font-weight:500; }
+
+  /* ---------- responsive ---------- */
+  @media (max-width:900px){
+    .contact-panel{ flex-direction:column; }
+    .contact-panel__media{ flex:0 0 auto; width:100%; height:220px; min-height:0; }
+  }
+  @media (max-width:767.98px){
+    .contact-panel__body{ padding:1.6rem 1.15rem; }
+    .section{ padding:3.2rem 0; }
+    .location-map{ height:280px; }
+  }
+</style>
+<style>
+  :root{
+    --void:#040705;
+    --smoke:#0b110d;
+    --cream:#f1faf3;
+    --cream-dim: rgba(241,250,243,0.62);
+    --accent: #a78bfa;
+    --accent-light: #8612e6;
+    --accent-dark: #4515f3;
+    --accent-glow: rgba(93, 43, 232, 0.55);
+    --line: rgba(46, 43, 232, 0.9);
+
+  }
+  :root {
+  --golden: rgba(110, 102, 102, 0.863);
+  --golden-shine: linear-gradient(
+    90deg,
+    rgba(110, 102, 102, 0.863) 0%,
+    rgba(200, 195, 190, 0.95) 50%,
+    rgba(110, 102, 102, 0.863) 100%
+  );
+}
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  body{
+  
+    background:
+      radial-gradient(ellipse 700px 500px at 10% -5%, rgba(30,150,90,0.32), transparent 60%),
+      radial-gradient(ellipse 500px 400px at 90% 20%, rgba(20,120,75,0.22), transparent 55%),
+      var(--void);
+    font-family:'Poppins', sans-serif;
+  }
+
+  /* ===== NAVBAR (classic / desktop-first) ===== */
+  .site-nav{
+  
+    top:0;
+    z-index:100;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:18px 48px;
+    background: linear-gradient(180deg, rgba(7, 5, 8, 0.88) 0%, rgba(5,8,6,0.6) 100%);
+    backdrop-filter: blur(14px) saturate(120%);
+    -webkit-backdrop-filter: blur(14px) saturate(120%);
+    border-bottom: 1px solid rgba(43,232,124,0.16);
+  }
+
+  .site-nav::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+      radial-gradient(ellipse 320px 70px at 12% 40%, rgba(156, 43, 232, 0.08), transparent 70%),
+      radial-gradient(ellipse 260px 60px at 65% 60%, rgba(43,232,124,0.06), transparent 70%);
+    animation: driftSmoke 15s ease-in-out infinite alternate;
+    pointer-events:none;
+  }
+  @keyframes driftSmoke{
+    0%{ transform: translateX(-18px); }
+    100%{ transform: translateX(18px); }
+  }
+
+  .site-nav::after{
+    content:"";
+    position:absolute;
+    left:0; right:0; bottom:-1px;
+    height:1px;
+    background: linear-gradient(90deg, transparent, var(--accent-glow), transparent);
+    filter: blur(0.5px);
+  }
+
+  /* ---- Logo ---- */
+  .site-logo{
+    display:flex;
+    align-items:center;
+    gap:11px;
+    z-index:2;
+    cursor:pointer;
+    text-decoration:none;
+    transition: transform 0.35s cubic-bezier(.2,.9,.3,1);
+  }
+  .site-logo:hover{ transform: translateY(-1px); }
+  .site-logo .mark{
+    position:relative; width:26px; height:26px; flex-shrink:0;
+    transition: transform 0.45s cubic-bezier(.2,.9,.3,1), filter 0.35s ease;
+  }
+  .site-logo .mark svg{ width:100%; height:100%; display:block; }
+  .site-logo:hover .mark{ transform: scale(1.12) rotate(-4deg); filter: drop-shadow(0 0 8px var(--accent-glow)); }
+  .site-logo .wordmark{
+    font-family:'Poppins', sans-serif;
+    font-weight:700;
+    font-size:21px;
+    letter-spacing:0.12em;
+    color: var(--cream);
+    text-transform:uppercase;
+    transition: text-shadow 0.35s ease;
+  }
+  .site-logo:hover .wordmark{ text-shadow: 0 0 14px var(--accent-glow); }
+  .site-logo .wordmark span{ color: var(--accent); font-weight:600; }
+
+  /* ---- Classic inline links (desktop) ---- */
+  .nav-links{
+    display:flex;
+    align-items:center;
+    gap:40px;
+    list-style:none;
+    z-index:2;
+  }
+  .nav-links li a{
+    position:relative;
+    display:inline-block;
+    text-decoration:none;
+    color: var(--cream-dim);
+    font-size:14px;
+    font-weight:500;
+    letter-spacing:0.2em;
+    text-transform:uppercase;
+    padding-bottom:8px;
+    transition: color 0.35s ease, transform 0.35s cubic-bezier(.2,.9,.3,1), text-shadow 0.35s ease;
+  }
+  .nav-links li a::after{
+    content:"";
+    position:absolute;
+    left:0; bottom:0;
+    width:100%; height:1px;
+    background: linear-gradient(90deg, transparent, var(--line), transparent);
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.4s cubic-bezier(.2,.9,.3,1);
+  }
+  .nav-links li a:hover{ color: var(--cream); text-shadow: 0 0 12px var(--accent-glow); transform: translateY(-2px); }
+  .nav-links li a:hover::after{ transform: scaleX(1); }
+  .nav-links li a.active{ color: var(--moishi-glow); }
+  .nav-links li a.active::after{ transform: scaleX(1); }
+
+  /* ---- Find Us (small map popover) ---- */
+  .nav-location{
+    position:relative;
+    display:flex;
+    align-items:center;
+    gap:6px;
+    cursor:pointer;
+    color: var(--cream);
+    font-size:12px;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    transition: color 0.3s ease;
+  }
+  .nav-location svg{ width:14px; height:14px; opacity:0.85; flex-shrink:0; transition: transform 0.35s cubic-bezier(.2,.9,.3,1), filter 0.35s ease; }
+  .nav-location:hover, .nav-location.open{ color: var(--cream); }
+  .nav-location:hover svg, .nav-location.open svg{ filter: drop-shadow(0 0 6px var(--accent-glow)); transform: scale(1.15) translateY(-1px); }
+
+  .location-popover{
+    position:absolute;
+    top:calc(100% + 20px);
+    left:50%;
+    width:236px;
+    padding:10px;
+    background: linear-gradient(165deg, rgba(9,14,11,0.98), rgba(5,8,6,0.98));
+    border:1px solid rgba(232, 43, 232, 0.22);
+    border-radius:8px;
+    box-shadow: 0 20px 50px -12px rgba(0,0,0,0.65);
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+    transform: translateX(-50%) translateY(-8px) scale(0.96);
+    transform-origin: top center;
+    transition: opacity 0.35s ease, transform 0.35s cubic-bezier(.2,.9,.3,1), visibility 0s linear 0.35s;
+    z-index:50;
+  }
+  .location-popover::before{
+    content:"";
+    position:absolute;
+    top:-6px; left:50%;
+    width:12px; height:12px;
+    transform: translateX(-50%) rotate(45deg);
+    background: rgba(9,14,11,0.98);
+    border-left:1px solid rgba(43,232,124,0.22);
+    border-top:1px solid rgba(43,232,124,0.22);
+  }
+  .nav-location:hover .location-popover,
+  .nav-location.open .location-popover{
+    opacity:1; visibility:visible; pointer-events:auto;
+    transform: translateX(-50%) translateY(0) scale(1);
+    transition: opacity 0.35s ease, transform 0.35s cubic-bezier(.2,.9,.3,1), visibility 0s linear 0s;
+  }
+  .location-popover iframe{
+    width:100%; height:128px; border:0; border-radius:5px; display:block;
+    filter: grayscale(25%) contrast(1.05) brightness(0.9);
+  }
+  .location-popover .location-address{
+    font-size:11px; line-height:1.5; letter-spacing:0.03em;
+    color: var(--cream-dim); text-transform:none; margin-top:9px;
+  }
+  .location-popover .location-link{
+    display:inline-block; margin-top:7px;
+    font-size:11px; letter-spacing:0.14em; text-transform:uppercase;
+    color: var(--accent); text-decoration:none; transition: text-shadow 0.3s ease;
+  }
+  .location-popover .location-link:hover{ text-shadow: 0 0 10px var(--accent-glow); }
+
+  /* ---- Right cluster (links + location + cta) ---- */
+  .nav-right{
+    display:flex;
+    align-items:center;
+    gap:38px;
+    z-index:2;
+  }
+
+  /* ---- CTA button ---- */
+  .nav-cta{
+    position:relative;
+    padding:11px 26px;
+    font-family:'Poppins', sans-serif;
+    font-weight:600;
+    font-size:12px;
+    letter-spacing:0.2em;
+    text-transform:uppercase;
+    color: var(--cream);
+    background: linear-gradient(135deg, var(--accent), var(--accent-light));
+    border:none;
+    border-radius:3px;
+    cursor:pointer;
+    overflow:hidden;
+    transition: transform 0.3s cubic-bezier(.2,.9,.3,1), box-shadow 0.3s ease, letter-spacing 0.3s ease;
+  }
+  .nav-cta:hover{ transform: translateY(-3px) scale(1.03); box-shadow: 0 10px 28px -6px var(--accent-glow); letter-spacing: 0.24em; }
+  .nav-cta:active{ transform: translateY(-1px) scale(0.99); }
+  .nav-cta::before{
+    content:"";
+    position:absolute;
+    top:0; left:-60%; width:40%; height:100%;
+    background: linear-gradient(115deg, transparent, rgba(255,255,255,0.55), transparent);
+    transform: skewX(-20deg);
+    transition: left 0.6s ease;
+  }
+  .nav-cta:hover::before{ left:130%; }
+
+  /* ===== Mobile burger ===== */
+  .nav-burger{
+    display:none;
+    flex-direction:column;
+    justify-content:center;
+    gap:6px;
+    width:30px;
+    height:24px;
+    background:none;
+    border:none;
+    cursor:pointer;
+    z-index:210;
+    position:relative;
+  }
+  .nav-burger span{
+    width:100%; height:1px;
+    background: var(--cream);
+    transform-origin: center;
+    transition: transform 0.4s cubic-bezier(.2,.9,.3,1), opacity 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+  }
+  .nav-burger:hover span{ background: var(--accent); box-shadow: 0 0 8px var(--accent-glow); }
+  .nav-burger.open span:nth-child(1){ transform: translateY(7px) rotate(45deg); }
+  .nav-burger.open span:nth-child(2){ opacity:0; }
+  .nav-burger.open span:nth-child(3){ transform: translateY(-7px) rotate(-45deg); }
+
+  /* ===== Fullscreen mobile menu ===== */
+  .mobile-menu{
+    display:none;
+    list-style:none;
+  }
+
+  @media (max-width: 860px){
+    .site-nav{ padding:16px 22px; }
+    .nav-links{ display:none; }
+    .nav-location{ display:none; }
+    .nav-cta{ display:none; }
+    .nav-burger{ display:flex; }
+
+    .mobile-menu{
+      display:flex;
+      position:fixed;
+      inset:0;
+      width:100%;
+      height:100dvh;
+      flex-direction:column;
+      justify-content:center;
+      align-items:flex-start;
+      gap:24px;
+      padding:0 12vw;
+      background:
+        radial-gradient(ellipse 500px 400px at 90% -10%, rgba(43,232,124,0.12), transparent 60%),
+        linear-gradient(165deg, rgba(5,8,6,0.99), rgba(12,18,14,0.99));
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      z-index:200;
+      clip-path: circle(2.5% at calc(100% - 37px) 33px);
+      opacity:0;
+      visibility:hidden;
+      transition:
+        clip-path 0.7s cubic-bezier(.2,.9,.15,1),
+        opacity 0.35s ease,
+        visibility 0s linear 0.7s;
+    }
+    .mobile-menu.open{
+      clip-path: circle(150% at calc(100% - 37px) 33px);
+      opacity:1;
+      visibility:visible;
+      transition:
+        clip-path 0.7s cubic-bezier(.2,.9,.15,1),
+        opacity 0.3s ease,
+        visibility 0s linear 0s;
+    }
+
+    .mobile-menu li{ overflow:hidden; }
+    .mobile-menu li a{
+      position:relative;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      text-decoration:none;
+      font-size:26px;
+      letter-spacing:0.03em;
+      font-family:'Poppins', sans-serif;
+      font-weight:600;
+      color: var(--moishi-glow);
+      text-transform:uppercase;
+      opacity:0;
+      transform: translateY(28px);
+      transition: opacity 0.5s ease, transform 0.5s cubic-bezier(.2,.9,.3,1), color 0.3s ease, letter-spacing 0.3s ease;
+    }
+    .mobile-menu li a:hover{ color: var(--cream); letter-spacing: 0.08em; text-shadow: 0 0 14px var(--accent-glow); }
+    .mobile-menu li a.active{ color: var(--accent); }
+    .mobile-menu.open li a{ opacity:1; transform: translateY(0); }
+    .mobile-menu.open li:nth-child(1) a{ transition-delay:0.28s; }
+    .mobile-menu.open li:nth-child(2) a{ transition-delay:0.36s; }
+    .mobile-menu.open li:nth-child(3) a{ transition-delay:0.44s; }
+    .mobile-menu.open li:nth-child(4) a{ transition-delay:0.52s; }
+    .mobile-menu.open li:nth-child(5) a{ transition-delay:0.60s; }
+    .mobile-menu.open li:nth-child(6) a{ transition-delay:0.68s; }
+
+    .mobile-menu .mobile-location svg{ width:20px; height:20px; }
+
+    .mobile-menu .mobile-cta{
+      margin-top:8px;
+      padding:13px 30px;
+      font-size:12px;
+      font-weight:600;
+      font-family:'Poppins', sans-serif;
+      letter-spacing:0.2em;
+      text-transform:uppercase;
+      color: var(--void);
+      background: linear-gradient(135deg, var(--accent), var(--accent-light));
+      border-radius:3px;
+      display:inline-block;
+      transition: transform 0.3s cubic-bezier(.2,.9,.3,1), box-shadow 0.3s ease;
+    }
+    .mobile-menu .mobile-cta:hover{
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 10px 26px -6px var(--accent-glow);
+      letter-spacing: 0.24em;
+    }
+    .mobile-menu .mobile-location{
+      transition: opacity 0.5s ease, transform 0.5s cubic-bezier(.2,.9,.3,1), color 0.3s ease, gap 0.3s ease;
+    }
+    .mobile-menu .mobile-location:hover{ gap:14px; }
+    .mobile-menu .mobile-location svg{ transition: filter 0.3s ease, transform 0.3s ease; }
+    .mobile-menu .mobile-location:hover svg{ filter: drop-shadow(0 0 8px var(--accent-glow)); transform: scale(1.1); }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .mobile-menu, .mobile-menu li a, .location-popover{ transition-duration: 0.01ms !important; }
+  }
+
+  .demo-hint{
+    text-align:center;
+    color: var(--cream-dim);
+    font-size:12px;
+    letter-spacing:0.1em;
+    margin-top:60px;
+    font-family:'Jost', sans-serif;
+  }
+</style>
+</head>
+<body>
+<nav class="site-nav">
+  <a href="#" class="site-logo">
+    <span class="mark">
+    
+    </span>
+    <span class="wordmark">Cafe Moishi</span>
+  </a>
+
+  <ul class="nav-links">
+    <li><a href="index.html" >Home</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="menu.html" class="active">Menu</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+
+  <div class="nav-right">
+    <div class="nav-location" id="locationTrigger">
+     
+      <span>Find Us</span>
+
+      <div class="location-popover">
+        <iframe
+          src="https://www.google.com/maps?q=Times+Square,New+York,NY&output=embed"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+        <p class="location-address">Noir Lounge — 123 Ember Street, Downtown</p>
+        <a class="location-link" href="https://maps.google.com/?q=Times+Square,New+York,NY" target="_blank" rel="noopener">Get Directions →</a>
+      </div>
+    </div>
+
+    <button class="nav-cta">Book a Table</button>
+  </div>
+
+  <button class="nav-burger" id="burgerBtn" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+
+  <ul class="mobile-menu" id="mobileMenu">
+    <li><a href="#" class="active">Home</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="#">Menu</a></li>
+    <li><a href="#">Contact</a></li>
+    <li>
+      <a href="https://maps.google.com/?q=Times+Square,New+York,NY" target="_blank" rel="noopener" class="mobile-location">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 22s7-7.16 7-12.5A7 7 0 0 0 5 9.5C5 14.84 12 22 12 22Z" stroke="#2be87c" stroke-width="1.3"/>
+          <circle cx="12" cy="9.5" r="2.4" stroke="#2be87c" stroke-width="1.3"/>
+        </svg>
+        Find Us
+      </a>
+    </li>
+    <li><a href="#" class="mobile-cta">Book a Table</a></li>
+  </ul>
+</nav>
+<!-- HERO -->
+<header class="hero">
+  <div class="glow-wrap"><div class="glow-orb a"></div><div class="glow-orb b"></div></div>
+  <div class="hero__bg">
+    <img src="https://images.unsplash.com/photo-1445116572660-236099ec97a0?auto=format&fit=crop&w=1600&h=900&q=80" alt="">
+  </div>
+  <div class="wrap">
+    <p class="hero__brand">Cafe Moishi</p>
+    <h1 class="hero__title">Let's Talk</h1>
+    <p class="hero__desc">Questions, bookings, or just want to say hi? Drop us a message, give us a call, or swing by — we'd love to see you.</p>
+  </div>
+</header>
+
+<!-- CONTACT INFO CARDS -->
+<section class="section">
+  <div class="wrap">
+    <div class="row g-4">
+      <div class="col-12 col-md-4">
+        <div class="info-card">
+          <div class="info-card__icon">📍</div>
+          <h3 class="info-card__title">Visit Us</h3>
+          <p class="info-card__text">31 Zetland Street,<br>Huddersfield, West Yorkshire<br>HD1 2RA</p>
+        </div>
+      </div>
+      <div class="col-12 col-md-4">
+        <div class="info-card">
+          <div class="info-card__icon">📞</div>
+          <h3 class="info-card__title">Call / WhatsApp</h3>
+          <p class="info-card__text"><a href="tel:+441484000000">01484 000 000</a><br><a href="https://wa.me/447000000000" target="_blank" rel="noopener">WhatsApp us directly</a></p>
+        </div>
+      </div>
+      <div class="col-12 col-md-4">
+        <div class="info-card">
+          <div class="info-card__icon">🕒</div>
+          <h3 class="info-card__title">Opening Hours</h3>
+          <p class="info-card__text">Mon – Thu: 12pm – 11pm<br>Fri – Sun: 12pm – 1am</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FORM + PHOTO PANEL -->
+<section class="section">
+  <div class="wrap">
+    <div class="section__head text-center mb-4">
+      <span class="section__eyebrow"><i></i>Send a Message<i></i></span>
+      <h2 class="section__title">Get In Touch</h2>
+      <p class="section__note mx-auto">Bookings, private events, feedback or just a friendly hello — fill in the form and we'll get back to you fast.</p>
+    </div>
+
+    <div class="contact-panel">
+      <div class="contact-panel__media">
+        <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=900&h=1100&q=80" alt="Cafe Moishi interior">
+        <p class="contact-panel__caption">See you soon ✨</p>
+      </div>
+      <div class="contact-panel__body">
+        <form>
+          <div class="row g-3">
+            <div class="col-12 col-sm-6">
+              <label class="form-label" for="cf-name">Full Name</label>
+              <input type="text" class="form-control" id="cf-name" placeholder="Your name">
+            </div>
+            <div class="col-12 col-sm-6">
+              <label class="form-label" for="cf-phone">Phone Number</label>
+              <input type="tel" class="form-control" id="cf-phone" placeholder="07xxx xxxxxx">
+            </div>
+            <div class="col-12">
+              <label class="form-label" for="cf-email">Email Address</label>
+              <input type="email" class="form-control" id="cf-email" placeholder="you@example.com">
+            </div>
+            <div class="col-12">
+              <label class="form-label" for="cf-subject">Subject</label>
+              <select class="form-select" id="cf-subject">
+                <option selected>General Enquiry</option>
+                <option>Table / Sheesha Booking</option>
+                <option>Private Event</option>
+                <option>Feedback</option>
+              </select>
+            </div>
+            <div class="col-12">
+              <label class="form-label" for="cf-message">Message</label>
+              <textarea class="form-control" id="cf-message" placeholder="Tell us what's on your mind..."></textarea>
+            </div>
+            <div class="col-12 pt-2">
+              <button type="submit" class="btn-send">
+                Send Message
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 12 12" fill="none">
+                  <path d="M1 11L11 1M11 1H1M11 1V11" stroke="currentColor" stroke-width="1.5px" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOCATION -->
+<section class="section">
+  <div class="wrap">
+    <div class="section__head text-center mb-4">
+      <span class="section__eyebrow"><i></i>Find Us<i></i></span>
+      <h2 class="section__title">Our Location</h2>
+      <p class="section__note mx-auto">Right in the heart of Huddersfield — easy to find, easy to park, easy to love.</p>
+    </div>
+
+    <div class="location-panel">
+      <iframe class="location-map" src="https://www.google.com/maps?q=31+Zetland+Street,+Huddersfield,+HD1+2RA&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <div class="location-strip">
+        <div class="location-strip__item">
+          <div class="location-strip__icon">📍</div>
+          <div>
+            <p class="location-strip__label">Address</p>
+            <p class="location-strip__value">31 Zetland Street, Huddersfield, West Yorkshire HD1 2RA</p>
+          </div>
+        </div>
+        <div class="location-strip__item">
+          <div class="location-strip__icon">🚗</div>
+          <div>
+            <p class="location-strip__label">Parking</p>
+            <p class="location-strip__value">Public parking available just a short walk away.</p>
+          </div>
+        </div>
+        <div class="location-strip__item">
+          <div class="location-strip__icon">🚌</div>
+          <div>
+            <p class="location-strip__label">Nearby Transport</p>
+            <p class="location-strip__value">A few minutes' walk from Huddersfield bus &amp; train station.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOCIAL -->
+<section class="section">
+  <div class="wrap text-center">
+    <span class="section__eyebrow"><i></i>Follow The Vibe<i></i></span>
+    <h2 class="section__title mb-4">Stay Connected</h2>
+    <div class="social-row">
+      <a class="social-pill" href="#" aria-label="Instagram">📷</a>
+      <a class="social-pill" href="#" aria-label="Facebook">📘</a>
+      <a class="social-pill" href="#" aria-label="TikTok">🎵</a>
+      <a class="social-pill" href="https://wa.me/447000000000" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  
+    .mun-footer {
+        --void: #2e022e;
+        --cream: #f1faf3;
+        --cream-dim: rgba(241,250,243,0.62);
+        --cream-faint: rgba(241, 241, 250, 0.38);
+        --accent-line: rgba(241,250,243,0.14);
+        --cta: #a8a5c7;
+        --cta-dim: rgba(228,255,91,0.5);
+    }
+
+    .mun-footer * { box-sizing: border-box; }
+
+    /* ================= TOP CTA BAR ================= */
+
+    .mun-footer__cta {
+        position: relative;
+        background: var(--cream);
+        padding: clamp(3rem, 7vw, 5.5rem) clamp(1.5rem, 6vw, 5rem);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 2rem;
+        flex-wrap: wrap;
+    }
+
+    .mun-footer__cta-eyebrow {
+        font-family: 'Jost', sans-serif;
+        font-weight: 500;
+        font-size: 0.72rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        line-height: 1.6;
+        color: var(--void);
+        flex: 0 0 auto;
+    }
+
+    .mun-footer__cta-eyebrow a {
+        color: inherit;
+        text-decoration: none;
+    }
+
+    .mun-footer__cta-heading {
+        flex: 1 1 auto;
+        min-width: 260px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .mun-footer__cta-heading h2 {
+        margin: 0;
+        font-family: 'Cormorant Garamond', serif;
+        font-weight: 500;
+        font-style: italic;
+        font-size: clamp(2.6rem, 7vw, 4.6rem);
+        line-height: 1;
+        color: var(--void);
+    }
+
+    .mun-footer__cta-underline {
+        margin-top: 0.5rem;
+        width: clamp(160px, 22vw, 320px);
+        height: 2px;
+        background: var(--cta);
+    }
+
+    .mun-footer__cta-arrow {
+        flex: 0 0 auto;
+        width: clamp(64px, 6vw, 88px);
+        height: clamp(64px, 6vw, 88px);
+        border-radius: 50%;
+        background: var(--cta);
+        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        text-decoration: none;
+        transition: transform 0.35s cubic-bezier(.2,.9,.3,1), box-shadow 0.35s ease;
+    }
+
+    .mun-footer__cta-arrow svg {
+        width: 34%;
+        height: 34%;
+    }
+
+    .mun-footer__cta-arrow:hover {
+        transform: scale(1.06);
+        box-shadow: 0 12px 30px -10px var(--cta-dim);
+    }
+
+    /* ================= BOTTOM FOOTER ================= */
+
+    .mun-footer__base {
+        background: var(--void);
+        color: var(--cream);
+        padding: clamp(2.5rem, 5vw, 4rem) clamp(1.5rem, 6vw, 5rem) clamp(1.75rem, 4vw, 2.5rem);
+        display: grid;
+        grid-template-columns: 1.3fr 1fr 1fr 1fr;
+        gap: clamp(2rem, 4vw, 3rem);
+    }
+
+    .mun-footer__logo {
+        width: 64px;
+        height: 64px;
+        border: 1px dashed var(--cream-faint);
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 0.9rem;
+        font-family: 'Jost', sans-serif;
+        font-size: 0.6rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--cream-faint);
+    }
+
+    .mun-footer__logo img {
+        max-width: 100%;
+        max-height: 100%;
+        display: block;
+    }
+
+    .mun-footer__brand-name {
+        margin: 0 0 0.4rem;
+        font-family: 'Fredoka', sans-serif;
+        font-weight: 600;
+        font-size: clamp(1.6rem, 3vw, 2rem);
+        letter-spacing: 0.01em;
+        line-height: 1.1;
+        color: var(--cream);
+    }
+
+    .mun-footer__brand-tag {
+        margin: 0;
+        font-family: 'Jost', sans-serif;
+        font-weight: 400;
+        font-size: 0.85rem;
+        line-height: 1.6;
+        letter-spacing: 0.02em;
+        color: var(--cream-dim);
+        max-width: 22ch;
+    }
+
+    .mun-footer__col-label {
+        margin: 0 0 1.1rem;
+        font-family: 'Jost', sans-serif;
+        font-weight: 600;
+        font-size: 0.68rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--cream);
+    }
+
+    .mun-footer__col a {
+        display: block;
+        font-family: 'Jost', sans-serif;
+        font-size: 0.86rem;
+        color: var(--cream);
+        text-decoration: none;
+        margin-bottom: 0.55rem;
+        transition: color 0.3s ease;
+    }
+
+    .mun-footer__col a:hover { color: var(--cta); }
+
+    .mun-footer__col p {
+        margin: 0 0 0.55rem;
+        font-family: 'Jost', sans-serif;
+        font-weight: 400;
+        font-size: 0.86rem;
+        line-height: 1.55;
+        color: var(--cream-dim);
+    }
+
+    .mun-footer__see-map {
+        display: inline-block;
+        margin-top: 0.35rem;
+        font-family: 'Jost', sans-serif;
+        font-weight: 500;
+        font-size: 0.72rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        text-decoration: underline;
+        text-underline-offset: 3px;
+        color: var(--cream) !important;
+    }
+
+    .mun-footer__see-map:hover { color: var(--cta) !important; }
+
+    .mun-footer__newsletter-link {
+        display: inline-block;
+        font-family: 'Jost', sans-serif;
+        font-weight: 500;
+        font-size: 0.76rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        text-decoration: underline;
+        text-underline-offset: 3px;
+        color: var(--cream);
+        margin-bottom: 1.9rem;
+    }
+
+    .mun-footer__newsletter-link:hover { color: var(--cta); }
+
+    .mun-footer__socials {
+        display: flex;
+        align-items: center;
+        gap: 1.1rem;
+    }
+
+    .mun-footer__socials a {
+        width: 30px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--cream);
+        border-radius: 50%;
+        transition: color 0.3s ease, background 0.3s ease;
+    }
+
+    .mun-footer__socials a:hover {
+        color: var(--void);
+        background: var(--cta);
+    }
+
+    .mun-footer__socials svg { width: 16px; height: 16px; }
+
+    .mun-footer__bottom-row {
+        grid-column: 1 / -1;
+        margin-top: clamp(2rem, 4vw, 3rem);
+        padding-top: 1.25rem;
+        border-top: 1px solid var(--accent-line);
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        font-family: 'Jost', sans-serif;
+        font-size: 0.72rem;
+        letter-spacing: 0.04em;
+        color: var(--cream-faint);
+    }
+
+    @media (max-width: 900px) {
+        .mun-footer__base { grid-template-columns: 1fr 1fr; }
+        .mun-footer__brand { grid-column: 1 / -1; margin-bottom: 0.5rem; }
+    }
+
+    @media (max-width: 560px) {
+        .mun-footer__cta { flex-direction: column; text-align: center; }
+        .mun-footer__cta-eyebrow { order: 2; }
+        .mun-footer__cta-arrow { order: 3; }
+        .mun-footer__base { grid-template-columns: 1fr; }
+    }
+</style>
+
+<footer class="mun-footer">
+
+    <div class="mun-footer__cta">
+        <span class="mun-footer__cta-eyebrow">STILL<br>DECIDING? <a href="#reserve">→</a></span>
+
+        <div class="mun-footer__cta-heading">
+            <h2>Reserve a table</h2>
+            <div class="mun-footer__cta-underline"></div>
+        </div>
+
+        <a class="mun-footer__cta-arrow" href="#reserve" aria-label="Reserve a table">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 12h14M13 6l6 6-6 6" stroke="#040705" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </a>
+    </div>
+
+    <div class="mun-footer__base">
+
+        <div class="mun-footer__brand">
+            <div class="mun-footer__logo">
+                <!-- Replace with: <img src="your-logo.png" alt="Cafe Moishi logo"> -->
+                LOGO
+            </div>
+            <p class="mun-footer__brand-name">Cafe Moishi</p>
+            <p class="mun-footer__brand-tag">A rooftop cocktail and shisha bar, made for slow evenings above Rome.</p>
+        </div>
+
+        <div class="mun-footer__col">
+            <p class="mun-footer__col-label">Rome</p>
+            <a href="mailto:reservations@cafemoishi.it">reservations@cafemoishi.it</a>
+            <a href="tel:+39061234567">+39 06 123 4567</a>
+            <p>Via del Corso 12,<br>00186 Rome</p>
+            <a class="mun-footer__see-map" href="https://maps.google.com" target="_blank" rel="noopener">See on map ↗</a>
+        </div>
+
+        <div class="mun-footer__col">
+            <p class="mun-footer__col-label">Hours</p>
+            <p>Golden Hour – Midnight<br>Seven days a week</p>
+            <p style="margin-top:1rem;">Reservations recommended<br>after 7PM</p>
+        </div>
+
+        <div class="mun-footer__col">
+            <p class="mun-footer__col-label">Want first access to<br>our evenings?</p>
+            <a class="mun-footer__newsletter-link" href="#newsletter">Sign up for our newsletter →</a>
+
+            <p class="mun-footer__col-label" style="margin-bottom:0.8rem;">Follow us</p>
+            <div class="mun-footer__socials">
+                <a href="#" aria-label="Instagram">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.5"/>
+                        <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.5"/>
+                        <circle cx="17.2" cy="6.8" r="1" fill="currentColor"/>
+                    </svg>
+                </a>
+                <a href="#" aria-label="Facebook">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M14 9h2.5V6h-2.5c-1.93 0-3.5 1.57-3.5 3.5V12H8.5v3H10.5v6h3v-6h2.3l.5-3H13.5v-2c0-.55.45-1 1-1Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+                    </svg>
+                </a>
+                <a href="#" aria-label="TikTok">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M15 4v9.4a2.8 2.8 0 1 1-2.2-2.74M15 4a4.2 4.2 0 0 0 4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+
+        <div class="mun-footer__bottom-row">
+            <span>© 2026 Cafe Moishi. All rights reserved.</span>
+            <span>Made in Uk</span>
+        </div>
+
+    </div>
+
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/lenis@1/dist/lenis.min.js"></script>
+<script>
+  // Lenis smooth scroll — drives the whole page
+  var lenis = new Lenis({ duration: 1.1, smoothWheel: true });
+  function raf(time){
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+  }
+  requestAnimationFrame(raf);
+</script>
+</body>
+</html>
