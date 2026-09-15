@@ -498,7 +498,7 @@
   }
   .nav-links li a:hover{ color: var(--cream); text-shadow: 0 0 12px var(--accent-glow); transform: translateY(-2px); }
   .nav-links li a:hover::after{ transform: scaleX(1); }
-  .nav-links li a.active{ color: var(--moishi-glow); }
+  .nav-links li a.active{ color: var(--accent); }
   .nav-links li a.active::after{ transform: scaleX(1); }
 
   /* ---- Find Us (small map popover) ---- */
@@ -688,7 +688,7 @@
       letter-spacing:0.03em;
       font-family:'Poppins', sans-serif;
       font-weight:600;
-      color: var(--moishi-glow);
+      color: var(--accent);
       text-transform:uppercase;
       opacity:0;
       transform: translateY(28px);
@@ -749,7 +749,7 @@
 </head>
 <body>
 <nav class="site-nav">
-  <a href="#" class="site-logo">
+  <a href="index.html" class="site-logo">
     <span class="mark">
     
     </span>
@@ -787,10 +787,10 @@
   </button>
 
   <ul class="mobile-menu" id="mobileMenu">
-    <li><a href="#" class="active">Home</a></li>
+    <li><a href="index.html">Home</a></li>
     <li><a href="#">About</a></li>
-    <li><a href="#">Menu</a></li>
-    <li><a href="#">Contact</a></li>
+    <li><a href="menu.html" class="active">Menu</a></li>
+    <li><a href="contact.html">Contact</a></li>
     <li>
       <a href="https://maps.google.com/?q=Times+Square,New+York,NY" target="_blank" rel="noopener" class="mobile-location">
         <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1685,7 +1685,7 @@
   .music-player {
     position: fixed;
     top: 50%;
-    right: 10px;
+    right: 18px;
     transform: translateY(-50%);
     z-index: 500;
   }
@@ -1838,7 +1838,148 @@
     sections.forEach(function(s){ observer.observe(s); });
   })();
 </script>
-<div class="music-player" id="musicPlayer">
+<script>
+  // Mobile burger menu toggle (same behaviour as index.html)
+  const burger = document.getElementById('burgerBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+
+  burger.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.toggle('open');
+    burger.classList.toggle('open', isOpen);
+    burger.setAttribute('aria-expanded', isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  });
+
+  mobileMenu.querySelectorAll('a:not(.mobile-location)').forEach(a => {
+    a.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      burger.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+
+  const locationTrigger = document.getElementById('locationTrigger');
+  locationTrigger.addEventListener('click', (e) => {
+    e.stopPropagation();
+    locationTrigger.classList.toggle('open');
+  });
+  document.addEventListener('click', () => locationTrigger.classList.remove('open'));
+</script>
+
+<style>
+  /* ================================================================
+     BACKGROUND MUSIC PLAYER — small fixed icon, right side, vertically
+     centered so it never collides with the .reserve-cta button that
+     already sits fixed bottom-right. Themed to match the site's
+     purple/magenta accent palette (same tone as .testi-mun / .faq-mun).
+     ================================================================ */
+  .music-player {
+    position: fixed;
+    top: 50%;
+    right: 18px;
+    transform: translateY(-50%);
+    z-index: 500;
+  }
+
+  .music-player__btn {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 1px solid rgba(241,250,243,0.16);
+    background: linear-gradient(155deg, rgba(46,2,46,0.92), rgba(10,7,9,0.92));
+    box-shadow: 0 8px 24px -8px rgba(136,26,158,0.55), 0 0 0 1px rgba(167,139,250,0.08) inset;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+    transition: transform 0.3s cubic-bezier(.2,.9,.3,1), box-shadow 0.3s ease, border-color 0.3s ease;
+  }
+  .music-player__btn:hover {
+    transform: scale(1.08);
+    border-color: rgba(167,139,250,0.5);
+    box-shadow: 0 10px 28px -6px rgba(136,26,158,0.7);
+  }
+  .music-player__btn:focus-visible {
+    outline: 2px solid #a78bfa;
+    outline-offset: 3px;
+  }
+
+  .music-player__icon {
+    width: 20px;
+    height: 20px;
+    color: #e7d7fb;
+    display: block;
+  }
+  .music-player__icon--pause { display: none; }
+  .music-player.is-playing .music-player__icon--play { display: none; }
+  .music-player.is-playing .music-player__icon--pause { display: block; }
+
+  /* animated equalizer bars, shown only while playing */
+  .music-player__bars {
+    display: none;
+    align-items: flex-end;
+    gap: 3px;
+    height: 16px;
+  }
+  .music-player.is-playing .music-player__bars { display: flex; }
+  .music-player.is-playing .music-player__icon--pause { display: none; }
+  .music-player__bars span {
+    width: 3px;
+    border-radius: 2px;
+    background: linear-gradient(180deg, #d9b8ff, #881a9e);
+    animation: musicBar 0.9s ease-in-out infinite;
+  }
+  .music-player__bars span:nth-child(1) { height: 6px;  animation-delay: 0s; }
+  .music-player__bars span:nth-child(2) { height: 14px; animation-delay: 0.15s; }
+  .music-player__bars span:nth-child(3) { height: 9px;  animation-delay: 0.3s; }
+  .music-player__bars span:nth-child(4) { height: 13px; animation-delay: 0.45s; }
+  @keyframes musicBar {
+    0%, 100% { transform: scaleY(0.4); }
+    50% { transform: scaleY(1); }
+  }
+
+  .music-player__ring {
+    position: absolute;
+    inset: -4px;
+    border-radius: 50%;
+    border: 1px solid rgba(167,139,250,0.35);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  .music-player.is-playing .music-player__ring {
+    opacity: 1;
+    animation: musicRingPulse 2.4s ease-in-out infinite;
+  }
+  @keyframes musicRingPulse {
+    0%, 100% { transform: scale(1); opacity: 0.55; }
+    50% { transform: scale(1.12); opacity: 0.15; }
+  }
+
+  @media (max-width: 640px) {
+    .music-player { right: 12px; }
+    .music-player__btn { width: 44px; height: 44px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .music-player__bars span,
+    .music-player__ring { animation: none; }
+  }
+
+</style>
+<style>
+@keyframes unmutePulse {
+  0%, 100% { transform: translateY(-50%) scale(1); }
+  50% { transform: translateY(-50%) scale(1.05); }
+}
+.unmute-prompt.is-visible {
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+}
+</style><div class="music-player" id="musicPlayer">
   <audio id="bgMusic" loop preload="metadata">
     <source src="lounge-ambient.mp3" type="audio/mpeg">
   </audio>
@@ -1901,6 +2042,7 @@
   }
 })();
 </script>
+
 <script src="musicplayer.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/lenis@1/dist/lenis.min.js"></script>
 
