@@ -996,25 +996,30 @@ textarea {
 }
 
 .barbaLoader {
+    display: none;
     position: fixed;
     width: 100vw;
     height: 100vh;
     cursor: wait;
-    background-color: #222944;
+    background-color: #402244;
     z-index: 1;
     opacity: 0;
     display: flex;
     align-items: center;
     justify-content: center;
     pointer-events: none
+    
 }
 
 .barbaLoader svg {
+    display: none;
     height: 15vh;
     width: auto
+    
 }
 
 .reserve-cta {
+    display: none;
     position: fixed;
     bottom: min(2.6041666667svw,50px);
     right: min(2.1875svw,42px);
@@ -1207,174 +1212,6 @@ textarea {
     }
 }
 
-.header {
-    position: fixed;
-    z-index: 12;
-    top: 0;
-    left: 0;
-    right: 0
-}
-
-.header:after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: min(15.625svw,300px);
-    pointer-events: none;
-    z-index: -1;
-    background: linear-gradient(0deg,#19173500,#222944)
-}
-
-@media screen and (orientation: portrait) {
-    .header:after {
-        height:min(21.3333333333svw,80px)
-    }
-}
-
-#page_EVENTS .header:after,.single-post .header:after {
-    background: linear-gradient(0deg,#19173500,#f2f0dd80)
-}
-
-#page_EVENTS .header .header__logo svg path,.single-post .header .header__logo svg path {
-    fill: #222944
-}
-
-#page_EVENTS .header .header__cta a,.single-post .header .header__cta a {
-    color: #222944
-}
-
-@media screen and (orientation: portrait) {
-    .header.open .header__hamburger .hamburger__line {
-        background-color:#222944
-    }
-
-    .header.open .header__logo svg path {
-        fill: #222944
-    }
-}
-
-.header__inner {
-    padding-top: min(.8333333333svw,16px);
-    padding-left: min(1.6145833333svw,31px);
-    padding-right: min(2.0833333333svw,40px);
-    display: flex;
-    align-items: center;
-    justify-content: space-between
-}
-
-@media screen and (orientation: portrait) {
-    .header__inner {
-        padding-top:min(10.4svw,39px);
-        padding-left: min(4.8svw,18px);
-        padding-right: min(2.6666666667svw,10px);
-        align-items: flex-start
-    }
-}
-
-.header__hamburger {
-    position: relative;
-    z-index: 2
-}
-
-.header__logo {
-    width: min(8.3333333333svw,160px);
-    height: auto;
-    position: absolute;
-    z-index: 2;
-    top: min(.46875svw,9px);
-    left: 50%;
-    transform: translate(-50%)
-}
-
-@media screen and (orientation: portrait) {
-    .header__logo {
-        top:min(4.2666666667svw,16px);
-        width: min(26.6666666667svw,100px)
-    }
-}
-
-.header__logo svg {
-    width: 100%;
-    height: auto
-}
-
-.header__logo svg path {
-    transition: fill .4s ease-in-out
-}
-
-@media screen and (orientation: portrait) {
-    .header__cta--mobile {
-        display:flex;
-        justify-content: center;
-        align-items: center;
-        padding: min(.8svw,3px) min(4.2666666667svw,16px);
-        background-color: #d9d9d9;
-        color: #222944;
-        border-radius: 100vh;
-        width: fit-content
-    }
-}
-
-.header__nav {
-    position: absolute;
-    top: calc(100% + min(2.0833333333svw,40px));
-    left: min(1.0416666667svw,20px);
-    transition: opacity .4s ease-in-out;
-    opacity: 0;
-    pointer-events: none
-}
-
-.header__nav.open {
-    opacity: 1;
-    pointer-events: all
-}
-
-@media screen and (orientation: portrait) {
-    .header__nav {
-        top:0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        background-color: #f2f0dd;
-        padding-top: min(25.3333333333svw,95px);
-        padding-left: min(6.4svw,24px);
-        padding-right: min(6.4svw,24px);
-        z-index: 1
-    }
-}
-
-.header__nav-list {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: min(.4166666667svw,8px) 0
-}
-
-@media screen and (orientation: portrait) {
-    .header__nav-list {
-        gap:min(4.2666666667svw,16px) 0
-    }
-}
-
-.header__nav-item {
-    border-radius: min(.5208333333svw,10px);
-    background-color: #f2f0dd;
-    color: #222944;
-    display: flex;
-    align-items: flex-start;
-    gap: 0 min(.78125svw,15px);
-    padding: min(.5208333333svw,10px) min(.78125svw,15px)
-}
-
-@media screen and (orientation: portrait) {
-    .header__nav-item {
-        background-color:none;
-        gap: 0 min(4svw,15px);
-        padding: 0
-    }
-}
 
 .footer {
     position: relative;
@@ -3133,12 +2970,38 @@ textarea {
   color: #69036b6c;
 
   text-shadow:
-    0 0 5px #ffffff,
+    0 0 5px #f1d1fa,
     0 0 10px #d9e4f0,
     0 0 20px #4d8dff,
     0 0 35px #cc24ff,
-    0 0 55px rgba(60, 99, 255, 0.938);
+    0 0 55px rgba(201, 210, 243, 0.938);
+    
+  background-size: 250% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  /* shiny glow */
+  filter: drop-shadow(0 0 4px rgba(197, 163, 230, .55))
+          drop-shadow(0 0 10px rgba(214, 204, 231, 0.35));
+
+  animation: glitterText 5s ease-in-out infinite;
+  
+@keyframes glitterText {
+  0% {
+    background-position: 150% center;
+  }
+
+  50% {
+    background-position: 50% center;
+  }
+
+  100% {
+    background-position: -150% center;
+  }
 }
+}
+
 
     .drinks {
         --void: #040705;
@@ -3668,4 +3531,352 @@ textarea {
 .home-hero__title {
   -webkit-text-stroke: 2px #fcfafd;
   color: transparent; /* agar fill bhi chahiye to yellow color rakho niche wali line use karo */
+}
+
+
+
+/* ════════════════════════════
+   NAVBAR
+════════════════════════════ */
+.navbar{
+  background:transparent !important;
+  position:fixed;
+  top:36px;
+  width:100%;
+  z-index:1099;
+  padding:18px 0;
+  transition:background .4s ease,box-shadow .4s ease,padding .4s ease;
+
+}
+.footer-logo img{
+    max-width: 180px;
+    height: auto;
+    display: block;
+}.footer-logo{
+    text-align: center;
+    margin-bottom: 20px;
+}
+.footer-logo img{
+    max-width: 180px;
+    height: auto;
+}
+.navbar.scrolled{
+  background:rgba(0,0,0,0.95) !important;
+  box-shadow:0 4px 24px rgba(0,0,0,0.5);
+  padding:12px 0;
+}
+.logo {
+    height: 55px;      /* apni requirement ke mutabiq */
+    width: 90px;
+    display: block;
+    margin-top: 17%;
+}
+.logo-placeholder{
+  width:130px;
+  height:42px;
+  border:1px dashed rgba(255,255,255,0.2);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:rgba(255,255,255,0.3);
+  font-size:11px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+}
+
+.navbar-nav .nav-link{
+  font-size:16px;
+  font-weight:600;
+  letter-spacing:2.5px;
+  text-transform:uppercase;
+  color:#ccc !important;
+  padding:8px 15px !important;
+  transition:color .3s;
+  position:relative;
+}
+
+.navbar-nav .nav-link:hover{
+  color:#fff !important;
+}
+.navbar-nav .nav-link.active {
+  color: #fff !important;
+  font-weight: 800 !important;
+}
+
+.navbar-nav .nav-link.active::after {
+  width: 55% !important;
+  background: #C8922A;
+}.navbar-nav .nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 1px;
+  background: #C8922A;
+  transition: width 0.3s;
+  display: block !important;
+}
+
+.navbar-nav .nav-link:hover::after,
+.navbar-nav .nav-link.active::after {
+  width: 55%;
+}
+.navbar-nav .nav-link .fa-chevron-down{
+  font-size:12px;
+  margin-left:4px;
+  transition:transform .3s;
+}
+
+.navbar-nav .nav-item.show .fa-chevron-down{
+  transform:rotate(180deg);
+}
+
+.dropdown-menu{
+  background:rgba(8,8,8,0.97);
+  border:1px solid rgba(255,255,255,0.07);
+  border-radius:0;
+  padding:8px 0;
+  animation:dropFade .2s ease;
+}
+
+@keyframes dropFade{
+  from{
+    opacity:0;
+    transform:translateY(-6px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+.dropdown-item{
+  font-size:12px;
+  font-weight:500;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:#aaa;
+  padding:9px 24px;
+  transition:color .2s,background .2s;
+}
+
+.dropdown-item:hover{
+  background:rgba(128,0,0,0.12);
+  color:#fff;
+}
+
+.dropdown-divider{
+  border-color:rgba(255,255,255,0.07);
+}
+
+.nav-right-icons{
+  display:flex;
+  align-items:center;
+  gap:18px;
+}
+
+.nav-right-icons a{
+  color:#ccc;
+  font-size:17px;
+  text-decoration:none;
+  transition:color .3s;
+  position:relative;
+}
+
+.nav-right-icons a:hover{
+  color:#fff;
+}
+
+.cart-badge{
+  position:absolute;
+  top:-8px;
+  right:-9px;
+  background: #C8922A;
+  color:#fff;
+  font-size:9px;
+  font-weight:700;
+  width:19px;
+  height:19px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.navbar-toggler{
+  border:1px solid rgba(255,255,255,0.25);
+  padding:5px 10px;
+}
+
+.navbar-toggler-icon{
+  background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255,255,255,0.75%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+/* Agar background transparent ho aur image na ho toh navbar dark dikhao */
+.navbar.scrolled,
+.contact-page .navbar {
+  background: rgba(32, 30, 30, 0.705) !important;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.5);
+}
+
+/* ════════════════════════════════════
+   MOBILE / TABLET NAV  (≤ 991px)
+   ════════════════════════════════════ */
+@media (max-width: 991px) {
+
+  .navbar {
+    top: 28px;
+    padding: 6px 0;
+  }
+
+  /* ek hi clean row: logo (left) ── icons + menu (right) */
+  #mainNavbar .container-fluid {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+  }
+
+  .logo {
+    height: 50px;
+    width: auto;
+  }
+
+  /* icon group ko right pe push karo */
+  .nav-right-icons {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .nav-right-icons a {
+    color: #fff;
+    font-size: 18px;
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .cart-badge {
+    font-size: 10px;
+  }
+
+  /* hamburger icons ke baad, koi box/border nahi */
+  .navbar-toggler {
+    margin-left: 20px;
+    padding: 0;
+    border: none !important;
+    box-shadow: none !important;
+    outline: none !important;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .navbar-toggler:focus {
+    box-shadow: none !important;
+  }
+
+  .navbar-toggler-icon {
+    width: 26px;
+    height: 26px;
+  }
+
+  /* dropdown menu */
+  #navMenu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: rgba(5,5,5,0.98);
+    border-top: 1px solid rgba(255,255,255,0.07);
+    padding: 10px 0 16px;
+    margin-top: 0;
+    z-index: 999;
+  }
+
+  .navbar-nav .nav-link {
+    padding: 12px 20px !important;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    font-size: 13px;
+  }
+
+  .navbar-nav .nav-link:last-child {
+    border-bottom: none;
+  }
+
+  .navbar-nav .nav-link::after {
+    display: none;
+  }
+
+  /* active link mobile pe (gold underline, no left border) */
+  .navbar-nav .nav-link.active {
+    color: #fff !important;
+    border-left: none !important;
+    padding-left: 20px !important;
+    font-weight: 600;
+  }
+
+  .navbar-nav .nav-link.active::after {
+    display: block !important;
+    width: 46px !important;
+    height: 1px !important;
+    background: #C8922A !important;
+    bottom: 2px;
+    left: 20px;
+    transform: none;
+  }
+}
+
+/* ── chhote phones (≤ 576px) ── */
+@media (max-width: 576px) {
+
+  .top-bar {
+    padding: 2px 10px;
+  }
+
+  .navbar {
+    padding: 4px 0;
+    top: 28px;
+  }
+
+  .logo {
+    height: 44px;
+  }
+
+  .nav-right-icons {
+    gap: 16px;
+  }
+
+  .nav-right-icons a {
+    font-size: 16px;
+  }
+
+  .navbar-toggler {
+    margin-left: 16px;
+  }
+
+  .navbar-toggler-icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .navbar-nav .nav-link {
+    padding: 10px 20px !important;
+  }
+}
+
+@media (max-width: 991px) {
+  .navbar-nav .nav-link.active {
+    color: #800000 !important;
+    font-weight: 800 !important;
+    border-left: 2px solid #800000;
+    padding-left: 18px !important;
+  }
+
+  /* Mobile pe underline ki jagah left border hi rahegi */
+  .navbar-nav .nav-link.active::after {
+    display: none;
+  }
 }

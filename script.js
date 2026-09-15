@@ -104,3 +104,16 @@
     observer.observe(section);
   });
 })();
+// ── Navbar sticky (har page pe hai)
+var navbar = document.getElementById('mainNavbar');
+if (navbar) {
+  function checkScroll() {
+    if (window.scrollY > 10) {
+      navbar.classList.add('scrolled');
+    } else {
+      navbar.classList.remove('scrolled');
+    }
+  }
+  window.addEventListener('scroll', checkScroll);
+  checkScroll();
+}
