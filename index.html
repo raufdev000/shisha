@@ -4661,13 +4661,27 @@
     .music-player__bars span,
     .music-player__ring { animation: none; }
   }
-</style>
 
-<div class="music-player" id="musicPlayer">
+</style>
+<style>
+@keyframes unmutePulse {
+  0%, 100% { transform: translateY(-50%) scale(1); }
+  50% { transform: translateY(-50%) scale(1.05); }
+}
+.unmute-prompt.is-visible {
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+}
+</style><div class="music-player" id="musicPlayer">
   <audio id="bgMusic" loop preload="metadata">
-    <!-- Swap this src for your own ambient lounge / chillout track -->
     <source src="lounge-ambient.mp3" type="audio/mpeg">
   </audio>
+
+  <div class="unmute-prompt" id="unmutePrompt" style="position:absolute; top:50%; right:62px; transform:translateY(-50%); white-space:nowrap; padding:8px 14px; border-radius:999px; background:linear-gradient(155deg, rgba(46,2,46,0.95), rgba(10,7,9,0.95)); border:1px solid rgba(167,139,250,0.4); color:#e7d7fb; font-family:'Jost', sans-serif; font-size:0.72rem; letter-spacing:0.06em; text-transform:uppercase; cursor:pointer; opacity:1; visibility:visible; pointer-events:auto; box-shadow:0 8px 24px -8px rgba(136,26,158,0.55); z-index:600;">
+    🔊 Click for music
+  </div>
+
   <button type="button" class="music-player__btn" id="musicToggle" aria-label="Toggle background music" aria-pressed="false">
     <span class="music-player__ring" aria-hidden="true"></span>
     <svg class="music-player__icon music-player__icon--play" viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -4682,6 +4696,46 @@
     </svg>
   </button>
 </div>
+
+<script>
+(function () {
+  var audio = document.getElementById('bgMusic');
+  var prompt = document.getElementById('unmutePrompt');
+  var toggleBtn = document.getElementById('musicToggle');
+  var player = document.getElementById('musicPlayer');
+  if (!audio || !prompt) return;
+
+  audio.muted = true;
+
+  function hidePrompt() {
+    prompt.style.opacity = '0';
+    prompt.style.visibility = 'hidden';
+    prompt.style.pointerEvents = 'none';
+  }
+
+  function unmuteNow() {
+    audio.muted = false;
+    hidePrompt();
+    audio.play().catch(function(){});
+  }
+
+  audio.play().then(function () {
+    if (player) player.classList.add('is-playing');
+    // prompt already visible from inline style — no delay, no timeout
+  }).catch(function(){});
+
+  prompt.addEventListener('click', function (e) {
+    e.stopPropagation();
+    unmuteNow();
+  });
+
+  if (toggleBtn) {
+    toggleBtn.addEventListener('click', function () {
+      if (audio.muted) unmuteNow();
+    });
+  }
+})();
+</script>
 
 <script src="musicplayer.js"></script>
 
