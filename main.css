@@ -2966,43 +2966,6 @@ textarea {
     width: min(4.1666666667svw,80px);
     height: auto
 }
-.hero-accent {
-  color: #69036b6c;
-
-  text-shadow:
-    0 0 5px #f1d1fa,
-    0 0 10px #d9e4f0,
-    0 0 20px #4d8dff,
-    0 0 35px #cc24ff,
-    0 0 55px rgba(201, 210, 243, 0.938);
-    
-  background-size: 250% 100%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-
-  /* shiny glow */
-  filter: drop-shadow(0 0 4px rgba(197, 163, 230, .55))
-          drop-shadow(0 0 10px rgba(214, 204, 231, 0.35));
-
-  animation: glitterText 5s ease-in-out infinite;
-  
-@keyframes glitterText {
-  0% {
-    background-position: 150% center;
-  }
-
-  50% {
-    background-position: 50% center;
-  }
-
-  100% {
-    background-position: -150% center;
-  }
-}
-}
-
-
     .drinks {
         --void: #040705;
         --cream: #f1faf3;
@@ -3529,11 +3492,34 @@ textarea {
     }
     .desserts__cta:hover { transform: translateY(-3px); box-shadow: 0 14px 28px -10px var(--glow-soft); letter-spacing: 0.2em; }
 .home-hero__title {
-  -webkit-text-stroke: 2px #fcfafd;
-  color: transparent; /* agar fill bhi chahiye to yellow color rakho niche wali line use karo */
+  -webkit-text-stroke: 2px #eeb6ee;
+  
+
+  text-shadow:
+    0 0 5px #5a0283,
+    0 0 10px #00e5ff60,
+    0 0 20px #4d8dff,
+    0 0 30px #9e27ff60,
+    0 0 40px #ff24d757,
+    0 0 55px #ff4d8e50;
+
+  animation: neonPulse 2s ease-in-out infinite alternate;
 }
 
+@keyframes neonPulse {
+  from {
+    filter: brightness(1);
+  }
 
+  to {
+    filter: brightness(1.7);
+  }
+}
+.home-hero__title::before,
+.home-hero__title::after {
+  content: none !important;
+  display: none !important;
+}
 
 /* ════════════════════════════
    NAVBAR
