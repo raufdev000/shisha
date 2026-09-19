@@ -405,7 +405,19 @@
     <ul class="mnav__links">
       <li><a href="index.html" >Home</a></li>   
       <li><a href="shishalanding.html">Shisha</a></li>
-      <li><a href="menu.html">Menu</a></li>
+      <li class="mnav__dropdown">
+  <a href="menu.html">Menu
+    <svg class="mnav__chev" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </a>
+  <div class="mnav__dd">
+    <div class="mnav__dd-box">
+      <a href="menu.html">Full Menu</a>
+   <a href="shishalanding.html#book">Shisha Booking</a>
+    </div>
+  </div>
+</li>
       <li><a href="venue.html">Venue</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="contact.html" class="active">Contact us</a></li>
@@ -437,7 +449,19 @@
   <ul class="mnav__menu" id="mnavMenu">
     <li><a href="index.html" >Home</a></li>   
       <li><a href="shishalanding.html">Shisha</a></li>
-      <li><a href="menu.html">Menu</a></li>
+   <li class="mnav__dropdown">
+  <a href="menu.html">Menu
+    <svg class="mnav__chev" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </a>
+  <div class="mnav__dd">
+    <div class="mnav__dd-box">
+      <a href="menu.html">Full Menu</a>
+   <a href="shishalanding.html#book">Shisha Booking</a>
+    </div>
+  </div>
+</li>
       <li><a href="venue.html">Venue</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="contact.html" class="active">Contact us</a></li>
@@ -531,7 +555,75 @@
     gap:20px;
     flex-shrink:0;
   }
+  /* ---- Menu hover dropdown (desktop) ---- */
+  .mnav__dropdown{ position:relative; }
 
+  .mnav__chev{
+    width:11px; height:11px;
+    margin-left:4px;
+    vertical-align:-1px;
+    transition:transform .3s ease;
+  }
+  .mnav__dropdown:hover .mnav__chev,
+  .mnav__dropdown:focus-within .mnav__chev{ transform:rotate(180deg); }
+
+  .mnav__dd{
+    position:absolute;
+    top:100%;
+    left:50%;
+    padding-top:16px;              /* hover gap bridge, taake dropdown band na ho */
+    transform:translateX(-50%) translateY(-6px);
+    opacity:0;
+    visibility:hidden;
+    transition:opacity .25s ease, transform .25s ease, visibility 0s linear .25s;
+    z-index:20;
+  }
+  .mnav__dropdown:hover .mnav__dd,
+  .mnav__dropdown:focus-within .mnav__dd{
+    opacity:1;
+    visibility:visible;
+    transform:translateX(-50%) translateY(0);
+    transition:opacity .25s ease, transform .25s ease, visibility 0s linear 0s;
+  }
+
+  .mnav__dd-box{
+    position:relative;
+    min-width:190px;
+    padding:6px;
+    background:rgba(14,14,18,.98);
+    border:1px solid var(--line);
+    border-radius:8px;
+    box-shadow:0 18px 40px -12px rgba(0,0,0,.6);
+  }
+  .mnav__dd-box::before{
+    content:"";
+    position:absolute;
+    top:-6px; left:50%;
+    width:10px; height:10px;
+    margin-left:-5px;
+    background:rgba(14,14,18,.98);
+    border-left:1px solid var(--line);
+    border-top:1px solid var(--line);
+    transform:rotate(45deg);
+  }
+
+  .mnav__links .mnav__dd a{
+    display:block;
+    padding:11px 14px;
+    font-size:12px;
+    font-weight:600;
+    letter-spacing:.08em;
+    color:var(--ink-dim);
+    border-radius:5px;
+    transition:color .25s ease, background .25s ease;
+  }
+  .mnav__links .mnav__dd a:hover{
+    color:var(--ink);
+    background:rgba(191,58,232,.14);
+  }
+  /* dropdown links pe underline animation nahi chahiye */
+  .mnav__links .mnav__dd a::after,
+  .mnav__links .mnav__dd a:hover::after{ display:none; }
   /* ---- Find Us + hover popover ---- */
   .mnav__find{
     position:relative;

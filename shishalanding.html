@@ -404,7 +404,19 @@
     <ul class="mnav__links">
       <li><a href="index.html">Home</a></li>   
       <li><a href="shishalanding.html" class="active">Shisha</a></li>
-      <li><a href="menu.html">Menu</a></li>
+    <li class="mnav__dropdown">
+  <a href="menu.html">Menu
+    <svg class="mnav__chev" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </a>
+  <div class="mnav__dd">
+    <div class="mnav__dd-box">
+      <a href="menu.html">Full Menu</a>
+   <a href="shishalanding.html#book">Shisha Booking</a>
+    </div>
+  </div>
+</li>
       <li><a href="venue.html">Venue</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="contact.html">Contact us</a></li>
@@ -437,13 +449,27 @@
 
   <!-- Mobile dropdown panel (hidden on desktop) -->
   <ul class="mnav__menu" id="mnavMenu">
-    <li><a href="index.html" class="active">Home</a></li>
-    <li><a href="#">About</a></li>
-    <li><a href="menu.html">Menu</a></li>
-    <li><a href="contact.html">Contact Us</a></li>
+      <li><a href="index.html">Home</a></li>   
+      <li><a href="shishalanding.html" class="active">Shisha</a></li>
+    <li class="mnav__dropdown">
+  <a href="menu.html">Menu
+    <svg class="mnav__chev" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </a>
+  <div class="mnav__dd">
+    <div class="mnav__dd-box">
+      <a href="menu.html">Full Menu</a>
+   <a href="shishalanding.html#book">Shisha Booking</a>
+    </div>
+  </div>
+</li>
+      <li><a href="venue.html">Venue</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact us</a></li>
+  
   </ul>
 </nav>
-
 <style>
   #mnav, #mnav *{ box-sizing:border-box; }
 
@@ -531,7 +557,75 @@
     gap:20px;
     flex-shrink:0;
   }
+  /* ---- Menu hover dropdown (desktop) ---- */
+  .mnav__dropdown{ position:relative; }
 
+  .mnav__chev{
+    width:11px; height:11px;
+    margin-left:4px;
+    vertical-align:-1px;
+    transition:transform .3s ease;
+  }
+  .mnav__dropdown:hover .mnav__chev,
+  .mnav__dropdown:focus-within .mnav__chev{ transform:rotate(180deg); }
+
+  .mnav__dd{
+    position:absolute;
+    top:100%;
+    left:50%;
+    padding-top:16px;              /* hover gap bridge, taake dropdown band na ho */
+    transform:translateX(-50%) translateY(-6px);
+    opacity:0;
+    visibility:hidden;
+    transition:opacity .25s ease, transform .25s ease, visibility 0s linear .25s;
+    z-index:20;
+  }
+  .mnav__dropdown:hover .mnav__dd,
+  .mnav__dropdown:focus-within .mnav__dd{
+    opacity:1;
+    visibility:visible;
+    transform:translateX(-50%) translateY(0);
+    transition:opacity .25s ease, transform .25s ease, visibility 0s linear 0s;
+  }
+
+  .mnav__dd-box{
+    position:relative;
+    min-width:190px;
+    padding:6px;
+    background:rgba(14,14,18,.98);
+    border:1px solid var(--line);
+    border-radius:8px;
+    box-shadow:0 18px 40px -12px rgba(0,0,0,.6);
+  }
+  .mnav__dd-box::before{
+    content:"";
+    position:absolute;
+    top:-6px; left:50%;
+    width:10px; height:10px;
+    margin-left:-5px;
+    background:rgba(14,14,18,.98);
+    border-left:1px solid var(--line);
+    border-top:1px solid var(--line);
+    transform:rotate(45deg);
+  }
+
+  .mnav__links .mnav__dd a{
+    display:block;
+    padding:11px 14px;
+    font-size:12px;
+    font-weight:600;
+    letter-spacing:.08em;
+    color:var(--ink-dim);
+    border-radius:5px;
+    transition:color .25s ease, background .25s ease;
+  }
+  .mnav__links .mnav__dd a:hover{
+    color:var(--ink);
+    background:rgba(191,58,232,.14);
+  }
+  /* dropdown links pe underline animation nahi chahiye */
+  .mnav__links .mnav__dd a::after,
+  .mnav__links .mnav__dd a:hover::after{ display:none; }
   /* ---- Find Us + hover popover ---- */
   .mnav__find{
     position:relative;
@@ -764,28 +858,42 @@
 </section>
 
 <!-- ============ COLLECTION ============ -->
+
 <section class="collection">
+
   <div class="wrap">
+
     <div class="collection__top">
+
       <div>
+
         <span class="eyebrow">Our Collection</span>
+
         <h2 class="collection__heading">Explore Our<span>Shisha Flavors</span></h2>
+
         <p class="collection__desc">
           From classic to exotic, we bring you the best shisha flavors, top-quality setups
           and accessories — all in one place.
         </p>
+
         <a href="#" class="collection__link">
           <span class="collection__link-arrow">
-            <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
           </span>
           View All Flavors
         </a>
+
       </div>
 
       <div class="collection__grid">
+
         <div class="product-card">
           <div class="product-card__photo">
-            <img class="product-card__icon product-card__icon-img" src="https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?auto=format&fit=crop&w=1200&q=95" alt="Double Apple" loading="lazy">
+            <img class="product-card__icon product-card__icon-img"
+              src="https://images.unsplash.com/photo-1609386940443-3dbf65aa69fc?auto=format&fit=crop&w=1200&q=95"
+              alt="Double Apple" loading="lazy">
           </div>
           <div class="product-card__foot">
             <span class="product-card__label">Double<br>Apple</span>
@@ -794,7 +902,9 @@
 
         <div class="product-card">
           <div class="product-card__photo">
-            <img class="product-card__icon product-card__icon-img" src="https://images.unsplash.com/photo-1498557850523-fd3d118b962e?auto=format&fit=crop&w=1200&q=95" alt="Blueberry Mint" loading="lazy">
+            <img class="product-card__icon product-card__icon-img dark-fruit"
+              src="https://images.unsplash.com/photo-1508851112073-bb54d279f071?auto=format&fit=crop&w=1200&q=95"
+              alt="Blueberry Mint" loading="lazy">
           </div>
           <div class="product-card__foot">
             <span class="product-card__label">Blueberry<br>Mint</span>
@@ -803,7 +913,9 @@
 
         <div class="product-card">
           <div class="product-card__photo">
-            <img class="product-card__icon product-card__icon-img" src="https://images.unsplash.com/photo-1563114773-84221bd62daa?auto=format&fit=crop&w=1200&q=95" alt="Watermelon Mint" loading="lazy">
+            <img class="product-card__icon product-card__icon-img dark-fruit"
+              src="https://images.unsplash.com/photo-1621583441131-c8c190794970?auto=format&fit=crop&w=1200&q=95"
+              alt="Watermelon Mint" loading="lazy">
           </div>
           <div class="product-card__foot">
             <span class="product-card__label">Watermelon<br>Mint</span>
@@ -812,7 +924,9 @@
 
         <div class="product-card">
           <div class="product-card__photo">
-            <img class="product-card__icon product-card__icon-img" src="https://images.unsplash.com/photo-1537640538966-79f369143f8f?auto=format&fit=crop&w=1200&q=95" alt="Grape Mint" loading="lazy">
+            <img class="product-card__icon product-card__icon-img"
+              src="https://images.unsplash.com/photo-1680165565648-852800b3e710?auto=format&fit=crop&w=1200&q=95"
+              alt="Grape Mint" loading="lazy">
           </div>
           <div class="product-card__foot">
             <span class="product-card__label">Grape<br>Mint</span>
@@ -821,7 +935,9 @@
 
         <div class="product-card">
           <div class="product-card__photo">
-            <img class="product-card__icon product-card__icon-img" src="https://images.unsplash.com/photo-1553279768-865429fa0078?auto=format&fit=crop&w=1200&q=95" alt="Mango Passion" loading="lazy">
+            <img class="product-card__icon product-card__icon-img"
+              src="https://images.unsplash.com/photo-1741057845235-e6cd96e11e84?auto=format&fit=crop&w=1200&q=95"
+              alt="Mango Passion" loading="lazy">
           </div>
           <div class="product-card__foot">
             <span class="product-card__label">Mango<br>Passion</span>
@@ -830,7 +946,9 @@
 
         <div class="product-card">
           <div class="product-card__photo">
-            <img class="product-card__icon product-card__icon-img" src="https://images.unsplash.com/photo-1565769583831-8b50fc0570cd?auto=format&fit=crop&w=1200&q=95" alt="Peach" loading="lazy">
+            <img class="product-card__icon product-card__icon-img"
+              src="https://images.unsplash.com/photo-1634213704824-9c9782559a08?auto=format&fit=crop&w=1200&q=95"
+              alt="Peach" loading="lazy">
           </div>
           <div class="product-card__foot">
             <span class="product-card__label">Peach</span>
@@ -839,7 +957,9 @@
 
         <div class="product-card">
           <div class="product-card__photo">
-            <img class="product-card__icon product-card__icon-img" src="https://images.unsplash.com/photo-1590502593747-42a996133562?auto=format&fit=crop&w=1200&q=95" alt="Lemon Mint" loading="lazy">
+            <img class="product-card__icon product-card__icon-img"
+              src="https://images.unsplash.com/photo-1767459264170-cd86675adfa2?auto=format&fit=crop&w=1200&q=95"
+              alt="Lemon Mint" loading="lazy">
           </div>
           <div class="product-card__foot">
             <span class="product-card__label">Lemon<br>Mint</span>
@@ -848,7 +968,9 @@
 
         <div class="product-card">
           <div class="product-card__photo">
-            <img class="product-card__icon product-card__icon-img" src="https://images.unsplash.com/photo-1464965911861-746a04b4bca6?auto=format&fit=crop&w=1200&q=95" alt="Strawberry" loading="lazy">
+            <img class="product-card__icon product-card__icon-img dark-fruit"
+              src="https://images.unsplash.com/photo-1678959782088-adaa28837f14?auto=format&fit=crop&w=1200&q=95"
+              alt="Strawberry" loading="lazy">
           </div>
           <div class="product-card__foot">
             <span class="product-card__label">Strawberry</span>
@@ -857,7 +979,9 @@
 
         <div class="product-card">
           <div class="product-card__photo">
-            <img class="product-card__icon product-card__icon-img" src="https://images.unsplash.com/photo-1559815685-aed4d79a2941?auto=format&fit=crop&w=1200&q=95" alt="Classic Mint" loading="lazy">
+            <img class="product-card__icon product-card__icon-img"
+              src="https://images.unsplash.com/photo-1609386940443-3dbf65aa69fc?auto=format&fit=crop&w=1200&q=95"
+              alt="Classic Mint" loading="lazy">
           </div>
           <div class="product-card__foot">
             <span class="product-card__label">Classic<br>Mint</span>
@@ -866,15 +990,19 @@
 
         <div class="product-card">
           <div class="product-card__photo">
-            <img class="product-card__icon product-card__icon-img" src="https://images.unsplash.com/photo-1550258987-190a2d41a8ba?auto=format&fit=crop&w=1200&q=95" alt="Pineapple" loading="lazy">
+            <img class="product-card__icon product-card__icon-img"
+              src="https://images.unsplash.com/photo-1763316562802-cdcfe6b85d22?auto=format&fit=crop&w=1200&q=95"
+              alt="Pineapple" loading="lazy">
           </div>
           <div class="product-card__foot">
             <span class="product-card__label">Pineapple</span>
           </div>
         </div>
+
       </div>
 
 <style>
+
 .product-card__icon-img{
   width:100%;
   height:100%;
@@ -882,11 +1010,19 @@
   object-fit:cover;
   border-radius:inherit;
 }
-</style>
-    </div>
-  </div>
-</section>
 
+/* Only Blueberry, Watermelon & Strawberry */
+.dark-fruit{
+  filter: brightness(0.65) contrast(1.1);
+}
+
+</style>
+
+    </div>
+
+  </div>
+
+</section>
 <!-- ============ WHY CHOOSE US + BOOKING ============ -->
 <section class="why-book" id="book">
   <div class="wrap">
@@ -1473,17 +1609,8 @@
 </footer>
 
 
-<script src="musicplayer.js"></script>
 
-<!-- ============================================================
-     CAFE MOISHI — MUSIC PLAYER (panel version)
-     Replaces the previous .music-player block in index.html.
-     One click/tap on the headphone icon:
-       1. Starts the audio audibly (unmutes + plays) — this is the
-          "one click for sound" the browser autoplay policy requires.
-       2. Opens the panel (volume slider + mute button + close).
-     Closing the panel (X) does NOT stop the music — it keeps playing.
-     ============================================================ -->
+
 <style>
   .music-player {
     position: fixed;
