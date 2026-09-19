@@ -3,398 +3,397 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Contact Us — Moishi Cafe · Sheesha · Grill</title>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<title>Premium Shisha Experience</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Yellowtail&family=Fredoka:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
->
-<!-- Bootstrap 5 -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Yellowtail&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/lenis@1/dist/lenis.min.js"></script>
 <style>
   :root{
-    --bg:#0a0612;
-    --bg-panel:#120a20;
-    --gray-line: rgba(255,255,255,0.08);
-    --ink: #e9e8ee;
-    --ink-dim: rgba(233,232,238,0.62);
-    --ink-faint: rgba(233,232,238,0.4);
-    --purple: #a78bfa;
-    --purple-deep: #4103a5;
-    --aroma: #0805b4;
-    --card-border: rgba(233,232,238,0.1);
+    --bg: #10121f;
+    --panel: #121019;
+    --panel-2: #17141f;
+    --line: rgba(255,255,255,0.08);
+    --ink: #ffffff;
+    --ink-dim: rgba(255,255,255,0.62);
+    --ink-faint: rgba(255,255,255,0.4);
+    --purple: #a855f7;
+    --purple-deep: #7c3aed;
+    --purple-glow: rgba(168,85,247,0.45);
+    --font-body: 'Poppins', sans-serif;
+    --font-script: 'Yellowtail', cursive;
   }
+  *{ box-sizing:border-box; margin:0; padding:0; }
 
-  *{box-sizing:border-box;}
+  html{
+    overflow-x:hidden;
+    width:100%;
+    scroll-behavior:auto; /* Lenis takes over smooth scrolling */
+  }
   html.lenis{ height:auto; }
   html.lenis, html.lenis body{ height:auto; }
+  html.lenis-smooth{ scroll-behavior:auto; }
+
   body{
-    margin:0;
     background:var(--bg);
     color:var(--ink);
-    font-family:'Fredoka', 'Segoe UI', sans-serif;
+    font-family:var(--font-body);
     -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    text-rendering:optimizeLegibility;
+    overflow-x:hidden;
+    width:100%;
+    max-width:100vw;
+    position:relative;
   }
-  img{max-width:100%; display:block;}
-  a{color:inherit; text-decoration:none;}
-  .wrap{max-width:1180px; margin:0 auto; padding:0 24px;}
+  img{
+    max-width:100%;
+    display:block;
+    image-rendering:auto;
+  }
+  a{ text-decoration:none; color:inherit; }
+  .wrap{ max-width:1320px; margin:0 auto; padding:0 clamp(1.25rem, 4vw, 3rem); overflow:hidden; }
+  section{ padding: clamp(3rem, 6vw, 5rem) 0; overflow:hidden; }
 
-  /* ---------- glow orbs — same fun/decorative language as the menu page ---------- */
-  .glow-wrap{ position:absolute; inset:0; overflow:hidden; pointer-events:none; z-index:0; }
-  .glow-orb{ position:absolute; border-radius:50%; filter:blur(90px); opacity:.35; animation:orbPulse 7s ease-in-out infinite; }
-  .glow-orb.a{ width:380px; height:380px; background:var(--purple-deep); top:-120px; left:-100px; }
-  .glow-orb.b{ width:340px; height:340px; background:var(--aroma); bottom:-140px; right:-80px; animation-delay:2s; }
-  @keyframes orbPulse{ 0%,100%{ opacity:.18; transform:scale(1);} 50%{ opacity:.35; transform:scale(1.2);} }
+  .eyebrow{
+    display:block;
+    font-family:var(--font-script);
+    font-size:clamp(1.3rem, 2.6vw, 1.7rem);
+    font-weight:400;
+    color:var(--purple);
+    margin-bottom:.2rem;
+  }
 
-  /* ---------- hero ---------- */
-  .hero{
-    position:relative; z-index:2;
-    padding:6.5rem 0 4rem;
-    text-align:center;
-    border-bottom:1px solid var(--gray-line);
-    overflow:hidden;
-  }
-  .hero__bg{ position:absolute; inset:0; z-index:0; }
-  .hero__bg img{ width:100%; height:100%; object-fit:cover; opacity:.4; }
-  .hero__bg::after{
-    content:"";
-    position:absolute; inset:0;
-    background:linear-gradient(180deg, rgba(10,6,18,.55) 0%, rgba(10,6,18,.35) 45%, rgba(10,6,18,.92) 100%);
-  }
-  .hero .wrap{ position:relative; z-index:1; }
-  .hero__brand{
-    font-family:'Yellowtail', cursive;
-    font-size:clamp(2.2rem, 5vw, 3rem);
-    line-height:1;
-    margin:0 0 .35rem;
-    background:linear-gradient(115deg,#cda0f7 0%,#5e05d3 20%,#ba8fc7 38%,#ffffff 48%,#6e37d4 55%,#ffffff 62%,#c5a3e6 78%,#969597 100%);
-    background-size:250% 100%;
-    -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;
-    filter:drop-shadow(0 0 4px rgba(197,163,230,.55)) drop-shadow(0 0 10px rgba(110,55,212,.35));
-    animation:glitterText 5s ease-in-out infinite;
-  }
-  @keyframes glitterText{ 0%{background-position:150% center;} 50%{background-position:50% center;} 100%{background-position:-150% center;} }
-  .hero__title{
-    font-weight:600;
-    font-size:clamp(1.9rem, 5vw, 3rem);
-    margin:0 0 .75rem;
+  .btn{
+    display:inline-flex; align-items:center; gap:.6rem;
+    font-family:var(--font-body);
+    font-weight:600; font-size:.85rem;
     color:#fff;
+    background:linear-gradient(120deg, var(--purple-deep), var(--purple));
+    padding:.95em 1.7em;
+    border-radius:999px;
+    border:none;
+    cursor:pointer;
+    box-shadow:0 14px 30px -12px var(--purple-glow);
+    transition:transform .25s cubic-bezier(.2,.8,.2,1), box-shadow .25s ease;
+  }
+  .btn:hover{ transform:translateY(-3px); box-shadow:0 18px 36px -10px var(--purple-glow); }
+  .btn svg{ width:16px; height:16px; }
+  .btn:disabled{ opacity:.6; cursor:not-allowed; transform:none; }
+
+  /* ============ HERO ============ */
+  .hero{
+    position: relative;
+    overflow: hidden;
+    padding-top: clamp(3rem, 6vw, 4.5rem);
+    min-height: clamp(560px, 62vw, 680px);
+    display: flex;
+    align-items: center;
+  }
+  .hero__bg{
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+  }
+  .hero__bg img{
+    position: absolute;
+    top: 0; right: 0;
+    width: 78%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+  .hero__bg::after{
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg,
+      var(--bg) 0%,
+      var(--bg) 26%,
+      rgba(8,7,12,0.92) 36%,
+      rgba(8,7,12,0.55) 48%,
+      rgba(8,7,12,0.15) 62%,
+      transparent 78%
+    );
+  }
+  .hero__grid{
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1fr 1.15fr;
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: center;
+    width: 100%;
+  }
+  .hero__title{
+    font-family:var(--font-body);
+    font-size: clamp(2.1rem, 4.6vw, 3.4rem);
+    font-weight:800;
+    line-height:1.08;
+    letter-spacing:-.01em;
+    text-transform:uppercase;
+    margin-bottom:1.1rem;
+  }
+  .hero__title span{
+    display:block;
+    background:linear-gradient(90deg, var(--purple-deep), var(--purple));
+    -webkit-background-clip:text; background-clip:text; color:transparent;
   }
   .hero__desc{
+    font-size:.98rem;
+    line-height:1.75;
     color:var(--ink-dim);
-    max-width:36rem;
-    margin:0 auto;
-    font-size:1rem;
-    line-height:1.7;
+    max-width:46ch;
+    margin-bottom:1.8rem;
   }
+  .hero__features{
+    display:flex; flex-wrap:wrap; gap:1.5rem 2rem;
+    margin-bottom:2.2rem;
+  }
+  .hero__feature{ display:flex; align-items:center; gap:.65rem; }
+  .hero__feature svg{ width:20px; height:20px; color:var(--purple); flex-shrink:0; }
+  .hero__feature span{ font-size:.82rem; font-weight:500; color:var(--ink-dim); line-height:1.3; }
 
-  /* ---------- section shell ---------- */
-  .section{ position:relative; z-index:2; padding:4.5rem 0; border-bottom:1px solid var(--gray-line); }
-  .section:last-of-type{ border-bottom:none; }
-  .section__eyebrow{
-    display:inline-flex; align-items:center; gap:.7rem;
-    font-size:.72rem; font-weight:600; letter-spacing:.22em; text-transform:uppercase;
-    color:var(--purple); margin-bottom:.6rem;
-  }
-  .section__eyebrow i{ width:24px; height:1px; background:linear-gradient(90deg, var(--purple), var(--aroma)); display:inline-block; }
-  .section__title{ font-weight:600; font-size:clamp(1.6rem, 3vw, 2.1rem); color:#fff; margin:0; }
-  .section__note{ color:var(--ink-faint); font-size:.95rem; max-width:34rem; margin:.6rem auto 0; }
-
-  /* ---------- info cards ---------- */
-  .info-card{
-    background-color:var(--bg-panel);
-    border:1px solid var(--card-border);
-    border-radius:16px;
-    padding:1.9rem 1.6rem;
-    height:100%;
-    transition:transform .25s ease, border-color .25s ease, box-shadow .25s ease;
-  }
-  .info-card:hover{
-    transform:translateY(-4px);
-    border-color:rgba(167,139,250,.4);
-    box-shadow:0 14px 30px rgba(65,3,165,.25);
-  }
-  .info-card__icon{
-    width:52px; height:52px;
-    display:flex; align-items:center; justify-content:center;
+  .hero__badge{
+    position:absolute; right: clamp(1.25rem, 4vw, 3rem); bottom: 2.2rem;
+    z-index: 2;
+    background:rgba(8,7,12,0.72);
+    border:1px solid rgba(255,255,255,0.14);
     border-radius:14px;
-    background:linear-gradient(135deg, var(--purple-deep), var(--aroma));
-    font-size:1.4rem;
-    margin-bottom:1rem;
+    padding:.9rem 1.3rem;
+    -webkit-backdrop-filter:blur(6px); backdrop-filter:blur(6px);
+    display:flex; align-items:center; gap:.7rem;
   }
-  .info-card__title{ color:#fff; font-weight:600; font-size:1.05rem; margin:0 0 .4rem; }
-  .info-card__text{ color:var(--ink-faint); font-size:.9rem; line-height:1.6; margin:0; }
-  .info-card__text a:hover{ color:var(--purple); }
+  .hero__badge svg{ width:26px; height:26px; color:var(--purple); flex-shrink:0; }
+  .hero__badge span{
+    display:block; font-size:.68rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--purple);
+    line-height:1.4;
+  }
 
-  /* ---------- form + photo panel (photo side / form side, same split as the menu page) ---------- */
-  .contact-panel{
-    position:relative;
-    display:flex;
-    align-items:stretch;
-    background-color:var(--bg-panel);
-    border:1px solid var(--card-border);
-    border-radius:16px;
-    overflow:hidden;
+  /* ============ COLLECTION ============ */
+  .collection__top{
+    display:grid;
+    grid-template-columns: 0.85fr 2.6fr;
+    gap: clamp(1.5rem, 4vw, 3rem);
+    align-items:end;
+    margin-bottom: clamp(2rem, 4vw, 2.8rem);
   }
-  .contact-panel__media{ flex:0 0 40%; position:relative; min-height:320px; }
-  .contact-panel__media img{ width:100%; height:100%; object-fit:cover; display:block; }
-  .contact-panel__media::after{
+  .collection__heading{
+    font-family:var(--font-body);
+    font-size: clamp(1.7rem, 3vw, 2.2rem);
+    font-weight:800;
+    line-height:1.2;
+    margin-bottom:.9rem;
+  }
+  .collection__heading span{
+    display:block;
+    background:linear-gradient(90deg, var(--purple-deep), var(--purple));
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  .collection__desc{
+    font-size:.9rem;
+    line-height:1.7;
+    color:var(--ink-dim);
+    max-width:34ch;
+    margin-bottom:1.3rem;
+  }
+  .collection__link{
+    display:inline-flex; align-items:center; gap:.7rem;
+    font-size:.8rem; font-weight:600; letter-spacing:.04em; text-transform:uppercase;
+    color:var(--ink);
+  }
+  .collection__link-arrow{
+    width:34px; height:34px; border-radius:50%;
+    border:1px solid var(--purple);
+    display:flex; align-items:center; justify-content:center;
+    color:var(--purple);
+    transition:background .25s ease, color .25s ease;
+  }
+  .collection__link:hover .collection__link-arrow{ background:var(--purple); color:#fff; }
+  .collection__link-arrow svg{ width:14px; height:14px; }
+
+  .collection__grid{
+    display:grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap:1rem;
+  }
+  .product-card{
+    position:relative;
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:18px;
+    overflow:hidden;
+    aspect-ratio: 3/4;
+    display:flex; flex-direction:column;
+  }
+  .product-card__photo{
+    flex:1;
+    display:flex; align-items:center; justify-content:center;
+    padding:1.2rem;
+    overflow:hidden;
+    background:radial-gradient(circle at 50% 40%, rgba(168,85,247,0.16), transparent 70%);
+  }
+  .product-card__photo img{
+    width:100%; height:100%; object-fit:contain;
+  }
+  .product-card__icon{
+    width:clamp(52px, 6.4vw, 82px);
+    height:auto;
+    filter:drop-shadow(0 10px 16px rgba(168,85,247,0.35));
+  }
+  .product-card__foot{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:0 1.1rem 1.1rem;
+  }
+  .product-card__label{
+    font-size:.92rem; font-weight:600; line-height:1.3;
+  }
+  .product-card__arrow{
+    flex-shrink:0;
+    width:34px; height:34px; border-radius:50%;
+    border:1px solid var(--purple);
+    display:flex; align-items:center; justify-content:center;
+    color:var(--purple);
+    transition:background .25s ease, color .25s ease;
+  }
+  .product-card:hover .product-card__arrow{ background:var(--purple); color:#fff; }
+  .product-card__arrow svg{ width:13px; height:13px; }
+
+  /* ============ WHY CHOOSE US + BOOKING ============ */
+  .why{
+    display:grid;
+    grid-template-columns: 0.95fr 1fr 0.9fr;
+    gap: clamp(1.5rem, 4vw, 2.5rem);
+    align-items:center;
+  }
+
+  .why__photo{
+    position:relative;
+    border-radius:28px;
+    overflow:hidden;
+    aspect-ratio: 4/5;
+    border:2px solid var(--purple);
+    box-shadow:0 0 60px -10px var(--purple-glow);
+  }
+  .why__photo img{ width:100%; height:100%; object-fit:cover; }
+  .why__photo::after{
     content:"";
     position:absolute; inset:0;
-
+    background:linear-gradient(0deg, rgba(8,7,12,0.5) 0%, transparent 40%);
   }
-  .contact-panel__caption{
-    position:absolute; left:1.5rem; right:1.5rem; bottom:1.25rem; z-index:1;
-    font-family:'Yellowtail', cursive;
-    font-size:1.6rem;
-    color:#fff;
-  }
-  .contact-panel__body{ flex:1 1 auto; padding:2.25rem clamp(1.25rem, 4vw, 3rem); }
-
-  .form-label{ color:var(--ink-dim); font-size:.85rem; font-weight:500; margin-bottom:.4rem; }
-  .form-control, .form-select{
-    background:rgba(10,6,18,.55);
-    border:1px solid var(--card-border);
-    color:var(--ink);
-    border-radius:10px;
-    padding:.65rem .9rem;
-    font-family:'Fredoka', sans-serif;
-  }
-  .form-control::placeholder{ color:var(--ink-faint); }
-  .form-control:focus, .form-select:focus{
-    background:rgba(10,6,18,.7);
-    border-color:var(--purple);
-    color:var(--ink);
-    box-shadow:0 0 0 .2rem rgba(167,139,250,.18);
-  }
-  textarea.form-control{ resize:vertical; min-height:130px; }
-
-  .btn-send{
-    display:inline-flex; align-items:center; justify-content:center; gap:.5rem;
-    background:linear-gradient(90deg, var(--purple-deep), var(--aroma));
-    color:#fff;
-    border:none;
-    border-radius:999px;
-    padding:.75rem 1.9rem;
-    font-family:'Fredoka', sans-serif;
-    font-weight:600;
-    font-size:.95rem;
-    transition:transform .2s ease, box-shadow .2s ease;
-  }
-  .btn-send:hover{
-    color:#fff;
-    transform:translateY(-2px);
-    box-shadow:0 10px 24px rgba(65,3,165,.4);
+  @media (min-width: 981px){
+    .why__photo{ aspect-ratio:auto; background:var(--panel-2); }
+    .why__photo img{ width:100%; height:auto; object-fit:cover; }
   }
 
-  /* ---------- location ---------- */
-  .location-panel{
-    border:1px solid var(--card-border);
-    border-radius:16px;
-    overflow:hidden;
-    background:var(--bg-panel);
+  .why__heading{
+    font-family:var(--font-body);
+    font-size: clamp(1.7rem, 3vw, 2.2rem);
+    font-weight:800;
+    line-height:1.2;
+    margin-bottom:1.6rem;
   }
-  .location-map{ width:100%; height:420px; border:0; filter:grayscale(.15) contrast(1.05) invert(0); display:block; }
-  .location-strip{
-    display:flex; flex-wrap:wrap; gap:1.25rem 2rem;
-    padding:1.5rem clamp(1.25rem, 4vw, 2rem);
-    border-top:1px solid var(--card-border);
+  .why__heading span{
+    display:block;
+    background:linear-gradient(90deg, var(--purple-deep), var(--purple));
+    -webkit-background-clip:text; background-clip:text; color:transparent;
   }
-  .location-strip__item{ display:flex; align-items:flex-start; gap:.7rem; flex:1 1 220px; }
-  .location-strip__icon{
-    width:38px; height:38px; flex-shrink:0;
+  .why__features{
+    display:grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap:1.4rem 1rem;
+  }
+  .why__feature svg{ width:24px; height:24px; color:var(--purple); margin-bottom:.6rem; }
+  .why__feature span{ display:block; font-size:.82rem; font-weight:600; line-height:1.35; }
+
+  .booking{
+    background:var(--panel);
+    border:1px solid rgba(168,85,247,0.35);
+    border-radius:22px;
+    padding: clamp(1.4rem, 3vw, 1.8rem);
+    box-shadow:0 30px 60px -30px rgba(0,0,0,0.6);
+  }
+  .booking__head{ display:flex; gap:.9rem; margin-bottom:1.4rem; }
+  .booking__head-icon{
+    flex-shrink:0;
+    width:42px; height:42px; border-radius:12px;
+    background:rgba(168,85,247,0.14);
     display:flex; align-items:center; justify-content:center;
+    color:var(--purple);
+  }
+  .booking__head-icon svg{ width:20px; height:20px; }
+  .booking__title{ font-size:1rem; font-weight:700; margin-bottom:.35rem; }
+  .booking__sub{ font-size:.78rem; line-height:1.55; color:var(--ink-faint); }
+
+  .booking__field{
+    display:flex; align-items:center; gap:.7rem;
+    background:var(--panel-2);
+    border:1px solid var(--line);
     border-radius:10px;
-    background:linear-gradient(135deg, var(--purple-deep), var(--aroma));
-    font-size:1rem;
+    padding:.85rem 1rem;
+    margin-bottom:.7rem;
   }
-  .location-strip__label{ color:#fff; font-weight:600; font-size:.9rem; margin:0 0 .15rem; }
-  .location-strip__value{ color:var(--ink-faint); font-size:.85rem; margin:0; line-height:1.5; }
-
-  /* ---------- social row ---------- */
-  .social-row{ display:flex; justify-content:center; gap:.75rem; flex-wrap:wrap; }
-  .social-pill{
-    display:flex; align-items:center; justify-content:center;
-    width:46px; height:46px;
-    border-radius:50%;
-    border:1px solid var(--card-border);
-    background:rgba(10,6,18,.55);
-    color:var(--ink-dim);
-    font-size:1.1rem;
-    transition:.2s ease;
-  }
-  .social-pill:hover{
-    color:#fff;
-    border-color:transparent;
-    background:linear-gradient(90deg, var(--purple-deep), var(--aroma));
-    transform:translateY(-3px);
-  }
-
-  /* ---------- footer ---------- */
-  .site-footer{
-    position:relative; z-index:2;
-    text-align:center;
-    padding:3.5rem 0 4rem;
-    color:var(--ink-faint);
-    font-size:.85rem;
-  }
-  .site-footer strong{ color:var(--ink); font-weight:500; }
-
-  /* ---------- responsive ---------- */
-  @media (max-width:900px){
-    .contact-panel{ flex-direction:column; }
-    .contact-panel__media{ flex:0 0 auto; width:100%; height:220px; min-height:0; }
-  }
-  @media (max-width:767.98px){
-    .contact-panel__body{ padding:1.6rem 1.15rem; }
-    .section{ padding:3.2rem 0; }
-    .location-map{ height:280px; }
-  }
-</style>
-<style>
-  :root{
-    --bg:#0a0a0a;
-    --green:#7805a5;
-    --green-dim: #8612e6;
-    --text-soft:rgba(241,250,243,0.62);
-    --text-white:#f5f7f6;
-  }
-
-
-  .menu-section{
-    max-width:1200px;
-    margin:0 auto;
-    margin-bottom: 20px;
-  }
-
-  .menu-intro{
-    text-align:center;
-    color:var(--text-soft);
-    font-size:17px;
-    line-height:1.7;
-    max-width:720px;
-    margin:0 auto 45px auto;
-  }
-
-  .cards-row{
-    display:flex;
-    gap:24px;
-    justify-content:center;
-    flex-wrap:wrap;
-  }
-
-  /* ---- flip card ---- */
-  .flip-card{
+  .booking__field svg{ width:17px; height:17px; color:var(--purple); flex-shrink:0; }
+  .booking__field input,
+  .booking__field select{
+    flex:1; width:100%;
     background:transparent;
-    width:340px;
-    height:460px;
-    perspective:1400px;
+    border:none;
+    outline:none;
+    color:var(--ink);
+    font-family:var(--font-body);
+    font-size:.82rem;
+    color-scheme: dark;
+  }
+  .booking__field select{ cursor:pointer; }
+  .booking__field select option{ background:var(--panel-2); color:var(--ink); }
+  .booking__field input::placeholder{ color:var(--ink-faint); }
+
+  .booking__btn{ width:100%; justify-content:center; margin-top:.4rem; }
+
+  .booking__success{
+    display:flex; gap:.6rem; align-items:flex-start;
+    margin-top:.2rem;
+    padding:1rem 1.1rem;
+    border-radius:12px;
+    background:rgba(34,197,94,0.12);
+    border:1px solid rgba(34,197,94,0.4);
+    color:#d7fbe8;
+    font-size:.82rem;
+    line-height:1.55;
+  }
+  .booking__success[hidden]{ display:none; }
+  .booking__success-icon{ font-size:1.1rem; line-height:1; flex-shrink:0; }
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width: 980px){
+    .hero__grid{ grid-template-columns: 1fr; }
+    .hero__photo{ order:-1; aspect-ratio: 16/10; }
+
+    .collection__top{ grid-template-columns: 1fr; }
+    .collection__grid{ grid-template-columns: repeat(3, 1fr); }
+
+    .why{ grid-template-columns: 1fr; }
+    .why__photo{ max-width:420px; margin:0 auto; aspect-ratio:16/10; }
   }
 
-  .flip-card-inner{
-    position:relative;
-    width:100%;
-    height:100%;
-    transition:transform 0.7s cubic-bezier(.4,.2,.2,1);
-    transform-style:preserve-3d;
+  @media (max-width: 640px){
+    .hero__features{ gap:1.1rem 1.6rem; }
+    .collection__grid{
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .why__features{ grid-template-columns: 1fr 1fr; }
   }
 
-  .flip-card:hover .flip-card-inner{
-    transform:rotateX(180deg);
-  }
-
-  .flip-card-front, .flip-card-back{
-    position:absolute;
-    width:100%;
-    height:100%;
-    backface-visibility:hidden;
-    border:1px solid var(--green);
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    overflow:hidden;
-  }
-
-  .flip-card-front{
-    background-size:cover;
-    background-position:center;
-  }
-
-  .flip-card-front::after{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:linear-gradient(to bottom, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.75) 100%);
-  }
-
-  .front-icon, .front-label{
-    position:relative;
-    z-index:2;
-  }
-
-  .front-icon{
-    margin-bottom:8px;
-  }
-
-  .front-icon svg{
-    width:70px;
-    height:70px;
-  }
-
-  .front-label{
-    color:var(--text-white);
-    font-size:26px;
-    font-weight:600;
-    letter-spacing:0.5px;
-  }
-
-  .flip-card-back{
-    background:#000;
-    transform:rotateX(180deg);
-    justify-content:center;
-    padding:40px 34px;
-    text-align:center;
-  }
-
-  .back-text{
-    color:var(--text-white);
-    font-size:15px;
-    line-height:1.9;
-    font-weight:400;
-  }
-
-  .back-link{
-    display:inline-block;
-    margin-top:26px;
-    color:var(--green);
-    font-size:15px;
-    font-weight:600;
-    text-decoration:none;
-    letter-spacing:0.3px;
-  }
-
-  .back-link:hover{
-    text-decoration:underline;
-  }
-
-  @media (max-width:1100px){
-    .flip-card{width:300px;height:420px;}
-  }
-
-  @media (max-width:700px){
-    .cards-row{flex-direction:column;align-items:center;}
-    .flip-card{width:100%;max-width:340px;height:440px;}
+  @media (max-width: 420px){
+    .collection__grid{ grid-template-columns: 1fr 1fr; gap:.7rem; }
+    .hero__badge{ padding:.7rem 1rem; }
   }
 </style>
-
 </head>
 <body>
-  <nav class="mnav" id="mnav">
+<nav class="mnav" id="mnav">
   <div class="mnav__bar">
     <a href="#" class="mnav__logo">
       <!-- Replace with your own logo image/svg -->
@@ -403,12 +402,15 @@
 
     <!-- Desktop inline links (hidden on small screens) -->
     <ul class="mnav__links">
-      <li><a href="index.html" >Home</a></li>   
-      <li><a href="shishalanding.html">Shisha</a></li>
+      <li><a href="index.html">Home</a></li>   
+      <li><a href="shishalanding.html" class="active">Shisha</a></li>
       <li><a href="menu.html">Menu</a></li>
       <li><a href="venue.html">Venue</a></li>
       <li><a href="about.html">About</a></li>
-      <li><a href="contact.html" class="active">Contact us</a></li>
+      <li><a href="contact.html">Contact us</a></li>
+  
+
+
     </ul>
 
     <div class="mnav__icons">
@@ -435,12 +437,10 @@
 
   <!-- Mobile dropdown panel (hidden on desktop) -->
   <ul class="mnav__menu" id="mnavMenu">
-    <li><a href="index.html" >Home</a></li>   
-      <li><a href="shishalanding.html">Shisha</a></li>
-      <li><a href="menu.html">Menu</a></li>
-      <li><a href="venue.html">Venue</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="contact.html" class="active">Contact us</a></li>
+    <li><a href="index.html" class="active">Home</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="menu.html">Menu</a></li>
+    <li><a href="contact.html">Contact Us</a></li>
   </ul>
 </nav>
 
@@ -718,175 +718,264 @@
   });
 })();
 </script>
-<!-- HERO -->
-<header class="hero">
-  <div class="glow-wrap"><div class="glow-orb a"></div><div class="glow-orb b"></div></div>
-  <div class="hero__bg">
-    <img src="https://images.unsplash.com/photo-1445116572660-236099ec97a0?auto=format&fit=crop&w=1600&h=900&q=80" alt="">
-  </div>
+<!-- ============ HERO ============ -->
+<section class="hero">
   <div class="wrap">
-    <p class="hero__brand">Cafe Moishi</p>
-    <h1 class="hero__title">Let's Talk</h1>
-    <p class="hero__desc">Questions, bookings, or just want to say hi? Drop us a message, give us a call, or swing by — we'd love to see you.</p>
-  </div>
-</header>
+    <div class="hero__grid">
+      <div>
+        <span class="eyebrow">Premium Shisha Experience</span>
+        <h1 class="hero__title">More Than Just<span>A Smoke</span></h1>
+        <p class="hero__desc">
+          Discover the finest shisha collection in the UK. Premium flavors, modern setups
+          and an experience like no other. Whether it's a solo chill or a group vibe,
+          we've got you covered.
+        </p>
 
-<!-- CONTACT INFO CARDS -->
-<section class="section">
-  <div class="wrap">
-    <div class="row g-4">
-
-      <div class="col-12 col-md-4">
-        <div class="info-card">
-          <div class="info-card__icon">
-            <i class="fa-solid fa-location-dot"></i>
+        <div class="hero__features">
+          <div class="hero__feature">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M6 3h12l3 5-9 13L3 8l3-5Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M3 8h18M9 3l3 5 3-5M9 8l3 13 3-13" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+            <span>Premium<br>Quality</span>
           </div>
-          <h3 class="info-card__title">Visit Us</h3>
-          <p class="info-card__text">
-            31 Zetland Street,<br>
-            Huddersfield, West Yorkshire<br>
-            HD1 2RA
-          </p>
+          <div class="hero__feature">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M12 22s7-4.5 7-11a7 7 0 0 0-14 0c0 6.5 7 11 7 11Z" stroke="currentColor" stroke-width="1.5"/><path d="M12 3c1 3-2 4-2 7a2 2 0 0 0 4 0" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <span>Wide Range<br>of Flavors</span>
+          </div>
+          <div class="hero__feature">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M12 2 4 5v6c0 5 3.4 8.7 8 11 4.6-2.3 8-6 8-11V5l-8-3Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="m9 12 2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>Safe & Clean<br>Experience</span>
+          </div>
+          <div class="hero__feature">
+            <svg viewBox="0 0 24 24" fill="none"><path d="m12 2 3.1 6.3 7 1-5 4.9 1.2 6.9L12 17.8l-6.3 3.3L7 14.2 2 9.3l7-1L12 2Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+            <span>Luxury<br>Ambience</span>
+          </div>
         </div>
+
+        <a href="#book" class="btn">Book Now
+          <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
       </div>
 
-      <div class="col-12 col-md-4">
-        <div class="info-card">
-          <div class="info-card__icon">
-            <i class="fa-solid fa-phone"></i>
-          </div>
-          <h3 class="info-card__title">Call / WhatsApp</h3>
-          <p class="info-card__text">
-            <a href="tel:+441484000000">01484 000 000</a><br>
-            <a href="https://wa.me/447000000000" target="_blank" rel="noopener">
-              WhatsApp us directly
-            </a>
-          </p>
-        </div>
+      <div class="hero__photo">
+        <img src="shisha-page.webp" alt="Premium shisha setup in a lounge">
+        <div class="hero__badge"></div>
       </div>
-
-      <div class="col-12 col-md-4">
-        <div class="info-card">
-          <div class="info-card__icon">
-            <i class="fa-solid fa-clock"></i>
-          </div>
-          <h3 class="info-card__title">Opening Hours</h3>
-          <p class="info-card__text">
-            Mon – Thu: 12pm – 11pm<br>
-            Fri – Sun: 12pm – 1am
-          </p>
-        </div>
-      </div>
-
     </div>
   </div>
 </section>
 
-<!-- FORM + PHOTO PANEL -->
-<section class="section">
+<!-- ============ COLLECTION ============ -->
+<section class="collection">
   <div class="wrap">
-    <div class="section__head text-center mb-4">
-      <span class="section__eyebrow"><i></i>Send a Message<i></i></span>
-      <h2 class="section__title">Get In Touch</h2>
-      <p class="section__note mx-auto">Bookings, private events, feedback or just a friendly hello — fill in the form and we'll get back to you fast.</p>
-    </div>
-
-    <div class="contact-panel">
-      <div class="contact-panel__media">
-        <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=900&h=1100&q=80" alt="Cafe Moishi interior">
-        <p class="contact-panel__caption">See you soon ✨</p>
+    <div class="collection__top">
+      <div>
+        <span class="eyebrow">Our Collection</span>
+        <h2 class="collection__heading">Explore Our<span>Shisha Flavors</span></h2>
+        <p class="collection__desc">
+          From classic to exotic, we bring you the best shisha flavors, top-quality setups
+          and accessories — all in one place.
+        </p>
+        <a href="#" class="collection__link">
+          <span class="collection__link-arrow">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          View All Flavors
+        </a>
       </div>
-      <div class="contact-panel__body">
-        <form>
-          <div class="row g-3">
-            <div class="col-12 col-sm-6">
-              <label class="form-label" for="cf-name">Full Name</label>
-              <input type="text" class="form-control" id="cf-name" placeholder="Your name">
-            </div>
-            <div class="col-12 col-sm-6">
-              <label class="form-label" for="cf-phone">Phone Number</label>
-              <input type="tel" class="form-control" id="cf-phone" placeholder="07xxx xxxxxx">
-            </div>
-            <div class="col-12">
-              <label class="form-label" for="cf-email">Email Address</label>
-              <input type="email" class="form-control" id="cf-email" placeholder="you@example.com">
-            </div>
-            <div class="col-12">
-              <label class="form-label" for="cf-subject">Subject</label>
-              <select class="form-select" id="cf-subject">
-                <option selected>General Enquiry</option>
-                <option>Table / Sheesha Booking</option>
-                <option>Private Event</option>
-                <option>Feedback</option>
-              </select>
-            </div>
-            <div class="col-12">
-              <label class="form-label" for="cf-message">Message</label>
-              <textarea class="form-control" id="cf-message" placeholder="Tell us what's on your mind..."></textarea>
-            </div>
-            <div class="col-12 pt-2">
-              <button type="submit" class="btn-send">
-                Send Message
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 12 12" fill="none">
-                  <path d="M1 11L11 1M11 1H1M11 1V11" stroke="currentColor" stroke-width="1.5px" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </button>
-            </div>
+
+      <div class="collection__grid">
+        <div class="product-card">
+          <div class="product-card__photo">
+            <img class="product-card__icon product-card__icon-img" src="https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?auto=format&fit=crop&w=1200&q=95" alt="Double Apple" loading="lazy">
           </div>
+          <div class="product-card__foot">
+            <span class="product-card__label">Double<br>Apple</span>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-card__photo">
+            <img class="product-card__icon product-card__icon-img" src="https://images.unsplash.com/photo-1498557850523-fd3d118b962e?auto=format&fit=crop&w=1200&q=95" alt="Blueberry Mint" loading="lazy">
+          </div>
+          <div class="product-card__foot">
+            <span class="product-card__label">Blueberry<br>Mint</span>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-card__photo">
+            <img class="product-card__icon product-card__icon-img" src="https://images.unsplash.com/photo-1563114773-84221bd62daa?auto=format&fit=crop&w=1200&q=95" alt="Watermelon Mint" loading="lazy">
+          </div>
+          <div class="product-card__foot">
+            <span class="product-card__label">Watermelon<br>Mint</span>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-card__photo">
+            <img class="product-card__icon product-card__icon-img" src="https://images.unsplash.com/photo-1537640538966-79f369143f8f?auto=format&fit=crop&w=1200&q=95" alt="Grape Mint" loading="lazy">
+          </div>
+          <div class="product-card__foot">
+            <span class="product-card__label">Grape<br>Mint</span>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-card__photo">
+            <img class="product-card__icon product-card__icon-img" src="https://images.unsplash.com/photo-1553279768-865429fa0078?auto=format&fit=crop&w=1200&q=95" alt="Mango Passion" loading="lazy">
+          </div>
+          <div class="product-card__foot">
+            <span class="product-card__label">Mango<br>Passion</span>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-card__photo">
+            <img class="product-card__icon product-card__icon-img" src="https://images.unsplash.com/photo-1565769583831-8b50fc0570cd?auto=format&fit=crop&w=1200&q=95" alt="Peach" loading="lazy">
+          </div>
+          <div class="product-card__foot">
+            <span class="product-card__label">Peach</span>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-card__photo">
+            <img class="product-card__icon product-card__icon-img" src="https://images.unsplash.com/photo-1590502593747-42a996133562?auto=format&fit=crop&w=1200&q=95" alt="Lemon Mint" loading="lazy">
+          </div>
+          <div class="product-card__foot">
+            <span class="product-card__label">Lemon<br>Mint</span>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-card__photo">
+            <img class="product-card__icon product-card__icon-img" src="https://images.unsplash.com/photo-1464965911861-746a04b4bca6?auto=format&fit=crop&w=1200&q=95" alt="Strawberry" loading="lazy">
+          </div>
+          <div class="product-card__foot">
+            <span class="product-card__label">Strawberry</span>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-card__photo">
+            <img class="product-card__icon product-card__icon-img" src="https://images.unsplash.com/photo-1559815685-aed4d79a2941?auto=format&fit=crop&w=1200&q=95" alt="Classic Mint" loading="lazy">
+          </div>
+          <div class="product-card__foot">
+            <span class="product-card__label">Classic<br>Mint</span>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-card__photo">
+            <img class="product-card__icon product-card__icon-img" src="https://images.unsplash.com/photo-1550258987-190a2d41a8ba?auto=format&fit=crop&w=1200&q=95" alt="Pineapple" loading="lazy">
+          </div>
+          <div class="product-card__foot">
+            <span class="product-card__label">Pineapple</span>
+          </div>
+        </div>
+      </div>
+
+<style>
+.product-card__icon-img{
+  width:100%;
+  height:100%;
+  display:block;
+  object-fit:cover;
+  border-radius:inherit;
+}
+</style>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHY CHOOSE US + BOOKING ============ -->
+<section class="why-book" id="book">
+  <div class="wrap">
+    <div class="why">
+
+      <div class="why__photo">
+        <img src="shisha with neon.webp" alt="Shisha lounge with neon signage">
+      </div>
+
+      <div>
+        <span class="eyebrow">Why Choose Us</span>
+        <h2 class="why__heading">Your Perfect<span>Shisha Experience</span></h2>
+        <div class="why__features">
+          <div class="why__feature">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M6 3h12l3 5-9 13L3 8l3-5Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+            <span>Premium Brands</span>
+          </div>
+          <div class="why__feature">
+            <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.5"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <span>Expert Guidance</span>
+          </div>
+          <div class="why__feature">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M12 2 4 5v6c0 5 3.4 8.7 8 11 4.6-2.3 8-6 8-11V5l-8-3Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="m9 12 2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>Clean & Safe Environment</span>
+          </div>
+          <div class="why__feature">
+            <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="16" rx="3" stroke="currentColor" stroke-width="1.5"/><path d="M3 10h18M8 3v4M16 3v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <span>Flexible Booking</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="booking">
+        <div class="booking__head">
+          <span class="booking__head-icon">
+            <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="16" rx="3" stroke="currentColor" stroke-width="1.6"/><path d="M3 10h18M8 3v4M16 3v4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          </span>
+          <span>
+            <span class="booking__title">Book Your Session</span>
+            <span class="booking__sub">Choose your time, select your setup, and get ready for an unforgettable experience.</span>
+          </span>
+        </div>
+
+        <form id="bookingForm" novalidate>
+          <div class="booking__field">
+            <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="16" rx="3" stroke="currentColor" stroke-width="1.6"/><path d="M3 10h18M8 3v4M16 3v4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+            <input type="date" id="bookDate" required aria-label="Select date">
+          </div>
+          <div class="booking__field">
+            <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M12 7v5l3.5 2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+            <input type="time" id="bookTime" required aria-label="Select time">
+          </div>
+          <div class="booking__field">
+            <svg viewBox="0 0 24 24" fill="none"><circle cx="9" cy="8" r="3" stroke="currentColor" stroke-width="1.6"/><path d="M3 20c0-3 2.7-5 6-5s6 2 6 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="17" cy="9" r="2.4" stroke="currentColor" stroke-width="1.6"/><path d="M15.5 14.2c2.2.4 3.5 1.8 3.5 4.3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+            <input type="number" id="bookPeople" min="1" max="30" value="2" required aria-label="Number of people">
+          </div>
+          <div class="booking__field">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M12 22s7-4.5 7-11a7 7 0 0 0-14 0c0 6.5 7 11 7 11Z" stroke="currentColor" stroke-width="1.6"/></svg>
+            <select id="bookFlavor" required aria-label="Select shisha type">
+              <option value="" disabled selected>Select Shisha Type</option>
+              <option value="Double Apple">Double Apple</option>
+              <option value="Blueberry Mint">Blueberry Mint</option>
+              <option value="Watermelon Mint">Watermelon Mint</option>
+              <option value="Grape Mint">Grape Mint</option>
+              <option value="Mango Passion">Mango Passion</option>
+              <option value="Peach">Peach</option>
+              <option value="Lemon Mint">Lemon Mint</option>
+              <option value="Strawberry">Strawberry</option>
+              <option value="Classic Mint">Classic Mint</option>
+              <option value="Pineapple">Pineapple</option>
+              <option value="other">Other (type your own)</option>
+            </select>
+          </div>
+          <div class="booking__field" id="bookFlavorOtherField" hidden>
+            <svg viewBox="0 0 24 24" fill="none"><path d="M12 20h9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+            <input type="text" id="bookFlavorOther" placeholder="Type your flavor..." maxlength="40">
+          </div>
+
+          <button type="submit" class="btn booking__btn">Book Now
+            <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
         </form>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- LOCATION -->
-<section class="section">
-  <div class="wrap">
-    <div class="section__head text-center mb-4">
-      <span class="section__eyebrow"><i></i>Find Us<i></i></span>
-      <h2 class="section__title">Our Location</h2>
-      <p class="section__note mx-auto">Right in the heart of Huddersfield — easy to find, easy to park, easy to love.</p>
-    </div>
-
-    <div class="location-panel">
-      <iframe class="location-map" src="https://www.google.com/maps?q=31+Zetland+Street,+Huddersfield,+HD1+2RA&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-      <div class="location-strip">
-        <div class="location-strip__item">
-          <div class="location-strip__icon">📍</div>
-          <div>
-            <p class="location-strip__label">Address</p>
-            <p class="location-strip__value">31 Zetland Street, Huddersfield, West Yorkshire HD1 2RA</p>
-          </div>
-        </div>
-        <div class="location-strip__item">
-          <div class="location-strip__icon">🚗</div>
-          <div>
-            <p class="location-strip__label">Parking</p>
-            <p class="location-strip__value">Public parking available just a short walk away.</p>
-          </div>
-        </div>
-        <div class="location-strip__item">
-          <div class="location-strip__icon">🚌</div>
-          <div>
-            <p class="location-strip__label">Nearby Transport</p>
-            <p class="location-strip__value">A few minutes' walk from Huddersfield bus &amp; train station.</p>
-          </div>
+        <div class="booking__success" id="bookingSuccess" hidden>
+          <span class="booking__success-icon">✅</span>
+          <span id="bookingSuccessText"></span>
         </div>
       </div>
-    </div>
-  </div>
-</section>
 
-<!-- SOCIAL -->
-<section class="section">
-  <div class="wrap text-center">
-    <span class="section__eyebrow"><i></i>Follow The Vibe<i></i></span>
-    <h2 class="section__title mb-4">Stay Connected</h2>
-    <div class="social-row">
-      <a class="social-pill" href="#" aria-label="Instagram">📷</a>
-      <a class="social-pill" href="#" aria-label="Facebook">📘</a>
-      <a class="social-pill" href="#" aria-label="TikTok">🎵</a>
-      <a class="social-pill" href="https://wa.me/447000000000" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
     </div>
   </div>
 </section>
@@ -963,6 +1052,88 @@
     .wa-float svg{ width:20px; height:20px; }
   }
 </style>
+<script>
+  (function(){
+    var form = document.getElementById('bookingForm');
+    var success = document.getElementById('bookingSuccess');
+    var successText = document.getElementById('bookingSuccessText');
+    var flavorSelect = document.getElementById('bookFlavor');
+    var otherField = document.getElementById('bookFlavorOtherField');
+    var otherInput = document.getElementById('bookFlavorOther');
+
+    flavorSelect.addEventListener('change', function(){
+      if(flavorSelect.value === 'other'){
+        otherField.hidden = false;
+        otherInput.required = true;
+        otherInput.focus();
+      } else {
+        otherField.hidden = true;
+        otherInput.required = false;
+        otherInput.value = '';
+      }
+    });
+
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+
+      var date = document.getElementById('bookDate').value;
+      var time = document.getElementById('bookTime').value;
+      var people = document.getElementById('bookPeople').value;
+      var flavor = flavorSelect.value === 'other' ? otherInput.value.trim() : flavorSelect.value;
+
+      if(!date || !time || !people || !flavor){
+        form.reportValidity();
+        return;
+      }
+
+      var readableDate = new Date(date + 'T' + time).toLocaleString(undefined, {
+        weekday:'long', year:'numeric', month:'long', day:'numeric', hour:'2-digit', minute:'2-digit'
+      });
+
+      successText.textContent = 'Session for ' + people + (people == 1 ? ' person' : ' people') +
+        ' — ' + flavor + ' — on ' + readableDate + '. We\'ll confirm shortly.';
+
+      form.hidden = true;
+      success.hidden = false;
+    });
+  })();
+</script>
+
+<script>
+  // ===== Lenis smooth scroll =====
+  var lenis = new Lenis({
+    duration: 1.15,
+    easing: function (t) { return Math.min(1, 1.001 - Math.pow(2, -10 * t)); },
+    smoothWheel: true,
+    touchMultiplier: 1.4
+  });
+
+  function raf(time){
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+  }
+  requestAnimationFrame(raf);
+
+  // smooth-scroll any in-page anchor links (e.g. "Book Now" -> #book)
+  document.querySelectorAll('a[href^="#"]').forEach(function(link){
+    link.addEventListener('click', function(e){
+      var targetId = this.getAttribute('href');
+      if(targetId.length > 1){
+        var target = document.querySelector(targetId);
+        if(target){
+          e.preventDefault();
+          lenis.scrollTo(target, { offset: -20 });
+        }
+      }
+    });
+  });
+
+  // respect users who prefer reduced motion
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    lenis.destroy();
+  }
+</script>
+
 <style>
   
     .mun-footer {
@@ -1639,8 +1810,6 @@
     </svg>
   </button>
 </div>
-
-<script src="https://cdn.jsdelivr.net/npm/lenis@1/dist/lenis.min.js"></script>
 <script src="musicplayer.js"></script>
 </body>
 </html>

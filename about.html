@@ -3,402 +3,269 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Contact Us — Moishi Cafe · Sheesha · Grill</title>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<title>About — Cafe Moishi</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Yellowtail&family=Fredoka:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
->
-<!-- Bootstrap 5 -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Fredoka:wght@500;600;700&family=Cormorant+Garamond:wght@400;500;600&family=Jost:wght@300;400;500&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#0a0612;
-    --bg-panel:#120a20;
-    --gray-line: rgba(255,255,255,0.08);
-    --ink: #e9e8ee;
-    --ink-dim: rgba(233,232,238,0.62);
-    --ink-faint: rgba(233,232,238,0.4);
-    --purple: #a78bfa;
-    --purple-deep: #4103a5;
-    --aroma: #0805b4;
-    --card-border: rgba(233,232,238,0.1);
+    --void: #040705;
+    --cream: #f1faf3;
+    --cream-dim: rgba(241,250,243,0.62);
+    --cream-faint: rgba(241,250,243,0.38);
+    --accent: #a78bfa;
+    --accent-bright: #cc24ff;
+    --accent-glow: rgba(167,139,250,0.45);
+    --card-bg: rgba(241,250,243,0.04);
+    --card-border: rgba(241,250,243,0.1);
   }
 
-  *{box-sizing:border-box;}
-  html.lenis{ height:auto; }
-  html.lenis, html.lenis body{ height:auto; }
+  *{ box-sizing: border-box; margin: 0; padding: 0; }
+
   body{
-    margin:0;
-    background:var(--bg);
-    color:var(--ink);
-    font-family:'Fredoka', 'Segoe UI', sans-serif;
-    -webkit-font-smoothing:antialiased;
-  }
-  img{max-width:100%; display:block;}
-  a{color:inherit; text-decoration:none;}
-  .wrap{max-width:1180px; margin:0 auto; padding:0 24px;}
-
-  /* ---------- glow orbs — same fun/decorative language as the menu page ---------- */
-  .glow-wrap{ position:absolute; inset:0; overflow:hidden; pointer-events:none; z-index:0; }
-  .glow-orb{ position:absolute; border-radius:50%; filter:blur(90px); opacity:.35; animation:orbPulse 7s ease-in-out infinite; }
-  .glow-orb.a{ width:380px; height:380px; background:var(--purple-deep); top:-120px; left:-100px; }
-  .glow-orb.b{ width:340px; height:340px; background:var(--aroma); bottom:-140px; right:-80px; animation-delay:2s; }
-  @keyframes orbPulse{ 0%,100%{ opacity:.18; transform:scale(1);} 50%{ opacity:.35; transform:scale(1.2);} }
-
-  /* ---------- hero ---------- */
-  .hero{
-    position:relative; z-index:2;
-    padding:6.5rem 0 4rem;
-    text-align:center;
-    border-bottom:1px solid var(--gray-line);
-    overflow:hidden;
-  }
-  .hero__bg{ position:absolute; inset:0; z-index:0; }
-  .hero__bg img{ width:100%; height:100%; object-fit:cover; opacity:.4; }
-  .hero__bg::after{
-    content:"";
-    position:absolute; inset:0;
-    background:linear-gradient(180deg, rgba(10,6,18,.55) 0%, rgba(10,6,18,.35) 45%, rgba(10,6,18,.92) 100%);
-  }
-  .hero .wrap{ position:relative; z-index:1; }
-  .hero__brand{
-    font-family:'Yellowtail', cursive;
-    font-size:clamp(2.2rem, 5vw, 3rem);
-    line-height:1;
-    margin:0 0 .35rem;
-    background:linear-gradient(115deg,#cda0f7 0%,#5e05d3 20%,#ba8fc7 38%,#ffffff 48%,#6e37d4 55%,#ffffff 62%,#c5a3e6 78%,#969597 100%);
-    background-size:250% 100%;
-    -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;
-    filter:drop-shadow(0 0 4px rgba(197,163,230,.55)) drop-shadow(0 0 10px rgba(110,55,212,.35));
-    animation:glitterText 5s ease-in-out infinite;
-  }
-  @keyframes glitterText{ 0%{background-position:150% center;} 50%{background-position:50% center;} 100%{background-position:-150% center;} }
-  .hero__title{
-    font-weight:600;
-    font-size:clamp(1.9rem, 5vw, 3rem);
-    margin:0 0 .75rem;
-    color:#fff;
-  }
-  .hero__desc{
-    color:var(--ink-dim);
-    max-width:36rem;
-    margin:0 auto;
-    font-size:1rem;
-    line-height:1.7;
+    background: var(--void);
+    color: var(--cream);
+    font-family: 'Poppins', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
   }
 
-  /* ---------- section shell ---------- */
-  .section{ position:relative; z-index:2; padding:4.5rem 0; border-bottom:1px solid var(--gray-line); }
-  .section:last-of-type{ border-bottom:none; }
-  .section__eyebrow{
-    display:inline-flex; align-items:center; gap:.7rem;
-    font-size:.72rem; font-weight:600; letter-spacing:.22em; text-transform:uppercase;
-    color:var(--purple); margin-bottom:.6rem;
-  }
-  .section__eyebrow i{ width:24px; height:1px; background:linear-gradient(90deg, var(--purple), var(--aroma)); display:inline-block; }
-  .section__title{ font-weight:600; font-size:clamp(1.6rem, 3vw, 2.1rem); color:#fff; margin:0; }
-  .section__note{ color:var(--ink-faint); font-size:.95rem; max-width:34rem; margin:.6rem auto 0; }
+  img{ max-width: 100%; display: block; }
 
-  /* ---------- info cards ---------- */
-  .info-card{
-    background-color:var(--bg-panel);
-    border:1px solid var(--card-border);
-    border-radius:16px;
-    padding:1.9rem 1.6rem;
-    height:100%;
-    transition:transform .25s ease, border-color .25s ease, box-shadow .25s ease;
-  }
-  .info-card:hover{
-    transform:translateY(-4px);
-    border-color:rgba(167,139,250,.4);
-    box-shadow:0 14px 30px rgba(65,3,165,.25);
-  }
-  .info-card__icon{
-    width:52px; height:52px;
-    display:flex; align-items:center; justify-content:center;
-    border-radius:14px;
-    background:linear-gradient(135deg, var(--purple-deep), var(--aroma));
-    font-size:1.4rem;
-    margin-bottom:1rem;
-  }
-  .info-card__title{ color:#fff; font-weight:600; font-size:1.05rem; margin:0 0 .4rem; }
-  .info-card__text{ color:var(--ink-faint); font-size:.9rem; line-height:1.6; margin:0; }
-  .info-card__text a:hover{ color:var(--purple); }
-
-  /* ---------- form + photo panel (photo side / form side, same split as the menu page) ---------- */
-  .contact-panel{
-    position:relative;
-    display:flex;
-    align-items:stretch;
-    background-color:var(--bg-panel);
-    border:1px solid var(--card-border);
-    border-radius:16px;
-    overflow:hidden;
-  }
-  .contact-panel__media{ flex:0 0 40%; position:relative; min-height:320px; }
-  .contact-panel__media img{ width:100%; height:100%; object-fit:cover; display:block; }
-  .contact-panel__media::after{
-    content:"";
-    position:absolute; inset:0;
-
-  }
-  .contact-panel__caption{
-    position:absolute; left:1.5rem; right:1.5rem; bottom:1.25rem; z-index:1;
-    font-family:'Yellowtail', cursive;
-    font-size:1.6rem;
-    color:#fff;
-  }
-  .contact-panel__body{ flex:1 1 auto; padding:2.25rem clamp(1.25rem, 4vw, 3rem); }
-
-  .form-label{ color:var(--ink-dim); font-size:.85rem; font-weight:500; margin-bottom:.4rem; }
-  .form-control, .form-select{
-    background:rgba(10,6,18,.55);
-    border:1px solid var(--card-border);
-    color:var(--ink);
-    border-radius:10px;
-    padding:.65rem .9rem;
-    font-family:'Fredoka', sans-serif;
-  }
-  .form-control::placeholder{ color:var(--ink-faint); }
-  .form-control:focus, .form-select:focus{
-    background:rgba(10,6,18,.7);
-    border-color:var(--purple);
-    color:var(--ink);
-    box-shadow:0 0 0 .2rem rgba(167,139,250,.18);
-  }
-  textarea.form-control{ resize:vertical; min-height:130px; }
-
-  .btn-send{
-    display:inline-flex; align-items:center; justify-content:center; gap:.5rem;
-    background:linear-gradient(90deg, var(--purple-deep), var(--aroma));
-    color:#fff;
-    border:none;
-    border-radius:999px;
-    padding:.75rem 1.9rem;
-    font-family:'Fredoka', sans-serif;
-    font-weight:600;
-    font-size:.95rem;
-    transition:transform .2s ease, box-shadow .2s ease;
-  }
-  .btn-send:hover{
-    color:#fff;
-    transform:translateY(-2px);
-    box-shadow:0 10px 24px rgba(65,3,165,.4);
+  .wrap{
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 clamp(1.25rem, 5vw, 3rem);
   }
 
-  /* ---------- location ---------- */
-  .location-panel{
-    border:1px solid var(--card-border);
-    border-radius:16px;
-    overflow:hidden;
-    background:var(--bg-panel);
+  /* ---------- ambient background ---------- */
+  .about-page{
+    position: relative;
+    padding: clamp(4rem, 9vw, 6.5rem) 0 clamp(4.5rem, 10vw, 7rem);
   }
-  .location-map{ width:100%; height:420px; border:0; filter:grayscale(.15) contrast(1.05) invert(0); display:block; }
-  .location-strip{
-    display:flex; flex-wrap:wrap; gap:1.25rem 2rem;
-    padding:1.5rem clamp(1.25rem, 4vw, 2rem);
-    border-top:1px solid var(--card-border);
+  .about-page::before{
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background:
+      radial-gradient(ellipse 640px 420px at 8% -6%, rgba(167,139,250,0.16), transparent 60%),
+      radial-gradient(ellipse 560px 380px at 96% 14%, rgba(204,36,255,0.14), transparent 60%),
+      radial-gradient(ellipse 600px 400px at 50% 100%, rgba(167,139,250,0.1), transparent 60%);
   }
-  .location-strip__item{ display:flex; align-items:flex-start; gap:.7rem; flex:1 1 220px; }
-  .location-strip__icon{
-    width:38px; height:38px; flex-shrink:0;
-    display:flex; align-items:center; justify-content:center;
-    border-radius:10px;
-    background:linear-gradient(135deg, var(--purple-deep), var(--aroma));
-    font-size:1rem;
-  }
-  .location-strip__label{ color:#fff; font-weight:600; font-size:.9rem; margin:0 0 .15rem; }
-  .location-strip__value{ color:var(--ink-faint); font-size:.85rem; margin:0; line-height:1.5; }
+  .about-page > *{ position: relative; z-index: 1; }
 
-  /* ---------- social row ---------- */
-  .social-row{ display:flex; justify-content:center; gap:.75rem; flex-wrap:wrap; }
-  .social-pill{
-    display:flex; align-items:center; justify-content:center;
-    width:46px; height:46px;
-    border-radius:50%;
-    border:1px solid var(--card-border);
-    background:rgba(10,6,18,.55);
-    color:var(--ink-dim);
-    font-size:1.1rem;
-    transition:.2s ease;
+  /* ---------- header ---------- */
+  .about-header{
+    text-align: center;
+    max-width: 680px;
+    margin: 0 auto clamp(3.5rem, 8vw, 5rem);
   }
-  .social-pill:hover{
-    color:#fff;
-    border-color:transparent;
-    background:linear-gradient(90deg, var(--purple-deep), var(--aroma));
-    transform:translateY(-3px);
+  .about-header__eyebrow{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.9em;
+    font-family: 'Jost', sans-serif;
+    font-weight: 600;
+    font-size: 0.72rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.3rem;
+  }
+  .about-header__eyebrow::before,
+  .about-header__eyebrow::after{
+    content: "";
+    width: 26px;
+    height: 1px;
+    background: var(--accent);
+    opacity: 0.6;
+  }
+  .about-header__title{
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: clamp(2rem, 5.2vw, 3.1rem);
+    line-height: 1.22;
+    color: var(--cream);
+    margin-bottom: 1.3rem;
+  }
+  .about-header__title em{
+    font-style: italic;
+    font-weight: 500;
+    color: var(--accent-bright);
+  }
+  .about-header__lede{
+    font-family: 'Jost', sans-serif;
+    font-size: clamp(0.9rem, 1.5vw, 0.98rem);
+    line-height: 1.85;
+    color: var(--cream-dim);
+    max-width: 56ch;
+    margin: 0 auto;
   }
 
-  /* ---------- footer ---------- */
-  .site-footer{
-    position:relative; z-index:2;
-    text-align:center;
-    padding:3.5rem 0 4rem;
-    color:var(--ink-faint);
-    font-size:.85rem;
+  /* ---------- journey + image ---------- */
+  .about-story{
+    display: grid;
+    grid-template-columns: 1fr 0.85fr;
+    gap: clamp(2rem, 5vw, 3.5rem);
+    align-items: center;
+    margin-bottom: clamp(3rem, 7vw, 4.5rem);
   }
-  .site-footer strong{ color:var(--ink); font-weight:500; }
+
+  .about-story__copy-label{
+    display: block;
+    font-family: 'Jost', sans-serif;
+    font-weight: 600;
+    font-size: 0.68rem;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.1rem;
+  }
+  .about-story__heading{
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: clamp(1.9rem, 3.6vw, 2.5rem);
+    color: var(--cream);
+    margin-bottom: 1.2rem;
+    line-height: 1.25;
+  }
+  .about-story__heading em{
+    display: block;
+    font-style: italic;
+    font-weight: 500;
+    color: var(--accent-bright);
+  }
+  .about-story__text{
+    font-family: 'Jost', sans-serif;
+    font-size: 0.92rem;
+    line-height: 1.85;
+    color: var(--cream-dim);
+    margin-bottom: 1.1rem;
+    max-width: 46ch;
+  }
+  .about-story__text:last-of-type{ margin-bottom: 0; }
+
+  .about-story__photo{
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    aspect-ratio: 4 / 5;
+    border: 1px solid var(--card-border);
+    box-shadow: 0 30px 60px -24px rgba(0,0,0,0.7);
+  }
+  .about-story__photo img{
+    width: 100%; height: 100%;
+    object-fit: cover;
+    filter: saturate(0.95) contrast(1.03);
+  }
+
+  /* ---------- feature cards row ---------- */
+  .about-features{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(1.75rem, 4vw, 2.5rem);
+  }
+
+  .about-feature{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .about-feature__photo{
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid var(--card-border);
+    margin-bottom: 1.3rem;
+  }
+  .about-feature__photo img{
+    width: 100%; height: 100%;
+    object-fit: cover;
+    filter: saturate(0.9) brightness(0.94);
+    transition: transform 0.6s cubic-bezier(.2,.7,.2,1), filter 0.5s ease;
+  }
+  .about-feature:hover .about-feature__photo img{
+    transform: scale(1.05);
+    filter: saturate(1) brightness(1);
+  }
+
+  .about-feature__icon{
+    width: 22px;
+    height: 22px;
+    color: var(--accent);
+    margin-bottom: 0.8rem;
+  }
+  .about-feature__icon svg{ width: 100%; height: 100%; display: block; }
+
+  .about-feature__title{
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: clamp(1.15rem, 1.8vw, 1.35rem);
+    color: var(--cream);
+    margin-bottom: 0.7rem;
+  }
+
+  .about-feature__rule{
+    display: block;
+    width: 34px;
+    height: 1px;
+    background: var(--accent);
+    opacity: 0.6;
+    margin-bottom: 0.9rem;
+  }
+
+  .about-feature__text{
+    font-family: 'Jost', sans-serif;
+    font-size: 0.84rem;
+    line-height: 1.7;
+    color: var(--cream-dim);
+    max-width: 30ch;
+  }
 
   /* ---------- responsive ---------- */
-  @media (max-width:900px){
-    .contact-panel{ flex-direction:column; }
-    .contact-panel__media{ flex:0 0 auto; width:100%; height:220px; min-height:0; }
+  @media (max-width: 900px){
+    .about-story{
+      grid-template-columns: 1fr;
+    }
+    .about-story__photo{
+      order: -1;
+      aspect-ratio: 16 / 10;
+      max-width: 520px;
+      margin: 0 auto;
+    }
   }
-  @media (max-width:767.98px){
-    .contact-panel__body{ padding:1.6rem 1.15rem; }
-    .section{ padding:3.2rem 0; }
-    .location-map{ height:280px; }
+
+  @media (max-width: 720px){
+    .about-features{
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem 1.25rem;
+    }
+    .about-feature:first-child{
+      grid-column: 1 / -1;
+    }
+    .about-feature:first-child .about-feature__photo{
+      aspect-ratio: 16 / 9;
+    }
+  }
+
+  @media (max-width: 420px){
+    .about-features{ gap: 1.75rem 1rem; }
+    .about-feature__text{ max-width: 26ch; }
   }
 </style>
-<style>
-  :root{
-    --bg:#0a0a0a;
-    --green:#7805a5;
-    --green-dim: #8612e6;
-    --text-soft:rgba(241,250,243,0.62);
-    --text-white:#f5f7f6;
-  }
-
-
-  .menu-section{
-    max-width:1200px;
-    margin:0 auto;
-    margin-bottom: 20px;
-  }
-
-  .menu-intro{
-    text-align:center;
-    color:var(--text-soft);
-    font-size:17px;
-    line-height:1.7;
-    max-width:720px;
-    margin:0 auto 45px auto;
-  }
-
-  .cards-row{
-    display:flex;
-    gap:24px;
-    justify-content:center;
-    flex-wrap:wrap;
-  }
-
-  /* ---- flip card ---- */
-  .flip-card{
-    background:transparent;
-    width:340px;
-    height:460px;
-    perspective:1400px;
-  }
-
-  .flip-card-inner{
-    position:relative;
-    width:100%;
-    height:100%;
-    transition:transform 0.7s cubic-bezier(.4,.2,.2,1);
-    transform-style:preserve-3d;
-  }
-
-  .flip-card:hover .flip-card-inner{
-    transform:rotateX(180deg);
-  }
-
-  .flip-card-front, .flip-card-back{
-    position:absolute;
-    width:100%;
-    height:100%;
-    backface-visibility:hidden;
-    border:1px solid var(--green);
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    overflow:hidden;
-  }
-
-  .flip-card-front{
-    background-size:cover;
-    background-position:center;
-  }
-
-  .flip-card-front::after{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:linear-gradient(to bottom, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.75) 100%);
-  }
-
-  .front-icon, .front-label{
-    position:relative;
-    z-index:2;
-  }
-
-  .front-icon{
-    margin-bottom:8px;
-  }
-
-  .front-icon svg{
-    width:70px;
-    height:70px;
-  }
-
-  .front-label{
-    color:var(--text-white);
-    font-size:26px;
-    font-weight:600;
-    letter-spacing:0.5px;
-  }
-
-  .flip-card-back{
-    background:#000;
-    transform:rotateX(180deg);
-    justify-content:center;
-    padding:40px 34px;
-    text-align:center;
-  }
-
-  .back-text{
-    color:var(--text-white);
-    font-size:15px;
-    line-height:1.9;
-    font-weight:400;
-  }
-
-  .back-link{
-    display:inline-block;
-    margin-top:26px;
-    color:var(--green);
-    font-size:15px;
-    font-weight:600;
-    text-decoration:none;
-    letter-spacing:0.3px;
-  }
-
-  .back-link:hover{
-    text-decoration:underline;
-  }
-
-  @media (max-width:1100px){
-    .flip-card{width:300px;height:420px;}
-  }
-
-  @media (max-width:700px){
-    .cards-row{flex-direction:column;align-items:center;}
-    .flip-card{width:100%;max-width:340px;height:440px;}
-  }
-</style>
-
 </head>
 <body>
-  <nav class="mnav" id="mnav">
+<nav class="mnav" id="mnav">
   <div class="mnav__bar">
     <a href="#" class="mnav__logo">
       <!-- Replace with your own logo image/svg -->
-      <span>AR</span>
+      <span>CM</span>
     </a>
 
     <!-- Desktop inline links (hidden on small screens) -->
@@ -406,9 +273,12 @@
       <li><a href="index.html" >Home</a></li>   
       <li><a href="shishalanding.html">Shisha</a></li>
       <li><a href="menu.html">Menu</a></li>
-      <li><a href="venue.html">Venue</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="contact.html" class="active">Contact us</a></li>
+      <li><a href="venue.html" >Venue</a></li>
+      <li><a href="about.html" class="active">About</a></li>
+      <li><a href="contact.html">Contact us</a></li>
+  
+
+
     </ul>
 
     <div class="mnav__icons">
@@ -435,12 +305,13 @@
 
   <!-- Mobile dropdown panel (hidden on desktop) -->
   <ul class="mnav__menu" id="mnavMenu">
-    <li><a href="index.html" >Home</a></li>   
+ <li><a href="index.html" >Home</a></li>   
       <li><a href="shishalanding.html">Shisha</a></li>
       <li><a href="menu.html">Menu</a></li>
       <li><a href="venue.html">Venue</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="contact.html" class="active">Contact us</a></li>
+      <li><a href="about.html" class="active">About</a></li>
+      <li><a href="contact.html">Contact us</a></li>
+  
   </ul>
 </nav>
 
@@ -718,178 +589,85 @@
   });
 })();
 </script>
-<!-- HERO -->
-<header class="hero">
-  <div class="glow-wrap"><div class="glow-orb a"></div><div class="glow-orb b"></div></div>
-  <div class="hero__bg">
-    <img src="https://images.unsplash.com/photo-1445116572660-236099ec97a0?auto=format&fit=crop&w=1600&h=900&q=80" alt="">
-  </div>
+<main class="about-page">
   <div class="wrap">
-    <p class="hero__brand">Cafe Moishi</p>
-    <h1 class="hero__title">Let's Talk</h1>
-    <p class="hero__desc">Questions, bookings, or just want to say hi? Drop us a message, give us a call, or swing by — we'd love to see you.</p>
+
+    <!-- HEADER -->
+    <header class="about-header">
+      <span class="about-header__eyebrow">Our Story</span>
+      <h1 class="about-header__title">More Than a Café,<br>It's a <em>Vibe</em></h1>
+      <p class="about-header__lede">
+        Cafe Moishi was born from a simple idea — to create a space where great food,
+        premium shisha and unforgettable moments come together. Our lounge is designed
+        for those who appreciate the finer things in life, offering a unique blend of
+        comfort, luxury and good energy.
+      </p>
+    </header>
+
+    <!-- THE JOURNEY -->
+    <section class="about-story">
+      <div class="about-story__copy">
+        <span class="about-story__copy-label">The Journey</span>
+        <h2 class="about-story__heading">Crafted for<em>Good Times</em></h2>
+        <p class="about-story__text">
+          What started as a passion for great flavours and beautiful spaces has grown
+          into a destination loved by many. At Cafe Moishi, we bring people together —
+          over exquisite food, signature shisha and an atmosphere that feels like home.
+        </p>
+        <p class="about-story__text">
+          Every detail, from our interior to our menu, is carefully chosen to give you
+          an experience that's not just enjoyable, but memorable.
+        </p>
+      </div>
+
+      <div class="about-story__photo">
+        <img src="about-inside-moishi.webp" alt="Inside Cafe Moishi">
+      </div>
+    </section>
+
+    <!-- FEATURE CARDS -->
+    <section class="about-features">
+
+      <div class="about-feature">
+        <div class="about-feature__photo">
+          <img src="grill&chill.webp" alt="Signature cuisine at Cafe Moishi">
+        </div>
+        <span class="about-feature__icon">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M7 2v8a2 2 0 0 0 2 2v10M7 2v8M9 2v8M7 8h2M17 2c-2 0-3 2-3 5v2a1 1 0 0 0 1 1h1v12M17 2v20" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+        <h3 class="about-feature__title">Signature Cuisine</h3>
+        <span class="about-feature__rule"></span>
+        <p class="about-feature__text">From classic favourites to unique creations, our menu is crafted to satisfy every craving.</p>
+      </div>
+
+      <div class="about-feature">
+        <div class="about-feature__photo">
+          <img src="afab5c83-8999-4b85-86a8-037f7b9a126b (1).webp" alt="Premium shisha at Cafe Moishi">
+        </div>
+        <span class="about-feature__icon">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M9 3h6l1 4H8l1-4Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M8 7h8v3a4 4 0 0 1-4 4 4 4 0 0 1-4-4V7Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M12 14v4M8 22c0-2 1.8-3 4-3s4 1 4 3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+        </span>
+        <h3 class="about-feature__title">Premium Shisha</h3>
+        <span class="about-feature__rule"></span>
+        <p class="about-feature__text">Enjoy a wide selection of premium flavours, served with style and smoothness.</p>
+      </div>
+
+      <div class="about-feature">
+        <div class="about-feature__photo">
+          <img src="lounge.jpg" alt="Luxury ambience at Cafe Moishi">
+        </div>
+        <span class="about-feature__icon">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M3 9 6 6l3 3 3-4 3 4 3-3 3 3-1 9H4L3 9Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M4 20h16" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+        </span>
+        <h3 class="about-feature__title">Luxury Ambience</h3>
+        <span class="about-feature__rule"></span>
+        <p class="about-feature__text">Relax in our stylish lounge, designed for comfort, connection and unforgettable moments.</p>
+      </div>
+
+    </section>
+
   </div>
-</header>
-
-<!-- CONTACT INFO CARDS -->
-<section class="section">
-  <div class="wrap">
-    <div class="row g-4">
-
-      <div class="col-12 col-md-4">
-        <div class="info-card">
-          <div class="info-card__icon">
-            <i class="fa-solid fa-location-dot"></i>
-          </div>
-          <h3 class="info-card__title">Visit Us</h3>
-          <p class="info-card__text">
-            31 Zetland Street,<br>
-            Huddersfield, West Yorkshire<br>
-            HD1 2RA
-          </p>
-        </div>
-      </div>
-
-      <div class="col-12 col-md-4">
-        <div class="info-card">
-          <div class="info-card__icon">
-            <i class="fa-solid fa-phone"></i>
-          </div>
-          <h3 class="info-card__title">Call / WhatsApp</h3>
-          <p class="info-card__text">
-            <a href="tel:+441484000000">01484 000 000</a><br>
-            <a href="https://wa.me/447000000000" target="_blank" rel="noopener">
-              WhatsApp us directly
-            </a>
-          </p>
-        </div>
-      </div>
-
-      <div class="col-12 col-md-4">
-        <div class="info-card">
-          <div class="info-card__icon">
-            <i class="fa-solid fa-clock"></i>
-          </div>
-          <h3 class="info-card__title">Opening Hours</h3>
-          <p class="info-card__text">
-            Mon – Thu: 12pm – 11pm<br>
-            Fri – Sun: 12pm – 1am
-          </p>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- FORM + PHOTO PANEL -->
-<section class="section">
-  <div class="wrap">
-    <div class="section__head text-center mb-4">
-      <span class="section__eyebrow"><i></i>Send a Message<i></i></span>
-      <h2 class="section__title">Get In Touch</h2>
-      <p class="section__note mx-auto">Bookings, private events, feedback or just a friendly hello — fill in the form and we'll get back to you fast.</p>
-    </div>
-
-    <div class="contact-panel">
-      <div class="contact-panel__media">
-        <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=900&h=1100&q=80" alt="Cafe Moishi interior">
-        <p class="contact-panel__caption">See you soon ✨</p>
-      </div>
-      <div class="contact-panel__body">
-        <form>
-          <div class="row g-3">
-            <div class="col-12 col-sm-6">
-              <label class="form-label" for="cf-name">Full Name</label>
-              <input type="text" class="form-control" id="cf-name" placeholder="Your name">
-            </div>
-            <div class="col-12 col-sm-6">
-              <label class="form-label" for="cf-phone">Phone Number</label>
-              <input type="tel" class="form-control" id="cf-phone" placeholder="07xxx xxxxxx">
-            </div>
-            <div class="col-12">
-              <label class="form-label" for="cf-email">Email Address</label>
-              <input type="email" class="form-control" id="cf-email" placeholder="you@example.com">
-            </div>
-            <div class="col-12">
-              <label class="form-label" for="cf-subject">Subject</label>
-              <select class="form-select" id="cf-subject">
-                <option selected>General Enquiry</option>
-                <option>Table / Sheesha Booking</option>
-                <option>Private Event</option>
-                <option>Feedback</option>
-              </select>
-            </div>
-            <div class="col-12">
-              <label class="form-label" for="cf-message">Message</label>
-              <textarea class="form-control" id="cf-message" placeholder="Tell us what's on your mind..."></textarea>
-            </div>
-            <div class="col-12 pt-2">
-              <button type="submit" class="btn-send">
-                Send Message
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 12 12" fill="none">
-                  <path d="M1 11L11 1M11 1H1M11 1V11" stroke="currentColor" stroke-width="1.5px" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </button>
-            </div>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- LOCATION -->
-<section class="section">
-  <div class="wrap">
-    <div class="section__head text-center mb-4">
-      <span class="section__eyebrow"><i></i>Find Us<i></i></span>
-      <h2 class="section__title">Our Location</h2>
-      <p class="section__note mx-auto">Right in the heart of Huddersfield — easy to find, easy to park, easy to love.</p>
-    </div>
-
-    <div class="location-panel">
-      <iframe class="location-map" src="https://www.google.com/maps?q=31+Zetland+Street,+Huddersfield,+HD1+2RA&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-      <div class="location-strip">
-        <div class="location-strip__item">
-          <div class="location-strip__icon">📍</div>
-          <div>
-            <p class="location-strip__label">Address</p>
-            <p class="location-strip__value">31 Zetland Street, Huddersfield, West Yorkshire HD1 2RA</p>
-          </div>
-        </div>
-        <div class="location-strip__item">
-          <div class="location-strip__icon">🚗</div>
-          <div>
-            <p class="location-strip__label">Parking</p>
-            <p class="location-strip__value">Public parking available just a short walk away.</p>
-          </div>
-        </div>
-        <div class="location-strip__item">
-          <div class="location-strip__icon">🚌</div>
-          <div>
-            <p class="location-strip__label">Nearby Transport</p>
-            <p class="location-strip__value">A few minutes' walk from Huddersfield bus &amp; train station.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- SOCIAL -->
-<section class="section">
-  <div class="wrap text-center">
-    <span class="section__eyebrow"><i></i>Follow The Vibe<i></i></span>
-    <h2 class="section__title mb-4">Stay Connected</h2>
-    <div class="social-row">
-      <a class="social-pill" href="#" aria-label="Instagram">📷</a>
-      <a class="social-pill" href="#" aria-label="Facebook">📘</a>
-      <a class="social-pill" href="#" aria-label="TikTok">🎵</a>
-      <a class="social-pill" href="https://wa.me/447000000000" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
-    </div>
-  </div>
-</section>
+</main>
 <!-- ===== WHATSAPP FLOATING BUTTON ===== -->
 <a href="https://wa.me/919999999999" target="_blank" rel="noopener" class="wa-float" id="waFloat" aria-label="Chat on WhatsApp">
   <span class="wa-float__ring"></span>
@@ -963,6 +741,7 @@
     .wa-float svg{ width:20px; height:20px; }
   }
 </style>
+
 <style>
   
     .mun-footer {
@@ -1639,8 +1418,25 @@
     </svg>
   </button>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+<script>
+  var lenis = new Lenis({
+    duration: 1.15,
+    easing: function (t) { return Math.min(1, 1.001 - Math.pow(2, -10 * t)); },
+    smoothWheel: true,
+    touchMultiplier: 1.5
+  });
 
-<script src="https://cdn.jsdelivr.net/npm/lenis@1/dist/lenis.min.js"></script>
+  function raf(time) {
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+  }
+  requestAnimationFrame(raf);
+
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    lenis.destroy();
+  }
+</script>
 <script src="musicplayer.js"></script>
 </body>
 </html>
