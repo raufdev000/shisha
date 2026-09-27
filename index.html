@@ -1671,7 +1671,6 @@
 
 </head>
 <body>
-
 <section class="moishi-carousel" aria-label="MOISHI menu categories">
 
   <!-- Section background — replace this src with your own image.
@@ -1781,6 +1780,70 @@
     </button>
 
   </div>
+
+  <a href="menu.html" class="moishi-carousel__cta">Full menu</a>
+
+  <style>
+    .moishi-carousel__cta{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      gap:8px;
+      text-align:center;
+      margin:28px auto 0;
+      width:max-content;
+      padding:14px 36px;
+      border-radius:999px;
+      background:linear-gradient(120deg, #6d28d9, #a855f7, #e879f9);
+      background-size:220% auto;
+      background-position:left center;
+      color:#fff;
+      font-weight:700;
+      font-size:.82rem;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      text-decoration:none;
+      position:relative;
+      overflow:hidden;
+      isolation:isolate;
+      box-shadow:0 0 18px rgba(168,85,247,.55), 0 0 38px rgba(168,85,247,.25);
+      transition:transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s ease, background-position .6s ease;
+      animation:moishiCtaPulse 2.6s ease-in-out infinite;
+    }
+
+    .moishi-carousel__cta::before{
+      content:"";
+      position:absolute; inset:0;
+      z-index:1;
+      background:linear-gradient(120deg, transparent 30%, rgba(255,255,255,.55) 50%, transparent 70%);
+      transform:translateX(-130%);
+      transition:transform .7s ease;
+    }
+
+    .moishi-carousel__cta:hover,
+    .moishi-carousel__cta:focus-visible{
+      animation-play-state:paused;
+      transform:translateY(-4px) scale(1.05);
+      background-position:right center;
+      box-shadow:0 0 26px rgba(168,85,247,.9), 0 0 55px rgba(168,85,247,.5), 0 0 90px rgba(232,121,249,.3);
+    }
+    .moishi-carousel__cta:hover::before,
+    .moishi-carousel__cta:focus-visible::before{
+      transform:translateX(130%);
+    }
+    .moishi-carousel__cta:active{
+      transform:translateY(-1px) scale(.97);
+    }
+
+    @keyframes moishiCtaPulse{
+      0%, 100%{ box-shadow:0 0 18px rgba(168,85,247,.5), 0 0 38px rgba(168,85,247,.2); }
+      50%{ box-shadow:0 0 26px rgba(168,85,247,.8), 0 0 52px rgba(168,85,247,.35); }
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      .moishi-carousel__cta{ animation:none; }
+    }
+  </style>
 
 </section>
 
