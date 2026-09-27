@@ -3,81 +3,177 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Premium Section</title>
+<title>Premium Milkshakes</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,500&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-<section class="prem" id="premium">
-  <div class="prem__card">
-    <h2 class="prem__title"><span class="prem__emoji">🍫</span> PREMIUM — Indulgent &amp; Profitable</h2>
-    <p class="prem__sub">These are what people come back for &amp; share</p>
-
-    <ul class="prem__list">
-      <li><strong>Oreo Cookies &amp; Cream</strong> — blended with crushed Oreos, topped with whipped cream</li>
-      <li><strong>Lotus Biscoff</strong> — caramel biscuit flavour, crumbs on top</li>
-      <li><strong>Nutella</strong> — rich chocolate-hazelnut, thick &amp; luxurious</li>
-      <li><strong>Ferrero Rocher</strong> — hazelnut &amp; milk chocolate, pure luxury</li>
-      <li><strong>Kinder Bueno</strong> — creamy white &amp; milk chocolate hazelnut</li>
-      <li><strong>Maltesers / Crunchie</strong> — honeycomb &amp; chocolate with that perfect crunch</li>
-    </ul>
+<section class="menu-section" id="premium">
+  <div class="wrap">
+    <div class="menu-section__head">
+      <span class="menu-section__eyebrow"><i></i>Indulgent &amp; Profitable<i></i></span>
+      <h2 class="menu-section__title">Premium</h2>
+      <p class="menu-section__note">These are what people come back for &amp; share</p>
+    </div>
+    <div class="menu-panel">
+      <div class="menu-panel__media"><img src="https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=900&h=1100&q=80" alt="Premium milkshake"></div>
+      <div class="menu-panel__body">
+      <div class="menu-list menu-list--simple">
+        <div class="menu-item">
+          <div class="menu-item__top"><span class="menu-item__name">Oreo Cookies &amp; Cream</span><span class="menu-item__rule"></span><span class="menu-item__price">£6</span></div>
+          <p class="menu-item__desc">Blended with crushed Oreos, topped with whipped cream.</p>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item__top"><span class="menu-item__name">Lotus Biscoff</span><span class="menu-item__rule"></span><span class="menu-item__price">£6</span></div>
+          <p class="menu-item__desc">Caramel biscuit flavour, crumbs on top.</p>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item__top"><span class="menu-item__name">Nutella</span><span class="menu-item__rule"></span><span class="menu-item__price">£6</span></div>
+          <p class="menu-item__desc">Rich chocolate-hazelnut, thick &amp; luxurious.</p>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item__top"><span class="menu-item__name">Ferrero Rocher</span><span class="menu-item__rule"></span><span class="menu-item__price">£6</span></div>
+          <p class="menu-item__desc">Hazelnut &amp; milk chocolate, pure luxury.</p>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item__top"><span class="menu-item__name">Kinder Bueno</span><span class="menu-item__rule"></span><span class="menu-item__price">£6</span></div>
+          <p class="menu-item__desc">Creamy white &amp; milk chocolate hazelnut.</p>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item__top"><span class="menu-item__name">Maltesers / Crunchie</span><span class="menu-item__rule"></span><span class="menu-item__price">£6</span></div>
+          <p class="menu-item__desc">Honeycomb &amp; chocolate with that perfect crunch.</p>
+        </div>
+      </div>
+      </div>
+    </div>
   </div>
 </section>
 
 <style>
+  :root{
+    --bg:#0a0612;
+    --bg-panel:#120a20;
+    --gray-line: rgba(255,255,255,0.08);
+    --ink: #e9e8ee;
+    --ink-dim: rgba(233,232,238,0.62);
+    --ink-faint: rgba(233,232,238,0.4);
+    --purple: #beabf7;
+    --purple-deep: #4103a5;
+    --aroma: #0805b4;
+    --card-bg: rgba(233,232,238,0.04);
+    --card-border: rgba(233,232,238,0.1);
+  }
+
   #premium, #premium *{ box-sizing:border-box; }
 
-  .prem{
-    padding:48px 20px;
-    background:#ffffff;
-    font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  #premium{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Poppins','Segoe UI',sans-serif;
+    -webkit-font-smoothing:antialiased;
+    padding:4.5rem 0;
   }
 
-  .prem__card{
-    max-width:640px;
-    margin:0 auto;
-    background:#f5f5f5;
-    border-radius:14px;
-    padding:32px 30px 26px;
-  }
+  #premium img{ max-width:100%; display:block; }
+  #premium .wrap{ max-width:1180px; margin:0 auto; padding:0 24px; }
 
-  .prem__title{
-    display:flex;
-    align-items:center;
-    gap:10px;
-    font-size:30px;
-    font-weight:800;
-    color:#111;
-    margin:0 0 18px;
-    line-height:1.25;
+  .menu-section__head{ margin-bottom:2.25rem; text-align:center; }
+  .menu-section__eyebrow{
+    display:inline-flex; align-items:center; gap:.7rem;
+    font-size:.72rem; font-weight:600; letter-spacing:.22em; text-transform:uppercase;
+    color:var(--purple); margin-bottom:.6rem;
   }
-  .prem__emoji{ font-size:30px; line-height:1; }
-
-  .prem__sub{
-    font-style:italic;
-    font-size:19px;
-    color:#111;
-    margin:0 0 26px;
-  }
-
-  .prem__list{
-    list-style:disc;
+  .menu-section__eyebrow i{ width:24px; height:1px; background:linear-gradient(90deg, var(--purple), var(--aroma)); display:inline-block;}
+  .menu-section__title{
+    font-family:'Playfair Display', serif;
+    font-weight:600;
+    font-size:clamp(1.6rem, 3vw, 2.1rem);
+    color:#fff;
     margin:0;
-    padding-left:24px;
   }
-  .prem__list li{
-    font-size:20px;
-    line-height:1.5;
-    color:#111;
-    margin-bottom:20px;
+  .menu-section__note{
+    color:var(--ink-faint);
+    font-size:.88rem;
+    max-width:34rem;
+    margin:.6rem auto 0;
+    font-style:italic;
   }
-  .prem__list li:last-child{ margin-bottom:0; }
-  .prem__list li strong{ font-weight:800; }
 
-  @media (max-width:480px){
-    .prem__card{ padding:26px 20px 20px; }
-    .prem__title{ font-size:24px; }
-    .prem__sub{ font-size:16px; margin-bottom:20px; }
-    .prem__list li{ font-size:16px; margin-bottom:16px; }
+  .menu-panel{
+    position:relative;
+    display:flex;
+    align-items:stretch;
+    gap:0;
+    background-color:var(--bg-panel);
+    border:1px solid var(--card-border);
+    border-radius:16px;
+    overflow:hidden;
+  }
+  .menu-panel__media{
+    flex:0 0 300px;
+    align-self:stretch;
+    position:relative;
+  }
+  .menu-panel__media img{
+    width:100%; height:100%;
+    min-height:280px;
+    object-fit:cover;
+    display:block;
+  }
+  .menu-panel__body{
+    flex:1 1 auto;
+    min-width:0;
+    padding:2.25rem clamp(1.25rem, 4vw, 3rem);
+  }
+
+  .menu-list{ column-count:2; column-gap:2.75rem; }
+  .menu-list--simple .menu-item{ margin-bottom:1.15rem; }
+  .menu-item{
+    break-inside:avoid;
+    -webkit-column-break-inside:avoid;
+    margin-bottom:1.35rem;
+  }
+  .menu-item__top{
+    display:flex;
+    align-items:baseline;
+    gap:.6rem;
+  }
+  .menu-item__name{
+    font-family:'Playfair Display', serif;
+    font-weight:600;
+    font-size:1.05rem;
+    color:var(--ink);
+    white-space:nowrap;
+  }
+  .menu-item__rule{
+    flex:1;
+    border-bottom:1px dashed var(--card-border);
+    transform:translateY(-4px);
+  }
+  .menu-item__price{
+    font-weight:600;
+    font-size:.98rem;
+    color:var(--purple);
+    white-space:nowrap;
+  }
+  .menu-item__desc{
+    color:var(--ink-faint);
+    font-size:.84rem;
+    line-height:1.55;
+    margin:.3rem 0 0;
+  }
+
+  @media (max-width:900px){
+    .menu-panel{ flex-direction:column; }
+    .menu-panel__media{ flex:0 0 auto; width:100%; order:-1; }
+    .menu-panel__media img{ min-height:0; height:200px; }
+  }
+  @media (max-width:767.98px){
+    .menu-list{ column-count:1; }
+    .menu-panel__body{ padding:1.6rem 1.15rem; }
+    .menu-panel{ border-radius:14px; }
+    #premium{ padding:3.2rem 0; }
+    .menu-item__name{ white-space:normal; }
   }
 </style>
 
