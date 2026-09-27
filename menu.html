@@ -516,15 +516,17 @@
     backdrop-filter:blur(10px);
     border-bottom:1px solid var(--gray-line);
     overflow-x:auto;
+    overflow-y:hidden;
     scrollbar-width:none;
   }
   .catnav::-webkit-scrollbar{display:none;}
   .catnav__inner{
     display:flex; gap:.4rem;
-    padding:.85rem 24px;
-    max-width:1180px; margin:0 auto;
+    padding:.85rem 24px .85rem 0;
+    width:100%;
     white-space:nowrap;
   }
+  .catnav__inner a:first-child{ margin-left:24px; }
   .catnav a{
     text-decoration:none;
     font-size:.78rem;
@@ -535,6 +537,7 @@
     padding:.42rem 1rem;
     border-radius:999px;
     transition:.2s ease;
+    flex-shrink:0;
   }
   .catnav a:hover, .catnav a.is-active{
     color:#fff;
@@ -1156,6 +1159,7 @@
 <!-- STICKY CATEGORY NAV -->
 <nav class="catnav">
   <div class="catnav__inner">
+    <a href="#student-offers">Student Offers</a>
     <a href="#burgers">Burgers</a>
     <a href="#grill">Grill &amp; Chill</a>
     <a href="#steaks">Steaks</a>
@@ -1676,6 +1680,381 @@
   </section>
 
 </main>
+  <section class="moishi-offers" id="student-offers">
+  <div class="mo__wrap">
+
+    <span class="mo__vibes">Good<br>Vibes<br>Only <svg viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-4.5-9.3-9A5.4 5.4 0 0 1 12 6.5 5.4 5.4 0 0 1 21.3 12c-2.3 4.5-9.3 9-9.3 9Z" stroke="currentColor" stroke-width="1.4"/></svg></span>
+
+    <div class="mo__head">
+      <svg class="mo__cap" viewBox="0 0 24 24" fill="none"><path d="M12 4 2 9l10 5 8-4.2V15" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M6 11v4c0 1.7 2.7 3 6 3s6-1.3 6-3v-4" stroke="currentColor" stroke-width="1.4"/></svg>
+      <div class="mo__rule"><span>Cafe Moishi</span></div>
+    
+      <h1 class="mo__title">Student Offers</h1>
+      <p class="mo__sub">Show your valid student ID to claim
+        <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.4"/><path d="m8 12.5 2.5 2.5L16 9.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </p>
+    </div>
+
+    <div class="mo__cards">
+
+      <article class="mo__card">
+        <div class="mo__info">
+          <span class="mo__badge">Offer 1</span>
+          <h3 class="mo__offer">Buy Any Shisha — <em>£12</em></h3>
+          <div class="mo__line"></div>
+          <p class="mo__perk">
+            <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="8" width="18" height="12" rx="2" stroke="currentColor" stroke-width="1.4"/><path d="M12 8V5m0 0a2 2 0 1 0-2-2m2 2a2 2 0 1 1 2-2M3 12h18" stroke="currentColor" stroke-width="1.4"/></svg>
+            Includes <strong>1 FREE</strong> Mocktail of your choice
+          </p>
+        </div>
+        <div class="mo__img mo__img--1"><img src="Shisha with a pink mocktail.webp" alt="Shisha with a pink mocktail"></div>
+      </article>
+
+      <article class="mo__card">
+        <div class="mo__info">
+          <span class="mo__badge">Offer 2</span>
+          <h3 class="mo__offer">Buy Any 2 Shishas</h3>
+          <div class="mo__line"></div>
+          <p class="mo__perk">
+            <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="8" width="18" height="12" rx="2" stroke="currentColor" stroke-width="1.4"/><path d="M12 8V5m0 0a2 2 0 1 0-2-2m2 2a2 2 0 1 1 2-2M3 12h18" stroke="currentColor" stroke-width="1.4"/></svg>
+            Includes <strong>2 FREE</strong> Mocktails — one each!
+          </p>
+        </div>
+        <div class="mo__img"><img src="Two shishas with blue and pink mocktails.webp" alt="Two shishas with blue and pink mocktails"></div>
+      </article>
+
+      <article class="mo__card">
+        <div class="mo__info">
+          <span class="mo__badge">Offer 3</span>
+          <h3 class="mo__offer">Buy Any Shisha — <em>£18</em></h3>
+          <div class="mo__line"></div>
+          <p class="mo__perk">
+            <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="8" width="18" height="12" rx="2" stroke="currentColor" stroke-width="1.4"/><path d="M12 8V5m0 0a2 2 0 1 0-2-2m2 2a2 2 0 1 1 2-2M3 12h18" stroke="currentColor" stroke-width="1.4"/></svg>
+            **Includes <strong>FREE</strong> Mocktail...
+          </p>
+        </div>
+        <div class="mo__img"><img src="Shisha with an orange mocktail.webp" alt="Shisha with an orange mocktail"></div>
+      </article>
+
+    </div>
+
+    <div class="mo__foot">
+      <svg class="mo__cap" viewBox="0 0 24 24" fill="none"><path d="M12 4 2 9l10 5 8-4.2V15" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M6 11v4c0 1.7 2.7 3 6 3s6-1.3 6-3v-4" stroke="currentColor" stroke-width="1.4"/></svg>
+      <div class="mo__rule"><span>Student Perks</span></div>
+
+      <!-- mobile: icon columns -->
+      <div class="mo__perks-icons">
+        <div><svg viewBox="0 0 24 24" fill="none"><path d="M6 3h9l-1 12a3.5 3.5 0 0 1-3.5 3.2h0A3.5 3.5 0 0 1 7 15L6 3Z" stroke="currentColor" stroke-width="1.4"/><path d="M4 3h13" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg><span>Good Drinks</span></div>
+        <div><svg viewBox="0 0 24 24" fill="none"><path d="M12 21C7 17 4 13.5 4 9.5A5.5 5.5 0 0 1 12 5a5.5 5.5 0 0 1 8 4.5c0 4-3 7.5-8 11.5Z" stroke="currentColor" stroke-width="1.4"/></svg><span>Great Vibes</span></div>
+        <div><svg viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-4.5-9.3-9A5.4 5.4 0 0 1 12 6.5 5.4 5.4 0 0 1 21.3 12c-2.3 4.5-9.3 9-9.3 9Z" stroke="currentColor" stroke-width="1.4"/></svg><span>Better Together</span></div>
+      </div>
+
+      <!-- desktop: script line -->
+      <p class="mo__perks-text">Good Drinks &bull; Great Vibes &bull; Better Together</p>
+
+      <div class="mo__rule mo__rule--sm"><span>♥</span></div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  #student-offers, #student-offers *{ box-sizing:border-box; }
+
+  .moishi-offers{
+    --ink:#f4f4f4;
+    --ink-dim:rgba(244,244,244,.6);
+    --ink-faint:rgba(244,244,244,.4);
+    --purple:#a78bfa;
+    --purple-deep:#6d28d9;
+    --purple-glow:rgba(167,139,250,.35);
+    --card-bg:rgba(14,10,20,.55);
+    --card-border:rgba(167,139,250,.35);
+
+    position:relative;
+    padding:70px 20px 60px;
+    font-family:'Poppins',sans-serif;
+    color:var(--ink);
+  }
+  .moishi-offers{
+    /* ...existing variables wagera... */
+
+    background-image: url('offers-bg.webp');
+    background-size: cover;
+    background-position: right 70%;
+    background-repeat: no-repeat;
+  }
+  .mo__wrap{ max-width:640px; margin:0 auto; position:relative; }
+
+  .mo__vibes{
+    position:absolute;
+    top:0; right:6px;
+    font-family:'Alex Brush', cursive;
+    font-size:22px;
+    line-height:1.1;
+    color:var(--purple);
+    text-align:center;
+    transform:rotate(6deg);
+  }
+  .mo__vibes svg{ width:16px; height:16px; margin-top:4px; }
+
+  .mo__head{ text-align:center; margin-bottom:34px; }
+  .mo__cap{ width:26px; height:26px; color:var(--purple); }
+
+  .mo__rule{ display:flex; align-items:center; gap:12px; margin:8px auto 6px; max-width:220px; }
+  .mo__rule::before, .mo__rule::after{ content:""; flex:1; height:1px; background:var(--purple-glow); }
+  .mo__rule span{ font-size:11px; letter-spacing:.28em; text-transform:uppercase; color:var(--ink-dim); white-space:nowrap; }
+  .mo__rule--sm{ max-width:120px; margin-top:20px; }
+  .mo__rule--sm span{ color:var(--purple); font-size:14px; letter-spacing:0; }
+
+  .mo__welcome{
+    font-family:'Poppins',sans-serif;
+    font-weight:800;
+    font-size:clamp(30px,7vw,42px);
+    letter-spacing:.02em;
+    margin:6px 0 0;
+  }
+  .mo__title{
+    font-family:'Alex Brush', cursive;
+    font-weight:400;
+    font-size:clamp(48px,12vw,72px);
+    color:var(--purple);
+    margin:0 0 12px;
+  }
+  .mo__sub{
+    display:flex; align-items:center; justify-content:center; gap:8px;
+    font-size:13px; color:var(--ink-dim);
+  }
+  .mo__sub svg{ width:18px; height:18px; color:var(--purple); flex-shrink:0; }
+
+  /* ---- cards ---- */
+  .mo__cards{ display:flex; flex-direction:column; gap:20px; }
+
+  .mo__card{
+    display:flex; align-items:center; gap:16px;
+    background:var(--card-bg);
+    border:1px solid var(--card-border);
+    border-radius:14px;
+    padding:18px;
+    box-shadow:0 0 22px -6px var(--purple-glow);
+  }
+
+  .mo__info{ flex:1; min-width:0; }
+
+  .mo__badge{
+    display:inline-block;
+    padding:4px 14px;
+    border:1px solid var(--purple);
+    border-radius:999px;
+    font-size:11px;
+    font-weight:600;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:var(--purple);
+    margin-bottom:10px;
+  }
+
+  .mo__offer{
+    font-family:'Poppins',sans-serif;
+    font-weight:800;
+    font-size:clamp(19px,4.2vw,24px);
+    line-height:1.25;
+    margin:0 0 12px;
+  }
+  .mo__offer em{ font-style:normal; color:var(--purple); }
+
+  .mo__line{ width:34px; height:2px; background:var(--purple); margin-bottom:12px; }
+
+  .mo__perk{
+    display:flex; align-items:flex-start; gap:8px;
+    font-size:12.5px; line-height:1.5;
+    color:var(--ink-dim);
+    margin:0;
+  }
+  .mo__perk svg{ width:16px; height:16px; color:var(--purple); flex-shrink:0; margin-top:1px; }
+  .mo__perk strong{ color:var(--purple); font-weight:700; }
+
+  .mo__img{
+    width:120px; height:120px;
+    flex-shrink:0;
+    border-radius:10px;
+    overflow:hidden;
+  }
+  .mo__img img{ width:100%; height:100%; object-fit:cover; display:block; object-position:center; }
+
+  /* offer 1 image: show more of the bottom of the photo */
+  .mo__img--1 img{ object-position:center 80%; }
+
+  /* ---- footer / perks ---- */
+  .mo__foot{ text-align:center; margin-top:44px; }
+
+  .mo__perks-icons{
+    display:flex;
+    justify-content:center;
+    gap:0;
+    margin-top:14px;
+  }
+  .mo__perks-icons div{
+    display:flex; flex-direction:column; align-items:center; gap:8px;
+    padding:0 22px;
+    font-size:12px;
+    color:var(--ink-dim);
+    border-left:1px solid var(--card-border);
+  }
+  .mo__perks-icons div:first-child{ border-left:none; }
+  .mo__perks-icons svg{ width:20px; height:20px; color:var(--purple); }
+
+  .mo__perks-text{ display:none; }
+
+  /* ================= DESKTOP ================= */
+  @media (min-width: 720px){
+    .mo__wrap{ max-width:1040px; }
+
+    .mo__cards{ gap:26px; }
+    .mo__card{ padding:26px 30px; }
+    .mo__img{ width:170px; height:130px; }
+    .mo__offer{ font-size:26px; }
+
+    .mo__perks-icons{ display:none; }
+    .mo__perks-text{
+      display:block;
+      margin-top:14px;
+      font-family:'Alex Brush', cursive;
+      font-size:28px;
+      color:var(--purple);
+    }
+  }
+</style>
+
+<!-- ===== STUDENT OFFER TOAST POPUP ===== -->
+<div class="offer-toast" id="offerToast" role="status">
+  <button type="button" class="offer-toast__close" id="offerToastClose" aria-label="Close">&times;</button>
+  <a href="#student-offers" class="offer-toast__link" id="offerToastLink">
+    <span class="offer-toast__icon">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M12 4 2 9l10 5 8-4.2V15" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M6 11v4c0 1.7 2.7 3 6 3s6-1.3 6-3v-4" stroke="currentColor" stroke-width="1.5"/></svg>
+    </span>
+    <span class="offer-toast__text">
+      <span class="offer-toast__title">Student Offers</span>
+      <span class="offer-toast__sub">Show your ID, save on shisha</span>
+    </span>
+  </a>
+</div>
+<style>
+  .offer-toast{
+    position:fixed;
+    left:50%;
+    top:52%;
+    transform:translate(-50%,-50%) rotate(-3deg) scale(.9);
+    z-index:600;
+    display:flex;
+    align-items:center;
+    gap:14px;
+    padding:18px 26px 18px 18px;
+    max-width:380px;
+    background:linear-gradient(150deg, rgba(8,10,28,.97), rgba(4,4,20,.97));
+    border:1px solid rgba(77,107,255,.5);
+    border-radius:20px;
+    box-shadow:0 24px 60px -16px rgba(0,0,0,.7), 0 0 26px -6px rgba(77,107,255,.4), 0 0 0 1px rgba(77,107,255,.12) inset;
+    -webkit-backdrop-filter:blur(10px);
+    backdrop-filter:blur(10px);
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+    transition:opacity .4s ease, transform .4s cubic-bezier(.2,.9,.3,1), visibility 0s linear .4s;
+  }
+  .offer-toast.is-visible{
+    opacity:1;
+    visibility:visible;
+    pointer-events:auto;
+    transform:translate(-50%,-50%) rotate(-2deg) scale(1);
+    transition:opacity .4s ease, transform .4s cubic-bezier(.2,.9,.3,1), visibility 0s linear 0s;
+  }
+  .offer-toast__link{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    text-decoration:none;
+  }
+  .offer-toast__icon{
+    flex-shrink:0;
+    width:46px; height:46px;
+    border-radius:50%;
+    background:rgba(77,107,255,.18);
+    border:1px solid rgba(77,107,255,.55);
+    color:#a9b7ff;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .offer-toast__icon svg{ width:22px; height:22px; }
+  .offer-toast__text{ display:flex; flex-direction:column; }
+  .offer-toast__title{
+    font-family:'Poppins', sans-serif;
+    font-weight:700;
+    font-size:17px;
+    letter-spacing:.02em;
+    color:#f4f4f4;
+  }
+  .offer-toast__sub{
+    font-family:'Poppins', sans-serif;
+    font-size:13px;
+    color:rgba(244,244,244,.6);
+    margin-top:3px;
+  }
+  .offer-toast__close{
+    flex-shrink:0;
+    width:24px; height:24px;
+    margin-left:2px;
+    border:none;
+    border-radius:50%;
+    background:rgba(244,244,244,.08);
+    color:rgba(244,244,244,.6);
+    font-size:16px;
+    line-height:1;
+    display:flex; align-items:center; justify-content:center;
+    cursor:pointer;
+    padding:0;
+    transition:background .2s ease, color .2s ease;
+  }
+  .offer-toast__close:hover{ background:rgba(77,107,255,.3); color:#fff; }
+
+  @media (max-width:480px){
+    .offer-toast{ left:16px; right:16px; top:50%; transform:translate(0,-50%) rotate(-2deg) scale(.9); max-width:none; }
+    .offer-toast.is-visible{ transform:translate(0,-50%) rotate(-2deg) scale(1); }
+  }
+</style>
+<script>
+(function(){
+  var toast = document.getElementById('offerToast');
+  var closeBtn = document.getElementById('offerToastClose');
+  if(!toast) return;
+
+  var dismissed = false;
+  var autoTimer;
+
+  function dismiss(){
+    if(dismissed) return;
+    dismissed = true;
+    toast.classList.remove('is-visible');
+    clearTimeout(autoTimer);
+    document.removeEventListener('click', outsideClickHandler);
+  }
+
+  function outsideClickHandler(e){
+    dismiss();
+  }
+
+  setTimeout(function(){
+    toast.classList.add('is-visible');
+    document.addEventListener('click', outsideClickHandler);
+    autoTimer = setTimeout(dismiss, 3000);
+  }, 500);
+
+  closeBtn.addEventListener('click', function(e){
+    e.stopPropagation();
+    dismiss();
+  });
+})();
+</script>
+
 <!-- ===== WHATSAPP FLOATING BUTTON ===== -->
 <a href="https://wa.me/919999999999" target="_blank" rel="noopener" class="wa-float" id="waFloat" aria-label="Chat on WhatsApp">
   <span class="wa-float__ring"></span>
