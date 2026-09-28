@@ -4133,28 +4133,7 @@ textarea {
     .headline{ font-size: 32px; } 
     .headline .accent{ font-size: 38px; } 
   } 
-/* CAFE — golden */
 .home-hero__title .home-hero__title-top,
 .home-hero__title .home-hero__title-top * {
-  color: #f5c542 !important;
-  -webkit-text-fill-color: #f5c542 !important;
-  -webkit-text-stroke: 2px #ffe08a;
-  text-shadow:
-    0 0 5px #b8860b,
-    0 0 12px #f5c54280,
-    0 0 24px #ffb30060,
-    0 0 40px #ff9d0050;
-}
-
-/* MOISHI — light purple */
-.home-hero__title .home-hero__title-bottom,
-.home-hero__title .home-hero__title-bottom * {
-  color: #d8b8ff !important;
-  -webkit-text-fill-color: #d8b8ff !important;
-  -webkit-text-stroke: 2px #eadcff;
-  text-shadow:
-    0 0 5px #5a0283,
-    0 0 12px #b57bff80,
-    0 0 24px #9e27ff60,
-    0 0 40px #7a3cff50;
+  font-family: 'Sacramento', cursive !important;
 }
