@@ -6,392 +6,10 @@
 <title>Full Menu — Moishi Cafe · Sheesha · Grill</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Fredoka:wght@500;600;700&family=Cormorant+Garamond:wght@400;500;600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">   
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Yellowtail&family=Fredoka:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Fredoka:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@400;500;600&family=Jost:wght@300;400;500&family=Poppins:wght@400;500;600;700&family=Yellowtail&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/lenis@1/dist/lenis.min.js"></script>
 <style>
-  :root{
-    --void:#040705;
-    --smoke:#0b110d;
-    --cream:#f1faf3;
-    --cream-dim: rgba(241,250,243,0.62);
-    --accent: #a78bfa;
-    --accent-light: #8612e6;
-    --accent-dark: #4515f3;
-    --accent-glow: rgba(93, 43, 232, 0.55);
-    --line: rgba(46, 43, 232, 0.9);
-
-  }
-  :root {
-  --golden: rgba(110, 102, 102, 0.863);
-  --golden-shine: linear-gradient(
-    90deg,
-    rgba(110, 102, 102, 0.863) 0%,
-    rgba(200, 195, 190, 0.95) 50%,
-    rgba(110, 102, 102, 0.863) 100%
-  );
-}
   *{margin:0;padding:0;box-sizing:border-box;}
-
-  body{
-    min-height:100vh;
-    background:
-      radial-gradient(ellipse 700px 500px at 10% -5%, rgba(30,150,90,0.32), transparent 60%),
-      radial-gradient(ellipse 500px 400px at 90% 20%, rgba(20,120,75,0.22), transparent 55%),
-      var(--void);
-    font-family:'Poppins', sans-serif;
-  }
-
-  /* ===== NAVBAR (classic / desktop-first) ===== */
-  .site-nav{
-    position:sticky;
-    top:0;
-    z-index:100;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:18px 48px;
-    background: linear-gradient(180deg, rgba(7, 5, 8, 0.88) 0%, rgba(5,8,6,0.6) 100%);
-    backdrop-filter: blur(14px) saturate(120%);
-    -webkit-backdrop-filter: blur(14px) saturate(120%);
-    border-bottom: 1px solid rgba(43,232,124,0.16);
-  }
-
-  .site-nav::before{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:
-      radial-gradient(ellipse 320px 70px at 12% 40%, rgba(156, 43, 232, 0.08), transparent 70%),
-      radial-gradient(ellipse 260px 60px at 65% 60%, rgba(43,232,124,0.06), transparent 70%);
-    animation: driftSmoke 15s ease-in-out infinite alternate;
-    pointer-events:none;
-  }
-  @keyframes driftSmoke{
-    0%{ transform: translateX(-18px); }
-    100%{ transform: translateX(18px); }
-  }
-
-  .site-nav::after{
-    content:"";
-    position:absolute;
-    left:0; right:0; bottom:-1px;
-    height:1px;
-    background: linear-gradient(90deg, transparent, var(--accent-glow), transparent);
-    filter: blur(0.5px);
-  }
-
-  /* ---- Logo ---- */
-  .site-logo{
-    display:flex;
-    align-items:center;
-    gap:11px;
-    z-index:2;
-    cursor:pointer;
-    text-decoration:none;
-    transition: transform 0.35s cubic-bezier(.2,.9,.3,1);
-  }
-  .site-logo:hover{ transform: translateY(-1px); }
-  .site-logo .mark{
-    position:relative; width:26px; height:26px; flex-shrink:0;
-    transition: transform 0.45s cubic-bezier(.2,.9,.3,1), filter 0.35s ease;
-  }
-  .site-logo .mark svg{ width:100%; height:100%; display:block; }
-  .site-logo:hover .mark{ transform: scale(1.12) rotate(-4deg); filter: drop-shadow(0 0 8px var(--accent-glow)); }
-  .site-logo .wordmark{
-    font-family:'Poppins', sans-serif;
-    font-weight:700;
-    font-size:21px;
-    letter-spacing:0.12em;
-    color: var(--cream);
-    text-transform:uppercase;
-    transition: text-shadow 0.35s ease;
-  }
-  .site-logo:hover .wordmark{ text-shadow: 0 0 14px var(--accent-glow); }
-  .site-logo .wordmark span{ color: var(--accent); font-weight:600; }
-
-  /* ---- Classic inline links (desktop) ---- */
-  .nav-links{
-    display:flex;
-    align-items:center;
-    gap:40px;
-    list-style:none;
-    z-index:2;
-  }
-  .nav-links li a{
-    position:relative;
-    display:inline-block;
-    text-decoration:none;
-    color: var(--cream-dim);
-    font-size:14px;
-    font-weight:500;
-    letter-spacing:0.2em;
-    text-transform:uppercase;
-    padding-bottom:8px;
-    transition: color 0.35s ease, transform 0.35s cubic-bezier(.2,.9,.3,1), text-shadow 0.35s ease;
-  }
-  .nav-links li a::after{
-    content:"";
-    position:absolute;
-    left:0; bottom:0;
-    width:100%; height:1px;
-    background: linear-gradient(90deg, transparent, var(--line), transparent);
-    transform: scaleX(0);
-    transform-origin: center;
-    transition: transform 0.4s cubic-bezier(.2,.9,.3,1);
-  }
-  .nav-links li a:hover{ color: var(--cream); text-shadow: 0 0 12px var(--accent-glow); transform: translateY(-2px); }
-  .nav-links li a:hover::after{ transform: scaleX(1); }
-  .nav-links li a.active{ color: var(--accent); }
-  .nav-links li a.active::after{ transform: scaleX(1); }
-
-  /* ---- Find Us (small map popover) ---- */
-  .nav-location{
-    position:relative;
-    display:flex;
-    align-items:center;
-    gap:6px;
-    cursor:pointer;
-    color: var(--cream);
-    font-size:12px;
-    letter-spacing:0.18em;
-    text-transform:uppercase;
-    transition: color 0.3s ease;
-  }
-  .nav-location svg{ width:14px; height:14px; opacity:0.85; flex-shrink:0; transition: transform 0.35s cubic-bezier(.2,.9,.3,1), filter 0.35s ease; }
-  .nav-location:hover, .nav-location.open{ color: var(--cream); }
-  .nav-location:hover svg, .nav-location.open svg{ filter: drop-shadow(0 0 6px var(--accent-glow)); transform: scale(1.15) translateY(-1px); }
-
-  .location-popover{
-    position:absolute;
-    top:calc(100% + 20px);
-    left:50%;
-    width:236px;
-    padding:10px;
-    background: linear-gradient(165deg, rgba(9,14,11,0.98), rgba(5,8,6,0.98));
-    border:1px solid rgba(232, 43, 232, 0.22);
-    border-radius:8px;
-    box-shadow: 0 20px 50px -12px rgba(0,0,0,0.65);
-    opacity:0;
-    visibility:hidden;
-    pointer-events:none;
-    transform: translateX(-50%) translateY(-8px) scale(0.96);
-    transform-origin: top center;
-    transition: opacity 0.35s ease, transform 0.35s cubic-bezier(.2,.9,.3,1), visibility 0s linear 0.35s;
-    z-index:50;
-  }
-  .location-popover::before{
-    content:"";
-    position:absolute;
-    top:-6px; left:50%;
-    width:12px; height:12px;
-    transform: translateX(-50%) rotate(45deg);
-    background: rgba(9,14,11,0.98);
-    border-left:1px solid rgba(43,232,124,0.22);
-    border-top:1px solid rgba(43,232,124,0.22);
-  }
-  .nav-location:hover .location-popover,
-  .nav-location.open .location-popover{
-    opacity:1; visibility:visible; pointer-events:auto;
-    transform: translateX(-50%) translateY(0) scale(1);
-    transition: opacity 0.35s ease, transform 0.35s cubic-bezier(.2,.9,.3,1), visibility 0s linear 0s;
-  }
-  .location-popover iframe{
-    width:100%; height:128px; border:0; border-radius:5px; display:block;
-    filter: grayscale(25%) contrast(1.05) brightness(0.9);
-  }
-  .location-popover .location-address{
-    font-size:11px; line-height:1.5; letter-spacing:0.03em;
-    color: var(--cream-dim); text-transform:none; margin-top:9px;
-  }
-  .location-popover .location-link{
-    display:inline-block; margin-top:7px;
-    font-size:11px; letter-spacing:0.14em; text-transform:uppercase;
-    color: var(--accent); text-decoration:none; transition: text-shadow 0.3s ease;
-  }
-  .location-popover .location-link:hover{ text-shadow: 0 0 10px var(--accent-glow); }
-
-  /* ---- Right cluster (links + location + cta) ---- */
-  .nav-right{
-    display:flex;
-    align-items:center;
-    gap:38px;
-    z-index:2;
-  }
-
-  /* ---- CTA button ---- */
-  .nav-cta{
-    position:relative;
-    padding:11px 26px;
-    font-family:'Poppins', sans-serif;
-    font-weight:600;
-    font-size:12px;
-    letter-spacing:0.2em;
-    text-transform:uppercase;
-    color: var(--cream);
-    background: linear-gradient(135deg, var(--accent), var(--accent-light));
-    border:none;
-    border-radius:3px;
-    cursor:pointer;
-    overflow:hidden;
-    transition: transform 0.3s cubic-bezier(.2,.9,.3,1), box-shadow 0.3s ease, letter-spacing 0.3s ease;
-  }
-  .nav-cta:hover{ transform: translateY(-3px) scale(1.03); box-shadow: 0 10px 28px -6px var(--accent-glow); letter-spacing: 0.24em; }
-  .nav-cta:active{ transform: translateY(-1px) scale(0.99); }
-  .nav-cta::before{
-    content:"";
-    position:absolute;
-    top:0; left:-60%; width:40%; height:100%;
-    background: linear-gradient(115deg, transparent, rgba(255,255,255,0.55), transparent);
-    transform: skewX(-20deg);
-    transition: left 0.6s ease;
-  }
-  .nav-cta:hover::before{ left:130%; }
-
-  /* ===== Mobile burger ===== */
-  .nav-burger{
-    display:none;
-    flex-direction:column;
-    justify-content:center;
-    gap:6px;
-    width:30px;
-    height:24px;
-    background:none;
-    border:none;
-    cursor:pointer;
-    z-index:210;
-    position:relative;
-  }
-  .nav-burger span{
-    width:100%; height:1px;
-    background: var(--cream);
-    transform-origin: center;
-    transition: transform 0.4s cubic-bezier(.2,.9,.3,1), opacity 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
-  }
-  .nav-burger:hover span{ background: var(--accent); box-shadow: 0 0 8px var(--accent-glow); }
-  .nav-burger.open span:nth-child(1){ transform: translateY(7px) rotate(45deg); }
-  .nav-burger.open span:nth-child(2){ opacity:0; }
-  .nav-burger.open span:nth-child(3){ transform: translateY(-7px) rotate(-45deg); }
-
-  /* ===== Fullscreen mobile menu ===== */
-  .mobile-menu{
-    display:none;
-    list-style:none;
-  }
-
-  @media (max-width: 860px){
-    .site-nav{ padding:16px 22px; }
-    .nav-links{ display:none; }
-    .nav-location{ display:none; }
-    .nav-cta{ display:none; }
-    .nav-burger{ display:flex; }
-
-    .mobile-menu{
-      display:flex;
-      position:fixed;
-      inset:0;
-      width:100%;
-      height:100dvh;
-      flex-direction:column;
-      justify-content:center;
-      align-items:flex-start;
-      gap:24px;
-      padding:0 12vw;
-      background:
-        radial-gradient(ellipse 500px 400px at 90% -10%, rgba(43,232,124,0.12), transparent 60%),
-        linear-gradient(165deg, rgba(5,8,6,0.99), rgba(12,18,14,0.99));
-      backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
-      z-index:200;
-      clip-path: circle(2.5% at calc(100% - 37px) 33px);
-      opacity:0;
-      visibility:hidden;
-      transition:
-        clip-path 0.7s cubic-bezier(.2,.9,.15,1),
-        opacity 0.35s ease,
-        visibility 0s linear 0.7s;
-    }
-    .mobile-menu.open{
-      clip-path: circle(150% at calc(100% - 37px) 33px);
-      opacity:1;
-      visibility:visible;
-      transition:
-        clip-path 0.7s cubic-bezier(.2,.9,.15,1),
-        opacity 0.3s ease,
-        visibility 0s linear 0s;
-    }
-
-    .mobile-menu li{ overflow:hidden; }
-    .mobile-menu li a{
-      position:relative;
-      display:flex;
-      align-items:center;
-      gap:10px;
-      text-decoration:none;
-      font-size:26px;
-      letter-spacing:0.03em;
-      font-family:'Poppins', sans-serif;
-      font-weight:600;
-      color: var(--accent);
-      text-transform:uppercase;
-      opacity:0;
-      transform: translateY(28px);
-      transition: opacity 0.5s ease, transform 0.5s cubic-bezier(.2,.9,.3,1), color 0.3s ease, letter-spacing 0.3s ease;
-    }
-    .mobile-menu li a:hover{ color: var(--cream); letter-spacing: 0.08em; text-shadow: 0 0 14px var(--accent-glow); }
-    .mobile-menu li a.active{ color: var(--accent); }
-    .mobile-menu.open li a{ opacity:1; transform: translateY(0); }
-    .mobile-menu.open li:nth-child(1) a{ transition-delay:0.28s; }
-    .mobile-menu.open li:nth-child(2) a{ transition-delay:0.36s; }
-    .mobile-menu.open li:nth-child(3) a{ transition-delay:0.44s; }
-    .mobile-menu.open li:nth-child(4) a{ transition-delay:0.52s; }
-    .mobile-menu.open li:nth-child(5) a{ transition-delay:0.60s; }
-    .mobile-menu.open li:nth-child(6) a{ transition-delay:0.68s; }
-
-    .mobile-menu .mobile-location svg{ width:20px; height:20px; }
-
-    .mobile-menu .mobile-cta{
-      margin-top:8px;
-      padding:13px 30px;
-      font-size:12px;
-      font-weight:600;
-      font-family:'Poppins', sans-serif;
-      letter-spacing:0.2em;
-      text-transform:uppercase;
-      color: var(--void);
-      background: linear-gradient(135deg, var(--accent), var(--accent-light));
-      border-radius:3px;
-      display:inline-block;
-      transition: transform 0.3s cubic-bezier(.2,.9,.3,1), box-shadow 0.3s ease;
-    }
-    .mobile-menu .mobile-cta:hover{
-      transform: translateY(-3px) scale(1.03);
-      box-shadow: 0 10px 26px -6px var(--accent-glow);
-      letter-spacing: 0.24em;
-    }
-    .mobile-menu .mobile-location{
-      transition: opacity 0.5s ease, transform 0.5s cubic-bezier(.2,.9,.3,1), color 0.3s ease, gap 0.3s ease;
-    }
-    .mobile-menu .mobile-location:hover{ gap:14px; }
-    .mobile-menu .mobile-location svg{ transition: filter 0.3s ease, transform 0.3s ease; }
-    .mobile-menu .mobile-location:hover svg{ filter: drop-shadow(0 0 8px var(--accent-glow)); transform: scale(1.1); }
-  }
-
-  @media (prefers-reduced-motion: reduce){
-    .mobile-menu, .mobile-menu li a, .location-popover{ transition-duration: 0.01ms !important; }
-  }
-
-  .demo-hint{
-    text-align:center;
-    color: var(--cream-dim);
-    font-size:12px;
-    letter-spacing:0.1em;
-    margin-top:60px;
-    font-family:'Jost', sans-serif;
-  }
-</style>
-<style>
   :root{
     --bg:#0a0612;
     --bg-panel:#120a20;
@@ -405,338 +23,78 @@
     --card-bg: rgba(233,232,238,0.04);
     --card-border: rgba(233,232,238,0.1);
   }
-
-  *{box-sizing:border-box;}
-  html.lenis{ height:auto; }
   html.lenis, html.lenis body{ height:auto; }
-  body{
-    margin:0;
-    background:var(--bg);
-    color:var(--ink);
-    font-family:'Poppins', 'Segoe UI', sans-serif;
-    -webkit-font-smoothing:antialiased;
-  }
+  body{ min-height:100vh; background:var(--bg); color:var(--ink); font-family:'Poppins','Segoe UI',sans-serif; -webkit-font-smoothing:antialiased; }
   img{max-width:100%; display:block;}
   a{color:inherit;}
   .wrap{max-width:1180px; margin:0 auto; padding:0 24px;}
 
   /* ---------- hero ---------- */
-  .hero{
-    position:relative; z-index:2;
-    padding:6.5rem 0 4rem;
-    text-align:center;
-    border-bottom:1px solid var(--gray-line);
-    overflow:hidden;
-  }
-  .hero__bg{
-    position:absolute; inset:0; z-index:0;
-  }
-  .hero__bg img{
-    width:100%; height:100%; object-fit:cover;
-    opacity:.4;
-  }
-  .hero__bg::after{
-    content:"";
-    position:absolute; inset:0;
-    background:linear-gradient(180deg, rgba(252, 251, 255, 0.185) 0%, rgba(246, 244, 248, 0) 45%, rgba(10, 6, 18, 0.089) 100%);
-  }
+  .hero{ position:relative; z-index:2; padding:6.5rem 0 4rem; text-align:center; border-bottom:1px solid var(--gray-line); overflow:hidden; }
+  .hero__bg{ position:absolute; inset:0; z-index:0; }
+  .hero__bg img{ width:100%; height:100%; object-fit:cover; opacity:.4; }
+  .hero__bg::after{ content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(252,251,255,0.185) 0%, rgba(246,244,248,0) 45%, rgba(10,6,18,0.089) 100%); }
   .hero .wrap{ position:relative; z-index:1; }
-.hero__brand {
-  font-family: 'Playfair Display', serif;
-  font-weight: 700;
-  letter-spacing: .08em;
-  font-size: clamp(3rem, 5vw, 2.6rem);
-  margin: 0 0 .35rem;
-
-  background: linear-gradient(
-    115deg,
-    #cda0f7 0%,
-    #5e05d3 20%,
-    #ba8fc7 38%,
-    #ffffff 48%,
-    #6e37d4 55%,
-    #ffffff 62%,
-    #c5a3e6 78%,
-    #969597 100%
-  );
-
-  background-size: 250% 100%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-
-  /* shiny glow */
-  filter: drop-shadow(0 0 4px rgba(197, 163, 230, .55))
-          drop-shadow(0 0 10px rgba(110, 55, 212, .35));
-
-  animation: glitterText 5s ease-in-out infinite;
-}
-
-@keyframes glitterText {
-  0% {
-    background-position: 150% center;
+  .hero__brand{
+    font-family:'Playfair Display', serif; font-weight:700; letter-spacing:.08em;
+    font-size:clamp(3rem, 5vw, 2.6rem); margin:0 0 .35rem;
+    background:linear-gradient(115deg,#cda0f7 0%,#5e05d3 20%,#ba8fc7 38%,#ffffff 48%,#6e37d4 55%,#ffffff 62%,#c5a3e6 78%,#969597 100%);
+    background-size:250% 100%; -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;
+    filter:drop-shadow(0 0 4px rgba(197,163,230,.55)) drop-shadow(0 0 10px rgba(110,55,212,.35));
+    animation:glitterText 5s ease-in-out infinite;
   }
-
-  50% {
-    background-position: 50% center;
-  }
-
-  100% {
-    background-position: -150% center;
-  }
-}
-  .hero__sub{
-    font-size:.72rem;
-    letter-spacing:.35em;
-    text-transform:uppercase;
-    color:var(--purple);
-    margin:0 0 1.5rem;
-  }
-  .hero__title{
-    font-family:'Playfair Display', serif;
-    font-style:italic;
-    font-weight:500;
-    font-size:clamp(1.1rem, 5vw, 3.2rem);
-    background:linear-gradient(90deg, #fff, var(--purple));
-    -webkit-background-clip:text; background-clip:text; color:transparent;
-    margin:0 0 .75rem;
-  }
-  .hero__desc{
-    color:var(--ink-dim);
-    max-width:36rem;
-    margin:0 auto;
-    font-size:.98rem;
-    line-height:1.7;
-  }
+  @keyframes glitterText{ 0%{background-position:150% center;} 50%{background-position:50% center;} 100%{background-position:-150% center;} }
+  .hero__sub{ font-size:.72rem; letter-spacing:.35em; text-transform:uppercase; color:var(--purple); margin:0 0 1.5rem; }
+  .hero__title{ font-family:'Playfair Display', serif; font-style:italic; font-weight:500; font-size:clamp(1.1rem, 5vw, 3.2rem); background:linear-gradient(90deg,#fff,var(--purple)); -webkit-background-clip:text; background-clip:text; color:transparent; margin:0 0 .75rem; }
+  .hero__desc{ color:var(--ink-dim); max-width:36rem; margin:0 auto; font-size:.98rem; line-height:1.7; }
 
   /* ---------- sticky category nav ---------- */
-  .catnav{
-    position:sticky; top:0; z-index:10;
-    background:rgba(10,6,18,0.9);
-    backdrop-filter:blur(10px);
-    border-bottom:1px solid var(--gray-line);
-    overflow-x:auto;
-    overflow-y:hidden;
-    scrollbar-width:none;
-  }
+  .catnav{ position:sticky; top:0; z-index:10; background:rgba(10,6,18,0.9); backdrop-filter:blur(10px); border-bottom:1px solid var(--gray-line); overflow-x:auto; overflow-y:hidden; scrollbar-width:none; }
   .catnav::-webkit-scrollbar{display:none;}
-  .catnav__inner{
-    display:flex; gap:.4rem;
-    padding:.85rem 24px .85rem 0;
-    width:100%;
-    white-space:nowrap;
-  }
+  .catnav__inner{ display:flex; gap:.4rem; padding:.85rem 24px .85rem 0; width:100%; white-space:nowrap; }
   .catnav__inner a:first-child{ margin-left:24px; }
-  .catnav a{
-    text-decoration:none;
-    font-size:.78rem;
-    font-weight:500;
-    letter-spacing:.03em;
-    color:var(--ink-dim);
-    border:1px solid var(--card-border);
-    padding:.42rem 1rem;
-    border-radius:999px;
-    transition:.2s ease;
-    flex-shrink:0;
-  }
-  .catnav a:hover, .catnav a.is-active{
-    color:#fff;
-    border-color:transparent;
-    background:linear-gradient(90deg, var(--purple-deep), var(--aroma));
-  }
+  .catnav a{ text-decoration:none; font-size:.78rem; font-weight:500; letter-spacing:.03em; color:var(--ink-dim); border:1px solid var(--card-border); padding:.42rem 1rem; border-radius:999px; transition:.2s ease; flex-shrink:0; }
+  .catnav a:hover, .catnav a.is-active{ color:#fff; border-color:transparent; background:linear-gradient(90deg,var(--purple-deep),var(--aroma)); }
 
   /* ---------- sections ---------- */
-  .menu-section{
-    position:relative;
-    z-index:2;
-    padding:4.5rem 0;
-    border-bottom:1px solid var(--gray-line);
-    scroll-margin-top:70px;
-  }
+  .menu-section{ position:relative; z-index:2; padding:4.5rem 0; border-bottom:1px solid var(--gray-line); scroll-margin-top:70px; }
   .menu-section:last-of-type{ border-bottom:none; }
-
   .menu-section__head{ margin-bottom:2.25rem; text-align:center; }
-  .menu-section__eyebrow{
-    display:inline-flex; align-items:center; gap:.7rem;
-    font-size:.72rem; font-weight:600; letter-spacing:.22em; text-transform:uppercase;
-    color:var(--purple); margin-bottom:.6rem;
-  }
-  .menu-section__eyebrow i{ width:24px; height:1px; background:linear-gradient(90deg, var(--purple), var(--aroma)); display:inline-block;}
-  .menu-section__title{
-    font-family:'Playfair Display', serif;
-    font-weight:600;
-    font-size:clamp(1.6rem, 3vw, 2.1rem);
-    color:#fff;
-    margin:0;
-  }
-  .menu-section__note{
-    color:var(--ink-faint);
-    font-size:.88rem;
-    max-width:34rem;
-    margin:.6rem auto 0;
-  }
+  .menu-section__eyebrow{ display:inline-flex; align-items:center; gap:.7rem; font-size:.72rem; font-weight:600; letter-spacing:.22em; text-transform:uppercase; color:var(--purple); margin-bottom:.6rem; }
+  .menu-section__eyebrow i{ width:24px; height:1px; background:linear-gradient(90deg,var(--purple),var(--aroma)); display:inline-block; }
+  .menu-section__title{ font-family:'Playfair Display', serif; font-weight:600; font-size:clamp(1.6rem, 3vw, 2.1rem); color:#fff; margin:0; }
+  .menu-section__note{ color:var(--ink-faint); font-size:.88rem; max-width:34rem; margin:.6rem auto 0; }
 
-  /* panel wrapper — split into a photo side and a menu side */
-  .menu-panel{
-    position:relative;
-    display:flex;
-    align-items:stretch;
-    gap:0;
-    background-color:var(--bg-panel);
-    border:1px solid var(--card-border);
-    border-radius:16px;
-    overflow:hidden;
-  }
-  .menu-panel__media{
-    flex:0 0 300px;
-    align-self:stretch;
-    position:relative;
-  }
-  .menu-panel__media img{
-    width:100%; height:100%;
-    min-height:280px;
-    object-fit:cover;
-    display:block;
-  }
-  .menu-panel__body{
-    flex:1 1 auto;
-    min-width:0;
-    padding:2.25rem clamp(1.25rem, 4vw, 3rem);
-  }
+  .menu-panel{ position:relative; display:flex; align-items:stretch; gap:0; background-color:var(--bg-panel); border:1px solid var(--card-border); border-radius:16px; overflow:hidden; }
+  .menu-panel__media{ flex:0 0 300px; align-self:stretch; position:relative; }
+  .menu-panel__media img{ width:100%; height:100%; min-height:280px; object-fit:cover; display:block; }
+  .menu-panel__body{ flex:1 1 auto; min-width:0; padding:2.25rem clamp(1.25rem, 4vw, 3rem); }
 
-  .menu-subhead{
-    font-family:'Playfair Display', serif;
-    font-style:italic;
-    font-weight:500;
-    font-size:1.15rem;
-    color:#fff;
-    border-left:2px solid var(--aroma);
-    padding-left:.8rem;
-    margin:0 0 1.1rem;
-  }
-  .menu-subnote{
-    color:var(--ink-faint);
-    font-size:.85rem;
-    margin:0 0 1.1rem .9rem;
-    max-width:38rem;
-  }
+  .menu-subhead{ font-family:'Playfair Display', serif; font-style:italic; font-weight:500; font-size:1.15rem; color:#fff; border-left:2px solid var(--aroma); padding-left:.8rem; margin:0 0 1.1rem; }
+  .menu-subnote{ color:var(--ink-faint); font-size:.85rem; margin:0 0 1.1rem .9rem; max-width:38rem; }
   .menu-group{ margin-bottom:2.5rem; }
   .menu-group:last-child{ margin-bottom:0; }
 
-  /* item list — auto two columns on desktop */
-  .menu-list{
-    column-count:2;
-    column-gap:2.75rem;
-  }
-  .menu-item{
-    break-inside:avoid;
-    -webkit-column-break-inside:avoid;
-    margin-bottom:1.35rem;
-  }
-  .menu-item__top{
-    display:flex;
-    align-items:baseline;
-    gap:.6rem;
-  }
-  .menu-item__name{
-    font-family:'Playfair Display', serif;
-    font-weight:600;
-    font-size:1.05rem;
-    color:var(--ink);
-    white-space:nowrap;
-  }
-  .menu-item__rule{
-    flex:1;
-    border-bottom:1px dashed var(--card-border);
-    transform:translateY(-4px);
-  }
-  .menu-item__price{
-    font-weight:600;
-    font-size:.98rem;
-    color:var(--purple);
-    white-space:nowrap;
-  }
-  .menu-item__desc{
-    color:var(--ink-faint);
-    font-size:.84rem;
-    line-height:1.55;
-    margin:.3rem 0 0;
-  }
-
-  /* simple list — name + price, no description (drinks, mocktails etc.) */
+  .menu-list{ column-count:2; column-gap:2.75rem; }
+  .menu-item{ break-inside:avoid; -webkit-column-break-inside:avoid; margin-bottom:1.35rem; }
+  .menu-item__top{ display:flex; align-items:baseline; gap:.6rem; }
+  .menu-item__name{ font-family:'Playfair Display', serif; font-weight:600; font-size:1.05rem; color:var(--ink); white-space:nowrap; }
+  .menu-item__rule{ flex:1; border-bottom:1px dashed var(--card-border); transform:translateY(-4px); }
+  .menu-item__price{ font-weight:600; font-size:.98rem; color:var(--purple); white-space:nowrap; }
+  .menu-item__desc{ color:var(--ink-faint); font-size:.84rem; line-height:1.55; margin:.3rem 0 0; }
   .menu-list--simple .menu-item{ margin-bottom:.85rem; }
 
-  /* chip style — flavour lists with a shared base price */
-  .menu-chips{
-    display:flex; flex-wrap:wrap; gap:.55rem;
-  }
-  .menu-chip{
-    border:1px solid var(--card-border);
-    background:rgba(10,6,18,0.55);
-    color:var(--ink-dim);
-    font-size:.85rem;
-    padding:.45rem 1rem;
-    border-radius:999px;
-    transition:border-color .2s ease, color .2s ease;
-  }
-  .menu-chip:hover{
-    border-color:var(--aroma);
-    color:#fff;
-  }
-  .menu-baseprice{
-    display:inline-block;
-    font-weight:600;
-    color:#fff;
-    background:linear-gradient(90deg, var(--purple-deep), var(--aroma));
-    padding:.35rem 1rem;
-    border-radius:999px;
-    font-size:.82rem;
-    margin-bottom:1.1rem;
-  }
+  .menu-chips{ display:flex; flex-wrap:wrap; gap:.55rem; }
+  .menu-chip{ border:1px solid var(--card-border); background:rgba(10,6,18,0.55); color:var(--ink-dim); font-size:.85rem; padding:.45rem 1rem; border-radius:999px; transition:border-color .2s ease, color .2s ease; }
+  .menu-chip:hover{ border-color:var(--aroma); color:#fff; }
+  .menu-baseprice{ display:inline-block; font-weight:600; color:#fff; background:linear-gradient(90deg,var(--purple-deep),var(--aroma)); padding:.35rem 1rem; border-radius:999px; font-size:.82rem; margin:0 .4rem 1.1rem 0; }
 
-  /* combo / deal cards */
-  .menu-deal{
-    border:1px solid var(--card-border);
-    border-radius:14px;
-    padding:1.25rem 1.4rem;
-    background:rgba(10,6,18,0.55);
-    height:100%;
-  }
-  .menu-deal__name{
-    font-family:'Playfair Display', serif;
-    font-weight:600;
-    font-size:1.02rem;
-    color:#fff;
-    margin:0 0 .4rem;
-  }
-  .menu-deal__desc{
-    color:var(--ink-faint);
-    font-size:.85rem;
-    line-height:1.55;
-    margin:0 0 .8rem;
-  }
-  .menu-deal__price{
-    color:var(--aroma);
-    font-weight:700;
-    font-size:1.1rem;
-  }
-  .deal-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
-    gap:1rem;
-  }
+  .menu-deal{ border:1px solid var(--card-border); border-radius:14px; padding:1.25rem 1.4rem; background:rgba(10,6,18,0.55); height:100%; }
+  .menu-deal__name{ font-family:'Playfair Display', serif; font-weight:600; font-size:1.02rem; color:#fff; margin:0 0 .4rem; }
+  .menu-deal__desc{ color:var(--ink-faint); font-size:.85rem; line-height:1.55; margin:0 0 .8rem; }
+  .menu-deal__price{ color:var(--aroma); font-weight:700; font-size:1.1rem; }
+  .deal-grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:1rem; }
 
-  /* ---------- footer ---------- */
-  .menu-footer{
-    position:relative; z-index:2;
-    text-align:center;
-    padding:3.5rem 0 4rem;
-    color:var(--ink-faint);
-    font-size:.85rem;
-  }
-  .menu-footer strong{ color:var(--ink); font-weight:500; }
-
-  /* ---------- responsive ---------- */
   @media (max-width:900px){
     .menu-panel{ flex-direction:column; }
     .menu-panel__media{ flex:0 0 auto; width:100%; order:-1; }
@@ -750,391 +108,95 @@
     .menu-item__name{ white-space:normal; }
   }
 </style>
-
 </head>
 <body>
-  <nav class="mnav" id="mnav">
+<nav class="mnav" id="mnav">
   <div class="mnav__bar">
-    <a href="#" class="mnav__logo">
-      <!-- Replace with your own logo image/svg -->
-      <span>AR</span>
-    </a>
-
-    <!-- Desktop inline links (hidden on small screens) -->
+    <a href="#" class="mnav__logo"><span>AR</span></a>
     <ul class="mnav__links">
-          <li><a href="index.html" >Home</a></li> 
-       <li><a href="shishalanding.html">Shisha & Bookings</a></li>
-      <li><a href="menu.html">Menu</a></li>
-      <li><a href="venue.html">Venue</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="contact.html">Contact us</a></li>
-    </ul>
-
-    <div class="mnav__icons">
-      <div class="mnav__find" id="mnavFind">
-        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M12 22s7-7.16 7-12.5A7 7 0 0 0 5 9.5C5 14.84 12 22 12 22Z" stroke="currentColor" stroke-width="1.4"/>
-          <circle cx="12" cy="9.5" r="2.3" stroke="currentColor" stroke-width="1.4"/>
-        </svg>
-        <span>Find Us</span>
-
-        <div class="mnav__pop">
-          <p>123 Ember Street, Downtown</p>
-          <a href="https://maps.google.com" target="_blank" rel="noopener">Get Directions →</a>
-        </div>
-      </div>
-
-      <button class="mnav__burger" id="mnavBurger" aria-label="Toggle menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-
-      <a href="#" class="mnav__cta">Book a Table</a>
-    </div>
-  </div>
-
-  <!-- Mobile dropdown panel (hidden on desktop) -->
-  <ul class="mnav__menu" id="mnavMenu">
-    <li><a href="index.html" >Home</a></li>   
+      <li><a href="index.html">Home</a></li>
       <li><a href="shishalanding.html">Shisha & Bookings</a></li>
       <li><a href="menu.html">Menu</a></li>
       <li><a href="venue.html">Venue</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="contact.html">Contact us</a></li>
+    </ul>
+    <div class="mnav__icons">
+      <div class="mnav__find" id="mnavFind">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 22s7-7.16 7-12.5A7 7 0 0 0 5 9.5C5 14.84 12 22 12 22Z" stroke="currentColor" stroke-width="1.4"/><circle cx="12" cy="9.5" r="2.3" stroke="currentColor" stroke-width="1.4"/></svg>
+        <span>Find Us</span>
+        <div class="mnav__pop">
+          <p>123 Ember Street, Downtown</p>
+          <a href="https://maps.google.com" target="_blank" rel="noopener">Get Directions →</a>
+        </div>
+      </div>
+      <button class="mnav__burger" id="mnavBurger" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+      <a href="#" class="mnav__cta">Book a Table</a>
+    </div>
+  </div>
+  <ul class="mnav__menu" id="mnavMenu">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="shishalanding.html">Shisha & Bookings</a></li>
+    <li><a href="menu.html">Menu</a></li>
+    <li><a href="venue.html">Venue</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact us</a></li>
   </ul>
 </nav>
 <style>
   #mnav, #mnav *{ box-sizing:border-box; }
-
-  #mnav{
-    --accent:#bf3ae8;
-    --ink:#f4f4f4;
-    --ink-dim:rgba(244,244,244,.55);
-    --line:rgba(244, 244, 244, 0.733);
-
-    position:relative;
-    z-index:999;
-    font-family:'Poppins','Segoe UI',sans-serif;
-  }
-
-  /* ---- Top bar ---- */
-  .mnav__bar{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:14px 28px;
-    background:rgba(10,10,10,.5);
-    backdrop-filter:blur(6px);
-    -webkit-backdrop-filter:blur(6px);
-    position:relative;
-    z-index:2;
-    gap:24px;
-  }
-
-  .mnav__logo{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    width:38px;
-    height:38px;
-    border-radius:50%;
-    border:1.5px solid var(--ink);
-    color:var(--ink);
-    font-size:13px;
-    font-weight:700;
-    letter-spacing:.03em;
-    text-decoration:none;
-    flex-shrink:0;
-  }
-
-  /* ---- Desktop inline links ---- */
-  .mnav__links{
-    display:flex;
-    align-items:center;
-    gap:34px;
-    list-style:none;
-    margin:0;
-    padding:0;
-    flex:1;
-    justify-content:center;
-  }
-  .mnav__links a{
-    position:relative;
-    color:var(--ink-dim);
-    text-decoration:none;
-    font-size:13px;
-    font-weight:600;
-    letter-spacing:.1em;
-    text-transform:uppercase;
-    padding-bottom:6px;
-    transition:color .3s ease;
-    white-space:nowrap;
-  }
-  .mnav__links a::after{
-    content:"";
-    position:absolute; left:0; bottom:0;
-    width:100%; height:2px;
-    background:var(--accent);
-    transform:scaleX(0);
-    transform-origin:center;
-    transition:transform .3s ease;
-  }
+  #mnav{ --accent:#bf3ae8; --ink:#f4f4f4; --ink-dim:rgba(244,244,244,.55); --line:rgba(244,244,244,0.733); position:relative; z-index:999; font-family:'Poppins','Segoe UI',sans-serif; }
+  .mnav__bar{ display:flex; align-items:center; justify-content:space-between; padding:14px 28px; background:rgba(10,10,10,.5); backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px); position:relative; z-index:2; gap:24px; }
+  .mnav__logo{ display:flex; align-items:center; justify-content:center; width:38px; height:38px; border-radius:50%; border:1.5px solid var(--ink); color:var(--ink); font-size:13px; font-weight:700; letter-spacing:.03em; text-decoration:none; flex-shrink:0; }
+  .mnav__links{ display:flex; align-items:center; gap:34px; list-style:none; margin:0; padding:0; flex:1; justify-content:center; }
+  .mnav__links a{ position:relative; color:var(--ink-dim); text-decoration:none; font-size:13px; font-weight:600; letter-spacing:.1em; text-transform:uppercase; padding-bottom:6px; transition:color .3s ease; white-space:nowrap; }
+  .mnav__links a::after{ content:""; position:absolute; left:0; bottom:0; width:100%; height:2px; background:var(--accent); transform:scaleX(0); transform-origin:center; transition:transform .3s ease; }
   .mnav__links a:hover{ color:var(--ink); }
   .mnav__links a.active{ color:var(--accent); }
-  .mnav__links a:hover::after,
-  .mnav__links a.active::after{ transform:scaleX(1); }
-
-  .mnav__icons{
-    display:flex;
-    align-items:center;
-    gap:20px;
-    flex-shrink:0;
-  }
-  /* ---- Menu hover dropdown (desktop) ---- */
-  .mnav__dropdown{ position:relative; }
-
-  .mnav__chev{
-    width:11px; height:11px;
-    margin-left:4px;
-    vertical-align:-1px;
-    transition:transform .3s ease;
-  }
-  .mnav__dropdown:hover .mnav__chev,
-  .mnav__dropdown:focus-within .mnav__chev{ transform:rotate(180deg); }
-
-  .mnav__dd{
-    position:absolute;
-    top:100%;
-    left:50%;
-    padding-top:16px;              /* hover gap bridge, taake dropdown band na ho */
-    transform:translateX(-50%) translateY(-6px);
-    opacity:0;
-    visibility:hidden;
-    transition:opacity .25s ease, transform .25s ease, visibility 0s linear .25s;
-    z-index:20;
-  }
-  .mnav__dropdown:hover .mnav__dd,
-  .mnav__dropdown:focus-within .mnav__dd{
-    opacity:1;
-    visibility:visible;
-    transform:translateX(-50%) translateY(0);
-    transition:opacity .25s ease, transform .25s ease, visibility 0s linear 0s;
-  }
-
-  .mnav__dd-box{
-    position:relative;
-    min-width:190px;
-    padding:6px;
-    background:rgba(14,14,18,.98);
-    border:1px solid var(--line);
-    border-radius:8px;
-    box-shadow:0 18px 40px -12px rgba(0,0,0,.6);
-  }
-  .mnav__dd-box::before{
-    content:"";
-    position:absolute;
-    top:-6px; left:50%;
-    width:10px; height:10px;
-    margin-left:-5px;
-    background:rgba(14,14,18,.98);
-    border-left:1px solid var(--line);
-    border-top:1px solid var(--line);
-    transform:rotate(45deg);
-  }
-
-  .mnav__links .mnav__dd a{
-    display:block;
-    padding:11px 14px;
-    font-size:12px;
-    font-weight:600;
-    letter-spacing:.08em;
-    color:var(--ink-dim);
-    border-radius:5px;
-    transition:color .25s ease, background .25s ease;
-  }
-  .mnav__links .mnav__dd a:hover{
-    color:var(--ink);
-    background:rgba(191,58,232,.14);
-  }
-  /* dropdown links pe underline animation nahi chahiye */
-  .mnav__links .mnav__dd a::after,
-  .mnav__links .mnav__dd a:hover::after{ display:none; }
-  /* ---- Find Us + hover popover ---- */
-  .mnav__find{
-    position:relative;
-    display:flex;
-    align-items:center;
-    gap:6px;
-    color:var(--ink-dim);
-    font-size:13px;
-    letter-spacing:.03em;
-    text-transform:uppercase;
-    cursor:pointer;
-    transition:color .3s ease;
-    white-space:nowrap;
-  }
+  .mnav__links a:hover::after, .mnav__links a.active::after{ transform:scaleX(1); }
+  .mnav__icons{ display:flex; align-items:center; gap:20px; flex-shrink:0; }
+  .mnav__find{ position:relative; display:flex; align-items:center; gap:6px; color:var(--ink-dim); font-size:13px; letter-spacing:.03em; text-transform:uppercase; cursor:pointer; transition:color .3s ease; white-space:nowrap; }
   .mnav__find svg{ width:16px; height:16px; flex-shrink:0; }
   .mnav__find:hover{ color:var(--ink); }
-
-  .mnav__pop{
-    position:absolute;
-    top:calc(100% + 16px);
-    right:-10px;
-    width:210px;
-    padding:12px 14px;
-    background:rgba(14,14,18,.98);
-    border:1px solid var(--line);
-    border-radius:8px;
-    box-shadow:0 18px 40px -12px rgba(0,0,0,.6);
-    opacity:0;
-    visibility:hidden;
-    transform:translateY(-6px);
-    transition:opacity .25s ease, transform .25s ease, visibility 0s linear .25s;
-    z-index:20;
-  }
-  .mnav__pop::before{
-    content:"";
-    position:absolute;
-    top:-5px; right:22px;
-    width:10px; height:10px;
-    background:rgba(14,14,18,.98);
-    border-left:1px solid var(--line);
-    border-top:1px solid var(--line);
-    transform:rotate(45deg);
-  }
-  .mnav__find:hover .mnav__pop{
-    opacity:1; visibility:visible; transform:translateY(0);
-    transition:opacity .25s ease, transform .25s ease, visibility 0s linear 0s;
-  }
-  .mnav__pop p{
-    margin:0 0 8px;
-    font-size:12px;
-    line-height:1.5;
-    color:var(--ink-dim);
-    text-transform:none;
-    letter-spacing:normal;
-  }
-  .mnav__pop a{
-    font-size:11px;
-    font-weight:600;
-    letter-spacing:.06em;
-    text-transform:uppercase;
-    color:var(--accent);
-    text-decoration:none;
-  }
+  .mnav__pop{ position:absolute; top:calc(100% + 16px); right:-10px; width:210px; padding:12px 14px; background:rgba(14,14,18,.98); border:1px solid var(--line); border-radius:8px; box-shadow:0 18px 40px -12px rgba(0,0,0,.6); opacity:0; visibility:hidden; transform:translateY(-6px); transition:opacity .25s ease, transform .25s ease, visibility 0s linear .25s; z-index:20; }
+  .mnav__pop::before{ content:""; position:absolute; top:-5px; right:22px; width:10px; height:10px; background:rgba(14,14,18,.98); border-left:1px solid var(--line); border-top:1px solid var(--line); transform:rotate(45deg); }
+  .mnav__find:hover .mnav__pop{ opacity:1; visibility:visible; transform:translateY(0); transition:opacity .25s ease, transform .25s ease, visibility 0s linear 0s; }
+  .mnav__pop p{ margin:0 0 8px; font-size:12px; line-height:1.5; color:var(--ink-dim); text-transform:none; letter-spacing:normal; }
+  .mnav__pop a{ font-size:11px; font-weight:600; letter-spacing:.06em; text-transform:uppercase; color:var(--accent); text-decoration:none; }
   .mnav__pop a:hover{ text-decoration:underline; }
-
-  /* ---- Book a Table CTA ---- */
-  .mnav__cta{
-    padding:9px 20px;
-    font-size:12px;
-    font-weight:600;
-    letter-spacing:.08em;
-    text-transform:uppercase;
-    color:#0a0a0f;
-    background:var(--accent);
-    border-radius:3px;
-    text-decoration:none;
-    white-space:nowrap;
-    transition:transform .3s ease, box-shadow .3s ease;
-  }
-  .mnav__cta:hover{
-    transform:translateY(-2px);
-    box-shadow:0 10px 22px -8px rgba(232,98,58,.5);
-  }
-
-  /* ---- Burger icon (hidden on desktop by default) ---- */
-  .mnav__burger{
-    display:none;
-    flex-direction:column;
-    justify-content:center;
-    gap:5px;
-    width:24px;
-    height:20px;
-    background:none;
-    border:none;
-    cursor:pointer;
-    padding:0;
-  }
-  .mnav__burger span{
-    width:100%;
-    height:2px;
-    background:var(--ink);
-    border-radius:2px;
-    transition:transform .35s ease, opacity .25s ease;
-  }
+  .mnav__cta{ padding:9px 20px; font-size:12px; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:#0a0a0f; background:var(--accent); border-radius:3px; text-decoration:none; white-space:nowrap; transition:transform .3s ease, box-shadow .3s ease; }
+  .mnav__cta:hover{ transform:translateY(-2px); box-shadow:0 10px 22px -8px rgba(232,98,58,.5); }
+  .mnav__burger{ display:none; flex-direction:column; justify-content:center; gap:5px; width:24px; height:20px; background:none; border:none; cursor:pointer; padding:0; }
+  .mnav__burger span{ width:100%; height:2px; background:var(--ink); border-radius:2px; transition:transform .35s ease, opacity .25s ease; }
   .mnav__burger.open span:nth-child(1){ transform:translateY(7px) rotate(45deg); }
   .mnav__burger.open span:nth-child(2){ opacity:0; }
   .mnav__burger.open span:nth-child(3){ transform:translateY(-7px) rotate(-45deg); }
-
-  /* ---- Mobile dropdown menu panel (hidden on desktop by default) ---- */
-  .mnav__menu{
-    display:none;
-    list-style:none;
-    margin:0;
-    padding:0 18px;
-    background:rgba(8,8,8,.86);
-    backdrop-filter:blur(10px);
-    -webkit-backdrop-filter:blur(10px);
-
-    max-height:0;
-    overflow:hidden;
-    opacity:0;
-    transition:max-height .45s cubic-bezier(.2,.8,.2,1), opacity .35s ease;
-  }
-  .mnav__menu.open{
-    max-height:400px;
-    opacity:1;
-    padding:6px 18px 16px;
-  }
-
-  .mnav__menu li{
-    border-bottom:1px solid var(--line);
-  }
-  .mnav__menu li:last-child{
-    border-bottom:none;
-  }
-
-  .mnav__menu a{
-    display:block;
-    padding:13px 2px;
-    color:var(--ink-dim);
-    text-decoration:none;
-    font-size:13px;
-    font-weight:600;
-    letter-spacing:.12em;
-    text-transform:uppercase;
-    transition:color .25s ease;
-  }
-  .mnav__menu a:hover{
-    color:var(--ink);
-  }
-  .mnav__menu a.active{
-    color:var(--accent);
-  }
-
-  /* ================= RESPONSIVE SWITCH ================= */
+  .mnav__menu{ display:none; list-style:none; margin:0; padding:0 18px; background:rgba(8,8,8,.86); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); max-height:0; overflow:hidden; opacity:0; transition:max-height .45s cubic-bezier(.2,.8,.2,1), opacity .35s ease; }
+  .mnav__menu.open{ max-height:400px; opacity:1; padding:6px 18px 16px; }
+  .mnav__menu li{ border-bottom:1px solid var(--line); }
+  .mnav__menu li:last-child{ border-bottom:none; }
+  .mnav__menu a{ display:block; padding:13px 2px; color:var(--ink-dim); text-decoration:none; font-size:13px; font-weight:600; letter-spacing:.12em; text-transform:uppercase; transition:color .25s ease; }
+  .mnav__menu a:hover{ color:var(--ink); }
+  .mnav__menu a.active{ color:var(--accent); }
   @media (max-width: 860px){
     .mnav__bar{ padding:14px 18px; }
-    .mnav__links{ display:none; }      /* hide desktop links */
-    .mnav__icons .mnav__find{ display:none; }  /* hide find us on mobile bar */
-    .mnav__icons .mnav__cta{ display:none; }   /* hide book a table on mobile bar */
-    .mnav__burger{ display:flex; }     /* show burger */
-    .mnav__menu{ display:block; }      /* enable mobile dropdown */
+    .mnav__links{ display:none; }
+    .mnav__icons .mnav__find{ display:none; }
+    .mnav__icons .mnav__cta{ display:none; }
+    .mnav__burger{ display:flex; }
+    .mnav__menu{ display:block; }
   }
 </style>
-
 <script>
 (function(){
   var burger = document.getElementById('mnavBurger');
   var menu = document.getElementById('mnavMenu');
   if(!burger || !menu) return;
-
   burger.addEventListener('click', function(){
     var isOpen = menu.classList.toggle('open');
     burger.classList.toggle('open', isOpen);
     burger.setAttribute('aria-expanded', isOpen);
   });
-
   menu.querySelectorAll('a').forEach(function(a){
     a.addEventListener('click', function(){
       menu.classList.remove('open');
@@ -1144,11 +206,10 @@
   });
 })();
 </script>
+
 <!-- HERO -->
 <header class="hero">
-  <div class="hero__bg">
-    <img src="menu-bg.jpg" alt="">
-  </div>
+  <div class="hero__bg"><img src="menu-bg.jpg" alt=""></div>
   <div class="wrap">
     <p class="hero__brand">CAFE MOISHI</p>
     <h1 class="hero__title">The Full Menu</h1>
@@ -1160,905 +221,224 @@
 <nav class="catnav">
   <div class="catnav__inner">
     <a href="#student-offers">Student Offers</a>
-    <a href="#premium">Premium</a>
     <a href="#burgers">Burgers</a>
     <a href="#grill">Grill &amp; Chill</a>
     <a href="#steaks">Steaks</a>
     <a href="#sides">Still Hungry</a>
     <a href="#mocktails">Mocktails</a>
+    <a href="#premium">Milkshakes</a>
+    <a href="#drinks">Drinks</a>
+    <a href="#hotdrinks">Hot Drinks</a>
+    <a href="#desserts">Desserts</a>
+    <a href="#shisha">Sheesha</a>
     <a href="#milkshakes">Starbuzz</a>
     <a href="#savacco">Savacco</a>
-    <a href="#shisha">Sheesha</a>
-    <a href="#drinks">Drinks</a>
-    <a href="#hotdrinks">Warm Me Up</a>
-    <a href="#tea">Pots of Tea</a>
-    <a href="#desserts">Desserts</a>
     <a href="#cookies">Mayfair Cookies</a>
   </div>
 </nav>
 
 <main class="wrap">
 
-  <!-- BURGERS -->
   <section class="menu-section" id="burgers">
-    <div class="menu-section__head">
-      <span class="menu-section__eyebrow"><i></i>Moishi Burgers<i></i></span>
-      <h2 class="menu-section__title">Burgers</h2>
-    </div>
-    <div class="menu-panel">
-      <div class="menu-panel__media"><img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=900&h=1100&q=80" alt="Burgers"></div>
-      <div class="menu-panel__body">
-      <div class="menu-list">
-        <div class="menu-item">
-          <div class="menu-item__top">
-            <span class="menu-item__name">Moishi Zinger Burger</span>
-            <span class="menu-item__rule"></span>
-            <span class="menu-item__price">£8.95</span>
-          </div>
-          <p class="menu-item__desc">A perfectly crispy spicy chicken fillet tucked into a soft, buttery brioche bun. Topped with fresh lettuce and a creamy mayo spread.</p>
-        </div>
-        <div class="menu-item">
-          <div class="menu-item__top">
-            <span class="menu-item__name">Moishi Peri Peri Grill Burger</span>
-            <span class="menu-item__rule"></span>
-            <span class="menu-item__price">£8.95</span>
-          </div>
-          <p class="menu-item__desc">Succulent grilled chicken, fresh lettuce, crunchy red onion, creamy mayo and a kick of peri peri sauce, all in a soft flour bun.</p>
-        </div>
-        <div class="menu-item">
-          <div class="menu-item__top">
-            <span class="menu-item__name">Moishi Special Burger</span>
-            <span class="menu-item__rule"></span>
-            <span class="menu-item__price">£9.95</span>
-          </div>
-          <p class="menu-item__desc">A signature Moishi creation featuring a juicy peri peri grilled chicken fillet in a soft, buttery brioche bun. Finished with fresh lettuce and red onion.</p>
-        </div>
-      </div>
-      </div>
-    </div>
+    <div class="menu-section__head"><span class="menu-section__eyebrow"><i></i>Moishi Burgers<i></i></span><h2 class="menu-section__title">Burgers</h2></div>
+    <div class="menu-panel"><div class="menu-panel__media"><img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=900&h=1100&q=80" alt="Burgers"></div>
+    <div class="menu-panel__body"><div class="menu-list"><div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Moishi Zinger Burger</span><span class="menu-item__rule"></span><span class="menu-item__price">£9.95</span></div><p class="menu-item__desc">A perfectly crispy spicy chicken fillet tucked into a soft, buttery brioche bun. Topped with fresh lettuce and a creamy mayo spread.</p></div><div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Moishi Peri Peri Grill Burger</span><span class="menu-item__rule"></span><span class="menu-item__price">£9.95</span></div><p class="menu-item__desc">Succulent grilled chicken, fresh lettuce, crunchy red onion, creamy mayo and a kick of peri peri sauce, all in a soft flour bun.</p></div><div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Moishi Special Burger</span><span class="menu-item__rule"></span><span class="menu-item__price">£10.95</span></div><p class="menu-item__desc">A signature Moishi creation featuring a juicy peri peri grilled chicken fillet in a soft, buttery brioche bun. Finished with fresh lettuce and red onion.</p></div></div></div></div>
   </section>
 
-  <!-- GRILL & CHILL -->
   <section class="menu-section" id="grill">
-    <div class="menu-section__head">
-      <span class="menu-section__eyebrow"><i></i>Moishi Grill &amp; Chill<i></i></span>
-      <h2 class="menu-section__title">Grill &amp; Chill</h2>
-    </div>
-    <div class="menu-panel">
-      <div class="menu-panel__media"><img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=900&h=1100&q=80" alt="Grill & Chill"></div>
-      <div class="menu-panel__body">
-      <div class="menu-list">
-        <div class="menu-item">
-          <div class="menu-item__top"><span class="menu-item__name">Dynamite King Prawns</span><span class="menu-item__rule"></span><span class="menu-item__price">£9.95</span></div>
-          <p class="menu-item__desc">Succulent king prawns tossed in a fiery, creamy dynamite sauce — the perfect balance of heat and flavour.</p>
-        </div>
-        <div class="menu-item">
-          <div class="menu-item__top"><span class="menu-item__name">Dynamite Chicken</span><span class="menu-item__rule"></span><span class="menu-item__price">£8.95</span></div>
-          <p class="menu-item__desc">Juicy chicken pieces cooked in a rich masala, served on crisp golden fried puri and garnished with fresh coriander.</p>
-        </div>
-        <div class="menu-item">
-          <div class="menu-item__top"><span class="menu-item__name">Moishi Mix Grill</span><span class="menu-item__rule"></span><span class="menu-item__price">£14.95</span></div>
-          <p class="menu-item__desc">Juicy chicken pieces coated in a bold, spicy dynamite sauce — a fiery kick with a creamy finish, crispy on the outside.</p>
-        </div>
-        <div class="menu-item">
-          <div class="menu-item__top"><span class="menu-item__name">Moishi Chops</span><span class="menu-item__rule"></span><span class="menu-item__price">£10.95</span></div>
-          <p class="menu-item__desc">Tender, marinated chops grilled to perfection and served with a smoky, flavourful glaze.</p>
-        </div>
-        <div class="menu-item">
-          <div class="menu-item__top"><span class="menu-item__name">Moishi Chicken Leg Boneless</span><span class="menu-item__rule"></span><span class="menu-item__price">£8.95</span></div>
-          <p class="menu-item__desc">Succulent boneless chicken leg, perfectly seasoned and grilled to a tender, juicy finish.</p>
-        </div>
-        <div class="menu-item">
-          <div class="menu-item__top"><span class="menu-item__name">Moishi Grill Chicken with Salad</span><span class="menu-item__rule"></span><span class="menu-item__price">£12.95</span></div>
-          <p class="menu-item__desc">A whole, juicy grilled chicken marinated to perfection, served alongside a crisp fresh salad.</p>
-        </div>
-        <div class="menu-item">
-          <div class="menu-item__top"><span class="menu-item__name">Moishi Loaded Fries Platter</span><span class="menu-item__rule"></span><span class="menu-item__price">£8.95</span></div>
-          <p class="menu-item__desc">Crispy fries topped with your choice of grilled chicken or beef, smothered in rich nacho cheese sauce.</p>
-        </div>
-      </div>
-      </div>
-    </div>
+    <div class="menu-section__head"><span class="menu-section__eyebrow"><i></i>Moishi Grill &amp; Chill<i></i></span><h2 class="menu-section__title">Grill &amp; Chill</h2></div>
+    <div class="menu-panel"><div class="menu-panel__media"><img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=900&h=1100&q=80" alt="Grill"></div>
+    <div class="menu-panel__body"><div class="menu-list"><div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Dynamite King Prawns</span><span class="menu-item__rule"></span><span class="menu-item__price">£12.95</span></div><p class="menu-item__desc">Succulent king prawns tossed in a fiery, creamy dynamite sauce — the perfect balance of heat and flavour.</p></div><div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Dynamite Chicken</span><span class="menu-item__rule"></span><span class="menu-item__price">£10.95</span></div><p class="menu-item__desc">Juicy chicken pieces coated in a bold, spicy dynamite sauce — a fiery kick with a creamy finish.</p></div><div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Moishi Wings Special</span><span class="menu-item__rule"></span><span class="menu-item__price">£9.95</span></div><p class="menu-item__desc">Our special wings, grilled and tossed in Moishi's signature seasoning.</p></div><div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Moishi Mix Grill</span><span class="menu-item__rule"></span><span class="menu-item__price">£16.95</span></div><p class="menu-item__desc">A generous platter of Moishi's best grilled meats, seasoned and cooked to perfection.</p></div><div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Moishi Chops</span><span class="menu-item__rule"></span><span class="menu-item__price">£11.95</span></div><p class="menu-item__desc">Tender, marinated chops grilled to perfection and served with a smoky, flavourful glaze.</p></div><div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Moishi Chicken Leg Boneless</span><span class="menu-item__rule"></span><span class="menu-item__price">£9.95</span></div><p class="menu-item__desc">Succulent boneless chicken leg, perfectly seasoned and grilled to a tender, juicy finish.</p></div><div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Moishi Grill Chicken Full with Salad</span><span class="menu-item__rule"></span><span class="menu-item__price">£15.95</span></div><p class="menu-item__desc">A whole, juicy grilled chicken marinated to perfection, served alongside a crisp fresh salad.</p></div><div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Moishi Loaded Fries Platter</span><span class="menu-item__rule"></span><span class="menu-item__price">£9.95</span></div><p class="menu-item__desc">Crispy fries topped with your choice of grilled chicken or beef, smothered in rich nacho cheese sauce.</p></div></div></div></div>
   </section>
 
-  <!-- STEAKS -->
   <section class="menu-section" id="steaks">
-    <div class="menu-section__head">
-      <span class="menu-section__eyebrow"><i></i>Moishi Steak's Corner<i></i></span>
-      <h2 class="menu-section__title">Steaks</h2>
-    </div>
-    <div class="menu-panel">
-      <div class="menu-panel__media"><img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=900&h=1100&q=80" alt="Steaks"></div>
-      <div class="menu-panel__body">
-      <div class="menu-list">
-        <div class="menu-item">
-          <div class="menu-item__top"><span class="menu-item__name">Chicken Steak</span><span class="menu-item__rule"></span><span class="menu-item__price">£12.95</span></div>
-          <p class="menu-item__desc">A tender, juicy chicken steak grilled to perfection, seasoned with bold spices and served with your choice of sides.</p>
-        </div>
-        <div class="menu-item">
-          <div class="menu-item__top"><span class="menu-item__name">Beef Steak</span><span class="menu-item__rule"></span><span class="menu-item__price">£12.95</span></div>
-          <p class="menu-item__desc">A perfectly cooked, tender beef steak, seasoned and grilled to your preferred doneness. Served with your choice of sides.</p>
-        </div>
-      </div>
-      </div>
-    </div>
+    <div class="menu-section__head"><span class="menu-section__eyebrow"><i></i>Moishi Steak's Corner<i></i></span><h2 class="menu-section__title">Steaks</h2></div>
+    <div class="menu-panel"><div class="menu-panel__media"><img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=900&h=1100&q=80" alt="Steaks"></div>
+    <div class="menu-panel__body"><div class="menu-list"><div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Chicken Steak</span><span class="menu-item__rule"></span><span class="menu-item__price">£15.95</span></div><p class="menu-item__desc">A tender, juicy chicken steak grilled to perfection, seasoned with bold spices and served with your choice of sides.</p></div><div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Beef Steak</span><span class="menu-item__rule"></span><span class="menu-item__price">£16.95</span></div><p class="menu-item__desc">A perfectly cooked, tender beef steak, seasoned and grilled to your preferred doneness. Served with your choice of sides.</p></div></div></div></div>
   </section>
 
-  <!-- STILL HUNGRY -->
   <section class="menu-section" id="sides">
-    <div class="menu-section__head">
-      <span class="menu-section__eyebrow"><i></i>Still Hungry<i></i></span>
-      <h2 class="menu-section__title">Sides</h2>
-    </div>
-    <div class="menu-panel">
-      <div class="menu-panel__media"><img src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=900&h=1100&q=80" alt="Sides"></div>
-      <div class="menu-panel__body">
-      <div class="menu-list">
-        <div class="menu-item">
-          <div class="menu-item__top"><span class="menu-item__name">House Fries</span><span class="menu-item__rule"></span><span class="menu-item__price">£2.50</span></div>
-          <p class="menu-item__desc">Golden, crispy fries seasoned to perfection.</p>
-        </div>
-        <div class="menu-item">
-          <div class="menu-item__top"><span class="menu-item__name">Cheesy Fries</span><span class="menu-item__rule"></span><span class="menu-item__price">£3.50</span></div>
-          <p class="menu-item__desc">Crispy golden fries topped with rich, melted cheese.</p>
-        </div>
-        <div class="menu-item">
-          <div class="menu-item__top"><span class="menu-item__name">Sweet Potato Fries</span><span class="menu-item__rule"></span><span class="menu-item__price">£3.50</span></div>
-          <p class="menu-item__desc">Crispy, lightly seasoned sweet potato fries with a natural sweetness.</p>
-        </div>
-        <div class="menu-item">
-          <div class="menu-item__top"><span class="menu-item__name">Peri Peri Rice</span><span class="menu-item__rule"></span><span class="menu-item__price">£5.00</span></div>
-          <p class="menu-item__desc">Fluffy rice infused with bold peri peri flavours.</p>
-        </div>
-      </div>
-      </div>
-    </div>
+    <div class="menu-section__head"><span class="menu-section__eyebrow"><i></i>Still Hungry<i></i></span><h2 class="menu-section__title">Sides</h2></div>
+    <div class="menu-panel"><div class="menu-panel__media"><img src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=900&h=1100&q=80" alt="Sides"></div>
+    <div class="menu-panel__body"><div class="menu-list"><div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">House Fries</span><span class="menu-item__rule"></span><span class="menu-item__price">£2.50</span></div><p class="menu-item__desc">Golden, crispy fries seasoned to perfection.</p></div><div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Cheesy Fries</span><span class="menu-item__rule"></span><span class="menu-item__price">£3.50</span></div><p class="menu-item__desc">Crispy golden fries topped with rich, melted cheese.</p></div><div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Sweet Potato Fries</span><span class="menu-item__rule"></span><span class="menu-item__price">£3.50</span></div><p class="menu-item__desc">Crispy, lightly seasoned sweet potato fries with a natural sweetness.</p></div><div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Cheese Nacho Fries</span><span class="menu-item__rule"></span><span class="menu-item__price">£5.00</span></div><p class="menu-item__desc">Crispy fries smothered in warm nacho cheese sauce.</p></div><div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Peri Peri Rice</span><span class="menu-item__rule"></span><span class="menu-item__price">£5.00</span></div><p class="menu-item__desc">Fluffy rice infused with bold peri peri flavours.</p></div></div></div></div>
   </section>
 
-  <!-- MOCKTAILS -->
   <section class="menu-section" id="mocktails">
-    <div class="menu-section__head">
-      <span class="menu-section__eyebrow"><i></i>Moishi Mocktails<i></i></span>
-      <h2 class="menu-section__title">Mocktails</h2>
-    </div>
-    <div class="menu-panel">
-      <div class="menu-panel__media"><img src="https://images.unsplash.com/photo-1546171753-97d7676e4602?auto=format&fit=crop&w=900&h=1100&q=80" alt="Mocktails"></div>
-      <div class="menu-panel__body">
-      <div class="menu-list menu-list--simple">
-        <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Virgin Mojito</span><span class="menu-item__rule"></span><span class="menu-item__price">£5.00</span></div></div>
-        <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Mango Mojito</span><span class="menu-item__rule"></span><span class="menu-item__price">£5.00</span></div></div>
-        <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Strawberry Mojito</span><span class="menu-item__rule"></span><span class="menu-item__price">£6.00</span></div></div>
-        <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Passionova Mojito</span><span class="menu-item__rule"></span><span class="menu-item__price">£6.00</span></div></div>
-        <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Pina Colada</span><span class="menu-item__rule"></span><span class="menu-item__price">£6.00</span></div></div>
-        <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Moishi Special</span><span class="menu-item__rule"></span><span class="menu-item__price">£6.50</span></div></div>
-      </div>
-      </div>
-    </div>
+    <div class="menu-section__head"><span class="menu-section__eyebrow"><i></i>Moishi Mocktails<i></i></span><h2 class="menu-section__title">Mocktails</h2></div>
+    <div class="menu-panel"><div class="menu-panel__media"><img src="https://images.unsplash.com/photo-1546171753-97d7676e4602?auto=format&fit=crop&w=900&h=1100&q=80" alt="Mocktails"></div>
+    <div class="menu-panel__body"><div class="menu-list menu-list--simple"><div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Virgin Mojito</span><span class="menu-item__rule"></span><span class="menu-item__price">£6.00</span></div></div><div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Mango Mojito</span><span class="menu-item__rule"></span><span class="menu-item__price">£6.50</span></div></div><div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Strawberry Mojito</span><span class="menu-item__rule"></span><span class="menu-item__price">£6.50</span></div></div><div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Passionova Mojito</span><span class="menu-item__rule"></span><span class="menu-item__price">£6.50</span></div></div><div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Pina Colada</span><span class="menu-item__rule"></span><span class="menu-item__price">£6.40</span></div></div><div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Moishi Special</span><span class="menu-item__rule"></span><span class="menu-item__price">£6.95</span></div></div></div></div></div>
   </section>
 
-  <!-- STARBUZZ -->
-  <section class="menu-section" id="milkshakes">
-    <div class="menu-section__head">
-      <span class="menu-section__eyebrow"><i></i>Moishi Starbuzz<i></i></span>
-      <h2 class="menu-section__title">Starbuzz</h2>
-      <p class="menu-section__note">Add any other flavour for £2</p>
-    </div>
-    <div class="menu-panel">
-      <div class="menu-panel__media"><img src="https://images.unsplash.com/photo-1541658016709-82535e94bc69?auto=format&fit=crop&w=900&h=1100&q=80" alt="Starbuzz"></div>
-      <div class="menu-panel__body">
-      <span class="menu-baseprice">£16 each</span>
-      <div class="menu-chips">
-        <span class="menu-chip">African Queen</span>
-        <span class="menu-chip">Dragon Breeze</span>
-        <span class="menu-chip">Mango Tango</span>
-        <span class="menu-chip">Frozen Lime</span>
-        <span class="menu-chip">Irn Bru</span>
-        <span class="menu-chip">Skittles</span>
-        <span class="menu-chip">Love 66</span>
-        <span class="menu-chip">Cuban Mojito</span>
-        <span class="menu-chip">Frozen Passion</span>
-        <span class="menu-chip">Cloud Lime</span>
-        <span class="menu-chip">Lady Killer</span>
-        <span class="menu-chip">Moonlight Berry</span>
-      </div>
-      </div>
-    </div>
+  <section class="menu-section" id="premium">
+    <div class="menu-section__head"><span class="menu-section__eyebrow"><i></i>Milkshakes<i></i></span><h2 class="menu-section__title">Milkshakes</h2></div>
+    <div class="menu-panel"><div class="menu-panel__media"><img src="https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=900&h=1100&q=80" alt="Milkshakes"></div>
+    <div class="menu-panel__body"><span class="menu-baseprice">£6 each</span><div class="menu-chips"><span class="menu-chip">Lotus Biscoff</span><span class="menu-chip">Strawberry</span><span class="menu-chip">Oreo</span><span class="menu-chip">Chocolate</span><span class="menu-chip">Peanut Butter</span><span class="menu-chip">Ferrero Rocher</span></div></div></div>
   </section>
 
-<!-- ===== PREMIUM MILKSHAKES ===== -->
-<section class="menu-section" id="premium">
-  <div class="wrap">
-    <div class="menu-section__head">
-      <span class="menu-section__eyebrow"><i></i>Indulgent &amp; Profitable<i></i></span>
-      <h2 class="menu-section__title">Premium</h2>
-      <p class="menu-section__note">These are what people come back for &amp; share</p>
-    </div>
-    <div class="menu-panel">
-      <div class="menu-panel__media"><img src="https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=900&h=1100&q=80" alt="Premium milkshake"></div>
-      <div class="menu-panel__body">
-      <div class="menu-list menu-list--simple">
-        <div class="menu-item">
-          <div class="menu-item__top"><span class="menu-item__name">Oreo Cookies &amp; Cream</span><span class="menu-item__rule"></span><span class="menu-item__price">£6</span></div>
-          <p class="menu-item__desc">Blended with crushed Oreos, topped with whipped cream.</p>
-        </div>
-        <div class="menu-item">
-          <div class="menu-item__top"><span class="menu-item__name">Lotus Biscoff</span><span class="menu-item__rule"></span><span class="menu-item__price">£6</span></div>
-          <p class="menu-item__desc">Caramel biscuit flavour, crumbs on top.</p>
-        </div>
-        <div class="menu-item">
-          <div class="menu-item__top"><span class="menu-item__name">Nutella</span><span class="menu-item__rule"></span><span class="menu-item__price">£6</span></div>
-          <p class="menu-item__desc">Rich chocolate-hazelnut, thick &amp; luxurious.</p>
-        </div>
-        <div class="menu-item">
-          <div class="menu-item__top"><span class="menu-item__name">Ferrero Rocher</span><span class="menu-item__rule"></span><span class="menu-item__price">£6</span></div>
-          <p class="menu-item__desc">Hazelnut &amp; milk chocolate, pure luxury.</p>
-        </div>
-        <div class="menu-item">
-          <div class="menu-item__top"><span class="menu-item__name">Kinder Bueno</span><span class="menu-item__rule"></span><span class="menu-item__price">£6</span></div>
-          <p class="menu-item__desc">Creamy white &amp; milk chocolate hazelnut.</p>
-        </div>
-        <div class="menu-item">
-          <div class="menu-item__top"><span class="menu-item__name">Maltesers / Crunchie</span><span class="menu-item__rule"></span><span class="menu-item__price">£6</span></div>
-          <p class="menu-item__desc">Honeycomb &amp; chocolate with that perfect crunch.</p>
-        </div>
-      </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-  <!-- SAVACCO -->
-  <section class="menu-section" id="savacco">
-    <div class="menu-section__head">
-      <span class="menu-section__eyebrow"><i></i>Savacco<i></i></span>
-      <h2 class="menu-section__title">Savacco</h2>
-    </div>
-    <div class="menu-panel">
-      <div class="menu-panel__media"><img src="https://images.unsplash.com/photo-1560508180-03f285f67ded?auto=format&fit=crop&w=900&h=1100&q=80" alt="Savacco"></div>
-      <div class="menu-panel__body">
-      <span class="menu-baseprice">£20 each</span>
-      <div class="menu-chips">
-        <span class="menu-chip">Purple Rain</span>
-        <span class="menu-chip">Frozen SMF</span>
-        <span class="menu-chip">Manga Carta</span>
-        <span class="menu-chip">Picasso</span>
-        <span class="menu-chip">Black Mamba</span>
-        <span class="menu-chip">Passionvova</span>
-        <span class="menu-chip">G6 on the Rocks</span>
-      </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SHEESHA -->
-  <section class="menu-section" id="shisha">
-    <div class="menu-section__head">
-      <span class="menu-section__eyebrow"><i></i>Sheesha<i></i></span>
-      <h2 class="menu-section__title">Sheesha Menu</h2>
-    </div>
-    <div class="menu-panel">
-      <div class="menu-panel__media"><img src="https://images.unsplash.com/photo-1541532713592-79a0317b6b77?auto=format&fit=crop&w=900&h=1100&q=80" alt="Sheesha"></div>
-      <div class="menu-panel__body">
-
-      <div class="menu-group">
-        <h3 class="menu-subhead">Sheesha Flavours</h3>
-        <p class="menu-subnote">Single £10 — add any other flavour £2</p>
-        <div class="menu-chips">
-          <span class="menu-chip">Double Apple</span>
-          <span class="menu-chip">Peach</span>
-          <span class="menu-chip">Blueberry</span>
-          <span class="menu-chip">Kiwi</span>
-          <span class="menu-chip">Watermelon</span>
-          <span class="menu-chip">Lemon</span>
-          <span class="menu-chip">Grape</span>
-          <span class="menu-chip">Orange</span>
-          <span class="menu-chip">Raspberry</span>
-          <span class="menu-chip">Gum</span>
-          <span class="menu-chip">Mint</span>
-          <span class="menu-chip">Guava</span>
-          <span class="menu-chip">Coconut</span>
-          <span class="menu-chip">Fresh Mist</span>
-          <span class="menu-chip">Vanilla</span>
-          <span class="menu-chip">Pomegranate</span>
-          <span class="menu-chip">Paan</span>
-          <span class="menu-chip">Fresh Peach</span>
-        </div>
-      </div>
-
-      <div class="menu-group">
-        <h3 class="menu-subhead">Signature Sheesha</h3>
-        <span class="menu-baseprice">£15 each</span>
-        <div class="menu-chips">
-          <span class="menu-chip">White Magic</span>
-          <span class="menu-chip">Peachy</span>
-          <span class="menu-chip">Coco Loco</span>
-          <span class="menu-chip">AMG</span>
-          <span class="menu-chip">OMG</span>
-          <span class="menu-chip">Kiwi Kool</span>
-          <span class="menu-chip">Watermelon Fusion</span>
-        </div>
-      </div>
-
-      <div class="menu-group">
-        <h3 class="menu-subhead">Exclusive Sheesha</h3>
-        <span class="menu-baseprice">£16 each</span>
-        <div class="menu-chips">
-          <span class="menu-chip">Frozen Blueberries Rasp.</span>
-          <span class="menu-chip">Frozen Lychee</span>
-          <span class="menu-chip">Pink Lemonade</span>
-          <span class="menu-chip">Pear Drop</span>
-          <span class="menu-chip">Frozen Raspberry</span>
-          <span class="menu-chip">Blue Mist</span>
-          <span class="menu-chip">Purple Velvet</span>
-          <span class="menu-chip">Paan</span>
-          <span class="menu-chip">Frozen Apple</span>
-          <span class="menu-chip">Pink Mist</span>
-          <span class="menu-chip">Frozen Lemon</span>
-        </div>
-      </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- DRINKS -->
   <section class="menu-section" id="drinks">
-    <div class="menu-section__head">
-      <span class="menu-section__eyebrow"><i></i>Drinks<i></i></span>
-      <h2 class="menu-section__title">Soft Drinks &amp; Juices</h2>
-    </div>
-    <div class="menu-panel">
-      <div class="menu-panel__media"><img src="https://images.unsplash.com/photo-1437418747212-8d9709afab22?auto=format&fit=crop&w=900&h=1100&q=80" alt="Drinks"></div>
-      <div class="menu-panel__body">
-      <div class="menu-list menu-list--simple">
-        <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Coke</span><span class="menu-item__rule"></span><span class="menu-item__price">£2.00</span></div></div>
-        <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Sprite</span><span class="menu-item__rule"></span><span class="menu-item__price">£2.00</span></div></div>
-        <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Diet Coke</span><span class="menu-item__rule"></span><span class="menu-item__price">£2.00</span></div></div>
-        <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Irn Bru</span><span class="menu-item__rule"></span><span class="menu-item__price">£2.00</span></div></div>
-        <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Pepsi</span><span class="menu-item__rule"></span><span class="menu-item__price">£2.00</span></div></div>
-        <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">J2O</span><span class="menu-item__rule"></span><span class="menu-item__price">£2.50</span></div></div>
-        <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Diet Pepsi</span><span class="menu-item__rule"></span><span class="menu-item__price">£2.00</span></div></div>
-        <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Rubicon Range</span><span class="menu-item__rule"></span><span class="menu-item__price">£1.50</span></div></div>
-        <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Fanta</span><span class="menu-item__rule"></span><span class="menu-item__price">£2.00</span></div></div>
-        <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Passion Fruit</span><span class="menu-item__rule"></span><span class="menu-item__price">£2.00</span></div></div>
-        <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Apple Juice</span><span class="menu-item__rule"></span><span class="menu-item__price">£2.00</span></div></div>
-        <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Orange Juice</span><span class="menu-item__rule"></span><span class="menu-item__price">£2.00</span></div></div>
-        <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Mango Juice</span><span class="menu-item__rule"></span><span class="menu-item__price">£2.00</span></div></div>
-        <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Mango Lussi</span><span class="menu-item__rule"></span><span class="menu-item__price">£2.00</span></div></div>
-        <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Mango Lussi Jug</span><span class="menu-item__rule"></span><span class="menu-item__price">£6.00</span></div></div>
-        <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Mineral Water</span><span class="menu-item__rule"></span><span class="menu-item__price">£1.50</span></div></div>
-      </div>
-      </div>
-    </div>
+    <div class="menu-section__head"><span class="menu-section__eyebrow"><i></i>Drinks<i></i></span><h2 class="menu-section__title">Soft Drinks &amp; Juices</h2></div>
+    <div class="menu-panel"><div class="menu-panel__media"><img src="https://images.unsplash.com/photo-1437418747212-8d9709afab22?auto=format&fit=crop&w=900&h=1100&q=80" alt="Drinks"></div>
+    <div class="menu-panel__body"><div class="menu-list menu-list--simple"><div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">J2O</span><span class="menu-item__rule"></span><span class="menu-item__price">£2.50</span></div></div><div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Coke</span><span class="menu-item__rule"></span><span class="menu-item__price">£2.50</span></div></div><div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Diet Coke</span><span class="menu-item__rule"></span><span class="menu-item__price">£2.50</span></div></div><div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Pepsi</span><span class="menu-item__rule"></span><span class="menu-item__price">£2.50</span></div></div><div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Diet Pepsi</span><span class="menu-item__rule"></span><span class="menu-item__price">£2.50</span></div></div><div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Sprite</span><span class="menu-item__rule"></span><span class="menu-item__price">£2.50</span></div></div><div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Fanta</span><span class="menu-item__rule"></span><span class="menu-item__price">£2.50</span></div></div><div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Irn Bru</span><span class="menu-item__rule"></span><span class="menu-item__price">£2.50</span></div></div><div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Red Bull</span><span class="menu-item__rule"></span><span class="menu-item__price">£3.00</span></div></div><div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Rubicon Range</span><span class="menu-item__rule"></span><span class="menu-item__price">£2.00</span></div></div><div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Mineral Water Bottle</span><span class="menu-item__rule"></span><span class="menu-item__price">£1.50</span></div></div><div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Orange Juice</span><span class="menu-item__rule"></span><span class="menu-item__price">£2.50</span></div></div><div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Passion Fruit Juice</span><span class="menu-item__rule"></span><span class="menu-item__price">£2.50</span></div></div><div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Mango Juice</span><span class="menu-item__rule"></span><span class="menu-item__price">£2.50</span></div></div><div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Apple Juice</span><span class="menu-item__rule"></span><span class="menu-item__price">£2.50</span></div></div><div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Mango Lassi Glass</span><span class="menu-item__rule"></span><span class="menu-item__price">£2.50</span></div></div><div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Mango Lassi Jug</span><span class="menu-item__rule"></span><span class="menu-item__price">£8.00</span></div></div></div><div class="menu-group"><h3 class="menu-subhead">J2O Flavours</h3><div class="menu-chips"><span class="menu-chip">Orange &amp; Passion</span><span class="menu-chip">Apple &amp; Mango</span><span class="menu-chip">Apple &amp; Raspberry</span></div></div></div></div>
   </section>
 
-  <!-- WARM ME UP -->
   <section class="menu-section" id="hotdrinks">
-    <div class="menu-section__head">
-      <span class="menu-section__eyebrow"><i></i>Warm Me Up<i></i></span>
-      <h2 class="menu-section__title">Hot Drinks</h2>
-    </div>
-    <div class="menu-panel">
-      <div class="menu-panel__media"><img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=900&h=1100&q=80" alt="Hot Drinks"></div>
-      <div class="menu-panel__body">
-      <div class="menu-list menu-list--simple">
-        <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Americano</span><span class="menu-item__rule"></span><span class="menu-item__price">£2.75</span></div></div>
-        <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Cappuccino</span><span class="menu-item__rule"></span><span class="menu-item__price">£2.75</span></div></div>
-        <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Mocha</span><span class="menu-item__rule"></span><span class="menu-item__price">£2.75</span></div></div>
-        <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Green Tea</span><span class="menu-item__rule"></span><span class="menu-item__price">£2.50</span></div></div>
-        <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Coffee Latte</span><span class="menu-item__rule"></span><span class="menu-item__price">£2.70</span></div></div>
-        <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Caramel Macchiato</span><span class="menu-item__rule"></span><span class="menu-item__price">£2.75</span></div></div>
-        <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">English Tea</span><span class="menu-item__rule"></span><span class="menu-item__price">£2.50</span></div></div>
-        <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Hot Chocolate</span><span class="menu-item__rule"></span><span class="menu-item__price">£2.75</span></div></div>
-        <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Mint Tea</span><span class="menu-item__rule"></span><span class="menu-item__price">£2.50</span></div></div>
-      </div>
-      </div>
-    </div>
+    <div class="menu-section__head"><span class="menu-section__eyebrow"><i></i>Warm Me Up<i></i></span><h2 class="menu-section__title">Hot Drinks</h2></div>
+    <div class="menu-panel"><div class="menu-panel__media"><img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=900&h=1100&q=80" alt="Hot Drinks"></div>
+    <div class="menu-panel__body"><div class="menu-group"><h3 class="menu-subhead">Coffee</h3><div class="menu-list menu-list--simple"><div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Americano</span><span class="menu-item__rule"></span><span class="menu-item__price">£3.00</span></div></div><div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Café Latte</span><span class="menu-item__rule"></span><span class="menu-item__price">£3.00</span></div></div><div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Cappuccino</span><span class="menu-item__rule"></span><span class="menu-item__price">£3.00</span></div></div><div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Caramel Macchiato</span><span class="menu-item__rule"></span><span class="menu-item__price">£3.00</span></div></div><div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Mocha</span><span class="menu-item__rule"></span><span class="menu-item__price">£3.00</span></div></div><div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Hot Chocolate</span><span class="menu-item__rule"></span><span class="menu-item__price">£3.00</span></div></div></div></div><div class="menu-group"><h3 class="menu-subhead">Brewed Tea</h3><div class="menu-list menu-list--simple"><div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">English Tea</span><span class="menu-item__rule"></span><span class="menu-item__price">£2.50</span></div></div><div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Green Tea</span><span class="menu-item__rule"></span><span class="menu-item__price">£2.50</span></div></div><div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Mint Tea</span><span class="menu-item__rule"></span><span class="menu-item__price">£2.50</span></div></div></div></div><div class="menu-group"><h3 class="menu-subhead">Pot of Tea</h3><div class="menu-list menu-list--simple"><div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Green Tea</span><span class="menu-item__rule"></span><span class="menu-item__price">£5.50</span></div></div><div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Mint Tea</span><span class="menu-item__rule"></span><span class="menu-item__price">£5.50</span></div></div></div></div></div></div>
   </section>
 
-  <!-- POTS OF TEA -->
-  <section class="menu-section" id="tea">
-    <div class="menu-section__head">
-      <span class="menu-section__eyebrow"><i></i>Pots of Tea<i></i></span>
-      <h2 class="menu-section__title">Pots of Tea</h2>
-    </div>
-    <div class="menu-panel">
-      <div class="menu-panel__media"><img src="https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&w=900&h=1100&q=80" alt="Pots of Tea"></div>
-      <div class="menu-panel__body">
-      <div class="menu-list menu-list--simple">
-        <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Green Tea</span><span class="menu-item__rule"></span><span class="menu-item__price">£5.50</span></div></div>
-        <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Mint Tea</span><span class="menu-item__rule"></span><span class="menu-item__price">£5.50</span></div></div>
-        <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Desi Tea</span><span class="menu-item__rule"></span><span class="menu-item__price">£2.50</span></div></div>
-      </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- DESSERTS -->
   <section class="menu-section" id="desserts">
-    <div class="menu-section__head">
-      <span class="menu-section__eyebrow"><i></i>Something Sweet<i></i></span>
-      <h2 class="menu-section__title">Desserts</h2>
-    </div>
-    <div class="menu-panel">
-      <div class="menu-panel__media"><img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=900&h=1100&q=80" alt="Desserts"></div>
-      <div class="menu-panel__body">
+    <div class="menu-section__head"><span class="menu-section__eyebrow"><i></i>Something Sweet<i></i></span><h2 class="menu-section__title">Desserts</h2></div>
+    <div class="menu-panel"><div class="menu-panel__media"><img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=900&h=1100&q=80" alt="Desserts"></div>
+    <div class="menu-panel__body"><div class="menu-group"><h3 class="menu-subhead">Waffle or Cookie Dough — £6.95</h3><p class="menu-subnote">Please choose one flavour</p><div class="menu-chips"><span class="menu-chip">Ferrero Rocher</span><span class="menu-chip">Lotus Biscoff</span><span class="menu-chip">Nutella</span><span class="menu-chip">Oreo</span></div></div><div class="menu-group"><h3 class="menu-subhead">Cheesecakes — £6.95</h3><div class="menu-list menu-list--simple"><div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">San Sebastián</span><span class="menu-item__rule"></span><span class="menu-item__price">£6.95</span></div></div><div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Lotus Biscoff</span><span class="menu-item__rule"></span><span class="menu-item__price">£6.95</span></div></div><div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Luxury Milk Chocolate</span><span class="menu-item__rule"></span><span class="menu-item__price">£6.95</span></div></div><div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Luxury Cookies &amp; Cream</span><span class="menu-item__rule"></span><span class="menu-item__price">£6.95</span></div></div></div></div><div class="menu-group"><h3 class="menu-subhead">Luxury Cakes — £6.00</h3><div class="menu-list menu-list--simple"><div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Peanut Butter Stack</span><span class="menu-item__rule"></span><span class="menu-item__price">£6.00</span></div></div><div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Brownie Special</span><span class="menu-item__rule"></span><span class="menu-item__price">£6.00</span></div></div><div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Lava Chocolate Cake</span><span class="menu-item__rule"></span><span class="menu-item__price">£6.00</span></div></div></div></div><div class="menu-group"><h3 class="menu-subhead">Desi Traditional Desserts</h3><div class="menu-list menu-list--simple"><div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Gulab Jamun Ice Cream</span><span class="menu-item__rule"></span><span class="menu-item__price">£5.00</span></div></div><div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Gajreela</span><span class="menu-item__rule"></span><span class="menu-item__price">£5.00</span></div></div><div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Milkcakes</span><span class="menu-item__rule"></span><span class="menu-item__price">£6.50</span></div></div></div></div><div class="menu-group"><h3 class="menu-subhead">Make It Special</h3><div class="menu-list menu-list--simple"><div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Any cake from the menu with sparklers</span><span class="menu-item__rule"></span><span class="menu-item__price">£8.00</span></div></div></div></div></div></div>
+  </section>
 
-      <div class="menu-group">
-        <h3 class="menu-subhead">Waffle &amp; Cookie Dough</h3>
-        <p class="menu-subnote">Warm, freshly baked waffle or gooey cookie dough, served with a scoop of ice cream and drizzled with your choice of syrup.</p>
-        <div class="menu-list menu-list--simple">
-          <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Lotus Biscoff</span><span class="menu-item__rule"></span><span class="menu-item__price">£5</span></div></div>
-          <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Chocolate</span><span class="menu-item__rule"></span><span class="menu-item__price">£5</span></div></div>
-          <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Peanut Butter</span><span class="menu-item__rule"></span><span class="menu-item__price">£5</span></div></div>
-          <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Strawberry</span><span class="menu-item__rule"></span><span class="menu-item__price">£5</span></div></div>
-          <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Oreo</span><span class="menu-item__rule"></span><span class="menu-item__price">£5</span></div></div>
-          <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Ferrero Rocher</span><span class="menu-item__rule"></span><span class="menu-item__price">£5</span></div></div>
-        </div>
-      </div>
+  <section class="menu-section" id="shisha">
+    <div class="menu-section__head"><span class="menu-section__eyebrow"><i></i>Sheesha<i></i></span><h2 class="menu-section__title">Sheesha Menu</h2></div>
+    <div class="menu-panel"><div class="menu-panel__media"><img src="https://images.unsplash.com/photo-1541532713592-79a0317b6b77?auto=format&fit=crop&w=900&h=1100&q=80" alt="Sheesha"></div>
+    <div class="menu-panel__body"><div class="menu-group"><h3 class="menu-subhead">Sheesha Flavours</h3><p class="menu-subnote">Add any other flavour £2</p><span class="menu-baseprice">Single £10</span><span class="menu-baseprice">Double Apple £12</span><div class="menu-chips"><span class="menu-chip">Blueberry</span><span class="menu-chip">Watermelon</span><span class="menu-chip">Grape</span><span class="menu-chip">Raspberry</span><span class="menu-chip">Mint</span><span class="menu-chip">Coconut</span><span class="menu-chip">Vanilla</span><span class="menu-chip">Peach</span><span class="menu-chip">Kiwi</span><span class="menu-chip">Lemon</span><span class="menu-chip">Orange</span><span class="menu-chip">Gum</span><span class="menu-chip">Guava</span><span class="menu-chip">Fresh Mist</span><span class="menu-chip">Pomegranate</span></div></div><div class="menu-group"><h3 class="menu-subhead">Signature Sheesha</h3><span class="menu-baseprice">£15 each</span><div class="menu-chips"><span class="menu-chip">White Magic</span><span class="menu-chip">Peachy</span><span class="menu-chip">Coco Loco</span><span class="menu-chip">AMG</span><span class="menu-chip">OMG</span><span class="menu-chip">Kiwi Kool</span><span class="menu-chip">Watermelon Fusion</span></div></div><div class="menu-group"><h3 class="menu-subhead">Exclusive Sheesha</h3><span class="menu-baseprice">£16 each</span><div class="menu-chips"><span class="menu-chip">Frozen Blueberries Raspberry</span><span class="menu-chip">Frozen Lychee</span><span class="menu-chip">Pink Lemonade</span><span class="menu-chip">Pear Drop</span><span class="menu-chip">Frozen Raspberry</span><span class="menu-chip">Blue Mist</span><span class="menu-chip">Purple Velvet</span><span class="menu-chip">Paan</span><span class="menu-chip">Frozen Apple</span><span class="menu-chip">Pink Mist</span><span class="menu-chip">Frozen Lemon</span></div></div></div></div>
+  </section>
 
-      <div class="menu-group">
-        <h3 class="menu-subhead">Cheesecakes</h3>
-        <div class="menu-list menu-list--simple">
-          <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">San Sebastian</span><span class="menu-item__rule"></span><span class="menu-item__price">£6</span></div></div>
-          <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Lotus Biscoff</span><span class="menu-item__rule"></span><span class="menu-item__price">£6</span></div></div>
-          <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Luxury Cookies &amp; Cream</span><span class="menu-item__rule"></span><span class="menu-item__price">£6</span></div></div>
-          <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Luxury Milk Chocolate</span><span class="menu-item__rule"></span><span class="menu-item__price">£6</span></div></div>
-        </div>
-      </div>
+  <section class="menu-section" id="milkshakes">
+    <div class="menu-section__head"><span class="menu-section__eyebrow"><i></i>Moishi Starbuzz<i></i></span><h2 class="menu-section__title">Starbuzz</h2><p class="menu-section__note">Add any other flavour £2</p></div>
+    <div class="menu-panel"><div class="menu-panel__media"><img src="https://images.unsplash.com/photo-1541658016709-82535e94bc69?auto=format&fit=crop&w=900&h=1100&q=80" alt="Starbuzz"></div>
+    <div class="menu-panel__body"><span class="menu-baseprice">£16 each</span><div class="menu-chips"><span class="menu-chip">African Queen</span><span class="menu-chip">Dragon Breeze</span><span class="menu-chip">Mango Tango</span><span class="menu-chip">Frozen Lime</span><span class="menu-chip">Irn Bru</span><span class="menu-chip">Skittles</span><span class="menu-chip">Love 66</span><span class="menu-chip">Cuban Mojito</span><span class="menu-chip">Frozen Passion</span><span class="menu-chip">Cloud Lime</span><span class="menu-chip">Lady Killer</span><span class="menu-chip">Moonlight Berry</span></div></div></div>
+  </section>
 
-      <div class="menu-group">
-        <h3 class="menu-subhead">Luxury Cakes</h3>
-        <div class="menu-list menu-list--simple">
-          <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Peanut Butter Stack</span><span class="menu-item__rule"></span><span class="menu-item__price">£6</span></div></div>
-          <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Lava Chocolate Cake</span><span class="menu-item__rule"></span><span class="menu-item__price">£6</span></div></div>
-          <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Brownie Special</span><span class="menu-item__rule"></span><span class="menu-item__price">£6</span></div></div>
-        </div>
-      </div>
-
-      <div class="menu-group">
-        <h3 class="menu-subhead">Desi Traditional Desserts</h3>
-        <div class="menu-list menu-list--simple">
-          <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Gulab Jamun &amp; Ice Cream</span><span class="menu-item__rule"></span><span class="menu-item__price">£6</span></div></div>
-          <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Milkcakes</span><span class="menu-item__rule"></span><span class="menu-item__price">£6</span></div></div>
-          <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Gajrela</span><span class="menu-item__rule"></span><span class="menu-item__price">£6</span></div></div>
-        </div>
-      </div>
-      </div>
-    </div>
+  <section class="menu-section" id="savacco">
+    <div class="menu-section__head"><span class="menu-section__eyebrow"><i></i>Savacco<i></i></span><h2 class="menu-section__title">Savacco</h2></div>
+    <div class="menu-panel"><div class="menu-panel__media"><img src="https://images.unsplash.com/photo-1560508180-03f285f67ded?auto=format&fit=crop&w=900&h=1100&q=80" alt="Savacco"></div>
+    <div class="menu-panel__body"><span class="menu-baseprice">£20 each</span><div class="menu-chips"><span class="menu-chip">Purple Rain</span><span class="menu-chip">Frozen SMF</span><span class="menu-chip">Magna Carta</span><span class="menu-chip">Picasso</span><span class="menu-chip">Black Mamba</span><span class="menu-chip">Passionova</span><span class="menu-chip">G6 on the Rocks</span></div></div></div>
   </section>
 
   <!-- MAYFAIR COOKIES -->
   <section class="menu-section" id="cookies">
-    <div class="menu-section__head">
-      <span class="menu-section__eyebrow"><i></i>From Miss Bundangerie, London<i></i></span>
-      <h2 class="menu-section__title">Mayfair Cookies</h2>
-      <p class="menu-section__note">Now at Cafe Moishi, Huddersfield</p>
-    </div>
-    <div class="menu-panel">
-      <div class="menu-panel__media"><img src="https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&w=900&h=1100&q=80" alt="Mayfair Cookies"></div>
-      <div class="menu-panel__body">
-
-      <div class="menu-group">
-        <h3 class="menu-subhead">Classic</h3>
-        <div class="menu-chips">
-          <span class="menu-chip">Queen of Cookie</span>
-          <span class="menu-chip">Choc Extravaganza</span>
-          <span class="menu-chip">White Cocoa</span>
-          <span class="menu-chip">Grammys Elegance</span>
-        </div>
-      </div>
-
-      <div class="menu-group">
-        <h3 class="menu-subhead">Luxury</h3>
-        <div class="menu-chips">
-          <span class="menu-chip">Sprinkles Sensation</span>
-          <span class="menu-chip">Red Velvet Bliss</span>
-          <span class="menu-chip">Reese's Joy</span>
-          <span class="menu-chip">Terry's Orange</span>
-          <span class="menu-chip">Grammys Elegance</span>
-        </div>
-      </div>
-
-      <div class="menu-group">
-        <h3 class="menu-subhead">Stuffed</h3>
-        <div class="menu-chips">
-          <span class="menu-chip">Nutella Stuffed</span>
-          <span class="menu-chip">Monstre Bleu</span>
-          <span class="menu-chip">Loaded Biscoff</span>
-          <span class="menu-chip">Bueno Surprise</span>
-        </div>
-      </div>
-
-      <div class="menu-group">
-        <h3 class="menu-subhead">Dine In Deal</h3>
-        <div class="deal-grid">
-          <div class="menu-deal">
-            <p class="menu-deal__name">3 Cookies</p>
-            <p class="menu-deal__desc">Of your choice, served with creme or milk.</p>
-            <span class="menu-deal__price">£10.00</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="menu-group">
-        <h3 class="menu-subhead">Curated Collection</h3>
-        <div class="deal-grid">
-          <div class="menu-deal">
-            <p class="menu-deal__name">La Petite Collection</p>
-            <p class="menu-deal__desc">3 Classics, 2 Luxury, 1 Stuffed.</p>
-            <span class="menu-deal__price">£20.00</span>
-          </div>
-          <div class="menu-deal">
-            <p class="menu-deal__name">La Grand Selection</p>
-            <p class="menu-deal__desc">Our finest cookie selection.</p>
-            <span class="menu-deal__price">£45.00</span>
-          </div>
-          <div class="menu-deal">
-            <p class="menu-deal__name">Creme de la Creme</p>
-            <p class="menu-deal__desc">A perfect complement for any occasion.</p>
-            <span class="menu-deal__price">£5.00</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="menu-group">
-        <h3 class="menu-subhead">La Celebration</h3>
-        <div class="deal-grid">
-          <div class="menu-deal">
-            <p class="menu-deal__name">La Grand Selection Exclusive Stuffed Box</p>
-            <p class="menu-deal__desc">Comes with Creme de la Creme and Milk bottle x 2.</p>
-            <span class="menu-deal__price">£80.00</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="menu-group">
-        <h3 class="menu-subhead">Creme &amp; Milk</h3>
-        <p class="menu-subnote">Creme — £2.00: Milk Choc · White Choc · Milk Hazelnut · White Hazelnut · Speculoos · Cookies n Creme</p>
-        <p class="menu-subnote">Milk — £2.00: Milk · Bottle</p>
-      </div>
-      </div>
-
-    </div>
+    <div class="menu-section__head"><span class="menu-section__eyebrow"><i></i>From Miss Bundangerie, London<i></i></span><h2 class="menu-section__title">Mayfair Cookies</h2><p class="menu-section__note">Now at Cafe Moishi, Huddersfield</p></div>
+    <div class="menu-panel"><div class="menu-panel__media"><img src="https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&w=900&h=1100&q=80" alt="Mayfair Cookies"></div>
+    <div class="menu-panel__body"><div class="menu-group"><h3 class="menu-subhead">Classic</h3><div class="menu-chips"><span class="menu-chip">Queen of Cookie</span><span class="menu-chip">Choc Extravaganza</span><span class="menu-chip">White Cocoa</span><span class="menu-chip">Grammys Elegance</span></div></div><div class="menu-group"><h3 class="menu-subhead">Luxury</h3><div class="menu-chips"><span class="menu-chip">Sprinkles Sensation</span><span class="menu-chip">Red Velvet Bliss</span><span class="menu-chip">Reese's Joy</span><span class="menu-chip">Terry's Orange</span><span class="menu-chip">Grammys Elegance</span></div></div><div class="menu-group"><h3 class="menu-subhead">Stuffed</h3><div class="menu-chips"><span class="menu-chip">Nutella Stuffed</span><span class="menu-chip">Monstre Bleu</span><span class="menu-chip">Loaded Biscoff</span><span class="menu-chip">Bueno Surprise</span></div></div><div class="menu-group"><h3 class="menu-subhead">Dine In Deal</h3><div class="deal-grid"><div class="menu-deal"><p class="menu-deal__name">3 Cookies</p><p class="menu-deal__desc">Of your choice, served with creme or milk.</p><span class="menu-deal__price">£10.00</span></div></div></div><div class="menu-group"><h3 class="menu-subhead">Curated Collection</h3><div class="deal-grid"><div class="menu-deal"><p class="menu-deal__name">La Petite Collection</p><p class="menu-deal__desc">3 Classics, 2 Luxury, 1 Stuffed.</p><span class="menu-deal__price">£20.00</span></div><div class="menu-deal"><p class="menu-deal__name">La Grand Selection</p><p class="menu-deal__desc">Our finest cookie selection.</p><span class="menu-deal__price">£45.00</span></div><div class="menu-deal"><p class="menu-deal__name">Creme de la Creme</p><p class="menu-deal__desc">A perfect complement for any occasion.</p><span class="menu-deal__price">£5.00</span></div></div></div><div class="menu-group"><h3 class="menu-subhead">La Celebration</h3><div class="deal-grid"><div class="menu-deal"><p class="menu-deal__name">La Grand Selection Exclusive Stuffed Box</p><p class="menu-deal__desc">Comes with Creme de la Creme and Milk bottle x 2.</p><span class="menu-deal__price">£80.00</span></div></div></div><div class="menu-group"><h3 class="menu-subhead">Creme &amp; Milk</h3><p class="menu-subnote">Creme — £2.00: Milk Choc · White Choc · Milk Hazelnut · White Hazelnut · Speculoos · Cookies n Creme</p><p class="menu-subnote">Milk — £2.00: Milk · Bottle</p></div></div></div>
   </section>
 
 </main>
-  <section class="moishi-offers" id="student-offers">
+<section class="moishi-offers" id="student-offers">
   <div class="mo__wrap">
-
     <span class="mo__vibes">Good<br>Vibes<br>Only <svg viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-4.5-9.3-9A5.4 5.4 0 0 1 12 6.5 5.4 5.4 0 0 1 21.3 12c-2.3 4.5-9.3 9-9.3 9Z" stroke="currentColor" stroke-width="1.4"/></svg></span>
-
     <div class="mo__head">
       <svg class="mo__cap" viewBox="0 0 24 24" fill="none"><path d="M12 4 2 9l10 5 8-4.2V15" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M6 11v4c0 1.7 2.7 3 6 3s6-1.3 6-3v-4" stroke="currentColor" stroke-width="1.4"/></svg>
       <div class="mo__rule"><span>Cafe Moishi</span></div>
-    
       <h1 class="mo__title">Student Offers</h1>
       <p class="mo__sub">Show your valid student ID to claim
         <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.4"/><path d="m8 12.5 2.5 2.5L16 9.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </p>
     </div>
-
     <div class="mo__cards">
-
       <article class="mo__card">
         <div class="mo__info">
           <span class="mo__badge">Offer 1</span>
           <h3 class="mo__offer">Buy Any Shisha — <em>£12</em></h3>
           <div class="mo__line"></div>
-          <p class="mo__perk">
-            <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="8" width="18" height="12" rx="2" stroke="currentColor" stroke-width="1.4"/><path d="M12 8V5m0 0a2 2 0 1 0-2-2m2 2a2 2 0 1 1 2-2M3 12h18" stroke="currentColor" stroke-width="1.4"/></svg>
-            Includes <strong>1 FREE</strong> Mocktail of your choice
-          </p>
+          <p class="mo__perk"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="8" width="18" height="12" rx="2" stroke="currentColor" stroke-width="1.4"/><path d="M12 8V5m0 0a2 2 0 1 0-2-2m2 2a2 2 0 1 1 2-2M3 12h18" stroke="currentColor" stroke-width="1.4"/></svg>Includes <strong>1 FREE</strong> Mocktail of your choice</p>
         </div>
         <div class="mo__img mo__img--1"><img src="Shisha with a pink mocktail.webp" alt="Shisha with a pink mocktail"></div>
       </article>
-
       <article class="mo__card">
         <div class="mo__info">
           <span class="mo__badge">Offer 2</span>
           <h3 class="mo__offer">Buy Any 2 Shishas</h3>
           <div class="mo__line"></div>
-          <p class="mo__perk">
-            <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="8" width="18" height="12" rx="2" stroke="currentColor" stroke-width="1.4"/><path d="M12 8V5m0 0a2 2 0 1 0-2-2m2 2a2 2 0 1 1 2-2M3 12h18" stroke="currentColor" stroke-width="1.4"/></svg>
-            Includes <strong>2 FREE</strong> Mocktails — one each!
-          </p>
+          <p class="mo__perk"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="8" width="18" height="12" rx="2" stroke="currentColor" stroke-width="1.4"/><path d="M12 8V5m0 0a2 2 0 1 0-2-2m2 2a2 2 0 1 1 2-2M3 12h18" stroke="currentColor" stroke-width="1.4"/></svg>Includes <strong>2 FREE</strong> Mocktails — one each!</p>
         </div>
         <div class="mo__img"><img src="Two shishas with blue and pink mocktails.webp" alt="Two shishas with blue and pink mocktails"></div>
       </article>
-
       <article class="mo__card">
         <div class="mo__info">
           <span class="mo__badge">Offer 3</span>
           <h3 class="mo__offer">Buy Any Shisha — <em>£18</em></h3>
           <div class="mo__line"></div>
-          <p class="mo__perk">
-            <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="8" width="18" height="12" rx="2" stroke="currentColor" stroke-width="1.4"/><path d="M12 8V5m0 0a2 2 0 1 0-2-2m2 2a2 2 0 1 1 2-2M3 12h18" stroke="currentColor" stroke-width="1.4"/></svg>
-            **Includes <strong>FREE</strong> Mocktail...
-          </p>
+          <p class="mo__perk"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="8" width="18" height="12" rx="2" stroke="currentColor" stroke-width="1.4"/><path d="M12 8V5m0 0a2 2 0 1 0-2-2m2 2a2 2 0 1 1 2-2M3 12h18" stroke="currentColor" stroke-width="1.4"/></svg>Includes <strong>FREE</strong> Mocktail of your choice</p>
         </div>
         <div class="mo__img"><img src="Shisha with an orange mocktail.webp" alt="Shisha with an orange mocktail"></div>
       </article>
-
     </div>
-
     <div class="mo__foot">
       <svg class="mo__cap" viewBox="0 0 24 24" fill="none"><path d="M12 4 2 9l10 5 8-4.2V15" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M6 11v4c0 1.7 2.7 3 6 3s6-1.3 6-3v-4" stroke="currentColor" stroke-width="1.4"/></svg>
       <div class="mo__rule"><span>Student Perks</span></div>
-
-      <!-- mobile: icon columns -->
       <div class="mo__perks-icons">
         <div><svg viewBox="0 0 24 24" fill="none"><path d="M6 3h9l-1 12a3.5 3.5 0 0 1-3.5 3.2h0A3.5 3.5 0 0 1 7 15L6 3Z" stroke="currentColor" stroke-width="1.4"/><path d="M4 3h13" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg><span>Good Drinks</span></div>
         <div><svg viewBox="0 0 24 24" fill="none"><path d="M12 21C7 17 4 13.5 4 9.5A5.5 5.5 0 0 1 12 5a5.5 5.5 0 0 1 8 4.5c0 4-3 7.5-8 11.5Z" stroke="currentColor" stroke-width="1.4"/></svg><span>Great Vibes</span></div>
         <div><svg viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-4.5-9.3-9A5.4 5.4 0 0 1 12 6.5 5.4 5.4 0 0 1 21.3 12c-2.3 4.5-9.3 9-9.3 9Z" stroke="currentColor" stroke-width="1.4"/></svg><span>Better Together</span></div>
       </div>
-
-      <!-- desktop: script line -->
       <p class="mo__perks-text">Good Drinks &bull; Great Vibes &bull; Better Together</p>
-
       <div class="mo__rule mo__rule--sm"><span>♥</span></div>
     </div>
-
   </div>
 </section>
-
 <style>
   #student-offers, #student-offers *{ box-sizing:border-box; }
-
-  .moishi-offers{
-    --ink:#f4f4f4;
-    --ink-dim:rgba(244,244,244,.6);
-    --ink-faint:rgba(244,244,244,.4);
-    --purple:#a78bfa;
-    --purple-deep:#6d28d9;
-    --purple-glow:rgba(167,139,250,.35);
-    --card-bg:rgba(14,10,20,.55);
-    --card-border:rgba(167,139,250,.35);
-
-    position:relative;
-    padding:70px 20px 60px;
-    font-family:'Poppins',sans-serif;
-    color:var(--ink);
-  }
-  .moishi-offers{
-    /* ...existing variables wagera... */
-
-    background-image: url('offers-bg.webp');
-    background-size: cover;
-    background-position: right 70%;
-    background-repeat: no-repeat;
-  }
+  .moishi-offers{ --ink:#f4f4f4; --ink-dim:rgba(244,244,244,.6); --ink-faint:rgba(244,244,244,.4); --purple:#a78bfa; --purple-deep:#6d28d9; --purple-glow:rgba(167,139,250,.35); --card-bg:rgba(14,10,20,.55); --card-border:rgba(167,139,250,.35);
+    position:relative; padding:70px 20px 60px; font-family:'Poppins',sans-serif; color:var(--ink);
+    background-image:url('offers-bg.webp'); background-size:cover; background-position:right 70%; background-repeat:no-repeat; }
   .mo__wrap{ max-width:640px; margin:0 auto; position:relative; }
-
-  .mo__vibes{
-    position:absolute;
-    top:0; right:6px;
-    font-family:'Alex Brush', cursive;
-    font-size:22px;
-    line-height:1.1;
-    color:var(--purple);
-    text-align:center;
-    transform:rotate(6deg);
-  }
+  .mo__vibes{ position:absolute; top:0; right:6px; font-family:'Alex Brush',cursive; font-size:22px; line-height:1.1; color:var(--purple); text-align:center; transform:rotate(6deg); }
   .mo__vibes svg{ width:16px; height:16px; margin-top:4px; }
-
   .mo__head{ text-align:center; margin-bottom:34px; }
   .mo__cap{ width:26px; height:26px; color:var(--purple); }
-
   .mo__rule{ display:flex; align-items:center; gap:12px; margin:8px auto 6px; max-width:220px; }
   .mo__rule::before, .mo__rule::after{ content:""; flex:1; height:1px; background:var(--purple-glow); }
   .mo__rule span{ font-size:11px; letter-spacing:.28em; text-transform:uppercase; color:var(--ink-dim); white-space:nowrap; }
   .mo__rule--sm{ max-width:120px; margin-top:20px; }
   .mo__rule--sm span{ color:var(--purple); font-size:14px; letter-spacing:0; }
-
-  .mo__welcome{
-    font-family:'Poppins',sans-serif;
-    font-weight:800;
-    font-size:clamp(30px,7vw,42px);
-    letter-spacing:.02em;
-    margin:6px 0 0;
-  }
-  .mo__title{
-    font-family:'Alex Brush', cursive;
-    font-weight:400;
-    font-size:clamp(48px,12vw,72px);
-    color:var(--purple);
-    margin:0 0 12px;
-  }
-  .mo__sub{
-    display:flex; align-items:center; justify-content:center; gap:8px;
-    font-size:13px; color:var(--ink-dim);
-  }
+  .mo__title{ font-family:'Alex Brush',cursive; font-weight:400; font-size:clamp(48px,12vw,72px); color:var(--purple); margin:0 0 12px; }
+  .mo__sub{ display:flex; align-items:center; justify-content:center; gap:8px; font-size:13px; color:var(--ink-dim); }
   .mo__sub svg{ width:18px; height:18px; color:var(--purple); flex-shrink:0; }
-
-  /* ---- cards ---- */
   .mo__cards{ display:flex; flex-direction:column; gap:20px; }
-
-  .mo__card{
-    display:flex; align-items:center; gap:16px;
-    background:var(--card-bg);
-    border:1px solid var(--card-border);
-    border-radius:14px;
-    padding:18px;
-    box-shadow:0 0 22px -6px var(--purple-glow);
-  }
-
+  .mo__card{ display:flex; align-items:center; gap:16px; background:var(--card-bg); border:1px solid var(--card-border); border-radius:14px; padding:18px; box-shadow:0 0 22px -6px var(--purple-glow); }
   .mo__info{ flex:1; min-width:0; }
-
-  .mo__badge{
-    display:inline-block;
-    padding:4px 14px;
-    border:1px solid var(--purple);
-    border-radius:999px;
-    font-size:11px;
-    font-weight:600;
-    letter-spacing:.12em;
-    text-transform:uppercase;
-    color:var(--purple);
-    margin-bottom:10px;
-  }
-
-  .mo__offer{
-    font-family:'Poppins',sans-serif;
-    font-weight:800;
-    font-size:clamp(19px,4.2vw,24px);
-    line-height:1.25;
-    margin:0 0 12px;
-  }
+  .mo__badge{ display:inline-block; padding:4px 14px; border:1px solid var(--purple); border-radius:999px; font-size:11px; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color:var(--purple); margin-bottom:10px; }
+  .mo__offer{ font-family:'Poppins',sans-serif; font-weight:800; font-size:clamp(19px,4.2vw,24px); line-height:1.25; margin:0 0 12px; }
   .mo__offer em{ font-style:normal; color:var(--purple); }
-
   .mo__line{ width:34px; height:2px; background:var(--purple); margin-bottom:12px; }
-
-  .mo__perk{
-    display:flex; align-items:flex-start; gap:8px;
-    font-size:12.5px; line-height:1.5;
-    color:var(--ink-dim);
-    margin:0;
-  }
+  .mo__perk{ display:flex; align-items:flex-start; gap:8px; font-size:12.5px; line-height:1.5; color:var(--ink-dim); margin:0; }
   .mo__perk svg{ width:16px; height:16px; color:var(--purple); flex-shrink:0; margin-top:1px; }
   .mo__perk strong{ color:var(--purple); font-weight:700; }
-
-  .mo__img{
-    width:120px; height:120px;
-    flex-shrink:0;
-    border-radius:10px;
-    overflow:hidden;
-  }
+  .mo__img{ width:120px; height:120px; flex-shrink:0; border-radius:10px; overflow:hidden; }
   .mo__img img{ width:100%; height:100%; object-fit:cover; display:block; object-position:center; }
-
-  /* offer 1 image: show more of the bottom of the photo */
   .mo__img--1 img{ object-position:center 80%; }
-
-  /* ---- footer / perks ---- */
   .mo__foot{ text-align:center; margin-top:44px; }
-
-  .mo__perks-icons{
-    display:flex;
-    justify-content:center;
-    gap:0;
-    margin-top:14px;
-  }
-  .mo__perks-icons div{
-    display:flex; flex-direction:column; align-items:center; gap:8px;
-    padding:0 22px;
-    font-size:12px;
-    color:var(--ink-dim);
-    border-left:1px solid var(--card-border);
-  }
+  .mo__perks-icons{ display:flex; justify-content:center; gap:0; margin-top:14px; }
+  .mo__perks-icons div{ display:flex; flex-direction:column; align-items:center; gap:8px; padding:0 22px; font-size:12px; color:var(--ink-dim); border-left:1px solid var(--card-border); }
   .mo__perks-icons div:first-child{ border-left:none; }
   .mo__perks-icons svg{ width:20px; height:20px; color:var(--purple); }
-
   .mo__perks-text{ display:none; }
-
-  /* ================= DESKTOP ================= */
-  @media (min-width: 720px){
+  @media (min-width:720px){
     .mo__wrap{ max-width:1040px; }
-
     .mo__cards{ gap:26px; }
     .mo__card{ padding:26px 30px; }
     .mo__img{ width:170px; height:130px; }
     .mo__offer{ font-size:26px; }
-
     .mo__perks-icons{ display:none; }
-    .mo__perks-text{
-      display:block;
-      margin-top:14px;
-      font-family:'Alex Brush', cursive;
-      font-size:28px;
-      color:var(--purple);
-    }
+    .mo__perks-text{ display:block; margin-top:14px; font-family:'Alex Brush',cursive; font-size:28px; color:var(--purple); }
   }
 </style>
 
-<!-- ===== STUDENT OFFER TOAST POPUP ===== -->
+<!-- STUDENT OFFER TOAST POPUP -->
 <div class="offer-toast" id="offerToast" role="status">
   <button type="button" class="offer-toast__close" id="offerToastClose" aria-label="Close">&times;</button>
   <a href="#student-offers" class="offer-toast__link" id="offerToastLink">
-    <span class="offer-toast__icon">
-      <svg viewBox="0 0 24 24" fill="none"><path d="M12 4 2 9l10 5 8-4.2V15" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M6 11v4c0 1.7 2.7 3 6 3s6-1.3 6-3v-4" stroke="currentColor" stroke-width="1.5"/></svg>
-    </span>
-    <span class="offer-toast__text">
-      <span class="offer-toast__title">Student Offers</span>
-      <span class="offer-toast__sub">Show your ID, save on shisha</span>
-    </span>
+    <span class="offer-toast__icon"><svg viewBox="0 0 24 24" fill="none"><path d="M12 4 2 9l10 5 8-4.2V15" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M6 11v4c0 1.7 2.7 3 6 3s6-1.3 6-3v-4" stroke="currentColor" stroke-width="1.5"/></svg></span>
+    <span class="offer-toast__text"><span class="offer-toast__title">Student Offers</span><span class="offer-toast__sub">Show your ID, save on shisha</span></span>
   </a>
 </div>
 <style>
-  .offer-toast{
-    position:fixed;
-    left:50%;
-    top:52%;
-    transform:translate(-50%,-50%) rotate(-3deg) scale(.9);
-    z-index:600;
-    display:flex;
-    align-items:center;
-    gap:14px;
-    padding:18px 26px 18px 18px;
-    max-width:380px;
-    background:linear-gradient(150deg, rgba(8,10,28,.97), rgba(4,4,20,.97));
-    border:1px solid rgba(77,107,255,.5);
-    border-radius:20px;
-    box-shadow:0 24px 60px -16px rgba(0,0,0,.7), 0 0 26px -6px rgba(77,107,255,.4), 0 0 0 1px rgba(77,107,255,.12) inset;
-    -webkit-backdrop-filter:blur(10px);
-    backdrop-filter:blur(10px);
-    opacity:0;
-    visibility:hidden;
-    pointer-events:none;
-    transition:opacity .4s ease, transform .4s cubic-bezier(.2,.9,.3,1), visibility 0s linear .4s;
-  }
-  .offer-toast.is-visible{
-    opacity:1;
-    visibility:visible;
-    pointer-events:auto;
-    transform:translate(-50%,-50%) rotate(-2deg) scale(1);
-    transition:opacity .4s ease, transform .4s cubic-bezier(.2,.9,.3,1), visibility 0s linear 0s;
-  }
-  .offer-toast__link{
-    display:flex;
-    align-items:center;
-    gap:14px;
-    text-decoration:none;
-  }
-  .offer-toast__icon{
-    flex-shrink:0;
-    width:46px; height:46px;
-    border-radius:50%;
-    background:rgba(77,107,255,.18);
-    border:1px solid rgba(77,107,255,.55);
-    color:#a9b7ff;
-    display:flex; align-items:center; justify-content:center;
-  }
+  .offer-toast{ position:fixed; left:50%; top:52%; transform:translate(-50%,-50%) rotate(-3deg) scale(.9); z-index:600; display:flex; align-items:center; gap:14px; padding:18px 26px 18px 18px; max-width:380px; background:linear-gradient(150deg,rgba(8,10,28,.97),rgba(4,4,20,.97)); border:1px solid rgba(77,107,255,.5); border-radius:20px; box-shadow:0 24px 60px -16px rgba(0,0,0,.7), 0 0 26px -6px rgba(77,107,255,.4), 0 0 0 1px rgba(77,107,255,.12) inset; -webkit-backdrop-filter:blur(10px); backdrop-filter:blur(10px); opacity:0; visibility:hidden; pointer-events:none; transition:opacity .4s ease, transform .4s cubic-bezier(.2,.9,.3,1), visibility 0s linear .4s; }
+  .offer-toast.is-visible{ opacity:1; visibility:visible; pointer-events:auto; transform:translate(-50%,-50%) rotate(-2deg) scale(1); transition:opacity .4s ease, transform .4s cubic-bezier(.2,.9,.3,1), visibility 0s linear 0s; }
+  .offer-toast__link{ display:flex; align-items:center; gap:14px; text-decoration:none; }
+  .offer-toast__icon{ flex-shrink:0; width:46px; height:46px; border-radius:50%; background:rgba(77,107,255,.18); border:1px solid rgba(77,107,255,.55); color:#a9b7ff; display:flex; align-items:center; justify-content:center; }
   .offer-toast__icon svg{ width:22px; height:22px; }
   .offer-toast__text{ display:flex; flex-direction:column; }
-  .offer-toast__title{
-    font-family:'Poppins', sans-serif;
-    font-weight:700;
-    font-size:17px;
-    letter-spacing:.02em;
-    color:#f4f4f4;
-  }
-  .offer-toast__sub{
-    font-family:'Poppins', sans-serif;
-    font-size:13px;
-    color:rgba(244,244,244,.6);
-    margin-top:3px;
-  }
-  .offer-toast__close{
-    flex-shrink:0;
-    width:24px; height:24px;
-    margin-left:2px;
-    border:none;
-    border-radius:50%;
-    background:rgba(244,244,244,.08);
-    color:rgba(244,244,244,.6);
-    font-size:16px;
-    line-height:1;
-    display:flex; align-items:center; justify-content:center;
-    cursor:pointer;
-    padding:0;
-    transition:background .2s ease, color .2s ease;
-  }
+  .offer-toast__title{ font-family:'Poppins',sans-serif; font-weight:700; font-size:17px; letter-spacing:.02em; color:#f4f4f4; }
+  .offer-toast__sub{ font-family:'Poppins',sans-serif; font-size:13px; color:rgba(244,244,244,.6); margin-top:3px; }
+  .offer-toast__close{ flex-shrink:0; width:24px; height:24px; margin-left:2px; border:none; border-radius:50%; background:rgba(244,244,244,.08); color:rgba(244,244,244,.6); font-size:16px; line-height:1; display:flex; align-items:center; justify-content:center; cursor:pointer; padding:0; transition:background .2s ease, color .2s ease; }
   .offer-toast__close:hover{ background:rgba(77,107,255,.3); color:#fff; }
-
   @media (max-width:480px){
     .offer-toast{ left:16px; right:16px; top:50%; transform:translate(0,-50%) rotate(-2deg) scale(.9); max-width:none; }
     .offer-toast.is-visible{ transform:translate(0,-50%) rotate(-2deg) scale(1); }
@@ -2069,10 +449,7 @@
   var toast = document.getElementById('offerToast');
   var closeBtn = document.getElementById('offerToastClose');
   if(!toast) return;
-
-  var dismissed = false;
-  var autoTimer;
-
+  var dismissed = false, autoTimer;
   function dismiss(){
     if(dismissed) return;
     dismissed = true;
@@ -2080,556 +457,179 @@
     clearTimeout(autoTimer);
     document.removeEventListener('click', outsideClickHandler);
   }
-
-  function outsideClickHandler(e){
-    dismiss();
-  }
-
+  function outsideClickHandler(){ dismiss(); }
   setTimeout(function(){
     toast.classList.add('is-visible');
     document.addEventListener('click', outsideClickHandler);
     autoTimer = setTimeout(dismiss, 3000);
   }, 500);
-
-  closeBtn.addEventListener('click', function(e){
-    e.stopPropagation();
-    dismiss();
-  });
+  closeBtn.addEventListener('click', function(e){ e.stopPropagation(); dismiss(); });
 })();
 </script>
 
-<!-- ===== WHATSAPP FLOATING BUTTON ===== -->
+<!-- WHATSAPP FLOATING BUTTON -->
 <a href="https://wa.me/919999999999" target="_blank" rel="noopener" class="wa-float" id="waFloat" aria-label="Chat on WhatsApp">
   <span class="wa-float__ring"></span>
-  <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M16.001 3C9.06 3 3.334 8.726 3.334 15.667c0 2.32.633 4.59 1.834 6.573L3 29l6.94-2.14a12.6 12.6 0 0 0 6.06 1.54h.001c6.94 0 12.667-5.726 12.667-12.667C28.668 8.726 22.942 3 16.001 3Zm0 22.99h-.001a10.5 10.5 0 0 1-5.36-1.47l-.385-.229-4.12 1.27 1.29-4.017-.25-.412a10.47 10.47 0 0 1-1.607-5.475C5.568 9.937 10.27 5.234 16 5.234c5.13 0 9.31 4.18 9.31 9.31 0 5.13-4.18 9.31-9.309 9.31Zm5.36-6.966c-.294-.147-1.738-.858-2.007-.956-.269-.098-.465-.147-.66.147-.196.294-.758.956-.93 1.152-.171.196-.343.22-.637.073-.294-.147-1.24-.457-2.362-1.457-.873-.779-1.463-1.74-1.634-2.034-.171-.294-.018-.453.129-.6.132-.132.294-.343.44-.514.148-.171.196-.294.294-.49.098-.196.049-.367-.024-.514-.073-.147-.66-1.59-.904-2.178-.238-.573-.48-.495-.66-.504l-.562-.01c-.196 0-.514.073-.783.367-.269.294-1.027 1.004-1.027 2.448 0 1.444 1.052 2.84 1.198 3.036.147.196 2.07 3.16 5.016 4.432.701.303 1.248.484 1.674.62.703.223 1.343.191 1.848.116.564-.084 1.738-.71 1.983-1.396.245-.685.245-1.273.171-1.396-.073-.122-.269-.196-.563-.343Z" fill="currentColor"/>
-  </svg>
+  <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16.001 3C9.06 3 3.334 8.726 3.334 15.667c0 2.32.633 4.59 1.834 6.573L3 29l6.94-2.14a12.6 12.6 0 0 0 6.06 1.54h.001c6.94 0 12.667-5.726 12.667-12.667C28.668 8.726 22.942 3 16.001 3Zm0 22.99h-.001a10.5 10.5 0 0 1-5.36-1.47l-.385-.229-4.12 1.27 1.29-4.017-.25-.412a10.47 10.47 0 0 1-1.607-5.475C5.568 9.937 10.27 5.234 16 5.234c5.13 0 9.31 4.18 9.31 9.31 0 5.13-4.18 9.31-9.309 9.31Zm5.36-6.966c-.294-.147-1.738-.858-2.007-.956-.269-.098-.465-.147-.66.147-.196.294-.758.956-.93 1.152-.171.196-.343.22-.637.073-.294-.147-1.24-.457-2.362-1.457-.873-.779-1.463-1.74-1.634-2.034-.171-.294-.018-.453.129-.6.132-.132.294-.343.44-.514.148-.171.196-.294.294-.49.098-.196.049-.367-.024-.514-.073-.147-.66-1.59-.904-2.178-.238-.573-.48-.495-.66-.504l-.562-.01c-.196 0-.514.073-.783.367-.269.294-1.027 1.004-1.027 2.448 0 1.444 1.052 2.84 1.198 3.036.147.196 2.07 3.16 5.016 4.432.701.303 1.248.484 1.674.62.703.223 1.343.191 1.848.116.564-.084 1.738-.71 1.983-1.396.245-.685.245-1.273.171-1.396-.073-.122-.269-.196-.563-.343Z" fill="currentColor"/></svg>
 </a>
-
 <style>
-  .wa-float{
-    position:fixed;
-    left:16px;
-    bottom:16px;
-    z-index:9999;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    width:44px;
-    height:44px;
-    border-radius:50%;
-    background:#25D366;
-    color:#fff;
-    box-shadow:0 6px 18px -4px rgba(37, 78, 211, 0.55);
-    text-decoration:none;
-    animation:waBounce 2.6s ease-in-out infinite;
-    transition:transform .25s ease, box-shadow .25s ease;
-  }
-  .wa-float svg{
-    width:22px;
-    height:22px;
-    position:relative;
-    z-index:2;
-  }
-  .wa-float:hover{
-    transform:scale(1.08);
-    box-shadow:0 8px 22px -4px rgba(37, 40, 211, 0.7);
-  }
-
-  /* pulsing ring behind the button */
-  .wa-float__ring{
-    position:absolute;
-    inset:0;
-    border-radius:50%;
-     background: linear-gradient(135deg, #6e37d4, #cc24ff);
-    opacity:.55;
-    z-index:1;
-    animation:waPulse 2.2s ease-out infinite;
-  }
-
-  @keyframes waPulse{
-    0%{ transform:scale(1); opacity:.55; }
-    100%{ transform:scale(1.9); opacity:0; }
-  }
-
-  @keyframes waBounce{
-    0%, 100%{ transform:translateY(0); }
-    50%{ transform:translateY(-4px); }
-  }
-
-  @media (prefers-reduced-motion: reduce){
-    .wa-float, .wa-float__ring{ animation:none; }
-  }
-
-  @media (max-width:480px){
-    .wa-float{
-      width:40px;
-      height:40px;
-      left:12px;
-      bottom:12px;
-    }
-    .wa-float svg{ width:20px; height:20px; }
-  }
-</style>
-<style>
-  
-    .mun-footer {
-        --void: #2e022e;
-        --cream: #f1faf3;
-        --cream-dim: rgba(241,250,243,0.62);
-        --cream-faint: rgba(241,250,243,0.38);
-        --accent-line: rgba(241,250,243,0.14);
-        --cta: #a8a5c7;
-        --cta-dim: rgba(228,255,91,0.5);
-    }
-
-    .mun-footer * { box-sizing: border-box; }
-
-    /* ================= TOP CTA BAR ================= */
-
-    .mun-footer__cta {
-        position: relative;
-        background: var(--cream);
-        padding: clamp(3rem, 7vw, 5.5rem) clamp(1.5rem, 6vw, 5rem);
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 2rem;
-        flex-wrap: wrap;
-    }
-
-    .mun-footer__cta-eyebrow {
-        font-family: 'Jost', sans-serif;
-        font-weight: 500;
-        font-size: 0.72rem;
-        letter-spacing: 0.14em;
-        text-transform: uppercase;
-        line-height: 1.6;
-        color: var(--void);
-        flex: 0 0 auto;
-    }
-
-    .mun-footer__cta-eyebrow a {
-        color: inherit;
-        text-decoration: none;
-    }
-
-    .mun-footer__cta-heading {
-        flex: 1 1 auto;
-        min-width: 260px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-
-    .mun-footer__cta-heading h2 {
-        margin: 0;
-        font-family: 'Cormorant Garamond', serif;
-        font-weight: 500;
-        font-style: italic;
-        font-size: clamp(2.6rem, 7vw, 4.6rem);
-        line-height: 1;
-        color: var(--void);
-    }
-
-    .mun-footer__cta-underline {
-        margin-top: 0.5rem;
-        width: clamp(160px, 22vw, 320px);
-        height: 2px;
-        background: var(--cta);
-    }
-
-    .mun-footer__cta-arrow {
-        flex: 0 0 auto;
-        width: clamp(64px, 6vw, 88px);
-        height: clamp(64px, 6vw, 88px);
-        border-radius: 50%;
-        background: var(--cta);
-        border: none;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        text-decoration: none;
-        transition: transform 0.35s cubic-bezier(.2,.9,.3,1), box-shadow 0.35s ease;
-    }
-
-    .mun-footer__cta-arrow svg {
-        width: 34%;
-        height: 34%;
-    }
-
-    .mun-footer__cta-arrow:hover {
-        transform: scale(1.06);
-        box-shadow: 0 12px 30px -10px var(--cta-dim);
-    }
-
-    /* ================= BOTTOM FOOTER ================= */
-
-    .mun-footer__base {
-        background: var(--void);
-        color: var(--cream);
-        padding: clamp(2.5rem, 5vw, 4rem) clamp(1.5rem, 6vw, 5rem) clamp(1.75rem, 4vw, 2.5rem);
-        display: grid;
-        grid-template-columns: 1.3fr 1fr 1fr 1fr;
-        gap: clamp(2rem, 4vw, 3rem);
-    }
-
-    .mun-footer__logo {
-        width: 64px;
-        height: 64px;
-        border: 1px dashed var(--cream-faint);
-        border-radius: 10px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-bottom: 0.9rem;
-        font-family: 'Jost', sans-serif;
-        font-size: 0.6rem;
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
-        color: var(--cream-faint);
-    }
-
-    .mun-footer__logo img {
-        max-width: 100%;
-        max-height: 100%;
-        display: block;
-    }
-
-    .mun-footer__brand-name {
-        margin: 0 0 0.4rem;
-        font-family: 'Fredoka', sans-serif;
-        font-weight: 600;
-        font-size: clamp(1.6rem, 3vw, 2rem);
-        letter-spacing: 0.01em;
-        line-height: 1.1;
-        color: var(--cream);
-    }
-
-    .mun-footer__brand-tag {
-        margin: 0;
-        font-family: 'Jost', sans-serif;
-        font-weight: 400;
-        font-size: 0.85rem;
-        line-height: 1.6;
-        letter-spacing: 0.02em;
-        color: var(--cream-dim);
-        max-width: 22ch;
-    }
-
-    .mun-footer__col-label {
-        margin: 0 0 1.1rem;
-        font-family: 'Jost', sans-serif;
-        font-weight: 600;
-        font-size: 0.68rem;
-        letter-spacing: 0.18em;
-        text-transform: uppercase;
-        color: var(--cream);
-    }
-
-    .mun-footer__col a {
-        display: block;
-        font-family: 'Jost', sans-serif;
-        font-size: 0.86rem;
-        color: var(--cream);
-        text-decoration: none;
-        margin-bottom: 0.55rem;
-        transition: color 0.3s ease;
-    }
-
-    .mun-footer__col a:hover { color: var(--cta); }
-
-    .mun-footer__col p {
-        margin: 0 0 0.55rem;
-        font-family: 'Jost', sans-serif;
-        font-weight: 400;
-        font-size: 0.86rem;
-        line-height: 1.55;
-        color: var(--cream-dim);
-    }
-
-    .mun-footer__see-map {
-        display: inline-block;
-        margin-top: 0.35rem;
-        font-family: 'Jost', sans-serif;
-        font-weight: 500;
-        font-size: 0.72rem;
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
-        text-decoration: underline;
-        text-underline-offset: 3px;
-        color: var(--cream) !important;
-    }
-
-    .mun-footer__see-map:hover { color: var(--cta) !important; }
-
-    .mun-footer__newsletter-link {
-        display: inline-block;
-        font-family: 'Jost', sans-serif;
-        font-weight: 500;
-        font-size: 0.76rem;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        text-decoration: underline;
-        text-underline-offset: 3px;
-        color: var(--cream);
-        margin-bottom: 1.9rem;
-    }
-
-    .mun-footer__newsletter-link:hover { color: var(--cta); }
-
-    .mun-footer__socials {
-        display: flex;
-        align-items: center;
-        gap: 1.1rem;
-    }
-
-    .mun-footer__socials a {
-        width: 30px;
-        height: 30px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: var(--cream);
-        border-radius: 50%;
-        transition: color 0.3s ease, background 0.3s ease;
-    }
-
-    .mun-footer__socials a:hover {
-        color: var(--void);
-        background: var(--cta);
-    }
-
-    .mun-footer__socials svg { width: 16px; height: 16px; }
-
-    .mun-footer__bottom-row {
-        grid-column: 1 / -1;
-        margin-top: clamp(2rem, 4vw, 3rem);
-        padding-top: 1.25rem;
-        border-top: 1px solid var(--accent-line);
-        display: flex;
-        justify-content: space-between;
-        flex-wrap: wrap;
-        gap: 0.75rem;
-        font-family: 'Jost', sans-serif;
-        font-size: 0.72rem;
-        letter-spacing: 0.04em;
-        color: var(--cream-faint);
-    }
-
-    @media (max-width: 900px) {
-        .mun-footer__base { grid-template-columns: 1fr 1fr; }
-        .mun-footer__brand { grid-column: 1 / -1; margin-bottom: 0.5rem; }
-    }
-
-    @media (max-width: 560px) {
-        .mun-footer__cta { flex-direction: column; text-align: center; }
-        .mun-footer__cta-eyebrow { order: 2; }
-        .mun-footer__cta-arrow { order: 3; }
-        .mun-footer__base { grid-template-columns: 1fr; }
-    }
+  .wa-float{ position:fixed; left:16px; bottom:16px; z-index:9999; display:flex; align-items:center; justify-content:center; width:44px; height:44px; border-radius:50%; background:#25D366; color:#fff; box-shadow:0 6px 18px -4px rgba(37,78,211,.55); text-decoration:none; animation:waBounce 2.6s ease-in-out infinite; transition:transform .25s ease, box-shadow .25s ease; }
+  .wa-float svg{ width:22px; height:22px; position:relative; z-index:2; }
+  .wa-float:hover{ transform:scale(1.08); box-shadow:0 8px 22px -4px rgba(37,40,211,.7); }
+  .wa-float__ring{ position:absolute; inset:0; border-radius:50%; background:linear-gradient(135deg,#6e37d4,#cc24ff); opacity:.55; z-index:1; animation:waPulse 2.2s ease-out infinite; }
+  @keyframes waPulse{ 0%{ transform:scale(1); opacity:.55; } 100%{ transform:scale(1.9); opacity:0; } }
+  @keyframes waBounce{ 0%,100%{ transform:translateY(0); } 50%{ transform:translateY(-4px); } }
+  @media (prefers-reduced-motion: reduce){ .wa-float, .wa-float__ring{ animation:none; } }
+  @media (max-width:480px){ .wa-float{ width:40px; height:40px; left:12px; bottom:12px; } .wa-float svg{ width:20px; height:20px; } }
 </style>
 
+<style>
+  .mun-footer{ --void:#2e022e; --cream:#f1faf3; --cream-dim:rgba(241,250,243,0.62); --cream-faint:rgba(241,250,243,0.38); --accent-line:rgba(241,250,243,0.14); --cta:#a8a5c7; --cta-dim:rgba(228,255,91,0.5); }
+  .mun-footer *{ box-sizing:border-box; }
+  .mun-footer__cta{ position:relative; background:var(--cream); padding:clamp(3rem,7vw,5.5rem) clamp(1.5rem,6vw,5rem); display:flex; align-items:center; justify-content:space-between; gap:2rem; flex-wrap:wrap; }
+  .mun-footer__cta-eyebrow{ font-family:'Jost',sans-serif; font-weight:500; font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; line-height:1.6; color:var(--void); flex:0 0 auto; }
+  .mun-footer__cta-eyebrow a{ color:inherit; text-decoration:none; }
+  .mun-footer__cta-heading{ flex:1 1 auto; min-width:260px; display:flex; flex-direction:column; align-items:center; text-align:center; }
+  .mun-footer__cta-heading h2{ margin:0; font-family:'Cormorant Garamond',serif; font-weight:500; font-style:italic; font-size:clamp(2.6rem,7vw,4.6rem); line-height:1; color:var(--void); }
+  .mun-footer__cta-underline{ margin-top:.5rem; width:clamp(160px,22vw,320px); height:2px; background:var(--cta); }
+  .mun-footer__cta-arrow{ flex:0 0 auto; width:clamp(64px,6vw,88px); height:clamp(64px,6vw,88px); border-radius:50%; background:var(--cta); border:none; display:flex; align-items:center; justify-content:center; cursor:pointer; text-decoration:none; transition:transform .35s cubic-bezier(.2,.9,.3,1), box-shadow .35s ease; }
+  .mun-footer__cta-arrow svg{ width:34%; height:34%; }
+  .mun-footer__cta-arrow:hover{ transform:scale(1.06); box-shadow:0 12px 30px -10px var(--cta-dim); }
+  .mun-footer__base{ background:var(--void); color:var(--cream); padding:clamp(2.5rem,5vw,4rem) clamp(1.5rem,6vw,5rem) clamp(1.75rem,4vw,2.5rem); display:grid; grid-template-columns:1.3fr 1fr 1fr 1fr; gap:clamp(2rem,4vw,3rem); }
+  .mun-footer__logo{ width:64px; height:64px; border:1px dashed var(--cream-faint); border-radius:10px; display:flex; align-items:center; justify-content:center; margin-bottom:.9rem; font-family:'Jost',sans-serif; font-size:.6rem; letter-spacing:.1em; text-transform:uppercase; color:var(--cream-faint); }
+  .mun-footer__logo img{ max-width:100%; max-height:100%; display:block; }
+  .mun-footer__brand-name{ margin:0 0 .4rem; font-family:'Fredoka',sans-serif; font-weight:600; font-size:clamp(1.6rem,3vw,2rem); letter-spacing:.01em; line-height:1.1; color:var(--cream); }
+  .mun-footer__brand-tag{ margin:0; font-family:'Jost',sans-serif; font-weight:400; font-size:.85rem; line-height:1.6; letter-spacing:.02em; color:var(--cream-dim); max-width:22ch; }
+  .mun-footer__col-label{ margin:0 0 1.1rem; font-family:'Jost',sans-serif; font-weight:600; font-size:.68rem; letter-spacing:.18em; text-transform:uppercase; color:var(--cream); }
+  .mun-footer__col a{ display:block; font-family:'Jost',sans-serif; font-size:.86rem; color:var(--cream); text-decoration:none; margin-bottom:.55rem; transition:color .3s ease; }
+  .mun-footer__col a:hover{ color:var(--cta); }
+  .mun-footer__col p{ margin:0 0 .55rem; font-family:'Jost',sans-serif; font-weight:400; font-size:.86rem; line-height:1.55; color:var(--cream-dim); }
+  .mun-footer__col p.mun-footer__col-label{ color:var(--cream); font-weight:600; font-size:.68rem; line-height:normal; margin:0 0 1.1rem; }
+  .mun-footer__see-map{ display:inline-block; margin-top:.35rem; font-family:'Jost',sans-serif; font-weight:500; font-size:.72rem; letter-spacing:.1em; text-transform:uppercase; text-decoration:underline; text-underline-offset:3px; color:var(--cream) !important; }
+  .mun-footer__see-map:hover{ color:var(--cta) !important; }
+  .mun-footer__newsletter-link{ display:inline-block; font-family:'Jost',sans-serif; font-weight:500; font-size:.76rem; letter-spacing:.08em; text-transform:uppercase; text-decoration:underline; text-underline-offset:3px; color:var(--cream); margin-bottom:1.9rem; }
+  .mun-footer__newsletter-link:hover{ color:var(--cta); }
+  .mun-footer__socials{ display:flex; align-items:center; gap:1.1rem; }
+  .mun-footer__col .mun-footer__socials a{ width:30px; height:30px; display:flex; align-items:center; justify-content:center; color:var(--cream); border-radius:50%; margin-bottom:0; transition:color .3s ease, background .3s ease; }
+  .mun-footer__col .mun-footer__socials a:hover{ color:var(--void); background:var(--cta); }
+  .mun-footer__socials svg{ width:16px; height:16px; }
+  .mun-footer__bottom-row{ grid-column:1 / -1; margin-top:clamp(2rem,4vw,3rem); padding-top:1.25rem; border-top:1px solid var(--accent-line); display:flex; justify-content:space-between; flex-wrap:wrap; gap:.75rem; font-family:'Jost',sans-serif; font-size:.72rem; letter-spacing:.04em; color:var(--cream-faint); }
+  @media (max-width:900px){ .mun-footer__base{ grid-template-columns:1fr 1fr; } .mun-footer__brand{ grid-column:1 / -1; margin-bottom:.5rem; } }
+  @media (max-width:560px){ .mun-footer__cta{ flex-direction:column; text-align:center; } .mun-footer__cta-eyebrow{ order:2; } .mun-footer__cta-arrow{ order:3; } .mun-footer__base{ grid-template-columns:1fr; } }
+</style>
 <footer class="mun-footer">
-
-    <div class="mun-footer__cta">
-        <span class="mun-footer__cta-eyebrow">STILL<br>DECIDING? <a href="#reserve">→</a></span>
-
-        <div class="mun-footer__cta-heading">
-            <h2>Reserve a table</h2>
-            <div class="mun-footer__cta-underline"></div>
-        </div>
-
-        <a class="mun-footer__cta-arrow" href="#reserve" aria-label="Reserve a table">
-            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M5 12h14M13 6l6 6-6 6" stroke="#040705" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-        </a>
+  <div class="mun-footer__cta">
+    <span class="mun-footer__cta-eyebrow">STILL<br>DECIDING? <a href="#reserve">→</a></span>
+    <div class="mun-footer__cta-heading"><h2>Reserve a table</h2><div class="mun-footer__cta-underline"></div></div>
+    <a class="mun-footer__cta-arrow" href="#reserve" aria-label="Reserve a table"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 12h14M13 6l6 6-6 6" stroke="#040705" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+  </div>
+  <div class="mun-footer__base">
+    <div class="mun-footer__brand">
+      <div class="mun-footer__logo"><!-- Replace with: <img src="your-logo.png" alt="Cafe Moishi logo"> -->LOGO</div>
+      <p class="mun-footer__brand-name">Cafe Moishi</p>
+      <p class="mun-footer__brand-tag">A rooftop cocktail and shisha bar, made for slow evenings above Rome.</p>
     </div>
-
-    <div class="mun-footer__base">
-
-        <div class="mun-footer__brand">
-            <div class="mun-footer__logo">
-                <!-- Replace with: <img src="your-logo.png" alt="Cafe Moishi logo"> -->
-                LOGO
-            </div>
-            <p class="mun-footer__brand-name">Cafe Moishi</p>
-            <p class="mun-footer__brand-tag">A rooftop cocktail and shisha bar, made for slow evenings above Rome.</p>
-        </div>
-
-        <div class="mun-footer__col">
-            <p class="mun-footer__col-label">Rome</p>
-            <a href="mailto:reservations@cafemoishi.it">reservations@cafemoishi.it</a>
-            <a href="tel:+39061234567">+39 06 123 4567</a>
-            <p>Via del Corso 12,<br>00186 Rome</p>
-            <a class="mun-footer__see-map" href="https://maps.google.com" target="_blank" rel="noopener">See on map ↗</a>
-        </div>
-
-        <div class="mun-footer__col">
-            <p class="mun-footer__col-label">Hours</p>
-            <p>Golden Hour – Midnight<br>Seven days a week</p>
-            <p style="margin-top:1rem;">Reservations recommended<br>after 7PM</p>
-        </div>
-
-        <div class="mun-footer__col">
-            <p class="mun-footer__col-label">Want first access to<br>our evenings?</p>
-            <a class="mun-footer__newsletter-link" href="#newsletter">Sign up for our newsletter →</a>
-
-            <p class="mun-footer__col-label" style="margin-bottom:0.8rem;">Follow us</p>
-            <div class="mun-footer__socials">
-                <a href="#" aria-label="Instagram">
-                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.5"/>
-                        <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.5"/>
-                        <circle cx="17.2" cy="6.8" r="1" fill="currentColor"/>
-                    </svg>
-                </a>
-                <a href="#" aria-label="Facebook">
-                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M14 9h2.5V6h-2.5c-1.93 0-3.5 1.57-3.5 3.5V12H8.5v3H10.5v6h3v-6h2.3l.5-3H13.5v-2c0-.55.45-1 1-1Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
-                    </svg>
-                </a>
-                <a href="#" aria-label="TikTok">
-                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M15 4v9.4a2.8 2.8 0 1 1-2.2-2.74M15 4a4.2 4.2 0 0 0 4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </a>
-            </div>
-        </div>
-
-        <div class="mun-footer__bottom-row">
-            <span>© 2026 Cafe Moishi. All rights reserved.</span>
-            <span>Made in Uk</span>
-        </div>
-
+    <div class="mun-footer__col">
+      <p class="mun-footer__col-label">Rome</p>
+      <a href="mailto:reservations@cafemoishi.it">reservations@cafemoishi.it</a>
+      <a href="tel:+39061234567">+39 06 123 4567</a>
+      <p>Via del Corso 12,<br>00186 Rome</p>
+      <a class="mun-footer__see-map" href="https://maps.google.com" target="_blank" rel="noopener">See on map ↗</a>
     </div>
-
+    <div class="mun-footer__col">
+      <p class="mun-footer__col-label">Hours</p>
+      <p>Golden Hour – Midnight<br>Seven days a week</p>
+      <p style="margin-top:1rem;">Reservations recommended<br>after 7PM</p>
+    </div>
+    <div class="mun-footer__col">
+      <p class="mun-footer__col-label">Want first access to<br>our evenings?</p>
+      <a class="mun-footer__newsletter-link" href="#newsletter">Sign up for our newsletter →</a>
+      <p class="mun-footer__col-label" style="margin-bottom:0.8rem;">Follow us</p>
+      <div class="mun-footer__socials">
+        <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.5"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor"/></svg></a>
+        <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14 9h2.5V6h-2.5c-1.93 0-3.5 1.57-3.5 3.5V12H8.5v3H10.5v6h3v-6h2.3l.5-3H13.5v-2c0-.55.45-1 1-1Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg></a>
+        <a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15 4v9.4a2.8 2.8 0 1 1-2.2-2.74M15 4a4.2 4.2 0 0 0 4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+    </div>
+    <div class="mun-footer__bottom-row"><span>© 2026 Cafe Moishi. All rights reserved.</span><span>Made in Uk</span></div>
+  </div>
 </footer>
 
 <style>
-  /* ================================================================
-     BACKGROUND MUSIC PLAYER — small fixed icon, right side, vertically
-     centered so it never collides with the .reserve-cta button that
-     already sits fixed bottom-right. Themed to match the site's
-     purple/magenta accent palette (same tone as .testi-mun / .faq-mun).
-     ================================================================ */
-  .music-player {
-    position: fixed;
-    top: 50%;
-    right: 18px;
-    transform: translateY(-50%);
-    z-index: 500;
+  .music-player{ position:fixed; top:50%; right:18px; transform:translateY(-50%); z-index:500; }
+  .music-player__btn{ position:relative; width:50px; height:50px; border-radius:50%; border:1px solid rgba(241,250,243,0.16); background:linear-gradient(155deg,rgba(46,2,46,0.92),rgba(10,7,9,0.92)); box-shadow:0 8px 24px -8px rgba(136,26,158,0.55), 0 0 0 1px rgba(167,139,250,0.08) inset; display:flex; align-items:center; justify-content:center; cursor:pointer; -webkit-backdrop-filter:blur(6px); backdrop-filter:blur(6px); transition:transform .3s cubic-bezier(.2,.9,.3,1), box-shadow .3s ease, border-color .3s ease; }
+  .music-player__btn:hover{ transform:scale(1.08); border-color:rgba(167,139,250,0.5); box-shadow:0 10px 28px -6px rgba(136,26,158,0.7); }
+  .music-player__btn:focus-visible{ outline:2px solid #a78bfa; outline-offset:3px; }
+  .music-player__icon{ width:22px; height:22px; color:#e7d7fb; display:block; }
+  .music-player__ring{ position:absolute; inset:-4px; border-radius:50%; border:1px solid rgba(167,139,250,0.35); opacity:0; transition:opacity .3s ease; }
+  .music-player.is-playing .music-player__ring{ opacity:1; animation:musicRingPulse 2.4s ease-in-out infinite; }
+  @keyframes musicRingPulse{ 0%,100%{ transform:scale(1); opacity:.55; } 50%{ transform:scale(1.12); opacity:.15; } }
+  .music-panel{ position:absolute; top:50%; right:66px; transform:translateY(-50%) translateX(12px); width:280px; padding:1.25rem 1.35rem 1.4rem; border-radius:16px; background:linear-gradient(160deg,rgba(24,10,26,0.97),rgba(8,5,9,0.97)); border:1px solid rgba(167,139,250,0.25); box-shadow:0 24px 50px -18px rgba(0,0,0,0.75), 0 0 0 1px rgba(167,139,250,0.06) inset; -webkit-backdrop-filter:blur(10px); backdrop-filter:blur(10px); opacity:0; visibility:hidden; pointer-events:none; transition:opacity .28s ease, transform .28s cubic-bezier(.2,.9,.3,1), visibility 0s linear .28s; font-family:'Jost',sans-serif; }
+  .music-panel.is-open{ opacity:1; visibility:visible; pointer-events:auto; transform:translateY(-50%) translateX(0); transition:opacity .28s ease, transform .28s cubic-bezier(.2,.9,.3,1), visibility 0s linear 0s; }
+  .music-panel__head{ display:flex; align-items:center; gap:.75rem; margin-bottom:.9rem; }
+  .music-panel__head-icon{ flex-shrink:0; width:38px; height:38px; border-radius:50%; border:1px solid rgba(167,139,250,0.4); background:rgba(167,139,250,0.08); display:flex; align-items:center; justify-content:center; color:#d9b8ff; }
+  .music-panel__head-icon svg{ width:18px; height:18px; }
+  .music-panel__head-text{ flex:1; min-width:0; }
+  .music-panel__title{ margin:0; font-family:'Fredoka',sans-serif; font-weight:600; font-size:.92rem; letter-spacing:.04em; text-transform:uppercase; color:#f1faf3; }
+  .music-panel__subtitle{ margin:2px 0 0; font-size:.72rem; color:rgba(241,250,243,0.5); }
+  .music-panel__close{ flex-shrink:0; width:26px; height:26px; border-radius:50%; border:1px solid rgba(241,250,243,0.16); background:rgba(241,250,243,0.04); color:rgba(241,250,243,0.7); display:flex; align-items:center; justify-content:center; cursor:pointer; transition:background .2s ease, color .2s ease; }
+  .music-panel__close:hover{ background:rgba(167,139,250,0.18); color:#fff; }
+  .music-panel__close svg{ width:12px; height:12px; }
+  .music-panel__desc{ margin:0 0 1.1rem; font-size:.78rem; line-height:1.6; color:rgba(241,250,243,0.62); }
+  .music-panel__desc strong{ color:#d9b8ff; font-weight:500; }
+  .music-panel__vol-row{ display:flex; align-items:center; gap:.7rem; margin-bottom:1.1rem; }
+  .music-panel__vol-icon{ flex-shrink:0; width:15px; height:15px; color:#d9b8ff; }
+  .music-panel__vol-label{ flex-shrink:0; font-size:.64rem; letter-spacing:.12em; text-transform:uppercase; color:rgba(241,250,243,0.5); }
+  .music-panel__range{ flex:1; -webkit-appearance:none; appearance:none; height:3px; border-radius:999px; background:rgba(241,250,243,0.15); outline:none; cursor:pointer; }
+  .music-panel__range::-webkit-slider-thumb{ -webkit-appearance:none; width:13px; height:13px; border-radius:50%; background:#d9b8ff; box-shadow:0 0 8px rgba(167,139,250,0.7); cursor:pointer; }
+  .music-panel__range::-moz-range-thumb{ width:13px; height:13px; border-radius:50%; border:none; background:#d9b8ff; box-shadow:0 0 8px rgba(167,139,250,0.7); cursor:pointer; }
+  .music-panel__vol-pct{ flex-shrink:0; width:34px; text-align:right; font-size:.72rem; color:rgba(241,250,243,0.6); font-variant-numeric:tabular-nums; }
+  .music-panel__mute-btn{ width:100%; display:flex; align-items:center; justify-content:center; gap:.5em; padding:.65em 1em; border-radius:10px; border:1px solid rgba(167,139,250,0.3); background:rgba(167,139,250,0.06); color:#f1faf3; font-family:'Jost',sans-serif; font-size:.72rem; font-weight:500; letter-spacing:.1em; text-transform:uppercase; cursor:pointer; transition:background .25s ease, border-color .25s ease; }
+  .music-panel__mute-btn:hover{ background:rgba(167,139,250,0.16); border-color:rgba(167,139,250,0.5); }
+  .music-panel__mute-btn svg{ width:14px; height:14px; }
+  .music-panel.is-muted .music-panel__mute-btn{ background:rgba(136,26,158,0.25); border-color:rgba(136,26,158,0.5); }
+  .music-tap-btn{ position:absolute; top:50%; right:66px; transform:translateY(-50%) translateX(6px); display:flex; align-items:center; gap:.5em; padding:.55em 1em; border-radius:999px; background:linear-gradient(155deg,rgba(46,2,46,0.95),rgba(10,7,9,0.95)); border:1px solid rgba(167,139,250,0.4); color:#e7d7fb; font-family:'Jost',sans-serif; font-size:.7rem; font-weight:500; letter-spacing:.06em; text-transform:uppercase; white-space:nowrap; cursor:pointer; box-shadow:0 8px 24px -8px rgba(136,26,158,0.6); opacity:1; visibility:visible; pointer-events:auto; transition:opacity .25s ease, transform .25s ease, visibility 0s linear 0s; animation:musicTapPulse 2.2s ease-in-out infinite; }
+  .music-tap-btn svg{ width:13px; height:13px; flex-shrink:0; }
+  .music-tap-btn.is-hidden{ opacity:0; visibility:hidden; pointer-events:none; transform:translateY(-50%) translateX(6px) scale(.9); transition:opacity .25s ease, transform .25s ease, visibility 0s linear .25s; }
+  @keyframes musicTapPulse{ 0%,100%{ box-shadow:0 8px 24px -8px rgba(136,26,158,0.6); } 50%{ box-shadow:0 8px 28px -6px rgba(167,139,250,0.85); } }
+  @media (max-width:640px){
+    .music-player{ right:12px; }
+    .music-player__btn{ width:44px; height:44px; }
+    .music-panel{ width:240px; right:58px; padding:1.1rem 1.1rem 1.25rem; }
+    .music-tap-btn{ right:58px; font-size:.64rem; padding:.5em .85em; }
   }
-
-  .music-player__btn {
-    position: relative;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    border: 1px solid rgba(241,250,243,0.16);
-    background: linear-gradient(155deg, rgba(46,2,46,0.92), rgba(10,7,9,0.92));
-    box-shadow: 0 8px 24px -8px rgba(136,26,158,0.55), 0 0 0 1px rgba(167,139,250,0.08) inset;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    -webkit-backdrop-filter: blur(6px);
-    backdrop-filter: blur(6px);
-    transition: transform 0.3s cubic-bezier(.2,.9,.3,1), box-shadow 0.3s ease, border-color 0.3s ease;
-  }
-  .music-player__btn:hover {
-    transform: scale(1.08);
-    border-color: rgba(167,139,250,0.5);
-    box-shadow: 0 10px 28px -6px rgba(136,26,158,0.7);
-  }
-  .music-player__btn:focus-visible {
-    outline: 2px solid #a78bfa;
-    outline-offset: 3px;
-  }
-
-  .music-player__icon {
-    width: 20px;
-    height: 20px;
-    color: #e7d7fb;
-    display: block;
-  }
-  .music-player__icon--pause { display: none; }
-  .music-player.is-playing .music-player__icon--play { display: none; }
-  .music-player.is-playing .music-player__icon--pause { display: block; }
-
-  /* animated equalizer bars, shown only while playing */
-  .music-player__bars {
-    display: none;
-    align-items: flex-end;
-    gap: 3px;
-    height: 16px;
-  }
-  .music-player.is-playing .music-player__bars { display: flex; }
-  .music-player.is-playing .music-player__icon--pause { display: none; }
-  .music-player__bars span {
-    width: 3px;
-    border-radius: 2px;
-    background: linear-gradient(180deg, #d9b8ff, #881a9e);
-    animation: musicBar 0.9s ease-in-out infinite;
-  }
-  .music-player__bars span:nth-child(1) { height: 6px;  animation-delay: 0s; }
-  .music-player__bars span:nth-child(2) { height: 14px; animation-delay: 0.15s; }
-  .music-player__bars span:nth-child(3) { height: 9px;  animation-delay: 0.3s; }
-  .music-player__bars span:nth-child(4) { height: 13px; animation-delay: 0.45s; }
-  @keyframes musicBar {
-    0%, 100% { transform: scaleY(0.4); }
-    50% { transform: scaleY(1); }
-  }
-
-  .music-player__ring {
-    position: absolute;
-    inset: -4px;
-    border-radius: 50%;
-    border: 1px solid rgba(167,139,250,0.35);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-  .music-player.is-playing .music-player__ring {
-    opacity: 1;
-    animation: musicRingPulse 2.4s ease-in-out infinite;
-  }
-  @keyframes musicRingPulse {
-    0%, 100% { transform: scale(1); opacity: 0.55; }
-    50% { transform: scale(1.12); opacity: 0.15; }
-  }
-
-  @media (max-width: 640px) {
-    .music-player { right: 12px; }
-    .music-player__btn { width: 44px; height: 44px; }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .music-player__bars span,
-    .music-player__ring { animation: none; }
-  }
-
-  @keyframes unmutePulse {
-    0%, 100% { transform: translateY(-50%) scale(1); }
-    50% { transform: translateY(-50%) scale(1.05); }
-  }
-  .unmute-prompt.is-visible {
-    opacity: 1 !important;
-    visibility: visible !important;
-    pointer-events: auto !important;
-  }
+  @media (prefers-reduced-motion: reduce){ .music-player__ring, .music-tap-btn{ animation:none; } .music-panel{ transition:none; } }
 </style>
-
+<div class="music-player" id="musicPlayer">
+  <audio id="bgMusic" loop preload="metadata"><source src="lounge-ambient.mp3" type="audio/mpeg"></audio>
+  <div class="music-panel" id="musicPanel">
+    <div class="music-panel__head">
+      <span class="music-panel__head-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 15v-3a8 8 0 0 1 16 0v3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><rect x="2" y="14" width="5" height="6" rx="2" stroke="currentColor" stroke-width="1.6"/><rect x="17" y="14" width="5" height="6" rx="2" stroke="currentColor" stroke-width="1.6"/></svg></span>
+      <span class="music-panel__head-text"><p class="music-panel__title">Lounge Ambience</p><p class="music-panel__subtitle">Sheesha Night Vibes</p></span>
+      <button type="button" class="music-panel__close" id="musicPanelClose" aria-label="Close panel"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 5l14 14M19 5 5 19" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+    </div>
+    <p class="music-panel__desc">Set the mood with <strong>ambient lounge music</strong> while you browse. Adjust the volume or mute below.</p>
+    <div class="music-panel__vol-row">
+      <svg class="music-panel__vol-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4Z" fill="currentColor"/><path d="M17.5 8.5a5 5 0 0 1 0 7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+      <span class="music-panel__vol-label">Vol</span>
+      <input type="range" class="music-panel__range" id="musicVolume" min="0" max="100" value="45" aria-label="Volume">
+      <span class="music-panel__vol-pct" id="musicVolumePct">45%</span>
+    </div>
+    <button type="button" class="music-panel__mute-btn" id="musicMuteBtn">
+      <svg class="music-panel__mute-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4Z" fill="currentColor"/><path d="M16 8l5 8M21 8l-5 8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+      <span id="musicMuteLabel">Mute</span>
+    </button>
+  </div>
+  <button type="button" class="music-player__btn" id="musicToggle" aria-label="Play background music" aria-pressed="false">
+    <span class="music-player__ring" aria-hidden="true"></span>
+    <svg class="music-player__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 15v-3a8 8 0 0 1 16 0v3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><rect x="2" y="14" width="5" height="6" rx="2" stroke="currentColor" stroke-width="1.6"/><rect x="17" y="14" width="5" height="6" rx="2" stroke="currentColor" stroke-width="1.6"/></svg>
+  </button>
+</div>
 
 <script>
   // Lenis smooth scroll — drives the whole page
   var lenis = new Lenis({ duration: 1.1, smoothWheel: true });
-  function raf(time){
-    lenis.raf(time);
-    requestAnimationFrame(raf);
-  }
+  function raf(time){ lenis.raf(time); requestAnimationFrame(raf); }
   requestAnimationFrame(raf);
 
   // route every #anchor link (category nav) through Lenis
@@ -2646,10 +646,8 @@
     var sections = document.querySelectorAll('.menu-section');
     var links = document.querySelectorAll('.catnav a');
     if(!sections.length || !links.length) return;
-
     var map = {};
     links.forEach(function(l){ map[l.getAttribute('href').slice(1)] = l; });
-
     var observer = new IntersectionObserver(function(entries){
       entries.forEach(function(entry){
         var link = map[entry.target.id];
@@ -2660,346 +658,9 @@
         }
       });
     }, { rootMargin: '-40% 0px -50% 0px', threshold: 0 });
-
     sections.forEach(function(s){ observer.observe(s); });
   })();
 </script>
-<!-- ============================================================
-     CAFE MOISHI — MUSIC PLAYER (panel version)
-     Replaces the previous .music-player block in index.html.
-     One click/tap on the headphone icon:
-       1. Starts the audio audibly (unmutes + plays) — this is the
-          "one click for sound" the browser autoplay policy requires.
-       2. Opens the panel (volume slider + mute button + close).
-     Closing the panel (X) does NOT stop the music — it keeps playing.
-     ============================================================ -->
-<style>
-  .music-player {
-    position: fixed;
-    top: 50%;
-    right: 18px;
-    transform: translateY(-50%);
-    z-index: 500;
-  }
-
-  .music-player__btn {
-    position: relative;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    border: 1px solid rgba(241,250,243,0.16);
-    background: linear-gradient(155deg, rgba(46,2,46,0.92), rgba(10,7,9,0.92));
-    box-shadow: 0 8px 24px -8px rgba(136,26,158,0.55), 0 0 0 1px rgba(167,139,250,0.08) inset;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    -webkit-backdrop-filter: blur(6px);
-    backdrop-filter: blur(6px);
-    transition: transform 0.3s cubic-bezier(.2,.9,.3,1), box-shadow 0.3s ease, border-color 0.3s ease;
-  }
-  .music-player__btn:hover {
-    transform: scale(1.08);
-    border-color: rgba(167,139,250,0.5);
-    box-shadow: 0 10px 28px -6px rgba(136,26,158,0.7);
-  }
-  .music-player__btn:focus-visible { outline: 2px solid #a78bfa; outline-offset: 3px; }
-
-  .music-player__icon { width: 22px; height: 22px; color: #e7d7fb; display: block; }
-
-  .music-player__ring {
-    position: absolute;
-    inset: -4px;
-    border-radius: 50%;
-    border: 1px solid rgba(167,139,250,0.35);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-  .music-player.is-playing .music-player__ring {
-    opacity: 1;
-    animation: musicRingPulse 2.4s ease-in-out infinite;
-  }
-  @keyframes musicRingPulse {
-    0%, 100% { transform: scale(1); opacity: 0.55; }
-    50% { transform: scale(1.12); opacity: 0.15; }
-  }
-
-  /* ---------- Panel ---------- */
-  .music-panel {
-    position: absolute;
-    top: 50%;
-    right: 66px;
-    transform: translateY(-50%) translateX(12px);
-    width: 280px;
-    padding: 1.25rem 1.35rem 1.4rem;
-    border-radius: 16px;
-    background: linear-gradient(160deg, rgba(24,10,26,0.97), rgba(8,5,9,0.97));
-    border: 1px solid rgba(167,139,250,0.25);
-    box-shadow: 0 24px 50px -18px rgba(0,0,0,0.75), 0 0 0 1px rgba(167,139,250,0.06) inset;
-    -webkit-backdrop-filter: blur(10px);
-    backdrop-filter: blur(10px);
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-    transition: opacity 0.28s ease, transform 0.28s cubic-bezier(.2,.9,.3,1), visibility 0s linear 0.28s;
-    font-family: 'Jost', sans-serif;
-  }
-  .music-panel.is-open {
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-    transform: translateY(-50%) translateX(0);
-    transition: opacity 0.28s ease, transform 0.28s cubic-bezier(.2,.9,.3,1), visibility 0s linear 0s;
-  }
-
-  .music-panel__head {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    margin-bottom: 0.9rem;
-  }
-  .music-panel__head-icon {
-    flex-shrink: 0;
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-    border: 1px solid rgba(167,139,250,0.4);
-    background: rgba(167,139,250,0.08);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #d9b8ff;
-  }
-  .music-panel__head-icon svg { width: 18px; height: 18px; }
-  .music-panel__head-text { flex: 1; min-width: 0; }
-  .music-panel__title {
-    margin: 0;
-    font-family: 'Fredoka', sans-serif;
-    font-weight: 600;
-    font-size: 0.92rem;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    color: #f1faf3;
-  }
-  .music-panel__subtitle {
-    margin: 2px 0 0;
-    font-size: 0.72rem;
-    color: rgba(241,250,243,0.5);
-  }
-  .music-panel__close {
-    flex-shrink: 0;
-    width: 26px;
-    height: 26px;
-    border-radius: 50%;
-    border: 1px solid rgba(241,250,243,0.16);
-    background: rgba(241,250,243,0.04);
-    color: rgba(241,250,243,0.7);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: background 0.2s ease, color 0.2s ease;
-  }
-  .music-panel__close:hover { background: rgba(167,139,250,0.18); color: #fff; }
-  .music-panel__close svg { width: 12px; height: 12px; }
-
-  .music-panel__divider { height: 1px; background: rgba(241,250,243,0.1); margin: 0.9rem 0; }
-
-  .music-panel__desc {
-    margin: 0 0 1.1rem;
-    font-size: 0.78rem;
-    line-height: 1.6;
-    color: rgba(241,250,243,0.62);
-  }
-  .music-panel__desc strong { color: #d9b8ff; font-weight: 500; }
-
-  .music-panel__vol-row {
-    display: flex;
-    align-items: center;
-    gap: 0.7rem;
-    margin-bottom: 1.1rem;
-  }
-  .music-panel__vol-icon { flex-shrink: 0; width: 15px; height: 15px; color: #d9b8ff; }
-  .music-panel__vol-label {
-    flex-shrink: 0;
-    font-size: 0.64rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: rgba(241,250,243,0.5);
-  }
-  .music-panel__range {
-    flex: 1;
-    -webkit-appearance: none;
-    appearance: none;
-    height: 3px;
-    border-radius: 999px;
-    background: rgba(241,250,243,0.15);
-    outline: none;
-    cursor: pointer;
-  }
-  .music-panel__range::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    width: 13px; height: 13px;
-    border-radius: 50%;
-    background: #d9b8ff;
-    box-shadow: 0 0 8px rgba(167,139,250,0.7);
-    cursor: pointer;
-  }
-  .music-panel__range::-moz-range-thumb {
-    width: 13px; height: 13px;
-    border-radius: 50%;
-    border: none;
-    background: #d9b8ff;
-    box-shadow: 0 0 8px rgba(167,139,250,0.7);
-    cursor: pointer;
-  }
-  .music-panel__vol-pct {
-    flex-shrink: 0;
-    width: 34px;
-    text-align: right;
-    font-size: 0.72rem;
-    color: rgba(241,250,243,0.6);
-    font-variant-numeric: tabular-nums;
-  }
-
-  .music-panel__mute-btn {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5em;
-    padding: 0.65em 1em;
-    border-radius: 10px;
-    border: 1px solid rgba(167,139,250,0.3);
-    background: rgba(167,139,250,0.06);
-    color: #f1faf3;
-    font-family: 'Jost', sans-serif;
-    font-size: 0.72rem;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: background 0.25s ease, border-color 0.25s ease;
-  }
-  .music-panel__mute-btn:hover { background: rgba(167,139,250,0.16); border-color: rgba(167,139,250,0.5); }
-  .music-panel__mute-btn svg { width: 14px; height: 14px; }
-  .music-panel.is-muted .music-panel__mute-btn { background: rgba(136,26,158,0.25); border-color: rgba(136,26,158,0.5); }
-
-  @media (max-width: 640px) {
-    .music-player { right: 12px; }
-    .music-player__btn { width: 44px; height: 44px; }
-    .music-panel { width: 240px; right: 58px; padding: 1.1rem 1.1rem 1.25rem; }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .music-player__ring { animation: none; }
-    .music-panel { transition: none; }
-  }
-
-  /* ---------- Small "tap for music" quick-start button ---------- */
-  .music-tap-btn {
-    position: absolute;
-    top: 50%;
-    right: 66px;
-    transform: translateY(-50%) translateX(6px);
-    display: flex;
-    align-items: center;
-    gap: 0.5em;
-    padding: 0.55em 1em;
-    border-radius: 999px;
-    background: linear-gradient(155deg, rgba(46,2,46,0.95), rgba(10,7,9,0.95));
-    border: 1px solid rgba(167,139,250,0.4);
-    color: #e7d7fb;
-    font-family: 'Jost', sans-serif;
-    font-size: 0.7rem;
-    font-weight: 500;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    white-space: nowrap;
-    cursor: pointer;
-    box-shadow: 0 8px 24px -8px rgba(136,26,158,0.6);
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-    transition: opacity 0.25s ease, transform 0.25s ease, visibility 0s linear 0s;
-    animation: musicTapPulse 2.2s ease-in-out infinite;
-  }
-  .music-tap-btn svg { width: 13px; height: 13px; flex-shrink: 0; }
-  .music-tap-btn.is-hidden {
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-    transform: translateY(-50%) translateX(6px) scale(0.9);
-    transition: opacity 0.25s ease, transform 0.25s ease, visibility 0s linear 0.25s;
-  }
-  @keyframes musicTapPulse {
-    0%, 100% { box-shadow: 0 8px 24px -8px rgba(136,26,158,0.6); }
-    50% { box-shadow: 0 8px 28px -6px rgba(167,139,250,0.85); }
-  }
-
-  @media (max-width: 640px) {
-    .music-tap-btn { right: 58px; font-size: 0.64rem; padding: 0.5em 0.85em; }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .music-tap-btn { animation: none; }
-  }
-</style>
-
-<div class="music-player" id="musicPlayer">
-  <audio id="bgMusic" loop preload="metadata">
-    <source src="lounge-ambient.mp3" type="audio/mpeg">
-  </audio>
-
-  <div class="music-panel" id="musicPanel">
-    <div class="music-panel__head">
-      <span class="music-panel__head-icon">
-        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <path d="M4 15v-3a8 8 0 0 1 16 0v3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-          <rect x="2" y="14" width="5" height="6" rx="2" stroke="currentColor" stroke-width="1.6"/>
-          <rect x="17" y="14" width="5" height="6" rx="2" stroke="currentColor" stroke-width="1.6"/>
-        </svg>
-      </span>
-      <span class="music-panel__head-text">
-        <p class="music-panel__title">Lounge Ambience</p>
-        <p class="music-panel__subtitle">Sheesha Night Vibes</p>
-      </span>
-      <button type="button" class="music-panel__close" id="musicPanelClose" aria-label="Close panel">
-        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 5l14 14M19 5 5 19" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-      </button>
-    </div>
-
-    <p class="music-panel__desc">Set the mood with <strong>ambient lounge music</strong> while you browse. Adjust the volume or mute below.</p>
-
-    <div class="music-panel__vol-row">
-      <svg class="music-panel__vol-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-        <path d="M4 9v6h4l5 4V5L8 9H4Z" fill="currentColor"/>
-        <path d="M17.5 8.5a5 5 0 0 1 0 7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-      </svg>
-      <span class="music-panel__vol-label">Vol</span>
-      <input type="range" class="music-panel__range" id="musicVolume" min="0" max="100" value="45" aria-label="Volume">
-      <span class="music-panel__vol-pct" id="musicVolumePct">45%</span>
-    </div>
-
-    <button type="button" class="music-panel__mute-btn" id="musicMuteBtn">
-      <svg class="music-panel__mute-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-        <path d="M4 9v6h4l5 4V5L8 9H4Z" fill="currentColor"/>
-        <path d="M16 8l5 8M21 8l-5 8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-      </svg>
-      <span id="musicMuteLabel">Mute</span>
-    </button>
-  </div>
-
-  <button type="button" class="music-player__btn" id="musicToggle" aria-label="Play background music" aria-pressed="false">
-    <span class="music-player__ring" aria-hidden="true"></span>
-    <svg class="music-player__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <path d="M4 15v-3a8 8 0 0 1 16 0v3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-      <rect x="2" y="14" width="5" height="6" rx="2" stroke="currentColor" stroke-width="1.6"/>
-      <rect x="17" y="14" width="5" height="6" rx="2" stroke="currentColor" stroke-width="1.6"/>
-    </svg>
-  </button>
-</div>
-
 <script src="musicplayer.js"></script>
 <script src="script.js"></script>
 </body>
