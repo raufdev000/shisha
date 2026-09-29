@@ -4133,7 +4133,19 @@ textarea {
     .headline{ font-size: 32px; } 
     .headline .accent{ font-size: 38px; } 
   } 
-.home-hero__title .home-hero__title-top,
-.home-hero__title .home-hero__title-top * {
-  font-family: 'Sacramento', cursive !important;
+body .home-hero .home-hero__title .home-hero__title-top,
+body .home-hero .home-hero__title .home-hero__title-top * {
+  font-family: 'Alex Brush', cursive !important;
+  text-transform: none !important;
+  letter-spacing: 0.02em !important;
+  color: #f5c542 !important;
+  -webkit-text-fill-color: #f5c542 !important;
+  -webkit-text-stroke: 0 !important;
+  text-shadow: none !important;
+  background: none !important;
+  animation: none !important;
+}
+body .home-hero .home-hero__title .home-hero__title-top {
+  font-size: 0.6em;
+  line-height: 1.2;
 }
